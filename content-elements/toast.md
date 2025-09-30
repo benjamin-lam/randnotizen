@@ -39,6 +39,8 @@ Kurzlebige Benachrichtigungen, die temporär eingeblendet werden.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/toast.html](../content-elements-examples/toast.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <div class="toast toast--success" role="status" aria-live="polite">Erfolg gespeichert.</div>

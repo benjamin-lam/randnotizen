@@ -39,6 +39,8 @@ Platzhalter-Layouts, die die spätere Struktur andeuten, während Inhalte laden.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/skeleton-loader.html](../content-elements-examples/skeleton-loader.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <div class="skeleton-card" aria-hidden="true">

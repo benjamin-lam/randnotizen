@@ -39,6 +39,8 @@ Mehrschrittige Benutzerführung für komplexe Prozesse.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/multi-step-wizard.html](../content-elements-examples/multi-step-wizard.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <form class="wizard">

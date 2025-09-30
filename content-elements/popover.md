@@ -39,6 +39,8 @@ Kontextbezogene Overlays mit weiterführenden Inhalten oder Aktionen.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/popover.html](../content-elements-examples/popover.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <button type="button" aria-haspopup="dialog" aria-expanded="false">Details</button>

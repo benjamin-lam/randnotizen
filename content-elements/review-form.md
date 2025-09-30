@@ -39,6 +39,8 @@ Formular zum Abgeben von Bewertungen mit Rating und Textfeld.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/review-form.html](../content-elements-examples/review-form.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <form class="review-form">

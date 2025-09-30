@@ -39,6 +39,8 @@ Basis-Elemente für Textstruktur wie Überschriften, Absätze, Listen und Zitate
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/typography.html](../content-elements-examples/typography.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <article>

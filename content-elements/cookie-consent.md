@@ -39,6 +39,8 @@ Consent-Banner oder Layer zur Einholung der DSGVO-konformen Zustimmung für Cook
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/cookie-consent.html](../content-elements-examples/cookie-consent.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <div class="cookie-consent" role="dialog" aria-modal="true" aria-labelledby="cookie-title">

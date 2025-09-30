@@ -39,6 +39,8 @@ Standardisierte Eingabefelder für Text, E-Mail oder Nummern mit optionalen Mask
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/input-field.html](../content-elements-examples/input-field.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <label for="email">E-Mail</label>

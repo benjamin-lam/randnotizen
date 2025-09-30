@@ -39,6 +39,8 @@ Steuerelemente für Einzel- oder Mehrfachauswahl inklusive Switches.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/radio-checkbox-toggle.html](../content-elements-examples/radio-checkbox-toggle.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <fieldset>

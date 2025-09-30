@@ -39,6 +39,8 @@ Formular zum Anmelden für einen Newsletter mit Double-Opt-In.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/newsletter-optin.html](../content-elements-examples/newsletter-optin.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <form class="newsletter">

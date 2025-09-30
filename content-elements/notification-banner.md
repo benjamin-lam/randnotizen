@@ -39,6 +39,8 @@ Seitenweite Hinweise oder Promotions am oberen Rand.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/notification-banner.html](../content-elements-examples/notification-banner.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <div class="notification-banner" role="region" aria-label="Hinweis">

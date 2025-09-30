@@ -39,6 +39,8 @@ Facettierte Filtersteuerung mit Chips, Listen oder Slidern.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/filter-facets.html](../content-elements-examples/filter-facets.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <section class="filters">

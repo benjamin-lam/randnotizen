@@ -39,6 +39,8 @@ Buttons zum Teilen von Inhalten in sozialen Netzwerken oder per Link.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/share-buttons.html](../content-elements-examples/share-buttons.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <div class="share">

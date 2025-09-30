@@ -39,6 +39,8 @@ Interaktive Karte zur Standortanzeige oder Wegbeschreibung.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/map-embed.html](../content-elements-examples/map-embed.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <section class="map">

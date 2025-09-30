@@ -39,6 +39,8 @@ Bilddarstellung mit erläuternder Bildunterschrift.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/image-with-caption.html](../content-elements-examples/image-with-caption.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <figure class="image">

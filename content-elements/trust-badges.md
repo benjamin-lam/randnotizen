@@ -39,6 +39,8 @@ Sicherheits- und Vertrauenssiegel wie Zahlungsanbieter oder Zertifikate.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/trust-badges.html](../content-elements-examples/trust-badges.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <ul class="trust-badges">

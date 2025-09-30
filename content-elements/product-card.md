@@ -39,6 +39,8 @@ Produktkachel mit Bild, Preis, Bewertung und CTA.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/product-card.html](../content-elements-examples/product-card.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <article class="product-card" itemscope itemtype="https://schema.org/Product">

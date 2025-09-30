@@ -39,6 +39,8 @@ Einbettung von Videos mit Poster, Controls und optionaler Lazyload-Lösung.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/video-embed.html](../content-elements-examples/video-embed.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <figure class="video">
