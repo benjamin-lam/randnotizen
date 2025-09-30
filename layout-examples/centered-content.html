@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Centered Content</title>
+  <meta name="description" content="Maximale Lesbarkeit durch zentrierte Inhaltsbreite und großzügige Weißräume." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-centered {
+      display: grid;
+      justify-items: center;
+      text-align: center;
+      gap: clamp(1.5rem, 5vw, 2.5rem);
+    }
+
+    #preview.layout-centered .prose {
+      max-width: clamp(42ch, 68ch, 74ch);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/relevant/centered-content.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Leselayout</p>
+      <h1 class="section-title">Centered Content</h1>
+      <p class="prose">Maximale Lesbarkeit durch zentrierte Inhaltsbreite und großzügige Weißräume.</p>
+    </section>
+
+    <section id="preview" class="layout-centered" aria-labelledby="centered-heading">
+      <h2 id="centered-heading">Mission Statement</h2>
+      <p class="prose">
+        Wir entwerfen digitale Produkte, die komplexe Abläufe in einfache Routinen verwandeln. Fokus, Klarheit und Empathie
+        sind die Basis für jedes Erlebnis.
+      </p>
+      <div class="cards" role="list" aria-label="Schwerpunkte">
+        <div class="badge" role="listitem">Research driven</div>
+        <div class="badge" role="listitem">Accessible by default</div>
+        <div class="badge" role="listitem">Continuous Discovery</div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Centered Content</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

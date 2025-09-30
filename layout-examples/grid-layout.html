@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Grid Layout</title>
+  <meta name="description" content="Flexible CSS-Grid-Startseite mit modularem Aufbau über mehrere Zeilen und Spalten." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-grid {
+      display: grid;
+      gap: clamp(1rem, 3vw, 1.75rem);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+      grid-auto-rows: minmax(12rem, auto);
+    }
+
+    #preview.layout-grid article {
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.25rem, 4vw, 1.75rem);
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    #preview.layout-grid .wide {
+      grid-column: span 2;
+    }
+
+    @media (max-width: 60rem) {
+      #preview.layout-grid .wide {
+        grid-column: span 1;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/relevant/grid-layout.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Struktur Layout</p>
+      <h1 class="section-title">Grid Layout</h1>
+      <p class="prose">Flexible CSS-Grid-Startseite mit modularem Aufbau über mehrere Zeilen und Spalten.</p>
+    </section>
+
+    <section id="preview" class="layout-grid" aria-labelledby="grid-heading">
+      <article class="wide">
+        <h2 id="grid-heading">Hero Update</h2>
+        <p>Highlights, Teaser oder Releases erhalten eine doppelte Spaltenbreite.</p>
+      </article>
+      <article>
+        <h3>Community</h3>
+        <p>Beiträge, Events und Diskussionen.</p>
+      </article>
+      <article>
+        <h3>Guides</h3>
+        <p>Schritt-für-Schritt Anleitungen für neue Features.</p>
+      </article>
+      <article class="wide">
+        <h3>Case Study</h3>
+        <p>Vertiefende Insights oder Success Stories mit mehr Fläche.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Grid Layout</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

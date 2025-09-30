@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Asymmetrisches Layout</title>
+  <meta name="description" content="Asymmetrische Grid-Struktur mit dominanter Story-Spalte und begleitenden Insights." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-asymmetric {
+      display: grid;
+      gap: clamp(1.5rem, 4vw, 3rem);
+    }
+
+    @media (min-width: 56rem) {
+      #preview.layout-asymmetric {
+        grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.8fr);
+        align-items: start;
+      }
+    }
+
+    #preview.layout-asymmetric figure {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      isolation: isolate;
+      box-shadow: var(--shadow-soft);
+    }
+
+    #preview.layout-asymmetric figcaption {
+      position: absolute;
+      inset: auto clamp(1rem, 4vw, 2rem) clamp(1rem, 4vw, 2rem);
+      background: color-mix(in srgb, var(--color-card) 82%, transparent);
+      backdrop-filter: blur(16px);
+      border-radius: var(--radius-lg);
+      padding: clamp(0.75rem, 3vw, 1.25rem);
+      box-shadow: var(--shadow-soft);
+      max-width: min(20rem, 80%);
+    }
+
+    #preview.layout-asymmetric aside {
+      display: grid;
+      gap: clamp(1rem, 3vw, 1.75rem);
+    }
+
+    #preview.layout-asymmetric .insight {
+      background: var(--color-card);
+      padding: clamp(1rem, 3vw, 1.5rem);
+      border-radius: var(--radius-lg);
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      box-shadow: var(--shadow-soft);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/relevant/asymmetric-layout.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Editorial Layout</p>
+      <h1 class="section-title">Asymmetrisches Layout</h1>
+      <p class="prose">Ideal für Feature-Artikel oder Produktgeschichten: Die Hauptspalte nutzt großzügige Typografie, die Nebenspalte fasst Kennzahlen und Learnings zusammen.</p>
+    </section>
+
+    <section id="preview" class="layout-asymmetric" aria-labelledby="asymmetric-heading">
+      <div>
+        <h2 id="asymmetric-heading">Fallstudie: Circular Design Sprint</h2>
+        <p>
+          Ein interdisziplinäres Team entwickelte in fünf Tagen eine nachhaltige Produktvision. Das Hauptnarrativ nutzt eine
+          breite Spalte mit großzügiger Typografie und Illustrationen.
+        </p>
+        <figure>
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=1400&q=80" alt="Designteam arbeitet gemeinsam am Whiteboard" />
+          <figcaption>
+            Prototyping Tag 3: Moderierte Remote-Tests, dokumentiert via Live-Notetaking.
+          </figcaption>
+        </figure>
+        <p>
+          Die Bildunterschrift setzt auf Glas-Morphism, der sowohl in hellen als auch dunklen Themes funktioniert.
+        </p>
+      </div>
+      <aside aria-label="Insights">
+        <article class="insight">
+          <h3>Impact Kennzahlen</h3>
+          <p>+34% Conversion im Beta-Test, 92% Completion-Rate beim Onboarding.</p>
+        </article>
+        <article class="insight">
+          <h3>Team Setup</h3>
+          <p>Service Design, Research, Produkt, Engineering und Circular-Economy-Expertise.</p>
+        </article>
+        <article class="insight">
+          <h3>Lessons Learned</h3>
+          <p>Asymmetrische Layouts lenken Aufmerksamkeit und bleiben dennoch gut lesbar.</p>
+        </article>
+      </aside>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Asymmetrisches Layout</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
