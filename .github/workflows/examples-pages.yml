@@ -28,61 +28,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Install pandoc
-        run: sudo apt-get update && sudo apt-get install -y pandoc
-
-      - name: Prepare dist & convert Markdown
+      - name: Prepare dist
         run: |
           rm -rf dist
           mkdir -p dist
-
-          # 1) Kopiere das komplette Repository (ohne Git-Metadaten) nach dist/
           rsync -a --exclude 'dist/' --exclude '.git/' ./ dist/
-
-          # 2) Konvertiere alle .md -> .html (parallel in-place in dist)
-          find dist -type f -iname "*.md" | while read -r f; do
-            html="${f%.md}.html"
-            pandoc "$f" -f markdown -t html5 -s -o "$html"
-          done
-
-          # 3) .nojekyll, damit Pages nichts umbaut
           touch dist/.nojekyll
-
-          # 4) index.html mit Linkliste aller HTML/HTM-Dateien
-          cat > dist/index.html <<'HTML'
-          <!doctype html>
-          <meta charset="utf-8">
-          <title>Repository Preview</title>
-          <meta name="viewport" content="width=device-width,initial-scale=1">
-          <style>
-            body{font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:2rem;max-width:72ch}
-            h1{margin:0 0 1rem}
-            ul{padding-left:1.2rem}
-            a{word-break:break-word}
-            code{background:#f6f8fa;padding:.1rem .3rem;border-radius:.25rem}
-          </style>
-          <h1>Randnotizen – Repository Vorschau</h1>
-          <p>Alle Dateien aus dem Repo werden auf GitHub Pages bereitgestellt. Markdown-Dateien liegen zusätzlich als HTML-Versionen vor.</p>
-          <ul>
-          HTML
-          find dist -type f \( -iname "*.html" -o -iname "*.htm" \) \
-            ! -path "dist/index.html" ! -path "dist/404.html" | sed 's#^dist/##' | sort | while read -r f; do
-            esc="$(printf '%s\n' "$f" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')"
-            echo "<li><a href=\"${esc}\">${esc}</a></li>" >> dist/index.html
-          done
-          echo "</ul>" >> dist/index.html
-
-          # 4b) Fehlende index.html-Dateien in Unterordnern erzeugen
-          python3 .github/scripts/generate_folder_indexes.py dist
-
-          # 5) 404 → zurück zur Übersicht
-          cat > dist/404.html <<'HTML'
-          <!doctype html>
-          <meta charset="utf-8">
-          <title>Not Found</title>
-          <meta http-equiv="refresh" content="0; url=./index.html">
-          <p>Seite nicht gefunden. <a href="./index.html">Zur Übersicht</a>.</p>
-          HTML
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

@@ -1,0 +1,39 @@
+baseurl: "/randnotizen"
+permalink: /blog/:categories/:year/:month/:day/:title/
+markdown: kramdown
+plugins:
+  - jekyll-feed
+include:
+  - content-elements
+  - layouts
+  - frontend
+collections:
+  posts:
+    output: true
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+  - scope:
+      path: "content-elements"
+      type: pages
+    values:
+      layout: post
+      categories: [content-elements]
+  - scope:
+      path: "layouts"
+      type: pages
+    values:
+      layout: post
+      categories: [layouts]
+  - scope:
+      path: "frontend"
+      type: pages
+    values:
+      layout: post
+      categories: [frontend]
+feed:
+  path: feed.xml
