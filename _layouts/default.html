@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{% if page.title %}{{ page.title }} · {% endif %}Randnotizen</title>
+    {%- feed_meta -%}
+    <link rel="stylesheet" href="{{ '/assets/styles.css' | relative_url }}" />
+  </head>
+  <body>
+    {% include header.html %}
+    <main class="site-main" id="main">
+      {{ content }}
+    </main>
+    <footer class="site-footer">
+      <p>&copy; {{ site.time | date: '%Y' }} Randnotizen. Mit Liebe für Details gebaut.</p>
+    </footer>
+  </body>
+</html>

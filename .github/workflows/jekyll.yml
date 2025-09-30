@@ -1,0 +1,80 @@
+name: Build & Deploy Jekyll Blog
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '_posts/**'
+      - 'content-elements/**/*.md'
+      - 'layouts/**/*.md'
+      - 'frontend/**/*.md'
+      - '_config.yml'
+      - 'blog/**'
+      - '_includes/**'
+      - '_layouts/**'
+      - 'Gemfile'
+      - 'Gemfile.lock'
+      - '.github/workflows/jekyll.yml'
+  workflow_dispatch:
+
+env:
+  JEKYLL_BASEURL: /randnotizen
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: jekyll-blog
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Install dependencies
+        run: bundle install --jobs 4 --retry 3
+
+      - name: Build Jekyll site
+        run: bundle exec jekyll build --baseurl "${{ env.JEKYLL_BASEURL || '/randnotizen' }}" --destination dist
+
+      - name: Copy static files
+        run: |
+          set -euo pipefail
+          for dir in assets layout-examples content-elements-examples; do
+            if [ -d "$dir" ]; then
+              rsync -a "$dir/" "dist/$dir/"
+            fi
+          done
+          for file in index.html README.md generate_content_elements.py; do
+            if [ -f "$file" ]; then
+              mkdir -p "dist/$(dirname "$file")"
+              cp "$file" "dist/$file"
+            fi
+          done
+          touch dist/.nojekyll
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
