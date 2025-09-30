@@ -1,81 +1,47 @@
-Layout: Header Content Footer
+# Layout: Header – Content – Footer
 
-Beschreibung
+## Beschreibung
+Der klassische Aufbau mit Kopfbereich, zentralem Content und abschließendem Footer funktioniert für die meisten Websites. Er eignet sich für Marketingseiten, Unternehmensauftritte oder Informationsangebote.
 
-Erweitertes Grundlayout mit klarer Content-Zone zwischen Header und Footer.
+## Warum dieses Layout?
+- Universelles Muster mit klarer Navigationsstruktur.
+- Lässt sich mit Komponentenbibliotheken schnell zusammensetzen.
+- Kann ohne hochwertige Gestaltung austauschbar wirken.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Alle Bereiche passen sich an Viewportgrößen an und verhindern horizontales Scrollen.
+- **Accessibility:** Nur ein <main>-Element, korrekte Überschriftenhierarchie und sichtbare Skip-Links.
+- **SEO:** Saubere Title-/Meta-Tags und strukturierte Daten für Footer-Informationen.
+- **Design-Guidelines:** Deutliche visuelle Hierarchie zwischen Header, Content und Footer.
 
-Universell für Unternehmensseiten und Kampagnen. Stärke: klare Struktur; Schwäche: wenig Raum für komplexe Interaktionen.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Navigation vereinfachen und Content-Abstände auf kleinen Screens optimieren.
+- **Accessibility:** Landmark-Struktur validieren und interaktive Elemente fokussierbar machen.
+- **SEO:** Hero-Bereich mit h1 und relevanten Keywords versehen.
+- **Best Practices:** Core Web Vitals regelmäßig messen, Footer-Links priorisieren, Responsives Typo-Scale via clamp()
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Überschriftenstruktur ist linear und nachvollziehbar.
+- [ ] Footer enthält rechtliche Pflichtlinks und Kontaktinformationen.
+- [ ] Navigation und Content funktionieren ohne JavaScript.
+- [ ] Core Web Vitals erfüllen Zielwerte.
 
-Flexibler Content-Bereich mit verschiedenen Sektionen.
+## Abhängigkeiten / Überschneidungen
+- Globaler Header/Footer
+- Content-Komponentenbibliothek
 
-Responsiveness
+## Akzeptanzkriterien
+- Layout bleibt auf allen Breakpoints stabil.
+- Skip-Link springt zum einzigen <main>-Element.
+- Footer erreicht mindestens AA-Kontrastwerte.
 
-Abschnitte vertikal stacken und großzügige Abstände.
-
-Accessibility
-
-Logische Überschriftenstruktur, Landmark-Rollen.
-
-SEO
-
-Inhaltsreicher Hauptbereich mit relevanten Keywords.
-
-Design-Guidelines
-
-Sektionen durch Hintergrundfarben trennen.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-AGB/Datenschutz im Footer verlinken.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Sektionen für Scrollen optimieren.
-
-Accessibility
-
-Section-Elemente mit aria-labelledby.
-
-SEO
-
-Rich Snippets für zentrale Inhalte.
-
-Best Practices
-
-Reusable Components verwenden.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Hero-, Content- und Footer-Komponenten.
-
-Akzeptanzkriterien
-
-Fertig bei responsiver Darstellung aller Sektionen und geprüfter Barrierefreiheit.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<header>Navigation</header>
-<section>Content</section>
-<footer>Footer</footer>
+<header>…</header>
+<main>…</main>
+<footer>…</footer>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐⭐
+⭐⭐⭐⭐⭐ Universelles Standardskelett für multipage Websites.

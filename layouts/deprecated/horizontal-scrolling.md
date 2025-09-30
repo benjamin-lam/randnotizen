@@ -1,84 +1,49 @@
-Layout: Horizontal Scrolling
+# Layout: Horizontal Scrolling Layout
 
-Beschreibung
+## Beschreibung
+Ein Layout mit horizontalem Scrollen als primäre Navigationsachse wirkt unnatürlich und ist auf mobilen Geräten schwer steuerbar.
 
-Layout mit horizontalem Scrollen für Hauptinhalt.
+## Warum dieses Layout?
+- Kann besondere Storytelling-Experiences liefern.
+- Setzt visuelle Highlights in Szene.
+- Verursacht UX-Probleme bei Scroll-Gesten und Orientierung.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Klare Scroll-Hinweise, horizontale Scrollbereiche mit Touch-Unterstützung.
+- **Accessibility:** Alternativen für Tastatur und Screenreader bereitstellen, wheel-Events bedacht einsetzen.
+- **SEO:** Wichtige Inhalte auch vertikal zugänglich machen.
+- **Design-Guidelines:** Deutliche Pfeile, Pagination oder Snap-Punkte, um Orientierung zu sichern.
 
-Wurde für experimentelle Seiten genutzt, verursacht aber Usability-Probleme.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Standard-Layouts bevorzugen und horizontale Scrollstrecken nur optional einbinden.
+- **Accessibility:** Scroll-Mapping auf Trackpad/Wheel nur vorsichtig nutzen.
+- **SEO:** Vertikale Alternativansicht oder Jump-Links bereitstellen.
+- **Best Practices:** Scroll-Hints anzeigen, Snapping optional, Fallback auf vertikale Liste
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Scroll-Hinweise sind sichtbar.
+- [ ] Tastaturbedienung möglich.
+- [ ] Vertikale Alternative vorhanden.
+- [ ] A11y- und Performance-Check dokumentiert.
 
-Breite Container, horizontale Scrollleisten.
+## Abhängigkeiten / Überschneidungen
+- Scroll- und Animation-Utilities
+- Fallback-Layouts
 
-Responsiveness
+## Akzeptanzkriterien
+- Nutzer verstehen Interaktion ohne Tutorial.
+- Screenreader erhalten linearen Alternativzugang.
+- Stakeholder akzeptieren Einsatz nur in Spezialfällen.
 
-Auf Mobilgeräten kaum steuerbar.
-
-Accessibility
-
-Screenreader und Tastatur haben Schwierigkeiten.
-
-SEO
-
-Crawler erfassen Inhalte schlechter.
-
-Design-Guidelines
-
-Ungewohntes Interaktionsmuster.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Barriererichtlinien empfehlen vertikale Navigation.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Horizontales Scrollen frustriert Nutzer.
-
-Accessibility
-
-WCAG-konform schwer umsetzbar.
-
-SEO
-
-Inhalt wird spät geladen.
-
-Best Practices
-
-Besser horizontale Slider mit klaren Controls.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Experimentelle Scroll-Skripte.
-
-Akzeptanzkriterien
-
-Nur für Archivzwecke dokumentiert.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="horizontal">
-  <article>Panel</article>
-  <article>Panel</article>
+<section class="horizontal-scroll" aria-label="Galerie">
+  <div class="scroll-track">…</div>
 </section>
 ```
 
+> ⚠️ Deprecated: Nicht mehr empfohlen für Mobile-First-Designs (nur zu Dokumentationszwecken).
+
 Bewertung der Relevanz 2025
 
-⭐☆☆☆☆
-
-⚠️ Deprecated – nicht mehr empfohlen für Mobile-First-Designs, nur noch zu Dokumentationszwecken.
+⭐⭐☆☆☆ Nur für spezielle Storytelling-Experimente erhalten.

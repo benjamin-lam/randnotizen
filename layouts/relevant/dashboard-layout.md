@@ -1,82 +1,45 @@
-Layout: Dashboard Layout
+# Layout: Dashboard Layout
 
-Beschreibung
+## Beschreibung
+Dashboards bündeln Karten, Tabellen und Diagramme in einer übersichtlichen Oberfläche. Sie kommen in Admin-Tools, Analytics-Lösungen oder SaaS-Plattformen zum Einsatz.
 
-Mehrspaltige Ansicht mit Widgets und KPI-Karten.
+## Warum dieses Layout?
+- Ermöglicht dichte Darstellung von Kennzahlen.
+- Unterstützt modulare Widgets mit unterschiedlichen Größen.
+- Benötigt durchdachtes Responsive-Verhalten und Priorisierung.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Grid-Areas passen sich an verfügbare Fläche an und erlauben Reordering.
+- **Accessibility:** Tabellen, Charts und Widgets benötigen ARIA-Unterstützung und verständliche Labels.
+- **SEO:** Bei öffentlichen Dashboards strukturierte Daten und semantische Überschriften verwenden.
+- **Design-Guidelines:** Konsistente Spacing- und Farbskalen, klare Kartentitel und Statusindikatoren.
 
-Für interne Tools, Analytics oder Admin-Oberflächen. Stärke: hohe Informationsdichte; Schwäche: potenziell überladen.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Widgets stapeln und priorisieren, kritische Kennzahlen zuerst.
+- **Accessibility:** Keyboard-Navigation für Widgets sicherstellen und Live-Regionen sparsam einsetzen.
+- **SEO:** SSR oder statische Ausspielung für indexierbare Inhalte berücksichtigen.
+- **Best Practices:** Grid-Areas definieren, Charts mit Textäquivalenten versehen, Skeleton-Loading für Datenabfragen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Widgets bleiben auch mobil lesbar.
+- [ ] Fokuspfade für interaktive Module getestet.
+- [ ] Charts haben beschreibende Alternativen.
+- [ ] Performance-Monitoring implementiert.
 
-Flexibles Grid, Drag-and-Drop optional.
+## Abhängigkeiten / Überschneidungen
+- Charting-Library
+- Grid-System
 
-Responsiveness
+## Akzeptanzkriterien
+- Layout unterstützt individuelles Rearrangement ohne Layoutbruch.
+- Screenreader können Kennzahlen interpretieren.
+- Loading-States vermitteln klaren Status.
 
-Widgets neu anordnen und stacken.
-
-Accessibility
-
-Klare Fokusreihenfolge und ARIA für Widgets.
-
-SEO
-
-Für Web-Apps zweitrangig, aber semantische Struktur dennoch pflegen.
-
-Design-Guidelines
-
-Visuelle Hierarchie für KPIs, Statusfarben mit Legende.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Datenschutz bei personenbezogenen Daten.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Kritische KPIs priorisieren.
-
-Accessibility
-
-Widgets per Tastatur erreichbar machen.
-
-SEO
-
-Meta-Daten für indexierte Teile.
-
-Best Practices
-
-Use CSS Grid mit auto-flow dense.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Widget-, Chart- und Tabellenkomponenten.
-
-Akzeptanzkriterien
-
-Fertig, wenn wichtigste Widgets responsiv funktionieren und Zustand gespeichert wird.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<main class="dashboard">
-  <section class="widget">Umsatz</section>
-  <section class="widget">Traffic</section>
-</main>
+<section class="grid lg:grid-cols-3 gap-4">…</section>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐⭐
+⭐⭐⭐⭐☆ Bewährte Grundlage für datengetriebene Anwendungen.

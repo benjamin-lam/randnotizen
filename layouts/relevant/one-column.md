@@ -1,84 +1,50 @@
-Layout: One Column
+# Layout: One Column
 
-Beschreibung
+## Beschreibung
+Ein einspaltiges Layout lenkt den Blick auf den Hauptinhalt und reduziert Ablenkungen. Typischerweise wird es für Artikel, Dokumentationen oder fokussierte Landingpages eingesetzt.
 
-Einspaltiges Layout für klare Leseführung und fokussierte Inhalte.
+## Warum dieses Layout?
+- Maximiert Lesbarkeit und Flow für längere Texte.
+- Einfach zu pflegen und mit modularen Komponenten zu erweitern.
+- Bietet wenig Fläche für sekundäre Navigation oder Promotions.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Flexible max-width zwischen 68–76ch und adaptive Seitenränder auf allen Breakpoints.
+- **Accessibility:** Saubere Überschriftenhierarchie, ausreichend Zeilenabstand und lesbare Schriftgrößen.
+- **SEO:** Semantische Struktur mit <header>, <main>, <footer> und klarer h1–h3-Reihenfolge.
+- **Design-Guidelines:** Großzügige Weißräume, konsistente Typografie-Skala und ruhige Farbpalette.
 
-Ideal für Blogartikel, Dokumentationen oder Landing-Pages mit linearem Storytelling. Stärken sind Lesbarkeit und Einfachheit; Schwächen liegen bei komplexen Content-Strukturen. Historisch Standard im Print und frühen Web.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Beginnt als vollbreite Spalte mit progressiver Begrenzung über max-width.
+- **Accessibility:** Nutzt Landmark-Rollen und Skip-Links für schnelle Navigation.
+- **SEO:** Verwendet strukturierte Überschriften und relevante Meta-Daten.
+- **Best Practices:** max-width clamp(), line-height ≥ 1.5, font-size über clamp() skalieren
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Maximale Inhaltsbreite und Seitenabstände definiert.
+- [ ] Heading-Skala konsistent angewendet.
+- [ ] Kontrastwerte für Text und Links geprüft.
+- [ ] Core Web Vitals im grünen Bereich.
 
-Klare Typografie, großzügige Weißräume und skalierbare Inhalte.
+## Abhängigkeiten / Überschneidungen
+- Globaler Header/Footer
+- Typografie-Token und Lesbarkeitsrichtlinien
 
-Responsiveness
+## Akzeptanzkriterien
+- Inhalte bleiben auf allen Breakpoints ohne horizontales Scrollen lesbar.
+- H1–H3-Struktur validiert und screenreaderfreundlich.
+- Layout reagiert flüssig auf Schriftgrößenänderungen.
 
-Skaliert nahtlos von Mobilgeräten bis Desktop ohne Layoutsprünge.
-
-Accessibility
-
-Fokussierbare Elemente in logischer Reihenfolge, ausreichende Kontraste.
-
-SEO
-
-Gut strukturierte Überschriften-Hierarchie verbessert Crawling und Lesbarkeit.
-
-Design-Guidelines
-
-Maximal zwei Schriftfamilien, konsistente Abstände, klare Call-to-Actions.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Keine besonderen Anforderungen; Datenschutz-Hinweise bei Formularen berücksichtigen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Content zuerst für kleine Bildschirme optimieren.
-
-Accessibility
-
-ARIA-Rollen nur bei Bedarf einsetzen.
-
-SEO
-
-Semantische Tags wie <main> und <article> verwenden.
-
-Best Practices
-
-Vermeide feste Höhen und nutze relative Einheiten.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Abhängig von globalem Typografie- und Button-System.
-
-Akzeptanzkriterien
-
-Layout ist fertig, wenn alle Content-Blöcke responsiv dargestellt und getestete Kontraste eingehalten sind.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<main class="layout layout--one-column">
-  <article>
+<main class="container">
+  <article class="prose">
     <h1>Titel</h1>
-    <p>Abschnittstext ...</p>
+    <p>Absatz…</p>
   </article>
 </main>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐⭐ Zeitloses Standard-Layout für leselastige Seiten.

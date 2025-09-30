@@ -1,84 +1,50 @@
-Layout: Split Header
+# Layout: Split Header
 
-Beschreibung
+## Beschreibung
+Ein geteiltes Header-Layout mit gegensätzlichen Ausrichtungen bricht auf kleinen Screens leicht und erschwert mobile Navigation.
 
-Header, der in zwei Hälften geteilt ist, oft mit Logo links und riesigem Banner rechts.
+## Warum dieses Layout?
+- Kann komplexe Markenbotschaften transportieren.
+- Erlaubt simultane Darstellung von Navigation und Aktionen.
+- Skaliert auf mobilen Geräten schlecht und erhöht Implementierungsaufwand.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Header sollte auf mobile Breakpoints vereinfacht werden.
+- **Accessibility:** Fokusreihenfolge sicherstellen, da Elemente weit auseinander liegen.
+- **SEO:** Kein direkter Vorteil, Risiko von unklaren Hierarchien.
+- **Design-Guidelines:** Branding und Aktionen priorisieren, redundante Inhalte streichen.
 
-War gängig bei frühen 2000er-Portalen, wirkt heute unausgewogen und mobil schwierig.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Auf einfachere Header-Varianten umstellen und Split-Design nur dokumentieren.
+- **Accessibility:** Skip-Link und klare Landmarken bieten.
+- **SEO:** Wichtige Links logisch gruppieren.
+- **Best Practices:** Frühe Reduktion auf einspaltige Navigation, Aktionen priorisieren, Übergangsanimationen vermeiden
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Fallback-Header vorhanden.
+- [ ] Navigation funktioniert auf Touch-Geräten.
+- [ ] Fokus-Indikatoren sichtbar.
+- [ ] A11y- und Performance-Prüfung dokumentiert.
 
-Breiter Header mit zwei Bereichen.
+## Abhängigkeiten / Überschneidungen
+- Legacy-Header-Komponenten
+- Branding-Richtlinien
 
-Responsiveness
+## Akzeptanzkriterien
+- Mobile Ersatzlayout implementiert.
+- Screenreader navigieren Header ohne Verwirrung.
+- Stakeholder planen Umstellung auf modernes Pattern.
 
-Auf Mobilgeräte schlecht übertragbar.
-
-Accessibility
-
-Navigation und Banner konkurrieren.
-
-SEO
-
-Header-Inhalt nimmt wertvollen Platz ein.
-
-Design-Guidelines
-
-Visuell überladen.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Bannerflächen oft werblich, Kennzeichnung notwendig.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Erfordert kompletten Neuaufbau.
-
-Accessibility
-
-Skip-Link schwer zu platzieren.
-
-SEO
-
-Primäre Inhalte rutschen nach unten.
-
-Best Practices
-
-Modernere Hero-Layouts bevorzugen.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Legacy Banner-Komponenten.
-
-Akzeptanzkriterien
-
-Nur als Archiv dokumentiert.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
 <header class="split-header">
-  <div>Logo</div>
-  <div>Banner</div>
+  <div class="left">Logo</div>
+  <div class="right">Aktionen</div>
 </header>
 ```
 
+> ⚠️ Deprecated: Nicht mehr empfohlen für Mobile-First-Designs (nur zu Dokumentationszwecken).
+
 Bewertung der Relevanz 2025
 
-⭐☆☆☆☆
-
-⚠️ Deprecated – nicht mehr empfohlen für Mobile-First-Designs, nur noch zu Dokumentationszwecken.
+⭐⭐☆☆☆ Nur noch aus historischen Gründen vermerkt.

@@ -1,80 +1,45 @@
-Layout: Header Sticky Navigation
+# Layout: Header mit Sticky Navigation
 
-Beschreibung
+## Beschreibung
+Die Navigation bleibt beim Scrollen sichtbar und erleichtert schnellen Zugriff auf wichtige Bereiche. Geeignet für lange Seiten, Wissensdatenbanken oder Anwendungen mit häufigen Kontextwechseln.
 
-Layout mit fixiertem Header, der beim Scrollen sichtbar bleibt.
+## Warum dieses Layout?
+- Verbessert Orientierung und Zugänglichkeit bei langen Seiten.
+- Reduziert Interaktionskosten, weil Hauptnavigation immer erreichbar ist.
+- Verbraucht vertikalen Raum, insbesondere auf mobilen Geräten.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Sticky-Verhalten an Breakpoints anpassen, damit auf kleinen Screens genug Inhalt sichtbar bleibt.
+- **Accessibility:** Sichtbare Fokuszustände und sinnvolle Tab-Reihenfolge, keine Überblendung von Inhalten.
+- **SEO:** Navigation bleibt semantisch als <nav> ausgezeichnet, ohne redundante Links.
+- **Design-Guidelines:** Z-Index und Schatten definieren, um Überlagerungen zu vermeiden.
 
-Perfekt für Seiten mit langen Inhalten oder Web-Apps. Stärke: konstante Navigation; Schwäche: reduziert sichtbaren Content.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Navigation verschlanken oder als kompakte Bar darstellen.
+- **Accessibility:** Sticky-Header darf keine Inhalte überdecken; Skip-Link nach dem Header anbieten.
+- **SEO:** Relevante Links priorisieren und doppelte Navigation vermeiden.
+- **Best Practices:** CLS durch feste Höhen verhindern, Scroll-Hide/Show vorsichtig einsetzen, Sticky-Offset testen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Sticky-Header überdeckt keine Inhalte oder Fokusindikatoren.
+- [ ] Tastatur- und Screenreader-Bedienung geprüft.
+- [ ] Scroll-Verhalten auf Touch-Geräten getestet.
+- [ ] Performance- und Accessibility-Audit durchgeführt.
 
-Sticky-Header mit sinnvollen Scroll-Effekten.
+## Abhängigkeiten / Überschneidungen
+- Navigationskomponenten
+- Scroll-Behaviour-Skripte
 
-Responsiveness
+## Akzeptanzkriterien
+- Header bleibt in allen Breakpoints funktional sticky.
+- Skip-Link führt zum Beginn des Hauptinhalts.
+- Navigation reagiert flüssig auf Scroll-Interaktionen.
 
-Navigation zu Icon-/Burger-Menü transformieren.
-
-Accessibility
-
-Focus-Management bei Sticky-Elementen beachten.
-
-SEO
-
-Breadcrumbs und strukturierte Navigation.
-
-Design-Guidelines
-
-Minimale Höhe und Schatten für Abgrenzung.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Cookie-Banner darf Header nicht überdecken.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Sticky nur bei Bedarf aktivieren, um Platz zu sparen.
-
-Accessibility
-
-Skip-Link muss sichtbar bleiben.
-
-SEO
-
-Navigation im Header klar strukturieren.
-
-Best Practices
-
-Intersection Observer für Scrollzustände.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Navigationskomponente, Logo, Suche.
-
-Akzeptanzkriterien
-
-Fertig, wenn Header stabil sticky ist und keine Inhalte verdeckt.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<header class="header header--sticky">Navigation</header>
-<main>Seiteninhalt</main>
+<header class="sticky top-0">…</header>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐⭐ Essentiell für informationsreiche oder lange Seiten.

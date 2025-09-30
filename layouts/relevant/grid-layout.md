@@ -1,82 +1,47 @@
-Layout: Grid Layout
+# Layout: Responsive Grid
 
-Beschreibung
+## Beschreibung
+Ein modularer Kartenraster erlaubt flexible Inhalte wie Produktkacheln, Team-Profile oder News. Das Layout nutzt CSS Grid für unterschiedliche Spaltenkonfigurationen.
 
-Modulares Raster für vielseitige Content-Module.
+## Warum dieses Layout?
+- Skalierbar für unterschiedlich viele Karten.
+- Bietet konsistente Darstellung über diverse Viewports.
+- Erfordert sorgfältige Breakpoint-Definitionen und Bildoptimierung.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Grid-Spalten passen sich über auto-fit/minmax() dynamisch an.
+- **Accessibility:** Lesereihenfolge folgt der DOM-Struktur, Karten erhalten eindeutige Überschriften.
+- **SEO:** Jede Karte nutzt semantische Elemente wie <article> und sprechende Links.
+- **Design-Guidelines:** Konsistente Kartenhöhen, klare Abstände und definierte Schatten oder Umrandungen.
 
-Ideal für Übersichtsseiten, Portale und Anwendungen mit vielen Kacheln. Stärke: hohe Flexibilität; Schwäche: erfordert sorgfältige Planung der Breakpoints.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Startet einspaltig und erweitert sich schrittweise auf mehr Spalten.
+- **Accessibility:** Fokuszustände klar hervorheben und Karten interaktiv gestalten.
+- **SEO:** Primäre Links in Karten prominent platzieren und strukturierte Daten erwägen.
+- **Best Practices:** minmax() zur Breitensteuerung, Lazy Loading für Medien, Grid-Gaps gemäß Spacing-Scale
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Kartenhöhen bleiben visuell ausgerichtet.
+- [ ] LCP-relevante Bilder optimiert.
+- [ ] Tastaturnavigation durch Karten getestet.
+- [ ] Performance- und Accessibility-Review erfolgt.
 
-Definierte Grid-Spalten und -Zeilen mit variabler Anzahl.
+## Abhängigkeiten / Überschneidungen
+- Card-Komponenten
+- Design-Tokens für Abstände
 
-Responsiveness
+## Akzeptanzkriterien
+- Grid passt sich nahtlos an 1–4 Spalten an.
+- Screenreader können jede Karte separat ankündigen.
+- Lazy Loading reduziert Initial-Ladezeit messbar.
 
-Grid-Spaltenanzahl je nach Viewport anpassen.
-
-Accessibility
-
-Focus-States und Lesereihenfolge sichern.
-
-SEO
-
-Jedes Modul semantisch korrekt auszeichnen.
-
-Design-Guidelines
-
-Konsistente Spaltenabstände und Ausrichtung.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Bei dynamischen Inhalten Datenschutz berücksichtigen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Grid auf eine Spalte reduzieren.
-
-Accessibility
-
-Tabindex automatisch folgen lassen.
-
-SEO
-
-Lazy Loading für Medien.
-
-Best Practices
-
-CSS Grid mit auto-fit und minmax.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Benötigt Card- oder Tile-Komponenten.
-
-Akzeptanzkriterien
-
-Erfolgreich, wenn alle Tiles sauber einrasten und Inhalte nicht überlaufen.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="grid">
-  <article>Item 1</article>
-  <article>Item 2</article>
+<section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+  <article class="card">…</article>
 </section>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐⭐
+⭐⭐⭐⭐⭐ Grundlage für produkt- und contentlastige Übersichten.

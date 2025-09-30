@@ -1,82 +1,49 @@
-Layout: Fixed Footer
+# Layout: Fixed Footer
 
-Beschreibung
+## Beschreibung
+Ein dauerhaft fixierter Footer verdeckt auf mobilen Geräten häufig Inhalte oder Steuerungen und wird daher nicht mehr empfohlen.
 
-Layout mit dauerhaft fixiertem Footer am unteren Bildschirmrand.
+## Warum dieses Layout?
+- Kann für spezielle App-Bars genutzt werden.
+- Bietet permanente Sichtbarkeit für Aktionen.
+- Verhindert sichtbaren Content und verursacht Bedienprobleme.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Nur in Ausnahmen aktivieren, ausreichend Abstand zum Content einplanen.
+- **Accessibility:** Fokus und Screenreader dürfen nicht blockiert werden, Inhalte müssen erreichbar bleiben.
+- **SEO:** Kein direkter Mehrwert, eher Risiko für schlechte UX.
+- **Design-Guidelines:** Wenn unvermeidlich, transparente Hintergründe und ausreichende Höhen nutzen.
 
-Früher beliebt für Navigationsleisten, blockiert aber heute wertvollen Platz.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Fixed Footer deaktivieren und stattdessen Sticky- oder Inline-Alternativen wählen.
+- **Accessibility:** Skip-Link oder Close-Button bereitstellen, wenn Footer unvermeidlich.
+- **SEO:** Keine übermäßigen Links im Footer platzieren.
+- **Best Practices:** Nur kontextuell einsetzen, Touch-Ziele groß halten, CLS vermeiden
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Footer kann bei Bedarf ausgeblendet werden.
+- [ ] Inhalte bleiben vollständig sichtbar.
+- [ ] Tastaturfokus nicht blockiert.
+- [ ] A11y- und Performance-Check dokumentiert.
 
-Footer mit position: fixed.
+## Abhängigkeiten / Überschneidungen
+- Legacy-App-Bars
+- CTA-Module
 
-Responsiveness
+## Akzeptanzkriterien
+- Alternatives Pattern liegt vor.
+- Screenreader können Inhalte hinter dem Footer erreichen.
+- Stakeholder stimmen dem Rückbau zu.
 
-Auf kleinen Screens verdeckt Inhalte.
-
-Accessibility
-
-Keyboard-Fokus kann verdeckt werden.
-
-SEO
-
-Wenig Einfluss, aber schlechter UX-Eindruck.
-
-Design-Guidelines
-
-Wirkt schnell gedrängt.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Kann Cookie-Banner kollidieren lassen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Software-Tastaturen schneiden Elemente ab.
-
-Accessibility
-
-WCAG rät zu vermeidbaren Overlays.
-
-SEO
-
-Negative UX wirkt indirekt.
-
-Best Practices
-
-Stattdessen kontextuelle Toolbars.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Legacy Navigation.
-
-Akzeptanzkriterien
-
-Nicht mehr für neue Projekte freigegeben.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<footer class="footer-fixed">Footer</footer>
-<main>Content</main>
+<footer class="fixed bottom-0 inset-x-0">
+  <nav>…</nav>
+</footer>
 ```
+
+> ⚠️ Deprecated: Nicht mehr empfohlen für Mobile-First-Designs (nur zu Dokumentationszwecken).
 
 Bewertung der Relevanz 2025
 
-⭐⭐☆☆☆
-
-⚠️ Deprecated – nicht mehr empfohlen für Mobile-First-Designs, nur noch zu Dokumentationszwecken.
+⭐⭐☆☆☆ Nur für Spezialfälle mit großer Vorsicht nutzen.

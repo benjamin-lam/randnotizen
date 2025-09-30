@@ -1,82 +1,48 @@
-Layout: Magazine Layout
+# Layout: Magazine Layout
 
-Beschreibung
+## Beschreibung
+Magazinartige Seiten nutzen abwechslungsreiche Sektionen, um Stories zu erzählen. Ideal für Editorials, Content-Hubs oder Markenwelten.
 
-Magazinartiges Layout mit variierenden Modulgrößen und Story-Highlight.
+## Warum dieses Layout?
+- Erlaubt kuratiertes Storytelling mit wechselnden Modulen.
+- Bietet hohe Flexibilität für redaktionelle Inhalte.
+- Erfordert intensives Redaktions- und Design-Management.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Sektionen passen sich via Grid- und Flex-Patterns an Viewports an.
+- **Accessibility:** Jede Sektion erhält semantische Struktur und klare Überschriften.
+- **SEO:** Rich Snippets für Artikel und Sammlungen berücksichtigen.
+- **Design-Guidelines:** Visuelle Hierarchie pro Abschnitt, konsistente Farb- und Typo-Systeme.
 
-Für redaktionelle Portale mit unterschiedlich gewichteten Artikeln. Stärke: abwechslungsreich; Schwäche: hoher Pflegeaufwand.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Sektionen stapeln sich vertikal mit klarer Reihenfolge.
+- **Accessibility:** Vermeidet Layoutsprünge, die Lesefluss stören, und nutzt ausreichend Kontrast.
+- **SEO:** Sektionen über interne Verlinkung und strukturierte Daten verknüpfen.
+- **Best Practices:** Container Queries nutzen, Sections mit klaren IDs versehen, Visuelle Vielfalt ohne übermäßige Effekte
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Sektionen haben eindeutige Überschriften.
+- [ ] Bild- und Medienelemente sind optimiert.
+- [ ] Storyline bleibt auf mobilen Geräten nachvollziehbar.
+- [ ] Accessibility- und Performance-Checks dokumentiert.
 
-Flexible Module, visuelle Hierarchie, Feature-Story.
+## Abhängigkeiten / Überschneidungen
+- Section-Komponentenbibliothek
+- Content-Management-System
 
-Responsiveness
+## Akzeptanzkriterien
+- Layout unterstützt mindestens drei unterschiedliche Section-Varianten.
+- Screenreader erkennen Abschnittsstruktur klar.
+- Redaktion kann Module ohne Entwickler anordnen.
 
-Prioritäten definieren, Module neu anordnen.
-
-Accessibility
-
-Überschriftenhierarchie und Alternativtexte.
-
-SEO
-
-Feature-Artikel prominent, strukturierte Daten.
-
-Design-Guidelines
-
-Typografische Vielfalt, klare Grids.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Werbeplatzierungen kennzeichnen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Story-Blöcke vertikal.
-
-Accessibility
-
-Keyboard-Navigation für Slider.
-
-SEO
-
-Canonical URLs für Teaser.
-
-Best Practices
-
-CSS Grid Areas für Layout.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Hero-Teaser, Artikelkarten, Newsletter.
-
-Akzeptanzkriterien
-
-Abgeschlossen, wenn Prioritätsstorys korrekt skaliert und Module gepflegt werden können.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="magazine">
-  <article class="feature">Feature</article>
-  <article>Story</article>
-</section>
+<article>
+  <section class="feature">…</section>
+  <section class="story-grid">…</section>
+</article>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Stark für editorial geprägte Content-Erlebnisse.

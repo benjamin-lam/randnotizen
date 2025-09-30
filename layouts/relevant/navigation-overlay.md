@@ -1,82 +1,50 @@
-Layout: Navigation Overlay
+# Layout: Navigation Overlay
 
-Beschreibung
+## Beschreibung
+Eine Vollbild-Navigation blendet sich über den Inhalt und eignet sich für minimalistische Seiten oder mobile Menüs.
 
-Vollflächiges Navigations-Overlay, das auf Klick geöffnet wird.
+## Warum dieses Layout?
+- Lenkt volle Aufmerksamkeit auf Navigationsziele.
+- Schafft klare, fokussierte Nutzerführung.
+- Kann tiefe Hierarchien oder viele Links überfrachten.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Overlay deckt gesamte Viewports ab, Übergang von Burger-Icon zu Overlay.
+- **Accessibility:** Dialog- oder Drawer-Pattern mit Fokus-Trap, aria-modal und ESC-Schließen.
+- **SEO:** Navigation bleibt im DOM vorhanden, auch wenn sie überlagert.
+- **Design-Guidelines:** Kontrastreiche Links, animierte Übergänge nur subtil.
 
-Für minimalistische Seiten oder mobile-first Menüs. Stärke: Fokus auf Navigation; Schwäche: zusätzlicher Klick.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Overlay ist Standard, Desktop optional als sekundärer Einstieg.
+- **Accessibility:** Fokus beim Öffnen auf erstes Element setzen, beim Schließen zurückführen.
+- **SEO:** Wichtige Links bleiben crawlbar, Hidden-Attribute korrekt einsetzen.
+- **Best Practices:** aria-modal verwenden, ESC- und Klick-Outside-Handling, Animationen mit prefers-reduced-motion abstimmen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Overlay öffnet und schließt mit Tastatur.
+- [ ] Fokus bleibt innerhalb des Overlays gefangen.
+- [ ] Links sind klar lesbar und kontrastreich.
+- [ ] A11y- und Performance-Tests abgeschlossen.
 
-Overlay mit Animation, Close-Action, Fokus-Management.
+## Abhängigkeiten / Überschneidungen
+- Navigation-/Dialog-Komponente
+- State-Management
 
-Responsiveness
+## Akzeptanzkriterien
+- Overlay erfüllt Dialog-Pattern-Anforderungen.
+- Screenreader erhalten Ankündigung des Overlays.
+- Interaktion funktioniert auch ohne Animationen.
 
-Mobile Standard, Desktop optional als Mega-Menü.
-
-Accessibility
-
-Fokus-Trap, aria-modal.
-
-SEO
-
-Links klar strukturiert, Crawler-freundlich.
-
-Design-Guidelines
-
-Kontrastreich, klare Linktypografie.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Pflichtlinks im Overlay zugänglich machen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Transition performant umsetzen.
-
-Accessibility
-
-Escape schließt Overlay.
-
-SEO
-
-Links serverseitig rendern.
-
-Best Practices
-
-Use dialog-Element als Basis.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Navigation, Button, Focus-Manager.
-
-Akzeptanzkriterien
-
-Fertig, wenn Overlay schnell reagiert und Fokus nach Schließen zurückkehrt.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<button data-overlay-open>Menü</button>
-<nav class="overlay" hidden>
-  <a href="#">Link</a>
+<nav class="overlay" aria-modal="true" hidden>
+  <button class="close" aria-label="Menü schließen">×</button>
+  <ul>
+    <li><a href="#">Link</a></li>
+  </ul>
 </nav>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Starkes Pattern für fokussierte mobile Navigation.

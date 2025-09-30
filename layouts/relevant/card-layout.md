@@ -1,82 +1,49 @@
-Layout: Card Layout
+# Layout: Card Layout
 
-Beschreibung
+## Beschreibung
+Karten bündeln Bild, Titel, Teasertext und CTA in wiederverwendbaren Modulen. Sie eignen sich für Artikelübersichten, Feature-Highlights oder Produktteaser.
 
-Sammlung gleichartiger Karten für Content-Teaser oder Produktlisten.
+## Warum dieses Layout?
+- Skaliert modular über verschiedene Content-Typen.
+- Unterstützt klare Scanbarkeit durch visuelle Blöcke.
+- Kann bei zu vielen Karten überladen wirken.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Karten passen sich in Grid- oder Flexstrukturen an und behalten konsistente Höhen.
+- **Accessibility:** Fokusrahmen sichtbar, Klickflächen ausreichend groß und Alternativtexte gepflegt.
+- **SEO:** Primärer CTA als Link, sprechende Überschriften und strukturierte Daten optional.
+- **Design-Guidelines:** Einheitliche Bildverhältnisse, konsistente Typografie und Abstände.
 
-Flexibel für News, Produkte oder Features. Stärke: modulare Wiederverwendung; Schwäche: kann monoton wirken.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Beginnt einspaltig und erweitert sich auf mehrere Spalten.
+- **Accessibility:** Arbeitet mit aria-labels oder Überschriftenelementen für Kartentitel.
+- **SEO:** Linkstruktur so anlegen, dass Karten direkt indexiert werden.
+- **Best Practices:** Lazy Loading für Bilder, Hover- und Fokus-States angleichen, Karteninhalte klar priorisieren
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Tab-Reihenfolge der Karten ist logisch.
+- [ ] Teasertexte bleiben kurz und prägnant.
+- [ ] Bilder besitzen Alternativtexte.
+- [ ] Performance- und Accessibility-Metriken dokumentiert.
 
-Karten mit konsistenter Höhe und Content-Struktur.
+## Abhängigkeiten / Überschneidungen
+- Card-Komponentenbibliothek
+- Bild-CDN oder Asset-Pipeline
 
-Responsiveness
+## Akzeptanzkriterien
+- Kartenhöhen skalieren ohne Layoutsprünge.
+- CTA ist sowohl per Maus als auch Tastatur bedienbar.
+- Lazy Loading reduziert initiale Ladezeit spürbar.
 
-Grid oder Flex Wrap verwenden, Karten stapeln.
-
-Accessibility
-
-Fokusrahmen und ausreichende Hit-Zonen.
-
-SEO
-
-Schema-Markup für Produkte oder Artikel.
-
-Design-Guidelines
-
-Schatten, Radius und Abstand standardisieren.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Preisangaben korrekt ausweisen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Einspaltige Darstellung bei kleinen Breakpoints.
-
-Accessibility
-
-Cards mit <article> kennzeichnen.
-
-SEO
-
-Lazy Load für Bilder.
-
-Best Practices
-
-Nutze CSS custom properties für Spacing.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Card-Komponente, Bildkomponente.
-
-Akzeptanzkriterien
-
-Erledigt, wenn Karten modular genutzt und per Tastatur erreichbar sind.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="cards">
-  <article class="card">Card Inhalt</article>
-  <article class="card">Card Inhalt</article>
-</section>
+<article class="card">
+  <img alt="" src="" />
+  <h3>…</h3>
+  <p>…</p>
+</article>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐⭐
+⭐⭐⭐⭐⭐ Universeller Baustein für vielfältige Content-Module.

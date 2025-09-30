@@ -1,85 +1,51 @@
-Layout: Nested Columns
+# Layout: Nested Columns
 
-Beschreibung
+## Beschreibung
+Mehrfach verschachtelte Spalten erzeugen komplexe Strukturen, die schwer zu pflegen und zu optimieren sind.
 
-Mehrfach verschachtelte Spalten-Layouts.
+## Warum dieses Layout?
+- Ermöglicht theoretisch sehr flexible Layouts.
+- Kann alte Enterprise-Portale widerspiegeln.
+- Führt zu hoher Komplexität, Wartungsaufwand und Performance-Problemen.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Verschachtelung auflösen und durch flachere Grids ersetzen.
+- **Accessibility:** Lesereihenfolge testen, da verschachtelte Container häufig für Verwirrung sorgen.
+- **SEO:** Semantische Struktur leidet, daher Content möglichst flach halten.
+- **Design-Guidelines:** Grid Areas statt mehrfacher nested Columns bevorzugen.
 
-Früher für komplexe Tabellen-Layouts genutzt, heute schwer wartbar.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Auf flache Layouts migrieren und Nested Columns nur dokumentieren.
+- **Accessibility:** Struktur mit Überschriften und Landmarken stabilisieren.
+- **SEO:** Hauptinhalt im DOM priorisieren.
+- **Best Practices:** Migration zu modernen Layouts planen, Komplexität reduzieren, Performance messen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Verschachtelungstiefe dokumentiert.
+- [ ] Fallback-Layout vorhanden.
+- [ ] Performanceprofil erhoben.
+- [ ] A11y-Review durchgeführt.
 
-Mehrere verschachtelte Container.
+## Abhängigkeiten / Überschneidungen
+- Legacy-Grid-System
+- Refactoring-Roadmap
 
-Responsiveness
+## Akzeptanzkriterien
+- Migration zu flacheren Strukturen geplant.
+- Screenreader können Inhalte ohne Verlust wiedergeben.
+- Keine neuen Features mehr auf Nested Columns aufbauen.
 
-Breakpoints explodieren, Wartung teuer.
-
-Accessibility
-
-Lesereihenfolge chaotisch.
-
-SEO
-
-Wichtige Inhalte verlieren Gewicht.
-
-Design-Guidelines
-
-Überladen, mangelnde Klarheit.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Keine besonderen Anforderungen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Auf Mobil kaum nutzbar.
-
-Accessibility
-
-Screenreader-Kontext unklar.
-
-SEO
-
-Crawler bewerten Chaos negativ.
-
-Best Practices
-
-Modulare Komponenten statt Nesting.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Alte Table-basierten Systeme.
-
-Akzeptanzkriterien
-
-Wird nicht mehr weiterentwickelt.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<div class="nested">
-  <div class="column">
-    <div class="column">Inhalt</div>
+<div class="grid grid-cols-12 gap-4">
+  <div class="col-span-8">
+    <div class="grid grid-cols-6 gap-2">…</div>
   </div>
 </div>
 ```
 
+> ⚠️ Deprecated: Nicht mehr empfohlen für Mobile-First-Designs (nur zu Dokumentationszwecken).
+
 Bewertung der Relevanz 2025
 
-⭐⭐☆☆☆
-
-⚠️ Deprecated – nicht mehr empfohlen für Mobile-First-Designs, nur noch zu Dokumentationszwecken.
+⭐⭐☆☆☆ Nur zu Dokumentationszwecken für Legacy-Layouts.

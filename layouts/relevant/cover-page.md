@@ -1,82 +1,48 @@
-Layout: Cover Page
+# Layout: Cover Page
 
-Beschreibung
+## Beschreibung
+Ein Deckblatt mit großem Titel, Untertitel und optionaler Illustration eröffnet Dossiers, Reports oder Präsentationen im Web.
 
-Startseite mit großflächigem Visual und minimalem Content.
+## Warum dieses Layout?
+- Setzt einen starken ersten Eindruck und Rahmen.
+- Fokussiert auf Kernbotschaft ohne Ablenkung.
+- Kann Inhalte verstecken, wenn Scroll-Hinweise fehlen.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Titel und Visuals skalieren fließend, ausreichend Padding für verschiedene Geräte.
+- **Accessibility:** Klarer Kontrast, semantische Überschriften und Skip-Link zum Hauptinhalt.
+- **SEO:** Deckblatt enthält relevante Keywords und Meta-Informationen.
+- **Design-Guidelines:** Große Typografie, definierte Weißräume und stimmige Farbflächen.
 
-Für Kampagnen oder Veranstaltungen. Stärke: hoher Impact; Schwäche: wenig SEO-Inhalte.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Stackt Elemente vertikal, Bild ggf. unter Titel platzieren.
+- **Accessibility:** Scroll-Hinweis einblenden und Fokus auf nächste Sektion ermöglichen.
+- **SEO:** Open-Graph/Twitter-Cards auf Cover-Inhalte abstimmen.
+- **Best Practices:** Hero-ähnliche Struktur nutzen, Kontrastreiches Farbschema, Animationspräferenzen respektieren
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Titel ist prominent und responsiv.
+- [ ] Scroll-Hinweis vorhanden.
+- [ ] Kontraste und Typografie geprüft.
+- [ ] A11y- und Performance-Test bestanden.
 
-Klare Botschaft, prominenter CTA, Hintergrundbild.
+## Abhängigkeiten / Überschneidungen
+- Hero-/Typography-Komponenten
+- Branding-Guidelines
 
-Responsiveness
+## Akzeptanzkriterien
+- Cover leitet klar zum folgenden Inhalt über.
+- Screenreader finden direkten Zugang zum Hauptinhalt.
+- Darstellung bleibt auf allen Viewports stabil.
 
-Bildskalen anpassen, CTA sichtbar halten.
-
-Accessibility
-
-Text-Overlay mit genügend Kontrast.
-
-SEO
-
-Kurze Beschreibungen, strukturierte Daten für Events.
-
-Design-Guidelines
-
-Minimalistisch, Fokus auf Branding.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Veranstaltungsdaten aktuell halten.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Bildkompression, viewport units.
-
-Accessibility
-
-Aria-label für CTA.
-
-SEO
-
-Meta-Description optimieren.
-
-Best Practices
-
-Progressive Enhancement für Animationen.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Hero, CTA, Social Proof.
-
-Akzeptanzkriterien
-
-Fertig, wenn Botschaft klar und CTA messbar ist.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<main class="cover">
-  <h1>Event</h1>
-  <a href="#">Tickets</a>
-</main>
+<header class="cover">
+  <h1>Titel</h1>
+  <p>Untertitel</p>
+</header>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Ideal für Reports, Whitepaper und thematische Einstiege.

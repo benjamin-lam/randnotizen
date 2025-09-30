@@ -1,82 +1,48 @@
-Layout: Two Column Right Sidebar
+# Layout: Two Column – Right Sidebar
 
-Beschreibung
+## Beschreibung
+Das Layout spiegelt die linke Sidebar-Variante und platziert zusätzliche Informationen rechts vom Content. Ideal für Produktseiten, Blogartikel mit Meta-Infos oder Supportbereiche.
 
-Zweispaltiges Layout mit rechter Sidebar für Zusatzinformationen.
+## Warum dieses Layout?
+- Bietet Platz für kontextuelle Hinweise oder CTAs neben dem Inhalt.
+- Unterstützt vertraute Leseführung mit Hauptfokus auf der linken Spalte.
+- Mobil müssen beide Spalten in sinnvoller Reihenfolge gestapelt werden.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Grid- oder Flex-Setup mit klaren Breakpoints für den Spaltenwechsel.
+- **Accessibility:** DOM-Reihenfolge belässt den Hauptinhalt zuerst; Sidebar erhält <aside>-Landmarke.
+- **SEO:** Sicherstellen, dass Search-Bots den Main-Content als primär erkennen.
+- **Design-Guidelines:** Konsistente Spaltenbreiten und ausreichende Abstände zwischen Content und Sidebar.
 
-Bewährt für Blogs und Nachrichtenportale, wenn Empfehlungen oder Werbemittel rechts stehen. Stärken: klare Trennung zwischen Content und Promotion; Schwächen: kann auf Mobilgeräten nachrangig wirken.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Stackt Content und Sidebar vertikal, Content bleibt zuerst.
+- **Accessibility:** Tab-Reihenfolge überprüfen, insbesondere bei interaktiven Widgets in der Sidebar.
+- **SEO:** Semantische Struktur mit klarer Kennzeichnung von Haupt- und Nebeninhalten.
+- **Best Practices:** Spaltenbreiten per clamp(), Responsive Gaps für bessere Lesbarkeit, Sidebar-Inhalte priorisieren
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Tab-Reihenfolge und Fokuszustände getestet.
+- [ ] Visuelle Priorisierung zwischen Content und Sidebar abgestimmt.
+- [ ] Mobile Stack wirkt nicht überladen.
+- [ ] Performance- und Accessibility-Prüfung bestanden.
 
-Rechte Spalte flexibel halten, damit Werbung oder Widgets passen.
+## Abhängigkeiten / Überschneidungen
+- Promo- oder Widget-Module
+- Globale Navigationsstruktur
 
-Responsiveness
+## Akzeptanzkriterien
+- Desktop-Spalten bleiben bei unterschiedlicher Höhe optisch ausbalanciert.
+- Mobil wird der Hauptinhalt vor der Sidebar dargestellt.
+- Screenreader erkennen die Sidebar als ergänzenden Bereich.
 
-Sidebar unterhalb des Hauptinhalts einreihen.
-
-Accessibility
-
-ARIA-Label für Werbeblöcke und ergänzende Informationen setzen.
-
-SEO
-
-Content zuerst im DOM platzieren, Sidebar nachrangig.
-
-Design-Guidelines
-
-Kontrast und Abstände der Sidebar auf Lesbarkeit prüfen.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Werbekennzeichnungen beachten.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Lazy Loading für Widgets berücksichtigen.
-
-Accessibility
-
-Sidebar-Inhalte überspringbar machen.
-
-SEO
-
-Artikelstruktur mit Schema.org anreichern.
-
-Best Practices
-
-Grid-Template-Areas für flexible Reihenfolge nutzen.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Benötigt Werbe- oder Empfehlungskomponenten.
-
-Akzeptanzkriterien
-
-Abnahme bei sauberer Reihenfolge im DOM und korrekter mobilen Darstellung.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<div class="layout layout--two-col-right">
-  <main>Artikel</main>
-  <aside>Sidebar</aside>
-</div>
+<main class="grid grid-cols-12 gap-4">
+  <article class="col-span-12 md:col-span-8">Inhalt</article>
+  <aside class="col-span-12 md:col-span-4">Sidebar</aside>
+</main>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Bewährtes Muster für produktnahe Inhalte mit Zusatzinfos.
