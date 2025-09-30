@@ -217,7 +217,7 @@ LAYOUTS: dict[str, dict[str, str]] = {
           breite Spalte mit großzügiger Typografie und Illustrationen.
         </p>
         <figure>
-          <img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
+          <img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
           <figcaption>
             Prototyping Tag 3: Moderierte Remote-Tests, dokumentiert via Live-Notetaking.
           </figcaption>
@@ -312,7 +312,7 @@ LAYOUTS: dict[str, dict[str, str]] = {
           <span>Produkt &amp; Design</span>
         </div>
         <figure>
-          <img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
+          <img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
         </figure>
         <p>
           Wie Design- und Engineering-Teams kollaborative Workflows etablieren, um Komponentenbibliotheken nachhaltig zu pflegen.
@@ -567,7 +567,7 @@ LAYOUTS: dict[str, dict[str, str]] = {
       content: "";
       position: absolute;
       inset: 0;
-      background: url('/assets/agents-and-robots.png') center/cover;
+      background: url('../assets/agents-and-robots.png') center/cover;
       opacity: 0.35;
       mix-blend-mode: screen;
       pointer-events: none;
@@ -751,22 +751,22 @@ LAYOUTS: dict[str, dict[str, str]] = {
       </header>
       <div class=\"products\">
         <article>
-          <img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
+          <img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
           <h3>Notizbuch Re:think</h3>
           <p class=\"price\">€ 32</p>
         </article>
         <article>
-          <img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
+          <img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
           <h3>Hydrate Bottle</h3>
           <p class=\"price\">€ 26</p>
         </article>
         <article>
-          <img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
+          <img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
           <h3>Focus Headphones</h3>
           <p class=\"price\">€ 189</p>
         </article>
         <article>
-          <img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
+          <img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
           <h3>Glow Desk Lamp</h3>
           <p class=\"price\">€ 119</p>
         </article>
@@ -877,7 +877,7 @@ LAYOUTS: dict[str, dict[str, str]] = {
         </div>
       </div>
       <figure class=\"media\">
-        <img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
+        <img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" />
       </figure>
     </section>
         """,
@@ -955,10 +955,10 @@ LAYOUTS: dict[str, dict[str, str]] = {
     <section id=\"preview\" class=\"layout-gallery\" aria-labelledby=\"gallery-heading\">
       <h2 id=\"gallery-heading\">Moodboard</h2>
       <ul>
-        <li><img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" /></li>
-        <li><img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" /></li>
-        <li><img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" /></li>
-        <li><img src=\"/assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" /></li>
+        <li><img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" /></li>
+        <li><img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" /></li>
+        <li><img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" /></li>
+        <li><img src=\"../assets/agents-and-robots.png\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" /></li>
       </ul>
     </section>
         """,

@@ -44,7 +44,7 @@ Bilddarstellung mit erläuternder Bildunterschrift.
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <figure class="image">
-  <img src="/assets/agents-and-robots.png" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" loading="lazy">
+  <img src="../assets/agents-and-robots.png" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" loading="lazy">
   <figcaption>Agentin und Roboter beobachten die Stadtlichter.</figcaption>
 </figure>
 ```
