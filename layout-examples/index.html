@@ -39,12 +39,9 @@
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
   <header class="site-header" role="banner">
-    <nav class="site-nav" aria-label="Navigation">
-      <a class="site-header__brand" href="#">
-        <span class="site-header__logo" aria-hidden="true">UX</span>
-        <span>Randnotizen Layouts</span>
-      </a>
-    </nav>
+    <div class="site-header__inner">
+      <span class="site-header__title">Layout Demos</span>
+    </div>
   </header>
   <main id="main" class="content-width" tabindex="-1">
     <section class="layout-intro">
@@ -96,10 +93,9 @@
   </main>
   <footer class="site-footer site-header" role="contentinfo">
     <div class="site-nav">
-      <p>&copy; <span id="year">2025</span> Randnotizen Layouts</p>
+      <a href="#main">Nach oben</a>
     </div>
   </footer>
   <script src="assets/base.js"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>

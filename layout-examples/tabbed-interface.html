@@ -43,23 +43,9 @@
 <body>
   <a class="skip-link" href="#main">Zum Inhalt springen</a>
   <header class="site-header" role="banner">
-    <nav class="site-nav" aria-label="Hauptnavigation">
-      <a class="site-header__brand" href="#">
-        <span class="site-header__logo" aria-hidden="true">UX</span>
-        <span>Randnotizen Layouts</span>
-      </a>
-      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
-        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
-          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
-        </svg>
-        Menü
-      </button>
-      <ul class="site-nav__links" data-nav-list aria-expanded="false">
-        <li><a href="../layouts/relevant/tabbed-interface.md">Markdown</a></li>
-        <li><a href="index.html">Übersicht</a></li>
-        <li><a href="#preview">Demo</a></li>
-      </ul>
-    </nav>
+    <div class="site-header__inner">
+      <span class="site-header__title">Tabbed Interface</span>
+    </div>
   </header>
 
   <main id="main" class="content-width layout-page" tabindex="-1">
@@ -90,15 +76,11 @@
 
   <footer class="site-footer site-header" role="contentinfo">
     <div class="site-nav">
-      <p>&copy; <span id="year">2025</span> Randnotizen · Tabbed Interface</p>
       <a href="#main">Nach oben</a>
     </div>
   </footer>
 
   <script src="assets/base.js"></script>
 
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>

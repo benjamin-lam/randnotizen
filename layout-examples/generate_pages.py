@@ -22,23 +22,9 @@ BASE_TEMPLATE = """<!DOCTYPE html>
 <body>
   <a class=\"skip-link\" href=\"#main\">Zum Inhalt springen</a>
   <header class=\"site-header\" role=\"banner\">
-    <nav class=\"site-nav\" aria-label=\"Hauptnavigation\">
-      <a class=\"site-header__brand\" href=\"#\">
-        <span class=\"site-header__logo\" aria-hidden=\"true\">UX</span>
-        <span>Randnotizen Layouts</span>
-      </a>
-      <button class=\"site-nav__toggle\" type=\"button\" data-nav-toggle aria-expanded=\"false\">
-        <svg aria-hidden=\"true\" viewBox=\"0 0 24 24\" fill=\"none\">
-          <path stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" d=\"M4 6h16M4 12h16M4 18h16\" />
-        </svg>
-        Menü
-      </button>
-      <ul class=\"site-nav__links\" data-nav-list aria-expanded=\"false\">
-        <li><a href=\"{markdown_link}\">Markdown</a></li>
-        <li><a href=\"index.html\">Übersicht</a></li>
-        <li><a href=\"#preview\">Demo</a></li>
-      </ul>
-    </nav>
+    <div class=\"site-header__inner\">
+      <span class=\"site-header__title\">{title}</span>
+    </div>
   </header>
 
   <main id=\"main\" class=\"content-width layout-page\" tabindex=\"-1\">
@@ -52,16 +38,12 @@ BASE_TEMPLATE = """<!DOCTYPE html>
 
   <footer class=\"site-footer site-header\" role=\"contentinfo\">
     <div class=\"site-nav\">
-      <p>&copy; <span id=\"year\">2025</span> Randnotizen · {title}</p>
       <a href=\"#main\">Nach oben</a>
     </div>
   </footer>
 
   <script src=\"assets/base.js\"></script>
 {script_block}
-  <script>
-    document.getElementById('year').textContent = new Date().getFullYear();
-  </script>
 </body>
 </html>
 """
@@ -2263,7 +2245,6 @@ def generate_page(slug: str, config: dict[str, str]) -> str:
       main=main,
       style_block=style_block,
       script_block=script_block,
-      markdown_link=config["markdown_link"],
   )
 
 
@@ -2319,12 +2300,9 @@ def build_index(layouts: dict[str, dict[str, str]]) -> str:
 <body>
   <a class=\"skip-link\" href=\"#main\">Zum Inhalt springen</a>
   <header class=\"site-header\" role=\"banner\">
-    <nav class=\"site-nav\" aria-label=\"Navigation\">
-      <a class=\"site-header__brand\" href=\"#\">
-        <span class=\"site-header__logo\" aria-hidden=\"true\">UX</span>
-        <span>Randnotizen Layouts</span>
-      </a>
-    </nav>
+    <div class=\"site-header__inner\">
+      <span class=\"site-header__title\">Layout Demos</span>
+    </div>
   </header>
   <main id=\"main\" class=\"content-width\" tabindex=\"-1\">
     <section class=\"layout-intro\">
@@ -2338,11 +2316,10 @@ def build_index(layouts: dict[str, dict[str, str]]) -> str:
   </main>
   <footer class=\"site-footer site-header\" role=\"contentinfo\">
     <div class=\"site-nav\">
-      <p>&copy; <span id=\"year\">2025</span> Randnotizen Layouts</p>
+      <a href=\"#main\">Nach oben</a>
     </div>
   </footer>
   <script src=\"assets/base.js\"></script>
-  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
 </body>
 </html>
 """
