@@ -1,82 +1,49 @@
-Layout: Landing Page
+# Layout: Landing Page
 
-Beschreibung
+## Beschreibung
+Kampagnen- oder Conversion-Seiten kombinieren Hero, Benefits, Social Proof und CTA in klarer Sequenz. Sie dienen der gezielten Lead- oder Sales-Generierung.
 
-Conversion-optimiertes Layout mit Hero, Benefits und CTA.
+## Warum dieses Layout?
+- Fokussiert Besucher auf ein klares Conversion-Ziel.
+- Lässt sich modular testen und iterativ optimieren.
+- Muss trotz visueller Dichte schnell laden.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Abschnitte passen sich fluid an und halten CTA sichtbar.
+- **Accessibility:** Kontraststarke Buttons, verständliche Formularbeschriftungen und Skip-Links.
+- **SEO:** Meta-/Open-Graph-Daten, strukturierte Daten für Angebote und Trust-Signale.
+- **Design-Guidelines:** Konsistente Benefit-Icons, eindeutige Hierarchie von Überschriften und CTAs.
 
-Zielt auf Kampagnen und Lead-Generierung. Stärke: klare Handlungsführung; Schwäche: hoher Content-Aufwand.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Hero und Kernargumente zuerst, sekundäre Inhalte nachgelagert.
+- **Accessibility:** Formulare mit aria-describedby und verständlichen Fehlermeldungen versehen.
+- **SEO:** Landing-spezifische Keywords und Tracking sauber integrieren.
+- **Best Practices:** Above-the-fold-CTA testen, A/B-Testing vorbereiten, Consent- und Tracking-Setup beachten
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] CTA ist auf allen Breakpoints prominent.
+- [ ] Social-Proof-Elemente sind glaubwürdig und aktuell.
+- [ ] Formular funktioniert mit Tastatur und Screenreader.
+- [ ] Performance- und Tracking-Checks abgeschlossen.
 
-Hero, Social Proof, Benefits, Formular.
+## Abhängigkeiten / Überschneidungen
+- Hero-, Benefit- und Trust-Komponenten
+- Analytics- und Consent-Implementierung
 
-Responsiveness
+## Akzeptanzkriterien
+- Landing Page erreicht definierte Performance-Budgets.
+- Conversion-Pfade sind ohne Hindernisse nutzbar.
+- Tracking-Events werden korrekt ausgelöst.
 
-Sektionen stacken, CTA stets sichtbar.
-
-Accessibility
-
-Formular mit Labels, ausreichende Kontraste.
-
-SEO
-
-Gezielte Keywords, strukturierte Daten für Angebote.
-
-Design-Guidelines
-
-Starke Visuals, Vertrauensanker, klare CTA.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-DSGVO-konforme Formulare, Consent.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Schnelle Ladezeiten, kurze Formulare.
-
-Accessibility
-
-Fehlermeldungen semantisch auszeichnen.
-
-SEO
-
-Saubere Meta-Tags.
-
-Best Practices
-
-A/B-Testbare Module.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Hero, Formular, Testimonials, Pricing.
-
-Akzeptanzkriterien
-
-Fertig, wenn Conversion-Ziele gemessen und Tracking implementiert sind.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<main class="landing">
-  <section class="hero">Hero</section>
-  <section class="cta"><button>Jetzt starten</button></section>
+<main>
+  <section class="hero">…</section>
+  <section class="benefits">…</section>
+  <section class="cta">…</section>
 </main>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐⭐
+⭐⭐⭐⭐⭐ Schlüssel-Layout für Kampagnen und Conversion-Ziele.

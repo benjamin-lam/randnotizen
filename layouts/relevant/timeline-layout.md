@@ -1,82 +1,50 @@
-Layout: Timeline Layout
+# Layout: Timeline Layout
 
-Beschreibung
+## Beschreibung
+Ein Zeitstrahl stellt Meilensteine, Prozesse oder Historien in chronologischer Reihenfolge dar.
 
-Chronologische Darstellung von Ereignissen entlang einer Linie.
+## Warum dieses Layout?
+- Visualisiert Abläufe und Entwicklungen klar.
+- Unterstützt Storytelling mit Zeitbezug.
+- Kann bei zu viel Text unübersichtlich werden.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Timeline wechselt von horizontaler/zweispaltiger Darstellung zu vertikal gestapelten Events.
+- **Accessibility:** Semantisch als Liste oder geordnete Sektionen markieren, beschreibende Labels verwenden.
+- **SEO:** Events mit Datum, Überschrift und optionalen strukturierten Daten (Event/HowTo).
+- **Design-Guidelines:** Klare Marker, konsistente Abstände und ausreichender Kontrast zwischen Linien und Hintergrund.
 
-Unternehmenshistorie, Projektmeilensteine, Lebensläufe. Stärke: intuitive Zeitabfolge; Schwäche: begrenzter Platz für lange Texte.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Beginnt als vertikale Liste mit deutlich gekennzeichneten Zeitpunkten.
+- **Accessibility:** Fokusreihenfolge entlang des zeitlichen Verlaufs, Screenreader-Labels für Zeitangaben.
+- **SEO:** Zeiteinträge mit <time>-Elementen versehen.
+- **Best Practices:** Icons sparsam einsetzen, Tooltips für Details nur ergänzend, Scroll-Spy optional
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Zeitpunkte sind chronologisch korrekt sortiert.
+- [ ] Lesbarkeit auf kleinen Screens gewährleistet.
+- [ ] Kontrastwerte der Marker geprüft.
+- [ ] Accessibility- und Performance-Test erledigt.
 
-Vertikale oder horizontale Linie mit Events.
+## Abhängigkeiten / Überschneidungen
+- Timeline-Komponente
+- Icon- und Typografie-Tokens
 
-Responsiveness
+## Akzeptanzkriterien
+- Timeline lässt sich sowohl mit Maus als auch Tastatur durchlaufen.
+- Screenreader geben Datum und Beschreibung verständlich wieder.
+- Layout bricht auf mobilen Geräten nicht um.
 
-Vertikale Darstellung bevorzugen, horizontale nur für Desktop.
-
-Accessibility
-
-Lesbare Zeitstempel, Screenreader-Reihenfolge beachten.
-
-SEO
-
-Schema.org Event oder CreativeWorkSeries.
-
-Design-Guidelines
-
-Markenfarben für Marker, Icons optional.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Zeitangaben korrekt prüfen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Einspaltige Timeline mit klaren Markern.
-
-Accessibility
-
-ARIA-Liste oder <ol> verwenden.
-
-SEO
-
-Strukturierte Daten für Events.
-
-Best Practices
-
-Pseudo-Elemente für Linien.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Event-Teaser, Iconset.
-
-Akzeptanzkriterien
-
-Fertig, wenn Timeline alle Stationen korrekt sortiert und responsive ist.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
 <ol class="timeline">
-  <li>2020 – Ereignis</li>
-  <li>2021 – Ereignis</li>
+  <li>
+    <time datetime="2024-01-01">Jan 2024</time>
+    <p>Meilenstein</p>
+  </li>
 </ol>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Perfekt für Prozessdarstellungen und Unternehmenshistorien.

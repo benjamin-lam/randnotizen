@@ -1,82 +1,45 @@
-Layout: Centered Content
+# Layout: Centered Content
 
-Beschreibung
+## Beschreibung
+Der Inhalt wird auf eine begrenzte Breite zentriert, um den Fokus auf Texte oder Formulare zu lenken. Besonders nützlich für Storytelling-Seiten, Knowledge-Base-Einträge oder Conversion-Formulare.
 
-Zentrierter Content-Block mit maximaler Lesbarkeit.
+## Warum dieses Layout?
+- Steigert Lesbarkeit und Konzentration auf den Kerninhalt.
+- Funktioniert hervorragend mit langen Texten oder wichtigen Interaktionen.
+- Bietet wenig Raum für flankierende Elemente wie Werbung oder Toolbars.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Max-width im Bereich 68–76ch, adaptive Ränder und Padding.
+- **Accessibility:** Ausreichender Zeilenabstand, klare Linkzustände und großzügige Schriftgrößen.
+- **SEO:** Semantische Struktur mit klarer Priorisierung von Überschriften und Abschnitten.
+- **Design-Guidelines:** Konsistentes Spacing, ruhige Farbpalette und typografische Hierarchie.
 
-Perfekt für Fokusbotschaften oder Formulare. Stärke: Fokus; Schwäche: begrenzte Content-Menge.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Startet vollbreit und begrenzt ab größeren Breakpoints die Breite.
+- **Accessibility:** Sorgt für ausreichende Kontrastwerte und unterstützt dynamische Schriftgrößen.
+- **SEO:** Heading- und Absatzstruktur orientiert sich an inhaltlicher Priorität.
+- **Best Practices:** max-width über clamp(), Padding per Spacing-Token, line-height von mindestens 1.5
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Max-width zwischen 68–76 Zeichenbreite gesetzt.
+- [ ] Kontraste für Text und Links geprüft.
+- [ ] Content bleibt bei größerer Schriftgröße nutzbar.
+- [ ] Core Web Vitals erreichen Zielwerte.
 
-Maximale Breite definieren, horizontales Zentrieren.
+## Abhängigkeiten / Überschneidungen
+- Typografie-Token
+- Formular- und Content-Komponenten
 
-Responsiveness
+## Akzeptanzkriterien
+- Inhalte bleiben zentriert ohne horizontale Scrollleisten.
+- Screenreader geben die Struktur logisch wieder.
+- Responsives Verhalten für Formulare und Medien verifiziert.
 
-Breite relativ zur Viewportgröße.
-
-Accessibility
-
-Genügend Zeilenabstand und Kontrast.
-
-SEO
-
-Kernbotschaft prominent platzieren.
-
-Design-Guidelines
-
-Whitespace nutzen, um Aufmerksamkeit zu lenken.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Keine speziellen Anforderungen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Padding für kleine Geräte erhöhen.
-
-Accessibility
-
-Formulare mit Labels.
-
-SEO
-
-Primary Keyword im H1.
-
-Best Practices
-
-Verwende max-width statt fixer Pixel.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Braucht generische Container-Komponenten.
-
-Akzeptanzkriterien
-
-Fertig, wenn Inhalt in der Mitte ausgerichtet und Formulare bedienbar sind.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="centered">
-  <h1>Headline</h1>
-  <p>Kernthema ...</p>
-</section>
+<main class="mx-auto max-w-prose p-4">…</main>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐⭐ Bewährtes Setup für fokussierte Inhalte und Formulare.

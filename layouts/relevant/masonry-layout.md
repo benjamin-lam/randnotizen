@@ -1,82 +1,45 @@
-Layout: Masonry Layout
+# Layout: Masonry Layout
 
-Beschreibung
+## Beschreibung
+Ein unregelmäßiges Raster ordnet Karten wie Mauerwerk an und erzeugt eine dynamische Bildfläche. Häufig für Galerien, Moodboards oder Inspirationsseiten genutzt.
 
-Versetztes Kachel-Layout mit variierenden Höhen.
+## Warum dieses Layout?
+- Schafft visuelle Abwechslung bei heterogenen Inhalten.
+- Kann große Mengen visueller Elemente effizient darstellen.
+- A11y und Reflow müssen genau kontrolliert werden.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Fällt auf mobilen Geräten auf ein- bis zweispaltige Darstellung zurück.
+- **Accessibility:** Lesereihenfolge bleibt trotz visueller Versetzung nachvollziehbar.
+- **SEO:** Karten bleiben semantisch sauber ausgezeichnet, Links klar benannt.
+- **Design-Guidelines:** Konsistente Spacing-Scale und definierte Bildbeschnitte.
 
-Ideal für visuelle Galerien oder Content-Streams. Stärke: dynamische Optik; Schwäche: komplexe Umsetzung für Barrierefreiheit.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Startet als klassischer Grid-Stack und erweitert sich per Masonry.
+- **Accessibility:** Fallback auf reguläre Spalten sicherstellen, wenn Masonry nicht unterstützt wird.
+- **SEO:** Sprechende Bild-Alt-Texte und korrekte Linkziele pflegen.
+- **Best Practices:** CSS Masonry oder Column-Layout nutzen, Lazy Loading für Bilder, DOM-Reihenfolge unverändert lassen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Lesereihenfolge bleibt nachvollziehbar.
+- [ ] LCP- und CLS-Metriken geprüft.
+- [ ] Bildgrößen sind optimiert.
+- [ ] Accessibility-Audit dokumentiert.
 
-JavaScript- oder CSS-unterstützte Masonry-Logik.
+## Abhängigkeiten / Überschneidungen
+- Bild- oder Card-Komponenten
+- Optionaler Masonry-Polyfill
 
-Responsiveness
+## Akzeptanzkriterien
+- Fallback-Layout funktioniert ohne Masonry-Unterstützung.
+- Screenreader lesen Inhalte in logischer Reihenfolge vor.
+- Performance bleibt trotz vieler Bilder stabil.
 
-Spaltenanzahl reduzieren und Höhen ausgleichen.
-
-Accessibility
-
-Lesereihenfolge per DOM beibehalten.
-
-SEO
-
-Bilder mit Alt-Texten, Lazy Loading.
-
-Design-Guidelines
-
-Gleichmäßige Gaps, Schatten optional.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Bildrechte sicherstellen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Einspaltige Darstellung ohne Überlappungen.
-
-Accessibility
-
-Keyboard-Fokus der Reihenfolge anpassen.
-
-SEO
-
-Structured Data für Bildergalerien.
-
-Best Practices
-
-CSS Masonry mit grid-template-rows: masonry.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Bild- und Card-Komponenten.
-
-Akzeptanzkriterien
-
-Abgeschlossen, wenn Layout stabil lädt und keine Überlappungen auftreten.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="masonry">
-  <article>Item</article>
-  <article>Item</article>
-</section>
+<section class="masonry">…</section>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Ideal für visuelle Galerien mit dynamischer Anmutung.

@@ -1,82 +1,49 @@
-Layout: Asymmetric Layout
+# Layout: Asymmetric Layout
 
-Beschreibung
+## Beschreibung
+Eine asymmetrische Grid-Struktur kombiniert große und kleine Kacheln für dynamische Seitenaufteilung. Perfekt für Editorials, Portfolio-Highlights oder Kampagnen.
 
-Bewusst ungleichmäßige Aufteilung für dynamische Gestaltung.
+## Warum dieses Layout?
+- Erzeugt visuelle Spannung und lenkt Fokus gezielt.
+- Erlaubt flexible Kombination verschiedener Content-Typen.
+- Erfordert sorgfältige A11y-Prüfung der Lesereihenfolge.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Grid Areas reorganisieren sich auf mobilen Geräten zu logischer Reihenfolge.
+- **Accessibility:** DOM-Reihenfolge bleibt konsistent, aria-labelledby für große Hero-Kacheln.
+- **SEO:** Wichtige Inhalte in prominenten Bereichen semantisch hervorheben.
+- **Design-Guidelines:** Konsistente Spacing-Scale, Bildzuschnitt und Farbkontraste.
 
-Für moderne Markenauftritte oder Editorial Designs. Stärke: visuelles Interesse; Schwäche: komplexe Umsetzung.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Startet als lineare Liste und erweitert sich zu komplexen Grids.
+- **Accessibility:** Alternative Reihenfolge über CSS Grid Areas ohne DOM-Manipulation.
+- **SEO:** Sektionen mit passenden Überschriften strukturieren.
+- **Best Practices:** Grid Areas definieren, Bildfokuspunkte beachten, Hover/Fokus-Effekte synchronisieren
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Lesereihenfolge bleibt nachvollziehbar.
+- [ ] Kacheln skalieren ohne Bildverzerrung.
+- [ ] Hover/Fokus-Zustände klar sichtbar.
+- [ ] Performance- und A11y-Prüfung erfolgt.
 
-Variable Spaltenbreiten, überlagerte Elemente.
+## Abhängigkeiten / Überschneidungen
+- Grid-System
+- Medien- und Text-Module
 
-Responsiveness
+## Akzeptanzkriterien
+- Layout reorganisiert sich ohne Inhaltssprünge.
+- Screenreader geben Reihenfolge logisch aus.
+- Visuelle Hierarchie unterstützt Content-Ziele.
 
-Asymmetrie auf Mobil vereinfachen.
-
-Accessibility
-
-Lesereihenfolge trotz Versatz korrekt halten.
-
-SEO
-
-Semantik bewahren, obwohl Layout kreativ ist.
-
-Design-Guidelines
-
-Balance aus Leerraum und Fokus, starke Typografie.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Keine spezifischen Anforderungen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Auf lineare Darstellung zurückfallen.
-
-Accessibility
-
-Positionierung nicht nur visuell ändern.
-
-SEO
-
-Wichtige Inhalte oben halten.
-
-Best Practices
-
-CSS Grid Areas mit unregelmäßigen Mustern.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Hero, Bildmodule, Textmodule.
-
-Akzeptanzkriterien
-
-Fertig, wenn Asymmetrie responsiv harmoniert und keine Überlagerungen.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="asymmetric">
-  <div class="asymmetric__large">Hauptinhalt</div>
-  <div class="asymmetric__small">Secondary</div>
+<section class="grid md:grid-cols-3 gap-6">
+  <article class="md:col-span-2">Highlight</article>
+  <article>Teaser</article>
+  <article>Teaser</article>
 </section>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Setzt Kampagnen und Stories aufmerksamkeitsstark in Szene.

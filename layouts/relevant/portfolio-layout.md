@@ -1,82 +1,47 @@
-Layout: Portfolio Layout
+# Layout: Portfolio Layout
 
-Beschreibung
+## Beschreibung
+Projekte oder Referenzen werden als visuelle Kacheln und Fallstudien präsentiert. Ideal für Kreativschaffende, Agenturen oder Produktteams.
 
-Präsentationslayout für Projekte, Arbeiten und Referenzen.
+## Warum dieses Layout?
+- Hebt Projekte visuell hervor und erlaubt kuratiertes Storytelling.
+- Unterstützt Filter und Tags für zielgerichtete Navigation.
+- Erfordert konsequente Bildpflege und aktuelle Inhalte.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Flexible Grids, die je nach Viewport von einer auf mehrere Spalten wechseln.
+- **Accessibility:** Karten als klickbare Elemente mit klaren Alternativtexten und Fokuszuständen.
+- **SEO:** Jede Referenz nutzt sprechende Titel, Metadaten und strukturierte Daten (CreativeWork).
+- **Design-Guidelines:** Konsistente Bildformate, Abstände und typografische Gewichtung für Projektinfos.
 
-Freelancer und Agenturen zeigen Arbeiten mit visueller Priorität. Stärke: visuelles Storytelling; Schwäche: kann performanceintensiv sein.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Startet einspaltig mit priorisiertem Projekt-Highlight.
+- **Accessibility:** Verwendet <figure>/<figcaption> für Medien und sichtbare Fokusrahmen.
+- **SEO:** Filteroptionen ohne Duplicate-Content-Fallen implementieren.
+- **Best Practices:** Lazy Loading von Bildern, Tag-basierte Filter klar kennzeichnen, Hover-Effekte mit Fokus synchronisieren
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Bilder entsprechen vereinbarten Formaten.
+- [ ] Filter funktionieren mit Tastatur und Screenreadern.
+- [ ] Projekttexte sind aktuell und konsistent.
+- [ ] Performance- und Accessibility-Audit durchgeführt.
 
-Große Bildflächen, Case-Study-Teaser, Kontakt.
+## Abhängigkeiten / Überschneidungen
+- Filter-/Tagging-System
+- Card-Komponenten
 
-Responsiveness
+## Akzeptanzkriterien
+- Portfolio skaliert ohne Layout-Brüche.
+- Filterbare Listen aktualisieren Inhalte barrierefrei.
+- Jede Karte führt zu detaillierter Projektbeschreibung.
 
-Bilder skalieren, Texte darunter anordnen.
-
-Accessibility
-
-Alt-Texte und Tastaturbedienung für Slider.
-
-SEO
-
-Schema.org CreativeWork einsetzen.
-
-Design-Guidelines
-
-Starker visuell-textueller Rhythmus, klare CTA.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Kundenfreigaben beachten.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Lazy Loading für Medien.
-
-Accessibility
-
-Slider steuerbar machen.
-
-SEO
-
-Projektbeschreibungen mit Keywords.
-
-Best Practices
-
-Use picture-Element für responsive Bilder.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Galerie-, Testimonial- und Kontakt-Komponenten.
-
-Akzeptanzkriterien
-
-Abnahme bei vollständiger Projektliste und funktionierendem Kontaktformular.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="portfolio">
-  <article class="case">Projekt</article>
-  <article class="case">Projekt</article>
+<section class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+  <article class="project-card">…</article>
 </section>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Bewährtes Muster zur Präsentation kreativer Arbeiten.

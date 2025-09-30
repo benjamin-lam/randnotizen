@@ -1,81 +1,47 @@
-Layout: Header Footer
+# Layout: Header & Footer Framework
 
-Beschreibung
+## Beschreibung
+Das Layout bildet die minimale Seitenstruktur aus Kopf- und Fußbereich, die andere Layouts erweitern. Es dient als Ausgangspunkt für Anwendungen, die ihre Inhalte dynamisch in <main> einfügen.
 
-Klassisches Layout mit Kopf- und Fußbereich ohne komplexen Body-Aufbau.
+## Warum dieses Layout?
+- Schafft ein konsistentes Grundgerüst für wiederkehrende Seiten.
+- Erleichtert die Wiederverwendung von Navigations- und Footer-Komponenten.
+- Allein nicht ausreichend, da der Hauptinhalt separat gestaltet werden muss.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Header- und Footer-Inhalte passen sich flexiblen Breiten an und bleiben lesbar.
+- **Accessibility:** Landmark-Rollen nutzen, Skip-Link vorsehen und klare Fokusführung etablieren.
+- **SEO:** Semantische Auszeichnung von Navigation, Logo und Pflichtlinks.
+- **Design-Guidelines:** Ausreichende Padding-Werte, konsistente Typografie und klare Trennung zwischen Bereichen.
 
-Perfekt für Informationsseiten oder Applikationen mit konsistentem Branding. Stärke: klare Orientierung; Schwäche: keine strukturierende Zwischenebene.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Navigationsinhalte reduzieren und bei Bedarf als Burger-Menü bereitstellen.
+- **Accessibility:** Skip-Link implementieren und Fokusindikatoren sichtbar halten.
+- **SEO:** Footer für Kontakt- und Organisationsdaten nutzen und korrekt markieren.
+- **Best Practices:** Sticky-Header nur bei Bedarf, Footer-Links gruppieren, Navigation logisch ordnen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Skip-Link führt zuverlässig zum Hauptinhalt.
+- [ ] Navigation bleibt auch auf kleinen Screens bedienbar.
+- [ ] Footer enthält alle Pflichtinformationen (Impressum, Datenschutz).
+- [ ] Lighthouse-A11y-Check ohne kritische Fehler.
 
-Persistenter Header und Footer, die auf allen Geräten funktionieren.
+## Abhängigkeiten / Überschneidungen
+- Globale Navigationskomponenten
+- Footer-Link-Module
 
-Responsiveness
+## Akzeptanzkriterien
+- Header kollabiert responsiv ohne Layoutsprünge.
+- Footer bleibt bei langen Seiten sichtbar und strukturiert.
+- Screenreader erkennen die Landmarken korrekt.
 
-Header-Elemente stapeln, Footer-Links gruppieren.
-
-Accessibility
-
-Header als <header>, Footer als <footer> deklarieren.
-
-SEO
-
-Footer mit strukturierten Links zu wichtigen Seiten.
-
-Design-Guidelines
-
-Klare Trennung der Bereiche durch Farbe oder Schatten.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Im Footer Pflichtangaben (Impressum, Datenschutz).
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Burger-Menü für Navigation.
-
-Accessibility
-
-Skip-to-content-Link bereitstellen.
-
-SEO
-
-Footer-Links nicht überladen.
-
-Best Practices
-
-Sticky Header nur bei Bedarf aktivieren.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Globale Navigations- und Footer-Komponenten.
-
-Akzeptanzkriterien
-
-Abgeschlossen, wenn alle Pflichtlinks erreichbar und Header-Elemente auf Mobil nutzbar sind.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<header>Brand</header>
+<header>…</header>
 <main>Inhalt</main>
-<footer>Links</footer>
+<footer>…</footer>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Solide Basis für Seiten mit dynamisch eingespeistem Content.

@@ -1,82 +1,48 @@
-Layout: Split Screen
+# Layout: Split Screen
 
-Beschreibung
+## Beschreibung
+Zwei Bereiche teilen sich die Breite, häufig Text und Bild oder ein Formular neben einer Vorschau. Ideal für Produktvorstellungen, Kampagnen oder Vergleichsdarstellungen.
 
-Geteilte Fläche mit zwei gleichwertigen Bereichen nebeneinander.
+## Warum dieses Layout?
+- Erzeugt einen starken visuellen Kontrast zwischen Inhalt und Medien.
+- Eignet sich für Storytelling mit parallelen Informationssträngen.
+- Erfordert auf kleinen Screens sauberes Stapeln, damit nichts verloren geht.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Bricht auf mobilen Geräten in eine vertikale Reihenfolge um.
+- **Accessibility:** DOM-Reihenfolge folgt der gewünschten Leselogik, Bilder mit aussagekräftigen Alternativtexten.
+- **SEO:** Klare Überschriftenstruktur und relevante Meta-Texte für beide Bereiche.
+- **Design-Guidelines:** Ausreichende Abstände, harmonische Typografie und abgestimmte Bildkomposition.
 
-Geeignet für Vergleich, Dual-Branding oder Storytelling. Stärke: starke visuelle Wirkung; Schwäche: weniger Platz auf Mobilgeräten.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Startet gestapelt und erweitert sich ab mittleren Breakpoints auf zwei Spalten.
+- **Accessibility:** Sorgt für erkennbare Fokuszustände und sinnvolle Reihenfolge bei Tastaturbedienung.
+- **SEO:** Betont wichtige Botschaften im Textbereich und nutzt beschreibende Alt-Texte.
+- **Best Practices:** grid md:grid-cols-2 einsetzen, Bilder responsive laden, Scroll-Hinweise optional ergänzen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Bilder sind in passenden Größen optimiert.
+- [ ] Text bleibt auch bei Reduktion der Breite lesbar.
+- [ ] Tastaturnavigation folgt der inhaltlichen Reihenfolge.
+- [ ] Performance- und Accessibility-Check dokumentiert.
 
-Beide Seiten gleichwertig gestalten, klare Call-to-Actions.
+## Abhängigkeiten / Überschneidungen
+- Medien- und CTA-Komponenten
+- Responsive Grid-Utilities
 
-Responsiveness
+## Akzeptanzkriterien
+- Split-Layout skaliert von mobil bis Desktop ohne Überlappungen.
+- Bild und Text erhalten ausreichenden Kontrast.
+- Screenreader greifen auf eine logische Reihenfolge zu.
 
-Bereiche untereinander stapeln und Priorität definieren.
-
-Accessibility
-
-Kontraste und Textgrößen anpassen.
-
-SEO
-
-Hauptinhalt klar strukturieren.
-
-Design-Guidelines
-
-Farbliche Gegenüberstellung, zentrale Buttons.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-A/B-Angebote klar kennzeichnen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Reihenfolge per order ändern.
-
-Accessibility
-
-Zugängliche Buttons pro Seite.
-
-SEO
-
-Duplicate Content vermeiden.
-
-Best Practices
-
-Nutze Flexbox für vertikale Zentrierung.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Hero- und Bildkomponenten.
-
-Akzeptanzkriterien
-
-Abgenommen, wenn beide Bereiche auf allen Geräten gut sichtbar sind.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="split">
-  <div class="split__pane">Option A</div>
-  <div class="split__pane">Option B</div>
+<section class="grid md:grid-cols-2">
+  <div>Text</div>
+  <div><img alt="" /></div>
 </section>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Starkes Muster für bildstarke Kampagnen und Vergleiche.

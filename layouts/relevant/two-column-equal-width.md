@@ -1,77 +1,43 @@
-Layout: Two Column Equal Width
+# Layout: Two Column – Equal Width
 
-Beschreibung
+## Beschreibung
+Zwei gleich breite Spalten stellen Inhalt und begleitende Medien ausgewogen dar. Geeignet für Feature-Übersichten, Vergleiche oder Bild-Text-Kombinationen.
 
-Symmetrisches Zweispalten-Layout für ausgewogenen Content.
+## Warum dieses Layout?
+- Sorgt für visuelles Gleichgewicht zwischen Text und Medien.
+- Lässt sich modular mit Komponenten befüllen.
+- Kann bei langen Texten fragmentiert wirken und die Leseführung stören.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Spalten stapeln auf kleinen Screens und richten sich an Containergrößen aus.
+- **Accessibility:** DOM-Reihenfolge folgt der gewünschten Lesereihenfolge, unabhängig vom visuellen Layout.
+- **SEO:** Überschriften und Absätze klar strukturieren, damit beide Spalten verständlich bleiben.
+- **Design-Guidelines:** Gleichmäßige Spaltenabstände, ausreichend Luft für Medieninhalte.
 
-Eignet sich für Vergleiche, Feature-/Benefits-Listen oder Teamvorstellungen. Stärke: Gleichgewicht; Schwäche: wenig Raum für lineare Geschichten.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Beginnt als einspaltiges Layout und erweitert sich ab definiertem Breakpoint auf zwei Spalten.
+- **Accessibility:** Verzichtet auf rein optische Reihenfolge-Manipulation zugunsten logischer Lesbarkeit.
+- **SEO:** Sichert konsistente h2/h3-Struktur auch bei geteilten Inhalten.
+- **Best Practices:** Container Queries nutzen, Bildgrößen responsiv skalieren, Spaltenhöhe flexibel halten
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Leselänge der Textspalte geprüft.
+- [ ] Fokusreihenfolge entspricht inhaltlicher Priorität.
+- [ ] Medien sind responsiv und performant eingebunden.
+- [ ] Accessibility- und Performance-Metriken dokumentiert.
 
-Spalten gleich breit mit flexiblen Höhen.
+## Abhängigkeiten / Überschneidungen
+- Medienkomponenten
+- Grid-System
 
-Responsiveness
+## Akzeptanzkriterien
+- Auf mobilen Geräten werden Spalten ohne Layout-Brüche gestapelt.
+- Content bleibt auch bei reduzierter Breite verständlich.
+- Screenreader geben die Inhalte in korrekter Reihenfolge wieder.
 
-Spalten auf Mobilgeräten stapeln.
-
-Accessibility
-
-Visuelle Reihenfolge mit DOM-Reihenfolge abstimmen.
-
-SEO
-
-Beide Spalten semantisch korrekt strukturieren.
-
-Design-Guidelines
-
-Konsistente Modulhöhen und dezente Trennlinien verwenden.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Keine spezifischen Anforderungen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Stack-Layout mit ausreichenden Abständen.
-
-Accessibility
-
-Lesereihenfolge sicherstellen.
-
-SEO
-
-Heading-Level nicht überspringen.
-
-Best Practices
-
-Nutze Flexbox gap für saubere Abstände.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Verwendet modulare Card-Komponenten.
-
-Akzeptanzkriterien
-
-Fertig, wenn Vergleichsinhalte klar lesbar und responsiv dargestellt werden.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="layout layout--two-col-equal">
+<section class="grid md:grid-cols-2 gap-6">
   <div>Spalte A</div>
   <div>Spalte B</div>
 </section>
@@ -79,4 +45,4 @@ Beispiel / Code
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Ausgewogenes Layout für kombinierte Text- und Medienblöcke.

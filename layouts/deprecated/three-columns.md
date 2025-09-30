@@ -1,85 +1,51 @@
-Layout: Three Columns
+# Layout: Three Columns
 
-Beschreibung
+## Beschreibung
+Drei gleichbreite Spalten waren früher verbreitet, wirken heute aber überladen und sind mobil schwer nutzbar.
 
-Dreispaltiges Layout mit gleicher Gewichtung.
+## Warum dieses Layout?
+- Bietet viel Platz für Navigation, Inhalt und Zusatzmodule.
+- Kann historische Portale abbilden.
+- Auf mobilen Geräten entsteht häufig Scroll- und Priorisierungschaos.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Spalten müssen auf mobilen Geräten komplett gestapelt werden.
+- **Accessibility:** Inhaltliche Priorisierung klar kommunizieren, Reihenfolge logisch halten.
+- **SEO:** Wichtige Inhalte im DOM nach vorn ziehen, damit sie nicht von Sidebars verdrängt werden.
+- **Design-Guidelines:** Große Weißräume zur Entzerrung nutzen, klare Typo-Hierarchie.
 
-War verbreitet für Portale und News, leidet heute unter mangelnder Lesbarkeit auf Mobilgeräten.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Lieber ein- bis zweispaltige Alternativen wählen und Sidebars als Off-Canvas abbilden.
+- **Accessibility:** DOM-Struktur nicht für rein visuelle Zwecke verbiegen.
+- **SEO:** Hauptinhalt deutlich kennzeichnen.
+- **Best Practices:** Spalten priorisieren, Off-Canvas prüfen, Reduzierte Inhalte bereitstellen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Keine horizontale Scrollbar entsteht.
+- [ ] Reihenfolge der Spalten logisch.
+- [ ] Sidebars enthalten nur unbedingt nötige Inhalte.
+- [ ] A11y- und Performance-Check dokumentiert.
 
-Drei gleichbreite Spalten, viel Content.
+## Abhängigkeiten / Überschneidungen
+- Historische Portallayouts
+- Legacy-Navigationsmodule
 
-Responsiveness
+## Akzeptanzkriterien
+- Mobile Stack funktioniert ohne Layoutbruch.
+- Screenreader erkennen Hauptinhalt zuerst.
+- Stakeholder akzeptieren Ersatz- oder Migrationsplan.
 
-Muss stark umgebaut werden, daher obsolet.
-
-Accessibility
-
-Reihenfolge schwer kontrollierbar.
-
-SEO
-
-Wichtige Inhalte werden verteilt, Priorisierung fehlt.
-
-Design-Guidelines
-
-Enge Spalten, kaum Weißraum.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Keine speziellen Anforderungen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Erfordert komplette Neuanordnung.
-
-Accessibility
-
-Screenreader-Abfolge problematisch.
-
-SEO
-
-Ranking leidet durch Fragmentierung.
-
-Best Practices
-
-Heute besser auf 1-2 Spalten setzen.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Historische Portal-Komponenten.
-
-Akzeptanzkriterien
-
-Nur zu Dokumentationszwecken vollständig.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<section class="three-col">
+<section class="grid md:grid-cols-3 gap-4">
   <div>Spalte 1</div>
   <div>Spalte 2</div>
   <div>Spalte 3</div>
 </section>
 ```
 
+> ⚠️ Deprecated: Nicht mehr empfohlen für Mobile-First-Designs (nur zu Dokumentationszwecken).
+
 Bewertung der Relevanz 2025
 
-⭐⭐☆☆☆
-
-⚠️ Deprecated – nicht mehr empfohlen für Mobile-First-Designs, nur noch zu Dokumentationszwecken.
+⭐⭐☆☆☆ Nur noch zur Pflege historischer Portale dokumentiert.

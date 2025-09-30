@@ -1,82 +1,47 @@
-Layout: Sticky Sidebar
+# Layout: Sticky Sidebar
 
-Beschreibung
+## Beschreibung
+Eine Seitenleiste bleibt beim Scrollen sichtbar, während der Hauptinhalt weiterläuft. Sie eignet sich für Inhaltsverzeichnisse, Call-to-Actions oder sekundäre Navigation.
 
-Layout mit fixierter Sidebar, die beim Scrollen sichtbar bleibt.
+## Warum dieses Layout?
+- Ermöglicht schnellen Zugriff auf Sprungziele oder CTAs.
+- Verbessert Orientierung bei langen Inhalten.
+- Kann auf kleinen Screens wertvollen Platz blockieren.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Sticky-Funktion nur auf großen Breakpoints aktiv, mobil alternative Platzierung.
+- **Accessibility:** Fokusreihenfolge bewahren, Sticky-Element darf Inhalt nicht überdecken.
+- **SEO:** Sidebar-Inhalte bleiben ergänzend und lenken nicht vom Hauptcontent ab.
+- **Design-Guidelines:** Ausreichend Abstand zwischen Sidebar und Content, klare Abgrenzung.
 
-Ideal für Inhaltsverzeichnisse oder Kontextinfos. Stärke: schnelle Navigation; Schwäche: Platzverbrauch auf kleinen Screens.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Sidebar zunächst unter Content platzieren, Sticky erst ab Desktop aktivieren.
+- **Accessibility:** Skip-Link zu Sidebar anbieten und Fokusindikatoren sichtbar halten.
+- **SEO:** Wichtige Links priorisieren und Redundanzen vermeiden.
+- **Best Practices:** position: sticky mit top-Offset, Scrollbereich begrenzen, Sticky auf Touch testen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Sticky-Offset verhindert Überdeckung durch Header.
+- [ ] Sidebar lässt sich mit Tastatur erreichen.
+- [ ] Mobil existiert eine sinnvolle Alternative.
+- [ ] Accessibility- und Performance-Prüfung erfolgt.
 
-Sticky-Position mit Offset, fallback für Mobil.
+## Abhängigkeiten / Überschneidungen
+- Table of Contents oder CTA-Module
+- Layout-Utilities
 
-Responsiveness
+## Akzeptanzkriterien
+- Sidebar bleibt auf Desktop sichtbar ohne zu flackern.
+- Mobil wird Sidebar sinnvoll eingereiht oder ausgeblendet.
+- Screenreader erkennen Sidebar als ergänzenden Bereich.
 
-Sidebar mobil einklappen oder oben platzieren.
-
-Accessibility
-
-Skip-Links und Tastaturzugänglichkeit.
-
-SEO
-
-Sidebar-Inhalte nicht duplizieren.
-
-Design-Guidelines
-
-Leichte Abhebung und klare Typografie.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Pflichtlinks, wenn Sidebar rechtlich relevant.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Sticky deaktivieren, wenn Viewport zu klein.
-
-Accessibility
-
-Focus-Verlust verhindern.
-
-SEO
-
-Content priorisieren.
-
-Best Practices
-
-Intersection Observer für aktive Abschnitte.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-TOC-Komponente, Scrollspy.
-
-Akzeptanzkriterien
-
-Fertig, wenn Sticky-Verhalten smooth ist und keine Überlagerungen entstehen.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<div class="layout layout--sticky-sidebar">
-  <aside class="sidebar">Inhaltsverzeichnis</aside>
-  <main>Artikel</main>
-</div>
+<aside class="sticky top-16">
+  <nav>…</nav>
+</aside>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐☆ Hilfreich für lange Artikel oder Dokumentationen.

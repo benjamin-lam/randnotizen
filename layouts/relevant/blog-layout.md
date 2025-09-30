@@ -1,82 +1,50 @@
-Layout: Blog Layout
+# Layout: Blog Layout
 
-Beschreibung
+## Beschreibung
+Dieses Layout kombiniert Listenansicht und Detailseite für Blogartikel. Es unterstützt Content-Marketing, Knowledge-Sharing und redaktionelle Veröffentlichungen.
 
-Struktur für Blog-Startseiten mit Artikellisten und Sidebar-Elementen.
+## Warum dieses Layout?
+- Optimiert für längere Texte mit klarer Leseführung.
+- Ermöglicht flexible Kombination aus Karten, Prosa und Inhaltsverzeichnissen.
+- Braucht sorgfältige Inhaltsplanung, um TL;DR-Effekte zu vermeiden.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Einspaltige Lesespalte mit optionalen Karten für Teaser und verwandte Artikel.
+- **Accessibility:** Prose-Stile mit ausreichend Zeilenabstand und semantische Überschriften.
+- **SEO:** Schema.org Article, OG-/Twitter-Tags und sprechende URLs.
+- **Design-Guidelines:** Lesefreundliche Typografie, klare Trennung von Metadaten und Inhalt.
 
-Etabliert für Content-Marketing. Stärke: vertrautes Muster; Schwäche: braucht frisches Design, um sich abzuheben.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Reduziert Nebenelemente und fokussiert auf den Artikelinhalt.
+- **Accessibility:** Inhaltsverzeichnis als Navigationshilfe implementieren.
+- **SEO:** Meta-Daten, strukturierte Daten und interne Verlinkung pflegen.
+- **Best Practices:** Bildlazyloading, Lesefortschrittsanzeige optional, Semantische <article>-Elemente nutzen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Inhaltsverzeichnis verlinkt korrekt zu Abschnitten.
+- [ ] Bilder besitzen Alt-Texte und Bildunterschriften.
+- [ ] Lesefluss bleibt auch auf mobilen Geräten erhalten.
+- [ ] SEO- und Accessibility-Prüfung bestanden.
 
-Artikelliste, Kategorien, Newsletter-CTA.
+## Abhängigkeiten / Überschneidungen
+- Card- und Prosa-Komponenten
+- Markdown/Content-Pipeline
 
-Responsiveness
+## Akzeptanzkriterien
+- Artikel lädt performant trotz langer Inhalte.
+- Screenreader navigieren problemlos durch Überschriften.
+- Verwandte Artikel werden semantisch korrekt ausgezeichnet.
 
-Liste priorisieren, Sidebar nach unten schieben.
-
-Accessibility
-
-Lesbare Überschriften, Skip-Links.
-
-SEO
-
-Rich Snippets für Artikel und Breadcrumbs.
-
-Design-Guidelines
-
-Klare Typografie, Bild-Teaser, Tagging.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Kennzeichnung gesponserter Beiträge.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Artikelkarten vertikal.
-
-Accessibility
-
-Artikel als <article> markieren.
-
-SEO
-
-Canonical Links für Paginierung.
-
-Best Practices
-
-Pagination vs Infinite Scroll bewusst wählen.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Artikelkarte, Kategorie-Filter, Kommentar-Teaser.
-
-Akzeptanzkriterien
-
-Fertig, wenn Feed, Sidebar und Pagination funktionieren.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<main class="blog">
-  <section class="posts">Artikel Liste</section>
-  <aside>Kategorien</aside>
+<main class="prose max-w-3xl mx-auto">
+  <article>
+    <h1>Titel</h1>
+    <p>…</p>
+  </article>
 </main>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐☆
+⭐⭐⭐⭐⭐ Standard für Content-Marketing und Wissensvermittlung.

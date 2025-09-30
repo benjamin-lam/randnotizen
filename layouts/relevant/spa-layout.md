@@ -1,82 +1,48 @@
-Layout: SPA Layout
+# Layout: SPA Shell Layout
 
-Beschreibung
+## Beschreibung
+Eine Single-Page-Application-Shell mit persistentem Header, Navigation und dynamischem Content-Bereich. Ideal für Web-Apps mit Client-Routing.
 
-Layout-Grundgerüst für Single-Page-Anwendungen.
+## Warum dieses Layout?
+- Bietet app-ähnliches Nutzererlebnis mit schnellen Übergängen.
+- Ermöglicht Code-Splitting und dynamische Komponentenauslieferung.
+- Erfordert besondere Sorgfalt bei SEO und Initial-Ladezeit.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Shell-Elemente passen sich an mobile und Desktop-Viewports an, Navigation adaptiv.
+- **Accessibility:** Routenwechsel ankündigen, Fokusmanagement und Skip-Links implementieren.
+- **SEO:** SSR/SSG oder Prerendering nutzen, Meta-Handling pro Route.
+- **Design-Guidelines:** Konsistente Shell-Komponenten, Spacing und Zustände für Ladeindikatoren.
 
-Für Web-Apps mit dynamischen Views. Stärke: schnelle Interaktion; Schwäche: SEO und Performance müssen aktiv optimiert werden.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Navigation und Panels zuerst für Touch optimieren, Desktop mit erweiterten Flächen.
+- **Accessibility:** Fokus nach Navigationswechsel auf Hauptbereich setzen, Live-Region optional.
+- **SEO:** Sitemap und strukturierte Daten serverseitig bereitstellen.
+- **Best Practices:** Code-Splitting per Route, Skeleton- oder Spinner-States, Service Worker für Assets
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Routing funktioniert mit Browser-Historie und Deep Links.
+- [ ] Fokus springt nach Route zum Hauptinhalt.
+- [ ] Loading-States kommunizieren Status klar.
+- [ ] Performance- und Accessibility-Audits durchgeführt.
 
-Header, Sidebar oder Toolbar, dynamischer Content.
+## Abhängigkeiten / Überschneidungen
+- Client-Router
+- State- und Data-Layer
 
-Responsiveness
+## Akzeptanzkriterien
+- Shell bleibt persistent, Content tauscht ohne Full Reload.
+- Screenreader werden über Routenwechsel informiert.
+- CWV-Ziele trotz Client-Routing erreichbar.
 
-Panels reorganisieren, mobile Navigation anbieten.
-
-Accessibility
-
-Route-Änderungen ankündigen, Fokusmanagement.
-
-SEO
-
-Server-Side-Rendering oder Prerendering beachten.
-
-Design-Guidelines
-
-Konsistente UI-Komponenten, klares Design-System.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Tracking und Datenschutzinformationen einbinden.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Adaptive Navigation und Touch-Ziele.
-
-Accessibility
-
-Focus nach Routenwechsel setzen.
-
-SEO
-
-Meta-Tags dynamisch aktualisieren.
-
-Best Practices
-
-Code-Splitting und Performance-Monitoring.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Router, State-Management, Layout-Shell.
-
-Akzeptanzkriterien
-
-Fertig, wenn Routing, Loading-Stati und Accessibility-Checks bestanden sind.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<div class="spa">
-  <header>App Bar</header>
-  <main id="view">Route Content</main>
+<div class="app-shell">
+  <header>Navigation</header>
+  <main id="app">Route-Content</main>
 </div>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐⭐
+⭐⭐⭐⭐⭐ Grundlage moderner Web-Applikationen.

@@ -1,82 +1,48 @@
-Layout: Responsive Flexbox
+# Layout: Responsive Flexbox
 
-Beschreibung
+## Beschreibung
+Ein flexbasiertes Grundlayout nutzt Flexbox für Zeilen- und Spaltenanordnungen. Geeignet für einfache Dashboards, Formularlayouts oder Utility-Bereiche.
 
-Layout-System basierend auf Flexbox für dynamische Reihen und Spalten.
+## Warum dieses Layout?
+- Schnell einzurichten und vielseitig für kleinere Module.
+- Erlaubt flexible Umsortierung und Ausrichtung ohne komplexes Grid.
+- Bei komplexen Layouts stößt Flexbox an Grenzen gegenüber CSS Grid.
 
-Warum dieses Layout?
+## Anforderungen & Besonderheiten
+- **Responsiveness:** Flex-Container nutzen wrap, gap und order, um Breakpoints abzudecken.
+- **Accessibility:** DOM-Reihenfolge bleibt logisch, auch wenn die visuelle Reihenfolge angepasst wird.
+- **SEO:** Semantische Container (<section>, <article>) innerhalb der Flexstruktur verwenden.
+- **Design-Guidelines:** Konsistente Gaps, Padding und Alignment-Regeln definieren.
 
-Grundlage vieler modernen Interfaces. Stärke: flexible Anpassung; Schwäche: kann komplex werden bei verschachtelten Layouts.
+## Umsetzung – Technische Leitplanken
+- **Mobile First:** Flexrichtung zunächst Spalte, erweitert sich zu Reihen erst bei größeren Viewports.
+- **Accessibility:** Visuelle Order-Änderungen nur einsetzen, wenn Fokusreihenfolge erhalten bleibt.
+- **SEO:** Inhalte klar strukturieren, da Flexbox keine semantische Bedeutung liefert.
+- **Best Practices:** flex-wrap aktivieren, Gap statt margin nutzen, Container Queries für Ausrichtung erwägen
 
-Anforderungen & Besonderheiten
+## Checkliste
+- [ ] Flex-Items brechen sauber um.
+- [ ] Order-Manipulation beeinflusst Fokus nicht.
+- [ ] Spacing entspricht Design-System.
+- [ ] Performance- und Accessibility-Check erledigt.
 
-Flex-Container mit responsiven Einstellungen.
+## Abhängigkeiten / Überschneidungen
+- Utility-Klassen oder Design-Tokens
+- Layout-Komponenten
 
-Responsiveness
+## Akzeptanzkriterien
+- Layout verhält sich auf allen Breakpoints erwartungsgemäß.
+- Screenreader erleben logische Reihenfolge.
+- Flex-Gaps entsprechen definierten Abständen.
 
-Flex-wrap und order nutzen, um Reihenfolge zu steuern.
-
-Accessibility
-
-Visuelle und DOM-Reihenfolge synchron halten.
-
-SEO
-
-Semantische Wrapper verwenden.
-
-Design-Guidelines
-
-Spacing-Scale definieren, um Flex-Items konsistent zu gestalten.
-
-Rechtliche / technische Randbedingungen (falls relevant)
-
-Keine speziellen Anforderungen.
-
-Umsetzung – Technische Leitplanken
-
-Mobile First
-
-Breakpoints für flex-direction column.
-
-Accessibility
-
-Reihenfolge nicht nur visuell ändern.
-
-SEO
-
-Content-Priorisierung im DOM.
-
-Best Practices
-
-Nutze utility-Klassen für gängige Flex-Muster.
-
-Checkliste
-
-[ ] zentrale Punkte prüfen
-
-[ ] mobile Darstellung
-
-[ ] Performance
-
-[ ] Accessibility
-
-Abhängigkeiten / Überschneidungen
-
-Globales Utility-System.
-
-Akzeptanzkriterien
-
-Fertig, wenn Flex-Utilities dokumentiert und getestet sind.
-
-Beispiel / Code
-
+## Beispiel / Code
 ```html
-<div class="flex">
-  <div>Block A</div>
-  <div>Block B</div>
-</div>
+<section class="flex flex-col md:flex-row gap-4 flex-wrap">
+  <div class="flex-1">Block A</div>
+  <div class="flex-1">Block B</div>
+</section>
 ```
 
 Bewertung der Relevanz 2025
 
-⭐⭐⭐⭐⭐
+⭐⭐⭐⭐⭐ Basispattern für viele responsive Komponenten.
