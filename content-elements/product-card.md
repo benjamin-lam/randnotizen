@@ -45,7 +45,7 @@ Produktkachel mit Bild, Preis, Bewertung und CTA.
 <!-- Minimales, valides HTML-Beispiel -->
 <article class="product-card" itemscope itemtype="https://schema.org/Product">
   <a href="/produkt" class="product-card__link">
-    <img src="/assets/agents-and-robots.png" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" loading="lazy" itemprop="image">
+    <img src="../assets/agents-and-robots.png" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" loading="lazy" itemprop="image">
     <h3 itemprop="name">Sneaker X</h3>
     <p class="product-card__price" itemprop="offers" itemscope itemtype="https://schema.org/Offer">
       <span itemprop="price">89,90</span> €

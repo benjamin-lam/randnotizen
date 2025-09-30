@@ -39,7 +39,7 @@ Zwei Bereiche teilen sich die Breite, häufig Text und Bild oder ein Formular ne
 ```html
 <section class="grid md:grid-cols-2">
   <div>Text</div>
-  <div><img src="/assets/agents-and-robots.png" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" /></div>
+  <div><img src="../../assets/agents-and-robots.png" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" /></div>
 </section>
 ```
 
