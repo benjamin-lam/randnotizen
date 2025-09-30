@@ -11,7 +11,7 @@ COMPONENTS: dict[str, dict[str, object]] = {
 <div class="audio-player" data-audio-player>
   <section class="card" aria-label="Aktuelle Episode">
     <div class="audio-player__meta">
-      <img class="audio-player__cover" src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=320&q=80" alt="Podcast Cover: Remote Culture" loading="lazy">
+      <img class="audio-player__cover" src="/assets/agents-and-robots.txt" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
       <div>
         <p class="text-muted">Remote Culture • Episode 12</p>
         <h3 class="callout__title">Async Workflows, die funktionieren</h3>
@@ -300,16 +300,16 @@ COMPONENTS: dict[str, dict[str, object]] = {
 <section class="carousel" data-carousel aria-roledescription="Karussell" aria-label="Produktbilder">
   <div class="carousel__slides" data-carousel-track>
     <figure class="carousel__slide" data-carousel-slide>
-      <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" alt="Offenes, helles Wohnzimmer" loading="lazy">
-      <figcaption class="visually-hidden">Wohnbereich mit natürlichem Licht</figcaption>
+      <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in futuristischer Stadt bei Nacht" loading="lazy">
+      <figcaption class="visually-hidden">Futuristische Stadt mit Agentin und Roboter</figcaption>
     </figure>
     <figure class="carousel__slide" data-carousel-slide>
-      <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=80" alt="Moderne Küche mit Holzdekor" loading="lazy">
-      <figcaption class="visually-hidden">Moderne Küche</figcaption>
+      <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in futuristischer Stadt bei Nacht" loading="lazy">
+      <figcaption class="visually-hidden">Futuristische Stadt mit Agentin und Roboter</figcaption>
     </figure>
     <figure class="carousel__slide" data-carousel-slide>
-      <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80" alt="Gemütliches Schlafzimmer mit Pflanzen" loading="lazy">
-      <figcaption class="visually-hidden">Schlafzimmer mit Pflanzen</figcaption>
+      <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in futuristischer Stadt bei Nacht" loading="lazy">
+      <figcaption class="visually-hidden">Futuristische Stadt mit Agentin und Roboter</figcaption>
     </figure>
   </div>
   <div class="carousel__controls" aria-hidden="true">
@@ -333,8 +333,8 @@ COMPONENTS: dict[str, dict[str, object]] = {
         "example": """
 <figure class="figure">
   <picture>
-    <source srcset="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" media="(min-width: 800px)">
-    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80" alt="Team, das gemeinsam an einem Tisch arbeitet" loading="lazy">
+    <source srcset="/assets/agents-and-robots.txt" media="(min-width: 800px)">
+    <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter zwischen Neonreklamen in einer futuristischen Stadt" loading="lazy">
   </picture>
   <figcaption>Team Sync im Workspace Berlin – Foto: <a href="https://unsplash.com" rel="noopener">Unsplash</a></figcaption>
 </figure>
@@ -402,7 +402,7 @@ COMPONENTS: dict[str, dict[str, object]] = {
         "example": """
 <section class="mini-cart" data-mini-cart aria-label="Mini Warenkorb">
   <div class="cart-item" data-cart-item>
-    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=200&q=80" alt="Kabellose Kopfhörer" loading="lazy">
+    <img src="/assets/agents-and-robots.txt" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
     <div>
       <p>Kabellose Kopfhörer</p>
       <p class="text-muted">Lieferung in 2-3 Tagen</p>
@@ -412,7 +412,7 @@ COMPONENTS: dict[str, dict[str, object]] = {
     <strong data-item-price="129.90">129,90 €</strong>
   </div>
   <div class="cart-item" data-cart-item>
-    <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=200&q=80" alt="Leder Schreibtischunterlage" loading="lazy">
+    <img src="/assets/agents-and-robots.txt" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
     <div>
       <p>Leder Desk Pad</p>
       <p class="text-muted">Nachhaltiges Leder</p>
@@ -633,7 +633,7 @@ COMPONENTS: dict[str, dict[str, object]] = {
         "example": """
 <article class="product-card">
   <div class="product-card__image">
-    <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=800&q=80" alt="Minimalistischer Bürostuhl in Grau" loading="lazy">
+    <img src="/assets/agents-and-robots.txt" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
   </div>
   <div class="product-card__body">
     <div class="review-stars">

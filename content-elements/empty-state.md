@@ -44,7 +44,7 @@ Darstellung, wenn keine Daten oder Ergebnisse vorliegen.
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <section class="empty-state">
-  <img src="empty.svg" alt="Kein Ergebnis gefunden" loading="lazy">
+  <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" loading="lazy">
   <h2>Keine Ergebnisse</h2>
   <p>Passen Sie Ihre Filter an oder starten Sie eine neue Suche.</p>
   <button type="button">Filter zurücksetzen</button>

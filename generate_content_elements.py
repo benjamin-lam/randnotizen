@@ -198,7 +198,7 @@ entries.extend([
             "Caption optional mit Quellenlink versehen."
         ],
         "dependencies": "Bild-CDN, Lightbox (optional)",
-        "example_html": "<figure class=\"image\">\n  <img src=\"bild.webp\" alt=\"Team arbeitet gemeinsam\" loading=\"lazy\">\n  <figcaption>Unser Team beim Sprint Planning. Foto: ACME.</figcaption>\n</figure>",
+        "example_html": "<figure class=\"image\">\n  <img src=\"/assets/agents-and-robots.txt\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" loading=\"lazy\">\n  <figcaption>Agentin und Roboter beobachten die Stadtlichter.</figcaption>\n</figure>",
         "rating": "⭐⭐⭐⭐ Bilder mit Kontext bleiben wichtig für Storytelling und Compliance."
     },
     {
@@ -224,7 +224,7 @@ entries.extend([
             "Bildvorab-Laden für nächstes Slide optimieren."
         ],
         "dependencies": "Slider-Library, Lightbox, Bild-CDN",
-        "example_html": "<div class=\"carousel\" aria-roledescription=\"Karussell\">\n  <button class=\"carousel__prev\" aria-label=\"Vorheriges Bild\">‹</button>\n  <ul class=\"carousel__track\">\n    <li class=\"carousel__slide\"><img src=\"bild1.webp\" alt=\"Produkt Vorderansicht\" loading=\"lazy\"></li>\n  </ul>\n  <button class=\"carousel__next\" aria-label=\"Nächstes Bild\">›</button>\n</div>",
+        "example_html": "<div class=\"carousel\" aria-roledescription=\"Karussell\">\n  <button class=\"carousel__prev\" aria-label=\"Vorheriges Bild\">‹</button>\n  <ul class=\"carousel__track\">\n    <li class=\"carousel__slide\"><img src=\"/assets/agents-and-robots.txt\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" loading=\"lazy\"></li>\n  </ul>\n  <button class=\"carousel__next\" aria-label=\"Nächstes Bild\">›</button>\n</div>",
         "rating": "⭐⭐⭐⭐ Karussells bleiben gängig, müssen jedoch nutzerzentriert optimiert werden."
     },
     {
@@ -722,7 +722,7 @@ entries.extend([
             "CTA mit eindeutiger Aktion beschriften."
         ],
         "dependencies": "Bewertungen, Preis-API, Tracking",
-        "example_html": "<article class=\"product-card\" itemscope itemtype=\"https://schema.org/Product\">\n  <a href=\"/produkt\" class=\"product-card__link\">\n    <img src=\"produkt.webp\" alt=\"Sneaker Modell X\" loading=\"lazy\" itemprop=\"image\">\n    <h3 itemprop=\"name\">Sneaker X</h3>\n    <p class=\"product-card__price\" itemprop=\"offers\" itemscope itemtype=\"https://schema.org/Offer\">\n      <span itemprop=\"price\">89,90</span> €\n    </p>\n  </a>\n  <button type=\"button\">In den Warenkorb</button>\n</article>",
+        "example_html": "<article class=\"product-card\" itemscope itemtype=\"https://schema.org/Product\">\n  <a href=\"/produkt\" class=\"product-card__link\">\n    <img src=\"/assets/agents-and-robots.txt\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" loading=\"lazy\" itemprop=\"image\">\n    <h3 itemprop=\"name\">Sneaker X</h3>\n    <p class=\"product-card__price\" itemprop=\"offers\" itemscope itemtype=\"https://schema.org/Offer\">\n      <span itemprop=\"price\">89,90</span> €\n    </p>\n  </a>\n  <button type=\"button\">In den Warenkorb</button>\n</article>",
         "rating": "⭐⭐⭐⭐⭐ Produktkacheln sind zentral für E-Commerce und Conversion-relevant."
     },
     {
@@ -852,7 +852,7 @@ entries.extend([
             "Kontrast zum Hintergrund sicherstellen."
         ],
         "dependencies": "Asset-Management, Legal-Team",
-        "example_html": "<ul class=\"trust-badges\">\n  <li><img src=\"tuev.svg\" alt=\"TÜV zertifiziert\"></li>\n  <li><img src=\"ssl.svg\" alt=\"SSL verschlüsselt\"></li>\n</ul>",
+        "example_html": "<ul class=\"trust-badges\">\n  <li><img src=\"/assets/agents-and-robots.txt\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\"></li>\n  <li><img src=\"/assets/agents-and-robots.txt\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\"></li>\n</ul>",
         "rating": "⭐⭐⭐⭐ Vertrauenssiegel beeinflussen weiterhin Conversion und Glaubwürdigkeit."
     }
 ])
@@ -1036,7 +1036,7 @@ entries.extend([
             "Tonfall empathisch wählen."
         ],
         "dependencies": "Illustrationen, CTA-Komponenten",
-        "example_html": "<section class=\"empty-state\">\n  <img src=\"empty.svg\" alt=\"Kein Ergebnis gefunden\" loading=\"lazy\">\n  <h2>Keine Ergebnisse</h2>\n  <p>Passen Sie Ihre Filter an oder starten Sie eine neue Suche.</p>\n  <button type=\"button\">Filter zurücksetzen</button>\n</section>",
+        "example_html": "<section class=\"empty-state\">\n  <img src=\"/assets/agents-and-robots.txt\" alt=\"Agentin und Roboter in einer futuristischen Stadt bei Nacht\" loading=\"lazy\">\n  <h2>Keine Ergebnisse</h2>\n  <p>Passen Sie Ihre Filter an oder starten Sie eine neue Suche.</p>\n  <button type=\"button\">Filter zurücksetzen</button>\n</section>",
         "rating": "⭐⭐⭐⭐ Gute Empty States steigern Engagement und helfen bei der Orientierung."
     },
     {
