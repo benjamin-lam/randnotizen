@@ -46,7 +46,7 @@ Slider-Komponente für mehrere Bilder mit optionaler Lightbox.
 <div class="carousel" aria-roledescription="Karussell">
   <button class="carousel__prev" aria-label="Vorheriges Bild">‹</button>
   <ul class="carousel__track">
-    <li class="carousel__slide"><img src="bild1.webp" alt="Produkt Vorderansicht" loading="lazy"></li>
+    <li class="carousel__slide"><img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" loading="lazy"></li>
   </ul>
   <button class="carousel__next" aria-label="Nächstes Bild">›</button>
 </div>

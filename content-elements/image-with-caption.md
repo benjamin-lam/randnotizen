@@ -44,8 +44,8 @@ Bilddarstellung mit erläuternder Bildunterschrift.
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <figure class="image">
-  <img src="bild.webp" alt="Team arbeitet gemeinsam" loading="lazy">
-  <figcaption>Unser Team beim Sprint Planning. Foto: ACME.</figcaption>
+  <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" loading="lazy">
+  <figcaption>Agentin und Roboter beobachten die Stadtlichter.</figcaption>
 </figure>
 ```
 

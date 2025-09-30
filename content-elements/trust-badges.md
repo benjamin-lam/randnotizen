@@ -44,8 +44,8 @@ Sicherheits- und Vertrauenssiegel wie Zahlungsanbieter oder Zertifikate.
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <ul class="trust-badges">
-  <li><img src="tuev.svg" alt="TÜV zertifiziert"></li>
-  <li><img src="ssl.svg" alt="SSL verschlüsselt"></li>
+  <li><img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht"></li>
+  <li><img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht"></li>
 </ul>
 ```
 
