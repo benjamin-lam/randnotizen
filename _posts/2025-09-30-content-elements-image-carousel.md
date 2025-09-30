@@ -1,92 +1,35 @@
 ---
-title: "Image Carousel: Randnotiz"
+title: "Karussell zwischen Pixelregen und Produktglanz"
 date: 2025-09-30
-tags: [UI, Komponente, Webentwicklung]
-excerpt: "Warum Image Carousel unsere Content Elements-Notizen inspiriert."
 layout: post
-categories: [content-elements]
+categories:
+  - content-elements
+tags:
+  - Content Element
+  - Media UX
+  - Performance
+excerpt: "Warum unser Image Carousel Produktstories dreht, ohne Nutzer mit Autoplay und Datenlast zu verschrecken."
 slug: content-elements-image-carousel
 original_path: content-elements/image-carousel.md
 ---
 
-## Einleitung
-Zwischen Straßenbahn, Einkaufskorb und kurzen Pausen auf der Parkbank tippte ich die ersten Sätze ins Smartphone. Image Carousel stand noch warm aus dem letzten Deployment im Raum, und klar war: Heute erzählen wir diese Komponente so, wie altundwillig.de über große und kleine Webdramen schreibt – mitten im Alltag unseres Content Elements-Systems.
+## Szene: Fotoshooting im Serverraum
+Mitten zwischen klimatisierten Racks knipste die Fotografin neue Produktshots, während ich nebenan das Staging-Karussell auf dem Tablet testete. Der Geräuschpegel aus Lüftern und Auslösern war absurd – aber perfekt, um über Bildgrößen, Lazy Loading und Lightbox-Zugriff zu sprechen. Niemand wollte, dass das neue Sortiment mit einer Diashow aus den 2000ern verwechselt wird.
 
-## Technischer Kern
-Image Carousel ist einer dieser Bausteine, die niemand beachtet, bis sie fehlen. Wir haben das schmerzhaft gelernt, als ein Kunde das Feature ohne ARIA ausgeliefert hat und ein Feedback-Call zur Selbsthilfegruppe wurde. Seitdem legen wir das Mobile-Layout zuerst fest, tasten uns mit echten Fingern durch Buttons und Links und feiern jeden Moment, in dem der Screenreader flüssig vorliest. Ich halte mich an die Spezifikationen, aber ich erzähle sie wie Lagerfeuergeschichten: mit klaren HTML-Strukturen, sauberen States und einer Prise Humor. Und während ich daran denke, dass wir alle an halb fertigen Interfaces arbeiten, mahnt mich eine innere Stimme, jede Abhängigkeit dreimal zu prüfen.
+## Feldnotizen aus dem Bau
+Image Carousel zeigt Produktgalerien, Event-Rückblicke oder Referenz-Slides. Wir halten die Anzahl der Slides gering, damit Aufmerksamkeit nicht zerfasert, und markieren Navigation über Pfeile, Dots und optional Play/Pause-Controls. Alle Varianten teilen Farben, Abstände und Typografie mit dem restlichen System. Bildrechte checken wir gemeinsam mit dem Marketing, bevor etwas live geht.
 
-### Originalnotizen
-Ich lasse hier den historischen Steckbrief unangetastet; er ist mein Sicherheitsnetz, wenn das Storytelling überkocht:
-# Content-Element: Image Carousel
+## Mobile-First-Fahrplan
+Auf Smartphones zeigen wir einzelne Slides im Vollformat mit sichtbaren Swipe-Hinweisen. Erst ab Tablet stapeln wir zwei Bilder nebeneinander oder blenden Thumbnails ein. Der Download bleibt sparsam: Wir liefern optimierte WebP-Varianten, progressive JPEG-Fallbacks und laden nur das nächste Bild vor, damit das Karussell sich leicht anfühlt.
 
-## Beschreibung
-Slider-Komponente für mehrere Bilder mit optionaler Lightbox.
+## Accessibility & Fürsorge
+Autoplay bleibt deaktiviert, bis eine Nutzerin bewusst startet. Der Fokus folgt einer logischen Reihenfolge – vom Karussell-Heading über die Navigationselemente zum aktuellen Bild. `aria-live="polite"` kündigt Slide-Wechsel an, und Tastaturbefehle greifen sowohl auf Pfeiltasten als auch auf die Enter-Taste auf Buttons. Für Screenreader beschreiben wir jedes Bild mit einer knappen Caption, statt Alt-Textromanen zu servieren.
 
-## Warum dieses Element?
-- Produktgalerien auf E-Commerce-Seiten.
-- Event- oder Referenz-Slideshows auf Landingpages.
-- Trade-off: Zu viele Slides reduzieren Aufmerksamkeit, Interaktion oft gering.
+## Technik, Validierung & Betrieb
+Wir setzen Progressive Enhancement ein: Ohne JavaScript bleibt eine statische Bildliste übrig, die dennoch klickbar ist. Lazy Loading und Intersection Observer halten die Medienlast im Rahmen, während Lightbox-Aufrufe die Tracking-Events respektieren. Caching-Header und ein Bild-CDN verhindern Bandbreiten-Kater. Monitoring registriert, wie oft Nutzer zum letzten Slide blättern – wenn die Quote sinkt, kürzen wir die Reihe.
 
-## Anforderungen & Besonderheiten
-- **Responsiveness:** Touch- und Mausbedienung, Breakpoints für Anzahl sichtbarer Slides.
-- **Accessibility:** Fokusreihenfolge, `aria-live` für Slide-Wechsel, Pause-/Play-Controls.
-- **SEO:** Bilder mit Alt-Text und Lazyload, Lightbox nicht indexrelevant.
-- **Design-Guidelines:** Navigationselemente konsistent, Dot-/Arrow-Styling, Übergänge dezent.
-- **Rechtliches:** Bildrechte beachten, Tracking in Lightbox vermeiden.
-
-## Umsetzung – Technische Leitplanken
-- **Mobile First:** Einzelne Slides, Swipe-Gesten, geringe Dateigrößen.
-- **Accessibility:** Autoplay standardmäßig deaktiviert, klare Fokusindikatoren.
-- **SEO:** `loading="lazy"`, strukturierte Daten für Produktbilder möglich.
-- **Best Practices:**
-  - Slides per Keyboard navigierbar machen.
-  - Progressive Enhancement bei deaktiviertem JS.
-  - Bildvorab-Laden für nächstes Slide optimieren.
-
-## Checkliste
-- [ ] Darstellung auf allen Breakpoints geprüft
-- [ ] Barrierefreiheit (Fokus, ARIA, Kontrast) OK
-- [ ] Semantik korrekt (HTML)
-- [ ] Performance optimiert (Lazyload/Kompression)
-
-## Abhängigkeiten / Überschneidungen
-- Slider-Library, Lightbox, Bild-CDN
-
-## Akzeptanzkriterien
-- Technische Funktion OK
-- Konsistenz zum Designsystem
-- A11y & rechtliche Vorgaben erfüllt
-
-## Beispiel / Code
-[content-elements-examples/image-carousel.html](../content-elements-examples/image-carousel.html)
-
-```html
-<!-- Minimales, valides HTML-Beispiel -->
-<div class="carousel" aria-roledescription="Karussell">
-  <button class="carousel__prev" aria-label="Vorheriges Bild">‹</button>
-  <ul class="carousel__track">
-    <li class="carousel__slide"><img src="../assets/agents-and-robots.png" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" loading="lazy"></li>
-  </ul>
-  <button class="carousel__next" aria-label="Nächstes Bild">›</button>
-</div>
-```
-
-Bewertung der Relevanz 2025
-
-⭐⭐⭐⭐ Karussells bleiben gängig, müssen jedoch nutzerzentriert optimiert werden.
-
-## Anekdoten & Nerd-Zitate
-- Ein Chatverlauf von letzter Woche: „Kannst du Image Carousel mal schnell deaktivieren?“ – „Nur wenn du mir einen neuen Kaffee bringst.“ Ergebnis: Kaffee kam, Image Carousel blieb.
-- Merksatz: Technologie wird genau dann knifflig, wenn sie unsichtbar wirkt. Genau deshalb lassen wir Image Carousel nicht aus der Doku verschwinden.
-- Während der Build lief, las ich alte Projekt-Notizen und sah uns alle als Varianten derselben Crew, die versucht, Image Carousel pixelweise in den Griff zu bekommen.
-- In einer altundwillig.de-Sprachnachricht erzählte ich, wie ein Screenreader-User fragte: „Wo bin ich eigentlich?“ – dieser Satz hallt nach wie ein Drum-Solo.
-
-## Best Practices
-- **Accessibility lebt von Ritualen:** Prüfe Image Carousel mit Tastatur und Screenreader, bevor du überhaupt an Pixel-Politur denkst. Deine künftige Selbstachtung wird es dir danken.
-- **Mobile First aus Überzeugung:** Beginne mit dem kleinsten Viewport und frage dich ernsthaft, ob du das Element auch im U-Bahn-Gedränge bedienen könntest.
-- **Performance mit Hausverstand:** Lade nur, was wirklich gebraucht wird, sonst fühlt sich Image Carousel an wie ein Buffering-Screen aus der Modem-Ära.
-- **Dokumentation neben dem Code:** Schreib dir dazu, warum Entscheidungen gefallen sind; sonst fragst du dich in drei Monaten selbst, was du damit meintest.
-- **Team-Sync:** Stell sicher, dass Design, Content und Dev dieselben Erwartungen haben – sonst erzählt jeder eine andere Story über Image Carousel.
-
-## Fazit
-Zum Schluss fühlt sich Image Carousel an wie ein gut geölter Plattenspieler: nicht prahlerisch, aber unverzichtbar. Wir haben wieder gelernt, dass Disziplin bei Breakpoints und `aria`-Attributen genau der Unterschied zwischen Frust und Flow ist. Beim nächsten Rollout gönne ich mir mehr Zeit für User-Feedback, bevor der nächste Sturm aus Edge Cases anklopft.
+## Takeaways
+- Karussells dienen Produkt- und Eventstories, solange Slides kuratiert und Navigation eindeutig bleibt.
+- Mobile-First setzt auf Einzel-Slides mit Swipe-Hinweis; Desktop ergänzt Thumbnails und mehr Sichtfläche.
+- Barrierefreiheit bedeutet bewusstes Autoplay, klare Fokuspfade und sanfte `aria-live`-Ansagen.
+- Lazy Loading, CDN und Progressive Enhancement zähmen Medienlast und sorgen für reibungslose Deployments.
