@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Audio Embed – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Audio Embed.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Audio Embed</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Einbettung eines Audio- oder Podcast-Players.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Keyboardsteuerung"><span aria-hidden="true">⚙️</span>Keyboardsteuerung</span><span class="meta-pill" role="listitem" aria-label="ARIA Live Feedback"><span aria-hidden="true">⚙️</span>ARIA Live Feedback</span><span class="meta-pill" role="listitem" aria-label="Responsive Layout"><span aria-hidden="true">⚙️</span>Responsive Layout</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <div class="audio-player" data-audio-player>
+            <section class="card" aria-label="Aktuelle Episode">
+              <div class="audio-player__meta">
+                <img class="audio-player__cover" src="https://images.unsplash.com/photo-1525182008055-f88b95ff7980?auto=format&fit=crop&w=320&q=80" alt="Podcast Cover: Remote Culture" loading="lazy">
+                <div>
+                  <p class="text-muted">Remote Culture • Episode 12</p>
+                  <h3 class="callout__title">Async Workflows, die funktionieren</h3>
+                  <p class="text-muted">Mit Host Mara und Gast Daniel Fuchs</p>
+                </div>
+              </div>
+              <audio controls preload="metadata" data-audio-element aria-describedby="audio-status">
+                <source src="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg" type="audio/ogg">
+                <source src="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg" type="audio/mpeg">
+                Ihr Browser unterstützt das Audio-Element nicht. <a href="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg">Episode herunterladen</a>.
+              </audio>
+              <div id="audio-status" class="visually-hidden" aria-live="polite"></div>
+            </section>
+            <section class="audio-tracklist" role="list" aria-label="Weitere Episoden">
+              <button class="audio-track is-current" type="button" role="listitem" data-audio-track data-src="https://upload.wikimedia.org/wikipedia/commons/4/4e/BWV_543-fugue.ogg" data-title="Async Workflows, die funktionieren" aria-pressed="true">
+                <span>Async Workflows, die funktionieren</span>
+                <span class="text-muted">24:32</span>
+              </button>
+              <button class="audio-track" type="button" role="listitem" data-audio-track data-src="https://upload.wikimedia.org/wikipedia/commons/c/c8/Example.ogg" data-title="Führung auf Distanz" aria-pressed="false">
+                <span>Führung auf Distanz</span>
+                <span class="text-muted">18:05</span>
+              </button>
+              <button class="audio-track" type="button" role="listitem" data-audio-track data-src="https://upload.wikimedia.org/wikipedia/commons/3/32/Example_3.ogg" data-title="Async Feedback Loops" aria-pressed="false">
+                <span>Async Feedback Loops</span>
+                <span class="text-muted">21:11</span>
+              </button>
+            </section>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Map Embed – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Map Embed.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Map Embed</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Interaktive Karte zur Standortanzeige oder Wegbeschreibung.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Iframe Titel"><span aria-hidden="true">⚙️</span>Iframe Titel</span><span class="meta-pill" role="listitem" aria-label="Fallback Link"><span aria-hidden="true">⚙️</span>Fallback Link</span><span class="meta-pill" role="listitem" aria-label="Lazy Loading"><span aria-hidden="true">⚙️</span>Lazy Loading</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="card">
+            <h2>Büro Berlin</h2>
+            <p class="text-muted">Invalidenstraße 91, 10115 Berlin</p>
+            <iframe class="map-frame" loading="lazy" src="https://www.openstreetmap.org/export/embed.html?bbox=13.3789%2C52.5294%2C13.3839%2C52.5324&amp;layer=mapnik" title="Karte des Büros in Berlin"></iframe>
+            <p><a href="https://www.openstreetmap.org/?mlat=52.531&amp;mlon=13.381#map=18/52.5310/13.3810" target="_blank" rel="noopener">Auf OpenStreetMap öffnen</a></p>
+          </section>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

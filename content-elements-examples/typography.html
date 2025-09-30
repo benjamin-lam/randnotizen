@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Typography – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Typography.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Typography</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Basis-Elemente für Textstruktur wie Überschriften, Absätze, Listen und Zitate, die Inhalte lesbar und hierarchisch gliedern.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Skalierende Fonts"><span aria-hidden="true">⚙️</span>Skalierende Fonts</span><span class="meta-pill" role="listitem" aria-label="Lesbare Länge"><span aria-hidden="true">⚙️</span>Lesbare Länge</span><span class="meta-pill" role="listitem" aria-label="Zitate"><span aria-hidden="true">⚙️</span>Zitate</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <article class="typography-demo">
+            <header>
+              <h1>Designsystem Playbook 2025</h1>
+              <p>Ein Leitfaden für skalierbare Content- und UI-Strukturen.</p>
+            </header>
+            <h2 id="abschnitt-1">Einleitung</h2>
+            <p>Klare Typografie schafft Orientierung und steigert die Lesbarkeit auf allen Geräten. Unsere Skala folgt einem modularen System.</p>
+            <h3>Listen &amp; Gliederung</h3>
+            <ul>
+              <li>Definierte Hierarchien</li>
+              <li>Kontrastreiche Linkstile</li>
+              <li>Klare Abstände</li>
+            </ul>
+            <blockquote id="abschnitt-2">„Design ist nicht nur wie es aussieht und sich anfühlt. Design ist wie es funktioniert.“ – Steve Jobs</blockquote>
+            <pre><code>npm install @acme/content-kit</code></pre>
+          </article>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

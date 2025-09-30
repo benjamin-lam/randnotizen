@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>File Uploader – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element File Uploader.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">File Uploader</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Komponente zum Hochladen von Dateien inklusive Fortschritt und Validierung.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Drag & Drop"><span aria-hidden="true">⚙️</span>Drag & Drop</span><span class="meta-pill" role="listitem" aria-label="Fortschrittsanzeige"><span aria-hidden="true">⚙️</span>Fortschrittsanzeige</span><span class="meta-pill" role="listitem" aria-label="Mehrere Dateien"><span aria-hidden="true">⚙️</span>Mehrere Dateien</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="file-uploader" data-file-uploader>
+            <div class="dropzone" tabindex="0" role="button" aria-label="Dateien hier ablegen oder klicken" data-dropzone>
+              <p><strong>Dateien auswählen</strong></p>
+              <p class="text-muted">Ziehen Sie Dateien hierher oder klicken Sie, um zu wählen. Maximal 10 Dateien.</p>
+              <input class="visually-hidden" type="file" name="documents" id="documents" multiple data-file-input>
+            </div>
+            <div class="upload-list" aria-live="polite" data-upload-list></div>
+          </section>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

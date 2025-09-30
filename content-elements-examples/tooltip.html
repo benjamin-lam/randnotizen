@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tooltip – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Tooltip.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Tooltip</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Kurze Hilfetexte, die bei Hover oder Fokus zusätzliche Informationen geben.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Hover &amp; Focus"><span aria-hidden="true">⚙️</span>Hover &amp; Focus</span><span class="meta-pill" role="listitem" aria-label="Aria Expanded"><span aria-hidden="true">⚙️</span>Aria Expanded</span><span class="meta-pill" role="listitem" aria-label="Kurztexte"><span aria-hidden="true">⚙️</span>Kurztexte</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <div class="tooltip" aria-expanded="false" data-tooltip>
+            <button class="icon-button" type="button" aria-describedby="tooltip-1" data-tooltip-trigger>?</button>
+            <span class="tooltip__bubble" role="tooltip" id="tooltip-1">Wir speichern Ihre Einstellungen sicher verschlüsselt.</span>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

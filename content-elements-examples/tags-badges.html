@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Tags & Badges – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Tags & Badges.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Tags & Badges</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Labels oder Chips zur Kennzeichnung von Kategorien, Status oder Highlights.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Mehrfarbig"><span aria-hidden="true">⚙️</span>Mehrfarbig</span><span class="meta-pill" role="listitem" aria-label="Responsives Wrapping"><span aria-hidden="true">⚙️</span>Responsives Wrapping</span><span class="meta-pill" role="listitem" aria-label="ARIA Gruppe"><span aria-hidden="true">⚙️</span>ARIA Gruppe</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <div class="badge-collection" role="list">
+            <span class="badge" role="listitem">UX Writing</span>
+            <span class="badge badge--success" role="listitem">Accessibility</span>
+            <span class="badge badge--warning" role="listitem">Research</span>
+            <span class="badge" role="listitem">Component Library</span>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

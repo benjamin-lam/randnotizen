@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Code Snippets – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Code Snippets.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Code Snippets</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Darstellung von Codebeispielen als Inline- oder Block-Elemente inkl. Kopierfunktion.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Copy to Clipboard"><span aria-hidden="true">⚙️</span>Copy to Clipboard</span><span class="meta-pill" role="listitem" aria-label="ARIA Live Regionen"><span aria-hidden="true">⚙️</span>ARIA Live Regionen</span><span class="meta-pill" role="listitem" aria-label="Syntax freundlich"><span aria-hidden="true">⚙️</span>Syntax freundlich</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <figure class="code-snippet" data-code-snippet>
+            <figcaption>POST-Anfrage gegen die Content API</figcaption>
+            <pre class="code-snippet__body"><code id="snippet-js" data-language="bash">curl --request POST \
+            --url https://api.example.com/v1/entries \
+            --header 'Content-Type: application/json' \
+            --data '{"title": "Accessibility first"}'</code></pre>
+            <button class="btn copy-button" type="button" data-copy-button data-copy-target="snippet-js" aria-live="polite">Code kopieren</button>
+            <output class="visually-hidden" aria-live="polite" data-copy-feedback></output>
+          </figure>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

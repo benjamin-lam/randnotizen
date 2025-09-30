@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dropdown Select – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Dropdown Select.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Dropdown Select</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Auswahlliste als Native-Select oder erweiterte Combobox.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Roving Tabindex"><span aria-hidden="true">⚙️</span>Roving Tabindex</span><span class="meta-pill" role="listitem" aria-label="Touch friendly"><span aria-hidden="true">⚙️</span>Touch friendly</span><span class="meta-pill" role="listitem" aria-label="Hidden Input"><span aria-hidden="true">⚙️</span>Hidden Input</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <div class="dropdown" data-dropdown>
+            <label for="team-size">Teamgröße</label>
+            <button class="btn dropdown__button" type="button" id="team-size" data-dropdown-toggle aria-haspopup="listbox" aria-expanded="false">
+              <span data-dropdown-label>1–10 Personen</span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <ul class="dropdown__panel" role="listbox" tabindex="-1" aria-labelledby="team-size" data-dropdown-list>
+              <li><button class="dropdown__option" type="button" role="option" aria-selected="true" data-value="small">1–10 Personen</button></li>
+              <li><button class="dropdown__option" type="button" role="option" aria-selected="false" data-value="medium">11–25 Personen</button></li>
+              <li><button class="dropdown__option" type="button" role="option" aria-selected="false" data-value="large">26–50 Personen</button></li>
+              <li><button class="dropdown__option" type="button" role="option" aria-selected="false" data-value="enterprise">Mehr als 50</button></li>
+            </ul>
+            <input type="hidden" name="team-size" value="small" data-dropdown-input>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

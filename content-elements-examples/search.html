@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Search – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Search.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Search</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Suchfeld mit optionaler Autosuggest-Funktion.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Autocomplete ready"><span aria-hidden="true">⚙️</span>Autocomplete ready</span><span class="meta-pill" role="listitem" aria-label="Submit CTA"><span aria-hidden="true">⚙️</span>Submit CTA</span><span class="meta-pill" role="listitem" aria-label="ARIA Live"><span aria-hidden="true">⚙️</span>ARIA Live</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <form class="search-form" role="search" data-search>
+            <label class="visually-hidden" for="site-search">Website durchsuchen</label>
+            <div class="search-form__field">
+              <input class="input" id="site-search" name="q" type="search" placeholder="Wonach suchen Sie?" autocomplete="off" data-search-input aria-describedby="search-suggestions">
+              <button class="btn" type="submit">Suchen</button>
+            </div>
+            <ul id="search-suggestions" class="stack-sm" aria-live="polite" data-search-suggestions role="listbox"></ul>
+            <p class="form-help" data-search-feedback aria-live="polite"></p>
+          </form>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

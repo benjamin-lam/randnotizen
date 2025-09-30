@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Table – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Table.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Table</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Tabellarische Darstellung von Daten mit Headern, Spalten und optionaler Sortierung.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Sticky Header"><span aria-hidden="true">⚙️</span>Sticky Header</span><span class="meta-pill" role="listitem" aria-label="Scroll Container"><span aria-hidden="true">⚙️</span>Scroll Container</span><span class="meta-pill" role="listitem" aria-label="Caption"><span aria-hidden="true">⚙️</span>Caption</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <div class="table-wrapper">
+            <table class="data-table" role="table">
+              <caption>Performance Kennzahlen Q1</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Metrik</th>
+                  <th scope="col">Januar</th>
+                  <th scope="col">Februar</th>
+                  <th scope="col">März</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Aktive Nutzer</th>
+                  <td>12.430</td>
+                  <td>13.105</td>
+                  <td>14.890</td>
+                </tr>
+                <tr>
+                  <th scope="row">Conversion Rate</th>
+                  <td>3,2 %</td>
+                  <td>3,5 %</td>
+                  <td>3,8 %</td>
+                </tr>
+                <tr>
+                  <th scope="row">Net Promoter Score</th>
+                  <td>41</td>
+                  <td>44</td>
+                  <td>46</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

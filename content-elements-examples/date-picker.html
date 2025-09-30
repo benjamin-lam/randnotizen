@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Date Picker – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Date Picker.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Date Picker</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Komponente zur Auswahl einzelner Daten oder Zeitspannen.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="WAI-ARIA Grid"><span aria-hidden="true">⚙️</span>WAI-ARIA Grid</span><span class="meta-pill" role="listitem" aria-label="Tastatur Navigation"><span aria-hidden="true">⚙️</span>Tastatur Navigation</span><span class="meta-pill" role="listitem" aria-label="Locale aware"><span aria-hidden="true">⚙️</span>Locale aware</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <div class="date-picker" data-date-picker data-start-month="2025-05">
+            <div class="input-group">
+              <label for="date-input">Reisedatum</label>
+              <input class="input" id="date-input" name="date" type="text" autocomplete="off" inputmode="numeric" placeholder="TT.MM.JJJJ" data-date-input aria-describedby="date-hint">
+              <p id="date-hint" class="form-help">Mit Pfeiltasten durch den Kalender navigieren. Native Eingabe: <input type="date" aria-label="Datum auswählen" style="display:inline-block; max-width: 150px;"></p>
+            </div>
+            <section class="card card--bordered" aria-labelledby="calendar-title">
+              <div class="flex-between">
+                <button class="icon-button" type="button" data-calendar-prev aria-label="Vorheriger Monat">
+                  <span aria-hidden="true">◀</span>
+                </button>
+                <p id="calendar-title" class="text-muted" data-calendar-title>Mai 2025</p>
+                <button class="icon-button" type="button" data-calendar-next aria-label="Nächster Monat">
+                  <span aria-hidden="true">▶</span>
+                </button>
+              </div>
+              <div class="calendar-weekdays" aria-hidden="true">
+                <span>Mo</span><span>Di</span><span>Mi</span><span>Do</span><span>Fr</span><span>Sa</span><span>So</span>
+              </div>
+              <div class="calendar-grid" role="grid" aria-labelledby="calendar-title" data-calendar-grid></div>
+            </section>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

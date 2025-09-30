@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Newsletter Opt-in – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Newsletter Opt-in.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Newsletter Opt-in</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Formular zum Anmelden für einen Newsletter mit Double-Opt-In.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Double Opt-in Hinweis"><span aria-hidden="true">⚙️</span>Double Opt-in Hinweis</span><span class="meta-pill" role="listitem" aria-label="Inline Validierung"><span aria-hidden="true">⚙️</span>Inline Validierung</span><span class="meta-pill" role="listitem" aria-label="Success Feedback"><span aria-hidden="true">⚙️</span>Success Feedback</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <form class="newsletter-form" data-newsletter>
+            <div class="newsletter-form__fields">
+              <div class="input-group">
+                <label for="newsletter-email">E-Mail-Adresse</label>
+                <input class="input" id="newsletter-email" name="email" type="email" placeholder="you@example.com" required>
+                <p class="form-help">Wir senden einen Double-Opt-in-Link.</p>
+              </div>
+              <button class="btn" type="submit">Anmelden</button>
+            </div>
+            <label class="input-group" style="flex-direction: row; gap: 0.5rem; align-items: center;">
+              <input type="checkbox" name="news-privacy" required>
+              <span>Ich stimme dem Erhalt des Newsletters zu.</span>
+            </label>
+            <p class="form-help" data-newsletter-feedback aria-live="polite"></p>
+          </form>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Review Form – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Review Form.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Review Form</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Formular zum Abgeben von Bewertungen mit Rating und Textfeld.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Live Rating"><span aria-hidden="true">⚙️</span>Live Rating</span><span class="meta-pill" role="listitem" aria-label="Form Feedback"><span aria-hidden="true">⚙️</span>Form Feedback</span><span class="meta-pill" role="listitem" aria-label="Validierung"><span aria-hidden="true">⚙️</span>Validierung</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <form class="review-form" data-review-form>
+            <div class="input-group">
+              <label for="review-title">Titel Ihrer Bewertung</label>
+              <input class="input" id="review-title" required maxlength="80">
+            </div>
+            <fieldset class="stack-md" aria-describedby="rating-desc">
+              <legend>Sternebewertung</legend>
+              <p id="rating-desc" class="form-help">Mit Pfeiltasten auswählen. Aktuell: <span data-rating-output>0</span> Sterne.</p>
+              <div class="rating-inputs" role="radiogroup">
+                <input type="radio" id="rating-5" name="rating" value="5">
+                <label for="rating-5" aria-label="5 Sterne">★</label>
+                <input type="radio" id="rating-4" name="rating" value="4">
+                <label for="rating-4" aria-label="4 Sterne">★</label>
+                <input type="radio" id="rating-3" name="rating" value="3">
+                <label for="rating-3" aria-label="3 Sterne">★</label>
+                <input type="radio" id="rating-2" name="rating" value="2">
+                <label for="rating-2" aria-label="2 Sterne">★</label>
+                <input type="radio" id="rating-1" name="rating" value="1">
+                <label for="rating-1" aria-label="1 Stern">★</label>
+              </div>
+            </fieldset>
+            <div class="input-group">
+              <label for="review-comment">Ihre Erfahrung</label>
+              <textarea class="input" id="review-comment" rows="4" required></textarea>
+            </div>
+            <button class="btn" type="submit">Bewertung senden</button>
+            <p class="form-help" aria-live="polite" data-review-feedback></p>
+          </form>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

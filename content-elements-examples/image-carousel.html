@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Carousel – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Image Carousel.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Image Carousel</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Slider-Komponente für mehrere Bilder mit optionaler Lightbox.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Swipe-ready"><span aria-hidden="true">⚙️</span>Swipe-ready</span><span class="meta-pill" role="listitem" aria-label="ARIA Live"><span aria-hidden="true">⚙️</span>ARIA Live</span><span class="meta-pill" role="listitem" aria-label="Lazy Loading"><span aria-hidden="true">⚙️</span>Lazy Loading</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="carousel" data-carousel aria-roledescription="Karussell" aria-label="Produktbilder">
+            <div class="carousel__slides" data-carousel-track>
+              <figure class="carousel__slide" data-carousel-slide>
+                <img src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?auto=format&fit=crop&w=900&q=80" alt="Offenes, helles Wohnzimmer" loading="lazy">
+                <figcaption class="visually-hidden">Wohnbereich mit natürlichem Licht</figcaption>
+              </figure>
+              <figure class="carousel__slide" data-carousel-slide>
+                <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?auto=format&fit=crop&w=900&q=80" alt="Moderne Küche mit Holzdekor" loading="lazy">
+                <figcaption class="visually-hidden">Moderne Küche</figcaption>
+              </figure>
+              <figure class="carousel__slide" data-carousel-slide>
+                <img src="https://images.unsplash.com/photo-1505691723518-36a5ac3be353?auto=format&fit=crop&w=900&q=80" alt="Gemütliches Schlafzimmer mit Pflanzen" loading="lazy">
+                <figcaption class="visually-hidden">Schlafzimmer mit Pflanzen</figcaption>
+              </figure>
+            </div>
+            <div class="carousel__controls" aria-hidden="true">
+              <button class="icon-button" type="button" data-carousel-prev aria-label="Vorheriges Bild">◀</button>
+              <button class="icon-button" type="button" data-carousel-next aria-label="Nächstes Bild">▶</button>
+            </div>
+          </section>
+          <div class="carousel__dots" role="tablist" data-carousel-dots>
+            <button class="carousel__dot" type="button" role="tab" aria-controls="slide-1" aria-current="true"></button>
+            <button class="carousel__dot" type="button" role="tab" aria-controls="slide-2"></button>
+            <button class="carousel__dot" type="button" role="tab" aria-controls="slide-3"></button>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

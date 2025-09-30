@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Breadcrumbs – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Breadcrumbs.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Breadcrumbs</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Hierarchische Navigation zur Orientierung im Seitensystem.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Semantische Navigation"><span aria-hidden="true">⚙️</span>Semantische Navigation</span><span class="meta-pill" role="listitem" aria-label="Touch-Ziele optimiert"><span aria-hidden="true">⚙️</span>Touch-Ziele optimiert</span><span class="meta-pill" role="listitem" aria-label="SR-Label"><span aria-hidden="true">⚙️</span>SR-Label</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <nav class="card" aria-label="Brotkrumen">
+            <ol class="breadcrumbs">
+              <li class="breadcrumbs__item"><a href="#">Startseite</a></li>
+              <li class="breadcrumbs__item"><a href="#">Dokumentation</a></li>
+              <li class="breadcrumbs__item"><a href="#">Designsystem</a></li>
+              <li class="breadcrumbs__item" aria-current="page"><span>Content Elemente</span></li>
+            </ol>
+          </nav>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

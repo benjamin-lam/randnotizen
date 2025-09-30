@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Filter Facets – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Filter Facets.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Filter Facets</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Facettierte Filtersteuerung mit Chips, Listen oder Slidern.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Akkordeon"><span aria-hidden="true">⚙️</span>Akkordeon</span><span class="meta-pill" role="listitem" aria-label="Checkbox Gruppen"><span aria-hidden="true">⚙️</span>Checkbox Gruppen</span><span class="meta-pill" role="listitem" aria-label="Keyboard Fokus"><span aria-hidden="true">⚙️</span>Keyboard Fokus</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <aside class="facets" aria-label="Filter">
+            <details open>
+              <summary>Rollen</summary>
+              <div class="facets__options">
+                <label><input type="checkbox" name="role" value="design" checked> Design</label>
+                <label><input type="checkbox" name="role" value="engineering"> Engineering</label>
+                <label><input type="checkbox" name="role" value="product"> Produkt</label>
+              </div>
+            </details>
+            <details>
+              <summary>Standorte</summary>
+              <div class="facets__options">
+                <label><input type="checkbox" name="location" value="remote"> Remote</label>
+                <label><input type="checkbox" name="location" value="berlin"> Berlin</label>
+                <label><input type="checkbox" name="location" value="muenchen"> München</label>
+              </div>
+            </details>
+          </aside>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Table of Contents – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Table of Contents.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Table of Contents</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Strukturierte Liste von Ankern, die durch längere Inhalte navigiert.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Toggle mobil"><span aria-hidden="true">⚙️</span>Toggle mobil</span><span class="meta-pill" role="listitem" aria-label="Scrollspy ready"><span aria-hidden="true">⚙️</span>Scrollspy ready</span><span class="meta-pill" role="listitem" aria-label="Semantische nav"><span aria-hidden="true">⚙️</span>Semantische nav</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <nav class="toc" data-toc aria-label="Inhaltsverzeichnis">
+            <button class="btn btn--ghost toc__toggle" type="button" data-toc-toggle aria-expanded="false">
+              <span>Inhaltsverzeichnis</span>
+              <span aria-hidden="true">▾</span>
+            </button>
+            <ol class="toc__list" data-toc-list hidden>
+              <li><a href="#abschnitt-1">1. Einleitung</a></li>
+              <li><a href="#abschnitt-2">2. Umsetzung</a></li>
+              <li><a href="#abschnitt-3">3. Ergebnisse</a></li>
+            </ol>
+          </nav>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

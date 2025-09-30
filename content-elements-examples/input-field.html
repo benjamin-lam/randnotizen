@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Input Field – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Input Field.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Input Field</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Standardisierte Eingabefelder für Text, E-Mail oder Nummern mit optionalen Masken.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Inline Fehlermeldung"><span aria-hidden="true">⚙️</span>Inline Fehlermeldung</span><span class="meta-pill" role="listitem" aria-label="Charakterbegrenzung"><span aria-hidden="true">⚙️</span>Charakterbegrenzung</span><span class="meta-pill" role="listitem" aria-label="State Styling"><span aria-hidden="true">⚙️</span>State Styling</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="input-field" aria-live="polite">
+            <div class="input-group">
+              <label for="input-username">Benutzername</label>
+              <input class="input" id="input-username" name="username" type="text" placeholder="z. B. ux-nerd" minlength="3" maxlength="20" required data-input-with-counter>
+              <p class="form-help"><span data-input-counter>0</span>/20 Zeichen</p>
+            </div>
+            <div class="input-group">
+              <label for="input-password">Passwort</label>
+              <div style="position: relative;">
+                <input class="input" id="input-password" name="password" type="password" required aria-describedby="password-hint">
+                <button class="btn btn--ghost" type="button" data-toggle-password style="position:absolute; top:50%; right:0.5rem; transform:translateY(-50%);">Anzeigen</button>
+              </div>
+              <p id="password-hint" class="form-help">Mindestens 8 Zeichen, Groß-/Kleinschreibung sowie Zahl.</p>
+            </div>
+          </section>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>
