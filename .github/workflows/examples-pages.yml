@@ -73,55 +73,7 @@ jobs:
           echo "</ul>" >> dist/index.html
 
           # 4b) Fehlende index.html-Dateien in Unterordnern erzeugen
-          python3 - <<'PY'
-import html
-import os
-
-base = "dist"
-
-for root, dirs, files in os.walk(base):
-    index_path = os.path.join(root, "index.html")
-    if os.path.exists(index_path):
-        continue
-
-    rel = os.path.relpath(root, base)
-    if rel == ".":
-        display = "/"
-    else:
-        display = "/" + rel.replace(os.sep, "/") + "/"
-
-    entries = []
-
-    for directory in sorted(dirs):
-        entries.append(f'<li><a href="{directory}/index.html">{html.escape(directory)}/</a></li>')
-
-    for filename in sorted(files):
-        lower = filename.lower()
-        if lower == "index.html" or not lower.endswith((".html", ".htm")):
-            continue
-        entries.append(f'<li><a href="{filename}">{html.escape(filename)}</a></li>')
-
-    if not entries:
-        entries.append("<li><em>Keine HTML-Inhalte in diesem Verzeichnis.</em></li>")
-
-    with open(index_path, "w", encoding="utf-8") as fh:
-        fh.write(f"""<!doctype html>
-<meta charset=\"utf-8\">
-<title>Index von {html.escape(display)}</title>
-<meta name=\"viewport\" content=\"width=device-width,initial-scale=1\">
-<style>
-  body{{font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:2rem;max-width:72ch}}
-  h1{{margin:0 0 1rem}}
-  ul{{padding-left:1.2rem}}
-  a{{word-break:break-word}}
-  code{{background:#f6f8fa;padding:.1rem .3rem;border-radius:.25rem}}
-</style>
-<h1>Index von <code>{html.escape(display)}</code></h1>
-<ul>
-{'\n'.join(entries)}
-</ul>
-""")
-PY
+          python3 .github/scripts/generate_folder_indexes.py dist
 
           # 5) 404 → zurück zur Übersicht
           cat > dist/404.html <<'HTML'
