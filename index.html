@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Randnotizen – Beispiel- und Layoutbibliothek</title>
+    <meta
+      name="description"
+      content="Kuratiertes Verzeichnis aller Content-Elemente, Frontend-Guides und Layout-Demos der Randnotizen."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --color-background: #f5f6fb;
+        --color-surface: #ffffff;
+        --color-surface-alt: #eef1ff;
+        --color-border: rgba(59, 73, 223, 0.12);
+        --color-border-strong: rgba(59, 73, 223, 0.25);
+        --color-text: #1f2433;
+        --color-muted: #5a6376;
+        --color-primary: #3454ff;
+        --color-primary-dark: #2036b7;
+        --shadow-card: 0 24px 48px rgba(31, 36, 51, 0.12);
+        --radius-lg: 1.25rem;
+        --radius-md: 0.85rem;
+        --radius-sm: 0.65rem;
+        --max-width: min(1200px, 100%);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      html {
+        font-size: 16px;
+      }
+
+      body {
+        margin: 0;
+        font-family: "Inter", "Segoe UI", system-ui, -apple-system, sans-serif;
+        line-height: 1.6;
+        background: var(--color-background);
+        color: var(--color-text);
+      }
+
+      a {
+        color: inherit;
+        text-decoration-color: rgba(52, 84, 255, 0.35);
+        text-decoration-thickness: 0.1em;
+        text-underline-offset: 0.2em;
+        transition: color 180ms ease, text-decoration-color 180ms ease;
+      }
+
+      a:hover,
+      a:focus-visible {
+        color: var(--color-primary-dark);
+        text-decoration-color: currentColor;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 1rem;
+        padding: 0.75rem 1.25rem;
+        background: var(--color-primary);
+        color: #fff;
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+        text-decoration: none;
+        z-index: 20;
+      }
+
+      .skip-link:focus {
+        left: 1rem;
+      }
+
+      .site-header {
+        padding: clamp(2.5rem, 7vw, 4.5rem) 1.5rem 2rem;
+        text-align: center;
+        background: radial-gradient(circle at top, #ffffff 0%, #eef1ff 100%);
+      }
+
+      .site-header__inner {
+        margin: 0 auto;
+        max-width: var(--max-width);
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .site-header__badge {
+        justify-self: center;
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.25rem 0.75rem;
+        border-radius: 999px;
+        background: rgba(52, 84, 255, 0.08);
+        color: var(--color-primary-dark);
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+      }
+
+      .site-header__title {
+        margin: 0;
+        font-size: clamp(2rem, 5vw, 3.15rem);
+        line-height: 1.1;
+        font-weight: 700;
+      }
+
+      .site-header__lead {
+        margin: 0 auto;
+        max-width: min(640px, 100%);
+        color: var(--color-muted);
+        font-size: clamp(1rem, 2vw, 1.125rem);
+      }
+
+      .category-rail {
+        position: sticky;
+        top: 0;
+        z-index: 15;
+        background: rgba(245, 246, 251, 0.95);
+        backdrop-filter: blur(12px);
+        border-bottom: 1px solid rgba(31, 36, 51, 0.05);
+      }
+
+      .category-rail__list {
+        margin: 0;
+        padding: 0.75rem clamp(1rem, 5vw, 2rem) 0.5rem;
+        list-style: none;
+        display: flex;
+        gap: 0.75rem;
+        overflow-x: auto;
+        scrollbar-width: thin;
+        scroll-snap-type: x mandatory;
+        scroll-padding-inline: clamp(1rem, 5vw, 2rem);
+      }
+
+      .category-rail__item {
+        flex: 0 0 auto;
+        scroll-snap-align: start;
+      }
+
+      .category-rail__link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.4rem;
+        padding: 0.55rem 1.1rem;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.9);
+        border: 1px solid rgba(52, 84, 255, 0.16);
+        font-weight: 600;
+        font-size: 0.95rem;
+        white-space: nowrap;
+      }
+
+      .category-rail__link:focus-visible {
+        outline: 3px solid rgba(52, 84, 255, 0.4);
+        outline-offset: 2px;
+      }
+
+      #ausgabe {
+        display: grid;
+        gap: clamp(1.5rem, 5vw, 2.5rem);
+        padding: clamp(2rem, 6vw, 3.5rem) clamp(1rem, 5vw, 2.75rem) clamp(3rem, 7vw, 4.5rem);
+        max-width: var(--max-width);
+        margin: 0 auto;
+        grid-auto-rows: 1fr;
+      }
+
+      @media (min-width: 720px) {
+        #ausgabe {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      @media (min-width: 1100px) {
+        #ausgabe {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+      }
+
+      section.rubric {
+        scroll-margin-top: 6.5rem;
+      }
+
+      .rubric-card {
+        background: var(--color-surface);
+        border-radius: var(--radius-lg);
+        padding: clamp(1.5rem, 4vw, 2.25rem);
+        display: grid;
+        gap: 1.25rem;
+        border: 1px solid var(--color-border);
+        box-shadow: var(--shadow-card);
+        height: 100%;
+      }
+
+      .rubric-card__header {
+        display: grid;
+        gap: 0.45rem;
+      }
+
+      .rubric-card__eyebrow {
+        margin: 0;
+        text-transform: uppercase;
+        font-size: 0.78rem;
+        letter-spacing: 0.12em;
+        font-weight: 600;
+        color: var(--color-primary-dark);
+      }
+
+      .rubric-card__title {
+        margin: 0;
+        font-size: clamp(1.4rem, 2vw, 1.8rem);
+        line-height: 1.2;
+      }
+
+      .rubric-card__teaser {
+        margin: 0;
+        color: var(--color-muted);
+        font-size: 0.98rem;
+      }
+
+      .rubric-card__cta {
+        justify-self: flex-start;
+        padding: 0.45rem 0.9rem;
+        border-radius: var(--radius-sm);
+        font-weight: 600;
+        color: var(--color-primary);
+        border: 1px solid rgba(52, 84, 255, 0.25);
+        background: rgba(52, 84, 255, 0.08);
+      }
+
+      .rubric-card__cta:focus-visible {
+        outline: 3px solid rgba(52, 84, 255, 0.4);
+        outline-offset: 3px;
+      }
+
+      .rubric-card__content {
+        display: grid;
+        gap: 1rem;
+      }
+
+      .rubric-card__subheading {
+        margin: 0;
+        font-size: 0.95rem;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--color-muted);
+      }
+
+      .rubric-card__list {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: grid;
+        gap: 0.75rem;
+      }
+
+      .rubric-card__list li {
+        border-radius: var(--radius-md);
+        padding: 0.85rem 0.95rem;
+        background: linear-gradient(120deg, rgba(238, 241, 255, 0.65), rgba(255, 255, 255, 0.95));
+        border: 1px solid rgba(52, 84, 255, 0.12);
+        display: grid;
+        gap: 0.25rem;
+      }
+
+      .rubric-card__link {
+        font-weight: 600;
+        display: inline-flex;
+        flex-wrap: wrap;
+        gap: 0.25rem 0.5rem;
+        align-items: baseline;
+      }
+
+      .rubric-card__link-title {
+        font-size: 1rem;
+      }
+
+      .rubric-card__link-meta {
+        font-size: 0.85rem;
+        color: var(--color-muted);
+      }
+
+      .rubric-card__doc {
+        font-size: 0.85rem;
+        color: var(--color-primary);
+        font-weight: 500;
+      }
+
+      .rubric-card__list--compact li {
+        padding: 0.65rem 0.75rem;
+      }
+
+      .rubric-card__list--columns {
+        gap: 0.5rem;
+      }
+
+      @media (min-width: 860px) {
+        .rubric-card__list--columns {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+      }
+
+      .rubric-card__footnote {
+        margin: 0;
+        font-size: 0.85rem;
+        color: var(--color-muted);
+      }
+
+      .site-footer {
+        margin-top: clamp(2rem, 6vw, 3.5rem);
+        padding: 2rem 1rem 3rem;
+        text-align: center;
+        color: var(--color-muted);
+        font-size: 0.9rem;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#ausgabe">Zum Inhalt springen</a>
+    <header class="site-header" role="banner">
+      <div class="site-header__inner">
+        <p class="site-header__badge">Kuratiertes Archiv</p>
+        <h1 class="site-header__title">Beispiele, Patterns &amp; Layouts der Randnotizen</h1>
+        <p class="site-header__lead">
+          Alle Beispielseiten aus Content-Elementen, Frontend-Guides und Layout-Galerien – in Rubriken sortiert, schnell
+          erreichbar und für mobile Redaktionen gedacht.
+        </p>
+      </div>
+    </header>
+    <nav class="category-rail" aria-label="Rubrikennavigation">
+      <ul class="category-rail__list">
+        <li class="category-rail__item"><a class="category-rail__link" href="#rubrik-formulare">Formulare</a></li>
+        <li class="category-rail__item"><a class="category-rail__link" href="#rubrik-navigation">Navigation</a></li>
+        <li class="category-rail__item"><a class="category-rail__link" href="#rubrik-medien">Medien</a></li>
+        <li class="category-rail__item"><a class="category-rail__link" href="#rubrik-feedback">Feedback</a></li>
+        <li class="category-rail__item"><a class="category-rail__link" href="#rubrik-commerce">Commerce</a></li>
+        <li class="category-rail__item"><a class="category-rail__link" href="#rubrik-service">Service</a></li>
+        <li class="category-rail__item"><a class="category-rail__link" href="#rubrik-layouts">Layouts</a></li>
+        <li class="category-rail__item"><a class="category-rail__link" href="#rubrik-archiv">Archiv</a></li>
+      </ul>
+    </nav>
+    <main id="ausgabe" tabindex="-1">
+      <section id="rubrik-formulare" class="rubric" aria-labelledby="rubrik-formulare-title">
+        <article class="rubric-card">
+          <header class="rubric-card__header">
+            <p class="rubric-card__eyebrow">Content Elements &amp; Journeys</p>
+            <h2 id="rubrik-formulare-title" class="rubric-card__title">Formulare &amp; Eingaben</h2>
+          </header>
+          <p class="rubric-card__teaser">
+            Validierte Formulare, modulare Eingabefelder und komplexe Wizards für jeden Einstiegspunkt der Customer Journey.
+          </p>
+          <a class="rubric-card__cta" href="#rubrik-formulare-liste" aria-label="Weiterlesen zur Rubrik Formulare und Eingaben"
+            >Weiterlesen</a
+          >
+          <div class="rubric-card__content" id="rubrik-formulare-liste">
+            <h3 class="rubric-card__subheading">Interaktive Demos</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/contact-form.html">
+                  <span class="rubric-card__link-title">Kontaktformular</span>
+                  <span class="rubric-card__link-meta">Live-Demo mit Validierung</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/contact-form.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/input-field.html">
+                  <span class="rubric-card__link-title">Eingabefeld-Patterns</span>
+                  <span class="rubric-card__link-meta">Zustände &amp; Masken</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/input-field.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/file-uploader.html">
+                  <span class="rubric-card__link-title">Datei-Uploader</span>
+                  <span class="rubric-card__link-meta">Drag &amp; Drop inklusive Fortschritt</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/file-uploader.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/dropdown-select.html">
+                  <span class="rubric-card__link-title">Dropdown &amp; Select</span>
+                  <span class="rubric-card__link-meta">Responsiv &amp; tastaturfreundlich</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/dropdown-select.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/radio-checkbox-toggle.html">
+                  <span class="rubric-card__link-title">Radio, Checkbox &amp; Toggle</span>
+                  <span class="rubric-card__link-meta">Zustände &amp; Gruppierungen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/radio-checkbox-toggle.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/date-picker.html">
+                  <span class="rubric-card__link-title">Datumsauswahl</span>
+                  <span class="rubric-card__link-meta">Kalender mit ARIA Grid</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/date-picker.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/multi-step-wizard.html">
+                  <span class="rubric-card__link-title">Multi-Step Wizard</span>
+                  <span class="rubric-card__link-meta">Progressive Formstrecken</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/multi-step-wizard.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/newsletter-optin.html">
+                  <span class="rubric-card__link-title">Newsletter Opt-in</span>
+                  <span class="rubric-card__link-meta">Double-Opt-in Journey</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/newsletter-optin.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/review-form.html">
+                  <span class="rubric-card__link-title">Bewertungsformular</span>
+                  <span class="rubric-card__link-meta">Barrierefreie Eingabe von Rezensionen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/review-form.md">Dokumentation</a>
+              </li>
+            </ul>
+            <h3 class="rubric-card__subheading">Guides &amp; Journeys</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="frontend/user/login-registration.md">
+                  <span class="rubric-card__link-title">Login &amp; Registrierung</span>
+                  <span class="rubric-card__link-meta">Account Onboarding</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/user/guest-checkout.md">
+                  <span class="rubric-card__link-title">Gast-Checkout</span>
+                  <span class="rubric-card__link-meta">Schneller Abschluss ohne Konto</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/user/wishlist.md">
+                  <span class="rubric-card__link-title">Wunschliste &amp; Merkzettel</span>
+                  <span class="rubric-card__link-meta">Persistente Favoriten</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/misc/newsletter-optin.md">
+                  <span class="rubric-card__link-title">Newsletter-Opt-in Konzepte</span>
+                  <span class="rubric-card__link-meta">CRM-Anbindung &amp; DSGVO</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <section id="rubrik-navigation" class="rubric" aria-labelledby="rubrik-navigation-title">
+        <article class="rubric-card">
+          <header class="rubric-card__header">
+            <p class="rubric-card__eyebrow">Orientierung &amp; Suchen</p>
+            <h2 id="rubrik-navigation-title" class="rubric-card__title">Navigation &amp; Orientierung</h2>
+          </header>
+          <p class="rubric-card__teaser">
+            Mikro- und Makronavigation, facettierte Suche sowie semantische Hilfen, damit Menschen jede Seite sicher erreichen.
+          </p>
+          <a class="rubric-card__cta" href="#rubrik-navigation-liste" aria-label="Weiterlesen zur Rubrik Navigation und Orientierung"
+            >Weiterlesen</a
+          >
+          <div class="rubric-card__content" id="rubrik-navigation-liste">
+            <h3 class="rubric-card__subheading">Content-Elemente</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/breadcrumbs.html">
+                  <span class="rubric-card__link-title">Breadcrumbs</span>
+                  <span class="rubric-card__link-meta">Hierarchie mit Screenreader-Titeln</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/breadcrumbs.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/filter-facets.html">
+                  <span class="rubric-card__link-title">Filter &amp; Facetten</span>
+                  <span class="rubric-card__link-meta">Facettierte Ergebnislisten</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/filter-facets.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/pagination.html">
+                  <span class="rubric-card__link-title">Pagination</span>
+                  <span class="rubric-card__link-meta">Seitensprünge für lange Listen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/pagination.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/search.html">
+                  <span class="rubric-card__link-title">Suche &amp; Autovervollständigung</span>
+                  <span class="rubric-card__link-meta">Suchleiste mit Treffervorschlägen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/search.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/table-of-contents.html">
+                  <span class="rubric-card__link-title">Inhaltsverzeichnis</span>
+                  <span class="rubric-card__link-meta">Anker-Navigation für lange Seiten</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/table-of-contents.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/tags-badges.html">
+                  <span class="rubric-card__link-title">Tags &amp; Badges</span>
+                  <span class="rubric-card__link-meta">Labeling &amp; Meta-Informationen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/tags-badges.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/share-buttons.html">
+                  <span class="rubric-card__link-title">Share-Buttons</span>
+                  <span class="rubric-card__link-meta">Social &amp; Copy Actions</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/share-buttons.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/map-embed.html">
+                  <span class="rubric-card__link-title">Karten-Einbindung</span>
+                  <span class="rubric-card__link-meta">Interaktive Standortkarte</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/map-embed.md">Dokumentation</a>
+              </li>
+            </ul>
+            <h3 class="rubric-card__subheading">Navigation Guides</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="frontend/navigation/breadcrumbs.md">
+                  <span class="rubric-card__link-title">Breadcrumbs in Shops</span>
+                  <span class="rubric-card__link-meta">Kontext &amp; Schema.org</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/navigation/filters-facets.md">
+                  <span class="rubric-card__link-title">Filter &amp; Facetten UX</span>
+                  <span class="rubric-card__link-meta">Trefferqualität &amp; Performance</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/navigation/search-autocomplete.md">
+                  <span class="rubric-card__link-title">Search Autocomplete</span>
+                  <span class="rubric-card__link-meta">Rangierung &amp; Fehlertoleranz</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/navigation/sorting-options.md">
+                  <span class="rubric-card__link-title">Sortier-Optionen</span>
+                  <span class="rubric-card__link-meta">Nutzende führen statt verwirren</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/layout/navigation-megamenu.md">
+                  <span class="rubric-card__link-title">Mega-Menüs strukturieren</span>
+                  <span class="rubric-card__link-meta">IA &amp; Progressive Disclosure</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/layout/sticky-header.md">
+                  <span class="rubric-card__link-title">Sticky Header Patterns</span>
+                  <span class="rubric-card__link-meta">Scroll-Verhalten &amp; Fokus</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/layout/accordion.md">
+                  <span class="rubric-card__link-title">Akkordeons &amp; Gliederungen</span>
+                  <span class="rubric-card__link-meta">Mobile Navigation &amp; FAQs</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/misc/storefinder.md">
+                  <span class="rubric-card__link-title">Storefinder &amp; Standortsuche</span>
+                  <span class="rubric-card__link-meta">Geomaps &amp; Öffnungszeiten</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <section id="rubrik-medien" class="rubric" aria-labelledby="rubrik-medien-title">
+        <article class="rubric-card">
+          <header class="rubric-card__header">
+            <p class="rubric-card__eyebrow">Storytelling &amp; Inhalte</p>
+            <h2 id="rubrik-medien-title" class="rubric-card__title">Medien &amp; Storytelling</h2>
+          </header>
+          <p class="rubric-card__teaser">
+            Visuals, Typografie und begleitende Module für Podcasts, Longreads oder Code-Beispiele – inklusive Responsivität.
+          </p>
+          <a class="rubric-card__cta" href="#rubrik-medien-liste" aria-label="Weiterlesen zur Rubrik Medien und Storytelling"
+            >Weiterlesen</a
+          >
+          <div class="rubric-card__content" id="rubrik-medien-liste">
+            <h3 class="rubric-card__subheading">Content-Elemente</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/audio-embed.html">
+                  <span class="rubric-card__link-title">Audio-Embed</span>
+                  <span class="rubric-card__link-meta">Player mit Playlist &amp; Keyboardsteuerung</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/audio-embed.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/video-embed.html">
+                  <span class="rubric-card__link-title">Video-Embed</span>
+                  <span class="rubric-card__link-meta">Responsive Medienrahmen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/video-embed.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/image-carousel.html">
+                  <span class="rubric-card__link-title">Bildkarussell</span>
+                  <span class="rubric-card__link-meta">Slider mit Touch &amp; Tastatur</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/image-carousel.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/image-with-caption.html">
+                  <span class="rubric-card__link-title">Bild mit Caption</span>
+                  <span class="rubric-card__link-meta">Responsive Bildbeschreibungen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/image-with-caption.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/callout-box.html">
+                  <span class="rubric-card__link-title">Callout Box</span>
+                  <span class="rubric-card__link-meta">Hinweise &amp; Kontextmodule</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/callout-box.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/code-snippets.html">
+                  <span class="rubric-card__link-title">Code Snippets</span>
+                  <span class="rubric-card__link-meta">Syntax-Highlighting &amp; Copy Buttons</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/code-snippets.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/table.html">
+                  <span class="rubric-card__link-title">Tabellen</span>
+                  <span class="rubric-card__link-meta">Scrollbare &amp; sortierbare Daten</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/table.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/typography.html">
+                  <span class="rubric-card__link-title">Typografie-System</span>
+                  <span class="rubric-card__link-meta">Redaktionelle Styles für Texte</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/typography.md">Dokumentation</a>
+              </li>
+            </ul>
+            <h3 class="rubric-card__subheading">Frontend-Guides</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="frontend/layout/hero-banner.md">
+                  <span class="rubric-card__link-title">Hero-Banner</span>
+                  <span class="rubric-card__link-meta">Storytelling above the fold</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/layout/footer.md">
+                  <span class="rubric-card__link-title">Footer-Designs</span>
+                  <span class="rubric-card__link-meta">Navigation, Trust &amp; Service</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <section id="rubrik-feedback" class="rubric" aria-labelledby="rubrik-feedback-title">
+        <article class="rubric-card">
+          <header class="rubric-card__header">
+            <p class="rubric-card__eyebrow">Status &amp; Messaging</p>
+            <h2 id="rubrik-feedback-title" class="rubric-card__title">Feedback &amp; Systemmeldungen</h2>
+          </header>
+          <p class="rubric-card__teaser">
+            Komponenten für Ladezustände, Tooltips und Dialoge, die Nutzer:innen sicher durch Prozesse begleiten.
+          </p>
+          <a class="rubric-card__cta" href="#rubrik-feedback-liste" aria-label="Weiterlesen zur Rubrik Feedback und Systemmeldungen"
+            >Weiterlesen</a
+          >
+          <div class="rubric-card__content" id="rubrik-feedback-liste">
+            <h3 class="rubric-card__subheading">Content-Elemente</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/notification-banner.html">
+                  <span class="rubric-card__link-title">Notification Banner</span>
+                  <span class="rubric-card__link-meta">Inline Alerts &amp; Hinweise</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/notification-banner.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/toast.html">
+                  <span class="rubric-card__link-title">Toast-Nachrichten</span>
+                  <span class="rubric-card__link-meta">Kontextuelles Feedback</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/toast.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/tooltip.html">
+                  <span class="rubric-card__link-title">Tooltips</span>
+                  <span class="rubric-card__link-meta">Hilfetexte mit Fokus-Management</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/tooltip.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/popover.html">
+                  <span class="rubric-card__link-title">Popover</span>
+                  <span class="rubric-card__link-meta">Kontextuelle Overlays</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/popover.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/modal.html">
+                  <span class="rubric-card__link-title">Modal Dialog</span>
+                  <span class="rubric-card__link-meta">Fokusfallen &amp; Escape-Key</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/modal.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/skeleton-loader.html">
+                  <span class="rubric-card__link-title">Skeleton Loader</span>
+                  <span class="rubric-card__link-meta">Progressive Placeholder</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/skeleton-loader.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/loading-spinner.html">
+                  <span class="rubric-card__link-title">Loading Spinner</span>
+                  <span class="rubric-card__link-meta">ARIA Live Updates</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/loading-spinner.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/progress-stepper.html">
+                  <span class="rubric-card__link-title">Progress Stepper</span>
+                  <span class="rubric-card__link-meta">Schritt-für-Schritt Navigation</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/progress-stepper.md">Dokumentation</a>
+              </li>
+            </ul>
+            <h3 class="rubric-card__subheading">Service-Feedback</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/review-stars.html">
+                  <span class="rubric-card__link-title">Review Stars</span>
+                  <span class="rubric-card__link-meta">Bewertungen &amp; Vertrauensfaktoren</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/review-stars.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/empty-state.html">
+                  <span class="rubric-card__link-title">Empty States</span>
+                  <span class="rubric-card__link-meta">Fallbacks &amp; Hilfestellungen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/empty-state.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/layout/notification-banner.md">
+                  <span class="rubric-card__link-title">Notification Guidelines</span>
+                  <span class="rubric-card__link-meta">Timing &amp; Priorisierung</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/layout/responsive-design.md">
+                  <span class="rubric-card__link-title">Responsive States</span>
+                  <span class="rubric-card__link-meta">Breakpoints &amp; Zustände</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/misc/accessibility.md">
+                  <span class="rubric-card__link-title">Accessibility Quick Wins</span>
+                  <span class="rubric-card__link-meta">Keyboard, Kontrast, Fokus</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <section id="rubrik-commerce" class="rubric" aria-labelledby="rubrik-commerce-title">
+        <article class="rubric-card">
+          <header class="rubric-card__header">
+            <p class="rubric-card__eyebrow">Conversion &amp; Merch</p>
+            <h2 id="rubrik-commerce-title" class="rubric-card__title">Commerce &amp; Produktwelten</h2>
+          </header>
+          <p class="rubric-card__teaser">
+            Produktpräsentationen, Checkout-Muster und Vertrauenselemente für performante Commerce-Strecken.
+          </p>
+          <a class="rubric-card__cta" href="#rubrik-commerce-liste" aria-label="Weiterlesen zur Rubrik Commerce und Produktwelten"
+            >Weiterlesen</a
+          >
+          <div class="rubric-card__content" id="rubrik-commerce-liste">
+            <h3 class="rubric-card__subheading">Commerce Demos</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/product-card.html">
+                  <span class="rubric-card__link-title">Produktkarte</span>
+                  <span class="rubric-card__link-meta">Merchandising Cards</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/product-card.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/price-comparison.html">
+                  <span class="rubric-card__link-title">Preisvergleich</span>
+                  <span class="rubric-card__link-meta">Tarife nebeneinander</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/price-comparison.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/mini-cart.html">
+                  <span class="rubric-card__link-title">Mini-Cart</span>
+                  <span class="rubric-card__link-meta">Floating Warenkorb</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/mini-cart.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/review-stars.html">
+                  <span class="rubric-card__link-title">Bewertungssterne</span>
+                  <span class="rubric-card__link-meta">Trust &amp; Social Proof</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/review-stars.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/trust-badges.html">
+                  <span class="rubric-card__link-title">Trust Badges</span>
+                  <span class="rubric-card__link-meta">Sicherheit &amp; Garantie</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/trust-badges.md">Dokumentation</a>
+              </li>
+            </ul>
+            <h3 class="rubric-card__subheading">Produktwelten</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="frontend/product/product-detail.md">
+                  <span class="rubric-card__link-title">Produktdetailseiten</span>
+                  <span class="rubric-card__link-meta">Story, Media &amp; USPs</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/product/product-gallery.md">
+                  <span class="rubric-card__link-title">Produktgalerie</span>
+                  <span class="rubric-card__link-meta">Zoom, Swatches &amp; Varianten</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/product/product-grid.md">
+                  <span class="rubric-card__link-title">Produktgrid</span>
+                  <span class="rubric-card__link-meta">Raster, Filter, Card-Layouts</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/product/compare-products.md">
+                  <span class="rubric-card__link-title">Produkte vergleichen</span>
+                  <span class="rubric-card__link-meta">Matrix &amp; Entscheidungsfindung</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/product/cross-selling.md">
+                  <span class="rubric-card__link-title">Cross-Selling</span>
+                  <span class="rubric-card__link-meta">Bundles &amp; Empfehlungen</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/product/personalized-recommendations.md">
+                  <span class="rubric-card__link-title">Personalisierte Empfehlungen</span>
+                  <span class="rubric-card__link-meta">Data-driven Merchandising</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/product/recently-viewed.md">
+                  <span class="rubric-card__link-title">Zuletzt angesehen</span>
+                  <span class="rubric-card__link-meta">Session &amp; Cross-Device</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/product/reviews.md">
+                  <span class="rubric-card__link-title">Produktbewertungen</span>
+                  <span class="rubric-card__link-meta">Moderation &amp; Vertrauen</span>
+                </a>
+              </li>
+            </ul>
+            <h3 class="rubric-card__subheading">Checkout &amp; Trust</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="frontend/checkout/checkout.md">
+                  <span class="rubric-card__link-title">Checkout Flow</span>
+                  <span class="rubric-card__link-meta">Steps, Validierung, Zahlarten</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/checkout/discount-code.md">
+                  <span class="rubric-card__link-title">Rabattcode-Eingabe</span>
+                  <span class="rubric-card__link-meta">Conversion &amp; Fehlerstates</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/checkout/mini-cart.md">
+                  <span class="rubric-card__link-title">Mini-Cart UX</span>
+                  <span class="rubric-card__link-meta">Zwischenschritt &amp; Upselling</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/misc/trust-elements.md">
+                  <span class="rubric-card__link-title">Trust-Elemente</span>
+                  <span class="rubric-card__link-meta">Siegel, Policies &amp; Service</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <section id="rubrik-service" class="rubric" aria-labelledby="rubrik-service-title">
+        <article class="rubric-card">
+          <header class="rubric-card__header">
+            <p class="rubric-card__eyebrow">Support &amp; Vertrauen</p>
+            <h2 id="rubrik-service-title" class="rubric-card__title">Service, Support &amp; Compliance</h2>
+          </header>
+          <p class="rubric-card__teaser">
+            Policies, Kundenservice und Barrierefreiheit – alles, was Vertrauen schafft und Nutzer:innen begleitet.
+          </p>
+          <a class="rubric-card__cta" href="#rubrik-service-liste" aria-label="Weiterlesen zur Rubrik Service, Support und Compliance"
+            >Weiterlesen</a
+          >
+          <div class="rubric-card__content" id="rubrik-service-liste">
+            <h3 class="rubric-card__subheading">Service-Module</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/cookie-consent.html">
+                  <span class="rubric-card__link-title">Cookie-Consent</span>
+                  <span class="rubric-card__link-meta">Einwilligungen &amp; Präferenzen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/cookie-consent.md">Dokumentation</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="content-elements-examples/empty-state.html">
+                  <span class="rubric-card__link-title">Empty States</span>
+                  <span class="rubric-card__link-meta">Kund:innen auffangen</span>
+                </a>
+                <a class="rubric-card__doc" href="content-elements/empty-state.md">Dokumentation</a>
+              </li>
+            </ul>
+            <h3 class="rubric-card__subheading">Support-Guides</h3>
+            <ul class="rubric-card__list">
+              <li>
+                <a class="rubric-card__link" href="frontend/support/contact-form.md">
+                  <span class="rubric-card__link-title">Support-Kontakt</span>
+                  <span class="rubric-card__link-meta">Ticketübergabe &amp; SLAs</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/support/live-chat.md">
+                  <span class="rubric-card__link-title">Live-Chat</span>
+                  <span class="rubric-card__link-meta">Synchrone Beratung</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/support/faq.md">
+                  <span class="rubric-card__link-title">FAQ &amp; Selbsthilfe</span>
+                  <span class="rubric-card__link-meta">Informationsarchitektur</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/misc/accessibility.md">
+                  <span class="rubric-card__link-title">Accessibility-Grundlagen</span>
+                  <span class="rubric-card__link-meta">WCAG, Fokus, Kontrast</span>
+                </a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="frontend/misc/storefinder.md">
+                  <span class="rubric-card__link-title">Storefinder &amp; Beratung vor Ort</span>
+                  <span class="rubric-card__link-meta">Stationäre Experience</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+      <section id="rubrik-layouts" class="rubric" aria-labelledby="rubrik-layouts-title">
+        <article class="rubric-card">
+          <header class="rubric-card__header">
+            <p class="rubric-card__eyebrow">Seitenarchitekturen</p>
+            <h2 id="rubrik-layouts-title" class="rubric-card__title">Layout-Galerie (Aktuell)</h2>
+          </header>
+          <p class="rubric-card__teaser">
+            Mehrspaltige Zeitungsgrids, Dashboards und Landingpages – alle aktiven Layout-Demos mit passenden Markdown-Guides.
+          </p>
+          <a class="rubric-card__cta" href="#rubrik-layouts-liste" aria-label="Weiterlesen zur Rubrik Layout-Galerie"
+            >Weiterlesen</a
+          >
+          <div class="rubric-card__content" id="rubrik-layouts-liste">
+            <h3 class="rubric-card__subheading">Live-Demos &amp; Guides</h3>
+            <ul class="rubric-card__list rubric-card__list--compact rubric-card__list--columns">
+              <li>
+                <a class="rubric-card__link" href="layout-examples/accordion-layout.html">
+                  <span class="rubric-card__link-title">Accordion Layout</span>
+                  <span class="rubric-card__link-meta">Layout-Demo &amp; Interaktion</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/accordion-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/asymmetric-layout.html">
+                  <span class="rubric-card__link-title">Asymmetrisches Grid</span>
+                  <span class="rubric-card__link-meta">Editorial Design</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/asymmetric-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/blog-layout.html">
+                  <span class="rubric-card__link-title">Blog Layout</span>
+                  <span class="rubric-card__link-meta">Magazinisches Storytelling</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/blog-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/card-layout.html">
+                  <span class="rubric-card__link-title">Card Layout</span>
+                  <span class="rubric-card__link-meta">Kacheln &amp; Grid</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/card-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/centered-content.html">
+                  <span class="rubric-card__link-title">Centered Content</span>
+                  <span class="rubric-card__link-meta">Fokus auf Hauptbotschaft</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/centered-content.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/chat-interface.html">
+                  <span class="rubric-card__link-title">Chat Interface</span>
+                  <span class="rubric-card__link-meta">Konversation &amp; Streams</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/chat-interface.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/cover-page.html">
+                  <span class="rubric-card__link-title">Cover Page</span>
+                  <span class="rubric-card__link-meta">Hero + Call-to-Action</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/cover-page.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/dashboard-layout.html">
+                  <span class="rubric-card__link-title">Dashboard Layout</span>
+                  <span class="rubric-card__link-meta">KPIs &amp; Widgets</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/dashboard-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/ecommerce-product-grid.html">
+                  <span class="rubric-card__link-title">E-Commerce Grid</span>
+                  <span class="rubric-card__link-meta">Produktlisten</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/ecommerce-product-grid.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/full-height-layout.html">
+                  <span class="rubric-card__link-title">Full Height Layout</span>
+                  <span class="rubric-card__link-meta">Viewport-Höhen</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/full-height-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/full-width-hero.html">
+                  <span class="rubric-card__link-title">Full Width Hero</span>
+                  <span class="rubric-card__link-meta">Breitbild-Intro</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/full-width-hero.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/fullscreen-layout.html">
+                  <span class="rubric-card__link-title">Fullscreen Layout</span>
+                  <span class="rubric-card__link-meta">One-Page Navigation</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/fullscreen-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/gallery-layout.html">
+                  <span class="rubric-card__link-title">Gallery Layout</span>
+                  <span class="rubric-card__link-meta">Grid für Visuals</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/gallery-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/grid-layout.html">
+                  <span class="rubric-card__link-title">Grid Layout</span>
+                  <span class="rubric-card__link-meta">Flexible Spalten</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/grid-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/header-content-footer.html">
+                  <span class="rubric-card__link-title">Header-Content-Footer</span>
+                  <span class="rubric-card__link-meta">Klassische Struktur</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/header-content-footer.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/header-footer.html">
+                  <span class="rubric-card__link-title">Header/Footer Layout</span>
+                  <span class="rubric-card__link-meta">Basis-Seite</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/header-footer.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/header-sticky-navigation.html">
+                  <span class="rubric-card__link-title">Sticky Navigation</span>
+                  <span class="rubric-card__link-meta">Fixierte Header</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/header-sticky-navigation.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/landing-page.html">
+                  <span class="rubric-card__link-title">Landing Page</span>
+                  <span class="rubric-card__link-meta">Hero, Social Proof, CTA</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/landing-page.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/magazine-layout.html">
+                  <span class="rubric-card__link-title">Magazin Layout</span>
+                  <span class="rubric-card__link-meta">Redaktionelle Vielfalt</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/magazine-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/masonry-layout.html">
+                  <span class="rubric-card__link-title">Masonry Layout</span>
+                  <span class="rubric-card__link-meta">Pinterest-Style</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/masonry-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/navigation-overlay.html">
+                  <span class="rubric-card__link-title">Navigation Overlay</span>
+                  <span class="rubric-card__link-meta">Vollflächige Menüs</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/navigation-overlay.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/one-column.html">
+                  <span class="rubric-card__link-title">Einspaltiges Layout</span>
+                  <span class="rubric-card__link-meta">Fokus &amp; Lesefluss</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/one-column.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/portfolio-layout.html">
+                  <span class="rubric-card__link-title">Portfolio Layout</span>
+                  <span class="rubric-card__link-meta">Referenzen &amp; Cases</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/portfolio-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/responsive-flexbox.html">
+                  <span class="rubric-card__link-title">Responsive Flexbox</span>
+                  <span class="rubric-card__link-meta">Utility-Layout</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/responsive-flexbox.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/sidebar-dropdown-menu.html">
+                  <span class="rubric-card__link-title">Sidebar Dropdown</span>
+                  <span class="rubric-card__link-meta">Sekundärnavigation</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/sidebar-dropdown-menu.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/spa-layout.html">
+                  <span class="rubric-card__link-title">SPA Layout</span>
+                  <span class="rubric-card__link-meta">App-Shell Pattern</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/spa-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/split-screen.html">
+                  <span class="rubric-card__link-title">Split Screen</span>
+                  <span class="rubric-card__link-meta">Zwei Schwerpunkte</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/split-screen.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/sticky-sidebar.html">
+                  <span class="rubric-card__link-title">Sticky Sidebar</span>
+                  <span class="rubric-card__link-meta">Scroll-Sync &amp; Inhaltsverzeichnis</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/sticky-sidebar.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/tabbed-interface.html">
+                  <span class="rubric-card__link-title">Tabbed Interface</span>
+                  <span class="rubric-card__link-meta">Reiter mit Fokussteuerung</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/tabbed-interface.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/timeline-layout.html">
+                  <span class="rubric-card__link-title">Timeline Layout</span>
+                  <span class="rubric-card__link-meta">Chronologie &amp; Milestones</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/timeline-layout.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/two-column-equal-width.html">
+                  <span class="rubric-card__link-title">Zweispaltig (gleich)</span>
+                  <span class="rubric-card__link-meta">Balanced Layout</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/two-column-equal-width.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/two-column-left-sidebar.html">
+                  <span class="rubric-card__link-title">Linke Sidebar</span>
+                  <span class="rubric-card__link-meta">Navigation + Content</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/two-column-left-sidebar.md">Guide</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/two-column-right-sidebar.html">
+                  <span class="rubric-card__link-title">Rechte Sidebar</span>
+                  <span class="rubric-card__link-meta">Sektionen &amp; Tools</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/relevant/two-column-right-sidebar.md">Guide</a>
+              </li>
+            </ul>
+            <p class="rubric-card__footnote">
+              Die vollständige Übersicht lässt sich auch als kompakte Tabelle unter <a href="layout-examples/index.html">layout-examples/index.html</a>
+              abrufen.
+            </p>
+          </div>
+        </article>
+      </section>
+      <section id="rubrik-archiv" class="rubric" aria-labelledby="rubrik-archiv-title">
+        <article class="rubric-card">
+          <header class="rubric-card__header">
+            <p class="rubric-card__eyebrow">Archiv</p>
+            <h2 id="rubrik-archiv-title" class="rubric-card__title">Layout-Archiv (Deprecated)</h2>
+          </header>
+          <p class="rubric-card__teaser">
+            Historische Layouts, die weiterhin als Inspiration dienen – gekennzeichnet als deprecated mitsamt Dokumentation.
+          </p>
+          <a class="rubric-card__cta" href="#rubrik-archiv-liste" aria-label="Weiterlesen zum Layout-Archiv">Weiterlesen</a>
+          <div class="rubric-card__content" id="rubrik-archiv-liste">
+            <h3 class="rubric-card__subheading">Abgekündigte Demos</h3>
+            <ul class="rubric-card__list rubric-card__list--compact">
+              <li>
+                <a class="rubric-card__link" href="layout-examples/fixed-footer.html">
+                  <span class="rubric-card__link-title">Fixed Footer</span>
+                  <span class="rubric-card__link-meta">Persistente Fußbereiche</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/deprecated/fixed-footer.md">Archiv-Notiz</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/horizontal-scrolling.html">
+                  <span class="rubric-card__link-title">Horizontal Scrolling</span>
+                  <span class="rubric-card__link-meta">Seitlicher Scrollbereich</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/deprecated/horizontal-scrolling.md">Archiv-Notiz</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/nested-columns.html">
+                  <span class="rubric-card__link-title">Nested Columns</span>
+                  <span class="rubric-card__link-meta">Verschachtelte Spalten</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/deprecated/nested-columns.md">Archiv-Notiz</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/sidebar-navigation.html">
+                  <span class="rubric-card__link-title">Sidebar Navigation</span>
+                  <span class="rubric-card__link-meta">Legacy Off-Canvas</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/deprecated/sidebar-navigation.md">Archiv-Notiz</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/split-header.html">
+                  <span class="rubric-card__link-title">Split Header</span>
+                  <span class="rubric-card__link-meta">Geteilte Kopfzeile</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/deprecated/split-header.md">Archiv-Notiz</a>
+              </li>
+              <li>
+                <a class="rubric-card__link" href="layout-examples/three-columns.html">
+                  <span class="rubric-card__link-title">Drei Spalten</span>
+                  <span class="rubric-card__link-meta">Historischer Aufbau</span>
+                </a>
+                <a class="rubric-card__doc" href="layouts/deprecated/three-columns.md">Archiv-Notiz</a>
+              </li>
+            </ul>
+          </div>
+        </article>
+      </section>
+    </main>
+    <footer class="site-footer" role="contentinfo">
+      <p>
+        Pflege die Sammlung gerne weiter – die Quellen liegen als Markdown und Demos im Repository und lassen sich auch per Skript
+        erweitern.
+      </p>
+      <p><a href="https://github.com/benjaminl/randnotizen">Zum Projekt auf GitHub</a></p>
+    </footer>
+  </body>
+</html>
