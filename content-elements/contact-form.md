@@ -39,6 +39,8 @@ Formular zur Kontaktaufnahme mit Validierung und Spam-Schutz.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/contact-form.html](../content-elements-examples/contact-form.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <form class="contact-form">

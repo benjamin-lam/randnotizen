@@ -39,6 +39,8 @@ Kompakte Vergleichstabelle für Tarife oder Pakete.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/price-comparison.html](../content-elements-examples/price-comparison.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <section class="pricing">

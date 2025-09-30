@@ -39,6 +39,8 @@ Einbettung eines Audio- oder Podcast-Players.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/audio-embed.html](../content-elements-examples/audio-embed.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <figure class="audio">

@@ -39,6 +39,8 @@ Visualisierung des Fortschritts in mehreren Schritten oder Phasen.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/progress-stepper.html](../content-elements-examples/progress-stepper.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <ol class="stepper">

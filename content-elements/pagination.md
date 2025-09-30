@@ -39,6 +39,8 @@ Seitenweise Navigation für Listen und Suchergebnisse.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/pagination.html](../content-elements-examples/pagination.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <nav class="pagination" aria-label="Seiten">

@@ -39,6 +39,8 @@ Darstellung von Codebeispielen als Inline- oder Block-Elemente inkl. Kopierfunkt
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/code-snippets.html](../content-elements-examples/code-snippets.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <figure class="code-snippet">

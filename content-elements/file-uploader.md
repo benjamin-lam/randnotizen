@@ -39,6 +39,8 @@ Komponente zum Hochladen von Dateien inklusive Fortschritt und Validierung.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/file-uploader.html](../content-elements-examples/file-uploader.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <form class="uploader">

@@ -39,6 +39,8 @@ Komponente zur Auswahl einzelner Daten oder Zeitspannen.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/date-picker.html](../content-elements-examples/date-picker.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <label for="date">Datum</label>

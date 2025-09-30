@@ -39,6 +39,8 @@ Dialog-Overlay, das den restlichen Inhalt überlagert und fokussierte Interaktio
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/modal.html](../content-elements-examples/modal.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <button type="button" data-open="modal">Modal öffnen</button>

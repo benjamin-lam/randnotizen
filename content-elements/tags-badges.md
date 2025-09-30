@@ -39,6 +39,8 @@ Labels oder Chips zur Kennzeichnung von Kategorien, Status oder Highlights.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/tags-badges.html](../content-elements-examples/tags-badges.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <ul class="tags">

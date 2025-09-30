@@ -39,6 +39,8 @@ Darstellung von Bewertungen mit Sterne-Rating.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/review-stars.html](../content-elements-examples/review-stars.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <div class="rating" aria-label="4,5 von 5 Sternen">

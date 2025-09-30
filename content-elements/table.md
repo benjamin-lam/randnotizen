@@ -39,6 +39,8 @@ Tabellarische Darstellung von Daten mit Headern, Spalten und optionaler Sortieru
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/table.html](../content-elements-examples/table.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <table class="data-table">

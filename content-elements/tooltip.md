@@ -39,6 +39,8 @@ Kurze Hilfetexte, die bei Hover oder Fokus zusätzliche Informationen geben.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/tooltip.html](../content-elements-examples/tooltip.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <button type="button" aria-describedby="tip-id">?

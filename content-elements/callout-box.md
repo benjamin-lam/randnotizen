@@ -39,6 +39,8 @@ Hervorgehobene Boxen für Hinweise, Warnungen oder Erfolgsnachrichten innerhalb 
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/callout-box.html](../content-elements-examples/callout-box.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <aside class="callout callout--info">

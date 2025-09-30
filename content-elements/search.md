@@ -39,6 +39,8 @@ Suchfeld mit optionaler Autosuggest-Funktion.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/search.html](../content-elements-examples/search.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <form role="search">

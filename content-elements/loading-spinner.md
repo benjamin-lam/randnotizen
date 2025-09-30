@@ -39,6 +39,8 @@ Animierter Indikator für laufende Prozesse.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/loading-spinner.html](../content-elements-examples/loading-spinner.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <div class="spinner" role="status" aria-live="polite">

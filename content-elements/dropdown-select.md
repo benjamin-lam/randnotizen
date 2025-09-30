@@ -39,6 +39,8 @@ Auswahlliste als Native-Select oder erweiterte Combobox.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/dropdown-select.html](../content-elements-examples/dropdown-select.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <label for="country">Land</label>

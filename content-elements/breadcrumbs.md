@@ -39,6 +39,8 @@ Hierarchische Navigation zur Orientierung im Seitensystem.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/breadcrumbs.html](../content-elements-examples/breadcrumbs.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <nav aria-label="Breadcrumb">

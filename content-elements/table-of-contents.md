@@ -39,6 +39,8 @@ Strukturierte Liste von Ankern, die durch längere Inhalte navigiert.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/table-of-contents.html](../content-elements-examples/table-of-contents.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <nav class="toc" aria-label="Inhaltsverzeichnis">

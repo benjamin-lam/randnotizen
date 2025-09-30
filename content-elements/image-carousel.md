@@ -39,6 +39,8 @@ Slider-Komponente für mehrere Bilder mit optionaler Lightbox.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/image-carousel.html](../content-elements-examples/image-carousel.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <div class="carousel" aria-roledescription="Karussell">

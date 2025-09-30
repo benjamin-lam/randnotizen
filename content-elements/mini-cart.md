@@ -39,6 +39,8 @@ Warenkorb-Vorschau als Off-Canvas oder Dropdown.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/mini-cart.html](../content-elements-examples/mini-cart.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <button type="button" aria-haspopup="dialog" aria-expanded="false">Warenkorb</button>

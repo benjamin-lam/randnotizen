@@ -39,6 +39,8 @@ Darstellung, wenn keine Daten oder Ergebnisse vorliegen.
 - A11y & rechtliche Vorgaben erfüllt
 
 ## Beispiel / Code
+[content-elements-examples/empty-state.html](../content-elements-examples/empty-state.html)
+
 ```html
 <!-- Minimales, valides HTML-Beispiel -->
 <section class="empty-state">
