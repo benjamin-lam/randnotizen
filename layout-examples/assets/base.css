@@ -93,6 +93,20 @@ a:focus-visible {
   z-index: 500;
 }
 
+.site-header__inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.site-header__title {
+  font-weight: 600;
+  font-size: clamp(1.25rem, 2vw + 1rem, 1.75rem);
+  margin: 0;
+}
+
 .site-header__brand {
   display: flex;
   gap: 0.75rem;
