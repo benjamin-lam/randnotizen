@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Full Width Hero</title>
+  <meta name="description" content="Hero-Sektion über die gesamte Breite mit Medien und CTA." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-hero {
+      display: grid;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    @media (min-width: 58rem) {
+      #preview.layout-hero {
+        grid-template-columns: 1.1fr 1fr;
+        align-items: center;
+      }
+    }
+
+    #preview.layout-hero .media {
+      position: relative;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-hard);
+    }
+
+    #preview.layout-hero .media img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+
+    #preview.layout-hero .media::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, transparent, rgba(0, 0, 0, 0.25));
+    }
+
+    #preview.layout-hero .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/relevant/full-width-hero.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Hero Layout</p>
+      <h1 class="section-title">Full Width Hero</h1>
+      <p class="prose">Hero-Sektion über die gesamte Breite mit Medien und CTA.</p>
+    </section>
+
+    <section id="preview" class="layout-hero" aria-labelledby="hero-heading">
+      <div>
+        <h2 id="hero-heading">Produktivitätsplattform für hybride Teams</h2>
+        <p>
+          Verbinden Sie Wissensmanagement, Projekte und Kommunikation in einem zentralen Workspace.
+        </p>
+        <div class="actions">
+          <a class="badge" href="#">Kostenlos testen</a>
+          <a href="#">Video ansehen</a>
+        </div>
+      </div>
+      <figure class="media">
+        <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=1400&q=80" alt="Team arbeitet gemeinsam am Laptop" />
+      </figure>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Full Width Hero</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

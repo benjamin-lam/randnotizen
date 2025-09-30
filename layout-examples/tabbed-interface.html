@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Tabbed Interface</title>
+  <meta name="description" content="Registerkarten-Layout für strukturierte Informationsarchitektur." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-tabs {
+      display: grid;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 4vw, 2rem);
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      box-shadow: var(--shadow-soft);
+    }
+
+    #preview.layout-tabs [role="tablist"] {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    #preview.layout-tabs [role="tab"] {
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      border-radius: 999px;
+      padding: 0.5rem 1.25rem;
+      background: transparent;
+    }
+
+    #preview.layout-tabs [role="tab"][aria-selected="true"] {
+      background: var(--color-primary);
+      color: var(--color-primary-contrast);
+      border-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/relevant/tabbed-interface.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Interaktiv</p>
+      <h1 class="section-title">Tabbed Interface</h1>
+      <p class="prose">Registerkarten-Layout für strukturierte Informationsarchitektur.</p>
+    </section>
+
+    <section id="preview" class="layout-tabs" aria-labelledby="tabs-heading">
+      <h2 id="tabs-heading">Produktbereiche</h2>
+      <div role="tablist" aria-label="Tabs">
+        <button role="tab" aria-controls="tab-one" aria-selected="true">Übersicht</button>
+        <button role="tab" aria-controls="tab-two" aria-selected="false">Roadmap</button>
+        <button role="tab" aria-controls="tab-three" aria-selected="false">Support</button>
+      </div>
+      <article id="tab-one" role="tabpanel">
+        <p>Key Metrics und Statusupdates.</p>
+      </article>
+      <article id="tab-two" role="tabpanel" hidden>
+        <p>Nächste Meilensteine und Releases.</p>
+      </article>
+      <article id="tab-three" role="tabpanel" hidden>
+        <p>Support-Artikel, Kontaktoptionen.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Tabbed Interface</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

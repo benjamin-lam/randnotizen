@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Accordion Layout</title>
+  <meta name="description" content="Mobile-First FAQ Muster mit semantischen Details-Elementen und progressiver Offenlegung." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-accordion {
+      display: grid;
+      gap: clamp(1.25rem, 4vw, 2rem);
+    }
+
+    #preview.layout-accordion details {
+      border-radius: var(--radius-lg);
+      background: var(--color-card);
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      box-shadow: var(--shadow-soft);
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    #preview.layout-accordion details[open] {
+      border-color: color-mix(in srgb, var(--color-primary) 55%, var(--color-border));
+      box-shadow: var(--shadow-hard);
+    }
+
+    #preview.layout-accordion summary {
+      list-style: none;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 3vw, 1.75rem);
+      font-weight: 600;
+    }
+
+    #preview.layout-accordion summary::-webkit-details-marker {
+      display: none;
+    }
+
+    #preview.layout-accordion .summary-icon {
+      inline-size: 1.5rem;
+      block-size: 1.5rem;
+      border-radius: 999px;
+      display: grid;
+      place-items: center;
+      background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+      color: var(--color-primary);
+      transition: transform 0.3s ease, background 0.3s ease, color 0.3s ease;
+    }
+
+    #preview.layout-accordion details[open] .summary-icon {
+      transform: rotate(45deg);
+      background: var(--color-primary);
+      color: var(--color-primary-contrast);
+    }
+
+    #preview.layout-accordion details p {
+      padding: 0 clamp(1.25rem, 4vw, 2rem) clamp(1.25rem, 4vw, 2rem);
+      color: var(--color-muted);
+      margin: 0;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/relevant/accordion-layout.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Interaktives Layout</p>
+      <h1 class="section-title">Accordion Layout</h1>
+      <p class="prose">Dieses Muster eignet sich für umfangreiche FAQ oder Richtlinien. Es nutzt native Details-Elemente, deaktiviert parallele Öffnungen und bleibt komplett tastaturbedienbar.</p>
+    </section>
+
+    <section id="preview" class="layout-accordion" data-accordion aria-labelledby="accordion-heading">
+      <h2 id="accordion-heading" class="sr-only">Akkordeon Beispiel</h2>
+      <details open>
+        <summary>
+          <span>Wie stelle ich Barrierefreiheit sicher?</span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <p>
+          Verwenden Sie native HTML-Elemente, definieren Sie logische Überschriften und stellen Sie sicher, dass jeweils nur
+          eine Sektion geöffnet ist. Fokuszustände werden automatisch berücksichtigt.
+        </p>
+      </details>
+      <details>
+        <summary>
+          <span>Welche Inhalte eignen sich?</span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <p>
+          Richtlinien, Support-Fragen oder Tutorial-Schritte lassen sich modular strukturieren. Jede Einheit bleibt unabhängig
+          adressierbar.
+        </p>
+      </details>
+      <details>
+        <summary>
+          <span>Wie skaliert das Layout?</span>
+          <span class="summary-icon" aria-hidden="true">+</span>
+        </summary>
+        <p>
+          Mobile-First vollbreit, ab größeren Viewports sorgt <code>clamp()</code> für eine maximale Breite von 72ch und
+          großzügige Weißräume.
+        </p>
+      </details>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Accordion Layout</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Sidebar Dropdown Menü</title>
+  <meta name="description" content="Seitliche Navigation mit Dropdown-Unterpunkten und Tastaturnavigation." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-sidebar-dropdown {
+      display: grid;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    #preview.layout-sidebar-dropdown .layout {
+      display: grid;
+      gap: clamp(1.25rem, 3vw, 2rem);
+    }
+
+    @media (min-width: 62rem) {
+      #preview.layout-sidebar-dropdown .layout {
+        grid-template-columns: minmax(14rem, 18rem) 1fr;
+        align-items: start;
+      }
+    }
+
+    #preview.layout-sidebar-dropdown nav {
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      box-shadow: var(--shadow-soft);
+      padding: clamp(1rem, 3vw, 1.5rem);
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    #preview.layout-sidebar-dropdown nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    #preview.layout-sidebar-dropdown nav button {
+      border: 0;
+      background: color-mix(in srgb, var(--color-primary) 6%, transparent);
+      border-radius: var(--radius-sm);
+      padding: 0.5rem 0.75rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+
+    #preview.layout-sidebar-dropdown nav button[aria-expanded="true"] {
+      background: color-mix(in srgb, var(--color-primary) 18%, transparent);
+    }
+
+    #preview.layout-sidebar-dropdown nav .submenu {
+      display: grid;
+      gap: 0.35rem;
+      padding-left: 1rem;
+      margin: 0.25rem 0 0;
+    }
+
+    #preview.layout-sidebar-dropdown main {
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.5rem, 4vw, 2rem);
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      box-shadow: var(--shadow-soft);
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/relevant/sidebar-dropdown-menu.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Navigation</p>
+      <h1 class="section-title">Sidebar Dropdown Menü</h1>
+      <p class="prose">Seitliche Navigation mit Dropdown-Unterpunkten und Tastaturnavigation.</p>
+    </section>
+
+    <section id="preview" class="layout-sidebar-dropdown" aria-labelledby="sidebar-heading">
+      <div class="layout">
+        <nav aria-labelledby="sidebar-heading">
+          <h2 id="sidebar-heading">Navigation</h2>
+          <ul>
+            <li><a href="#">Dashboard</a></li>
+            <li>
+              <button type="button" data-dropdown-button aria-controls="projects-menu" aria-expanded="false">
+                <span>Projekte</span>
+                <span aria-hidden="true">▾</span>
+              </button>
+              <div id="projects-menu" class="submenu" hidden>
+                <a href="#">Aktive</a>
+                <a href="#">Archiv</a>
+              </div>
+            </li>
+            <li><a href="#">Einstellungen</a></li>
+          </ul>
+        </nav>
+        <main>
+          <h3>Projektübersicht</h3>
+          <p>Details zu ausgewählten Projekten erscheinen hier.</p>
+        </main>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Sidebar Dropdown Menü</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

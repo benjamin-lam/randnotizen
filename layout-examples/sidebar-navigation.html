@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Sidebar Navigation</title>
+  <meta name="description" content="Fixierte Sidebar ohne mobile Optimierung." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-sidebar-nav {
+      display: grid;
+      gap: 1.5rem;
+    }
+
+    #preview.layout-sidebar-nav .layout {
+      display: grid;
+      gap: 1rem;
+    }
+
+    @media (min-width: 70rem) {
+      #preview.layout-sidebar-nav .layout {
+        grid-template-columns: 16rem 1fr;
+      }
+    }
+
+    #preview.layout-sidebar-nav nav {
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      padding: 1.25rem;
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      box-shadow: var(--shadow-soft);
+      height: 100vh;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/deprecated/sidebar-navigation.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Deprecated</p>
+      <h1 class="section-title">Sidebar Navigation</h1>
+      <p class="prose">Fixierte Sidebar ohne mobile Optimierung.</p>
+    </section>
+
+    <section id="preview" class="layout-sidebar-nav" aria-labelledby="sidebar-nav-heading">
+      <h2 id="sidebar-nav-heading">Starre Sidebar</h2>
+      <div class="layout">
+        <nav>
+          <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Projekte</a></li>
+            <li><a href="#">Kontakt</a></li>
+          </ul>
+        </nav>
+        <article>
+          <p>Keine mobile Adaption – deshalb deprecated.</p>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Sidebar Navigation</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

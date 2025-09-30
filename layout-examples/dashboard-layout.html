@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Dashboard Layout</title>
+  <meta name="description" content="Analytics-Dashboard mit Kacheln, Chart-Gitter und responsiven Panels." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-dashboard {
+      display: grid;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+    }
+
+    #preview.layout-dashboard .kpi-grid {
+      display: grid;
+      gap: clamp(1rem, 3vw, 1.5rem);
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+    }
+
+    #preview.layout-dashboard .panel {
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      padding: clamp(1.25rem, 3vw, 1.75rem);
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    #preview.layout-dashboard .grid-visuals {
+      display: grid;
+      gap: clamp(1rem, 3vw, 1.5rem);
+    }
+
+    @media (min-width: 70rem) {
+      #preview.layout-dashboard .grid-visuals {
+        grid-template-columns: 2fr 1fr;
+      }
+    }
+
+    #preview.layout-dashboard svg {
+      width: 100%;
+      height: auto;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/relevant/dashboard-layout.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Data Layout</p>
+      <h1 class="section-title">Dashboard Layout</h1>
+      <p class="prose">Ein flexibles Grid kombiniert Kennzahlen, Diagramme und Listen für die tägliche Steuerung.</p>
+    </section>
+
+    <section id="preview" class="layout-dashboard" aria-labelledby="dashboard-heading">
+      <h2 id="dashboard-heading">Team Performance</h2>
+      <div class="kpi-grid">
+        <article class="panel">
+          <h3>MRR</h3>
+          <p class="section-title" style="margin:0">€ 128.400</p>
+          <p class="badge">+12% MoM</p>
+        </article>
+        <article class="panel">
+          <h3>Aktive Accounts</h3>
+          <p class="section-title" style="margin:0">4.829</p>
+          <p class="badge">Retention 93%</p>
+        </article>
+        <article class="panel">
+          <h3>NPS</h3>
+          <p class="section-title" style="margin:0">48</p>
+          <p class="badge">+6 Punkte</p>
+        </article>
+      </div>
+      <div class="grid-visuals">
+        <article class="panel" aria-label="Umsatzentwicklung">
+          <h3>Revenue Trend</h3>
+          <svg viewBox="0 0 240 120" role="img" aria-labelledby="revenue-chart">
+            <title id="revenue-chart">Line Chart der letzten 6 Monate</title>
+            <polyline fill="none" stroke="currentColor" stroke-width="4" points="0,90 40,80 80,65 120,70 160,50 200,35 240,45"></polyline>
+          </svg>
+        </article>
+        <article class="panel">
+          <h3>Aktuelle Aufgaben</h3>
+          <ul>
+            <li>Discovery Call vorbereiten</li>
+            <li>Feedbackrunde Alpha 2</li>
+            <li>Design QA Sprint 14</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Dashboard Layout</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiele Index</title>
+  <meta name="description" content="Übersicht über alle Layout-Demos aus den Randnotizen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+    main {
+      display: grid;
+      gap: clamp(1.5rem, 4vw, 2.5rem);
+      padding-block: clamp(2.5rem, 6vw, 5rem);
+    }
+
+    ul.layout-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    ul.layout-list li {
+      background: var(--color-card);
+      border-radius: var(--radius-lg);
+      padding: 1rem 1.5rem;
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Navigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+    </nav>
+  </header>
+  <main id="main" class="content-width" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Übersicht</p>
+      <h1 class="section-title">Layout Demos</h1>
+      <p class="prose">Alle Layout-Beispiele aus den Markdown-Beschreibungen – mobil optimiert und vanilla HTML/CSS/JS.</p>
+    </section>
+    <ul class="layout-list">
+        <li><a href="accordion-layout.html">Accordion Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="asymmetric-layout.html">Asymmetrisches Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="blog-layout.html">Blog Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="card-layout.html">Card Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="centered-content.html">Centered Content</a> <span class="badge">Relevant</span></li>
+        <li><a href="chat-interface.html">Chat Interface</a> <span class="badge">Relevant</span></li>
+        <li><a href="cover-page.html">Cover Page</a> <span class="badge">Relevant</span></li>
+        <li><a href="dashboard-layout.html">Dashboard Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="ecommerce-product-grid.html">E-Commerce Produktgrid</a> <span class="badge">Relevant</span></li>
+        <li><a href="fixed-footer.html">Fixed Footer</a> <span class="badge">Deprecated</span></li>
+        <li><a href="full-height-layout.html">Full Height Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="full-width-hero.html">Full Width Hero</a> <span class="badge">Relevant</span></li>
+        <li><a href="fullscreen-layout.html">Fullscreen Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="gallery-layout.html">Gallery Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="grid-layout.html">Grid Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="header-content-footer.html">Header Content Footer</a> <span class="badge">Relevant</span></li>
+        <li><a href="header-footer.html">Header Footer</a> <span class="badge">Relevant</span></li>
+        <li><a href="header-sticky-navigation.html">Header Sticky Navigation</a> <span class="badge">Relevant</span></li>
+        <li><a href="horizontal-scrolling.html">Horizontal Scrolling</a> <span class="badge">Deprecated</span></li>
+        <li><a href="landing-page.html">Landing Page</a> <span class="badge">Relevant</span></li>
+        <li><a href="magazine-layout.html">Magazin Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="masonry-layout.html">Masonry Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="navigation-overlay.html">Navigation Overlay</a> <span class="badge">Relevant</span></li>
+        <li><a href="nested-columns.html">Nested Columns</a> <span class="badge">Deprecated</span></li>
+        <li><a href="one-column.html">One Column</a> <span class="badge">Relevant</span></li>
+        <li><a href="portfolio-layout.html">Portfolio Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="responsive-flexbox.html">Responsive Flexbox</a> <span class="badge">Relevant</span></li>
+        <li><a href="sidebar-dropdown-menu.html">Sidebar Dropdown Menü</a> <span class="badge">Relevant</span></li>
+        <li><a href="sidebar-navigation.html">Sidebar Navigation</a> <span class="badge">Deprecated</span></li>
+        <li><a href="spa-layout.html">SPA Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="split-header.html">Split Header</a> <span class="badge">Deprecated</span></li>
+        <li><a href="split-screen.html">Split Screen</a> <span class="badge">Relevant</span></li>
+        <li><a href="sticky-sidebar.html">Sticky Sidebar</a> <span class="badge">Relevant</span></li>
+        <li><a href="tabbed-interface.html">Tabbed Interface</a> <span class="badge">Relevant</span></li>
+        <li><a href="three-columns.html">Three Columns</a> <span class="badge">Deprecated</span></li>
+        <li><a href="timeline-layout.html">Timeline Layout</a> <span class="badge">Relevant</span></li>
+        <li><a href="two-column-equal-width.html">Zweispaltig (gleich breit)</a> <span class="badge">Relevant</span></li>
+        <li><a href="two-column-left-sidebar.html">Zweispaltig mit linker Sidebar</a> <span class="badge">Relevant</span></li>
+        <li><a href="two-column-right-sidebar.html">Zweispaltig mit rechter Sidebar</a> <span class="badge">Relevant</span></li>
+    </ul>
+  </main>
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen Layouts</p>
+    </div>
+  </footer>
+  <script src="assets/base.js"></script>
+  <script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+</body>
+</html>

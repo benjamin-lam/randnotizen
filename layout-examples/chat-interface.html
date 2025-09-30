@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Layout Beispiel – Chat Interface</title>
+  <meta name="description" content="Conversational UI mit Nachrichtenspuren, Composer und Präsenzinformationen." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="assets/base.css" />
+  <style>
+#preview.layout-chat {
+      display: grid;
+      gap: clamp(1.25rem, 4vw, 2rem);
+      background: var(--color-card);
+      padding: clamp(1.25rem, 4vw, 2rem);
+      border-radius: var(--radius-lg);
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      box-shadow: var(--shadow-soft);
+    }
+
+    #preview.layout-chat .conversation {
+      display: grid;
+      gap: 1rem;
+    }
+
+    #preview.layout-chat .bubble {
+      max-width: min(80%, 32ch);
+      padding: 0.75rem 1rem;
+      border-radius: 1.25rem;
+      position: relative;
+      line-height: 1.45;
+      box-shadow: var(--shadow-soft);
+    }
+
+    #preview.layout-chat .bubble[data-variant="sent"] {
+      justify-self: end;
+      background: var(--color-primary);
+      color: var(--color-primary-contrast);
+    }
+
+    #preview.layout-chat .bubble[data-variant="received"] {
+      justify-self: start;
+      background: color-mix(in srgb, var(--color-primary) 12%, transparent);
+      color: var(--color-text);
+    }
+
+    #preview.layout-chat .composer {
+      display: flex;
+      gap: 0.75rem;
+      align-items: center;
+      border: 1px solid color-mix(in srgb, var(--color-border) 55%, transparent);
+      border-radius: 999px;
+      padding: 0.75rem 1rem;
+      background: var(--color-bg);
+    }
+
+    #preview.layout-chat input[type="text"] {
+      flex: 1;
+      border: 0;
+      background: transparent;
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Zum Inhalt springen</a>
+  <header class="site-header" role="banner">
+    <nav class="site-nav" aria-label="Hauptnavigation">
+      <a class="site-header__brand" href="#">
+        <span class="site-header__logo" aria-hidden="true">UX</span>
+        <span>Randnotizen Layouts</span>
+      </a>
+      <button class="site-nav__toggle" type="button" data-nav-toggle aria-expanded="false">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+          <path stroke="currentColor" stroke-width="1.6" stroke-linecap="round" d="M4 6h16M4 12h16M4 18h16" />
+        </svg>
+        Menü
+      </button>
+      <ul class="site-nav__links" data-nav-list aria-expanded="false">
+        <li><a href="../layouts/relevant/chat-interface.md">Markdown</a></li>
+        <li><a href="index.html">Übersicht</a></li>
+        <li><a href="#preview">Demo</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main id="main" class="content-width layout-page" tabindex="-1">
+    <section class="layout-intro">
+      <p class="badge">Realtime Layout</p>
+      <h1 class="section-title">Chat Interface</h1>
+      <p class="prose">Das Layout demonstriert ein mobiles Messaging-Interface inklusive Schreibstatus und Reaktionsmöglichkeiten.</p>
+    </section>
+
+    <section id="preview" class="layout-chat" aria-labelledby="chat-heading">
+      <header aria-live="polite">Team Space · <span class="badge">3 online</span></header>
+      <div class="conversation" role="log" aria-live="polite">
+        <p class="bubble" data-variant="received">
+          Hey! Ich teile gleich das neue Dashboard-Konzept. Fokus auf Informationshierarchie.
+        </p>
+        <p class="bubble" data-variant="sent">
+          Super, ich habe direkt Feedback aus dem Research-Playback dabei.
+        </p>
+        <p class="bubble" data-variant="received">
+          Perfekt. Lass uns auf Kontraste achten – wir hatten Hinweise von Screenreader-Usern.
+        </p>
+      </div>
+      <form class="composer" aria-label="Nachricht senden">
+        <label for="chat-message" class="sr-only">Nachricht</label>
+        <input id="chat-message" type="text" name="message" placeholder="Antwort verfassen…" required />
+        <button type="submit">Senden</button>
+      </form>
+      <p aria-live="polite">Lisa tippt …</p>
+    </section>
+  </main>
+
+  <footer class="site-footer site-header" role="contentinfo">
+    <div class="site-nav">
+      <p>&copy; <span id="year">2025</span> Randnotizen · Chat Interface</p>
+      <a href="#main">Nach oben</a>
+    </div>
+  </footer>
+
+  <script src="assets/base.js"></script>
+  <script>
+const form = document.querySelector('.composer');
+    form?.addEventListener('submit', (event) => {
+      event.preventDefault();
+      const input = form.querySelector('input');
+      if (!input?.value.trim()) return;
+      const conversation = form.previousElementSibling;
+      const bubble = document.createElement('p');
+      bubble.className = 'bubble';
+      bubble.dataset.variant = 'sent';
+      bubble.textContent = input.value;
+      conversation.appendChild(bubble);
+      bubble.scrollIntoView({ behavior: 'smooth', block: 'end' });
+      input.value = '';
+    });
+  </script>
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
