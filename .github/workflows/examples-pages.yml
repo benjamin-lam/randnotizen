@@ -1,0 +1,84 @@
+name: Deploy layout- & content-elements-examples to GitHub Pages
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - "layout-examples/**"
+      - "content-elements-examples/**"
+      - ".github/workflows/examples-pages.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages-examples"
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Prepare dist
+        run: |
+          rm -rf dist
+          mkdir -p dist
+          # 1) Kopiere beide Beispiel-Ordner
+          rsync -a layout-examples/ dist/layout-examples/ || true
+          rsync -a content-elements-examples/ dist/content-elements-examples/ || true
+
+          # 2) GitHub soll keine Jekyll-Transformation versuchen
+          touch dist/.nojekyll
+
+          # 3) Erzeuge index.html mit Linkliste
+          cat > dist/index.html <<'HTML'
+          <!doctype html>
+          <meta charset="utf-8">
+          <title>Examples</title>
+          <meta name="viewport" content="width=device-width,initial-scale=1">
+          <style>
+            body{font:16px/1.5 system-ui,Segoe UI,Roboto,Helvetica,Arial,sans-serif;margin:2rem;max-width:72ch}
+            h1{margin:0 0 1rem}
+            ul{padding-left:1.2rem}
+            a{word-break:break-word}
+            code{background:#f6f8fa;padding:.1rem .3rem;border-radius:.25rem}
+          </style>
+          <h1>Examples</h1>
+          <p>Automatisch deployte Beispiele aus <code>layout-examples/</code> und <code>content-elements-examples/</code>.</p>
+          <ul>
+          HTML
+          find layout-examples content-elements-examples -type f \( -iname "*.html" -o -iname "*.htm" -o -iname "*.md" \) | sort | while read -r f; do
+            esc="$(printf '%s\n' "$f" | sed 's/&/\&amp;/g; s/</\&lt;/g; s/>/\&gt;/g')"
+            echo "<li><a href=\"${esc}\">${esc}</a></li>" >> dist/index.html
+          done
+          echo "</ul>" >> dist/index.html
+
+          # 4) Erzeuge 404.html, die auf index.html umleitet
+          cat > dist/404.html <<'HTML'
+          <!doctype html>
+          <meta charset="utf-8">
+          <title>Not Found</title>
+          <meta http-equiv="refresh" content="0; url=./index.html">
+          <p>Seite nicht gefunden. <a href="./index.html">Zurück zur Übersicht</a>.</p>
+          HTML
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: dist
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
