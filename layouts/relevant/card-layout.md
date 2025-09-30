@@ -38,7 +38,7 @@ Karten bündeln Bild, Titel, Teasertext und CTA in wiederverwendbaren Modulen. S
 ## Beispiel / Code
 ```html
 <article class="card">
-  <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" />
+  <img src="/assets/agents-and-robots.png" alt="Agentin und Roboter in einer futuristischen Stadt bei Nacht" />
   <h3>…</h3>
   <p>…</p>
 </article>
