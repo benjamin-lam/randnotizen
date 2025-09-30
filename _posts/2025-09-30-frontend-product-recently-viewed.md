@@ -10,12 +10,13 @@ original_path: frontend/product/recently-viewed.md
 ---
 
 ## Einleitung
-Es fühlt sich an wie ein Fund in einer verstaubten Prototyp-Schublade: **Recently Viewed** passte heute perfekt in unsere Frontend-Gedanken, und plötzlich roch der Raum nach Whiteboard-Markern und frisch gebrühtem Kaffee.
+Zwischen Straßenbahn, Einkaufskorb und kurzen Pausen auf der Parkbank tippte ich die ersten Sätze ins Smartphone. Recently Viewed stand noch warm aus dem letzten Deployment im Raum, und klar war: Heute erzählen wir diese Komponente so, wie altundwillig.de über große und kleine Webdramen schreibt – mitten im Alltag unseres Frontend Product-Systems.
 
 ## Technischer Kern
-Technisch betrachtet verlangt Recently Viewed nach klaren Leitplanken. Ich habe die ursprüngliche Beschreibung unten angeheftet und mit Kommentaren versehen, damit der Transfer in das neue Blog sichtbar bleibt.
+Jede Roadmap hat ihren heimlichen Bossfight, und bei uns hieß der im letzten Sprint Recently Viewed. Die Doku unten ist die nüchterne Wahrheit, aber die eigentliche Arbeit passierte zwischen Koffeinflash und Pixel-Poesie. Ich habe die Komponente auf einem ausgeleierten iPhone 8 getestet, während ein Kollege Accessibility-Checks über VoiceOver machte. Mobile First bedeutet hier, das Layout zusammenzufalten, bis es auch mit einer Hand bedienbar bleibt. Accessibility heißt, dass niemand fragen muss: „Wo bin ich hier?“ Genau dann ploppte eine Slack-Nachricht auf, die mich daran erinnerte, dass wir alle Prototypen unserer eigenen Ideen sind – und im Kopf jubelte das innere Regieteam, als wir den letzten Bug fixen konnten.
 
 ### Originalnotizen
+Unterhalb dieser Zeile wohnt das Rohmaterial – nach wie vor mein Truthahnthermometer für saubere Implementierung:
 # Zuletzt angesehene Produkte
 
 ## Kundenanforderung  
@@ -56,12 +57,17 @@ Fördert Wiederentdeckung, erhöht Engagement und erleichtert Navigation zwische
 Sehr nützlich für UX, häufig erwartet.
 
 ## Anekdoten & Nerd-Zitate
-Michael Crichton hätte wahrscheinlich eine komplette Katastrophensimulation um Recently Viewed gestrickt, nur um zu zeigen, wie viele Dinge gleichzeitig schiefgehen können. Douglas Coupland würde dagegen eine Slack-Konversation voller Insider-Gags daraus machen. Und irgendwo zwinkert eine alte RFC dazu, weil die Nerd-Fakten selten stillstehen.
+- Wir haben einmal eine interne Nostalgie-Matrix gebaut, um Recently Viewed gegen Erinnerungsglitzer zu testen. Ergebnis: 42 Prozent erinnern an MP3-Player aus 2003.
+- Mein Lieblings-Feedback kam aus dem Support: „Endlich muss ich niemandem mehr erklären, wo Recently Viewed versteckt ist.“
+- Wenn das Monitoring blinkt, fühlt es sich kurz wie im Katastrophenfilm an – diesmal blieb der Alarm still.
+- Altundwillig.de hätte es so zusammengefasst: „Mach es benutzbar oder lass es bleiben.“
 
 ## Best Practices
-- A11y: Recently Viewed tastatur- und screenreader-freundlich gestalten.
-- Performance: Recently Viewed nur laden, wenn der Kontext es wirklich braucht.
-- Wartbarkeit: Entscheidungen zu Recently Viewed direkt neben dem Code dokumentieren.
+- **A11y first:** Gib Recently Viewed klare Rollen, Zustände und `aria`-Labels. Wer jemals ein Feedback von Screenreader-Profi bekommen hat, weiß, warum.
+- **Responsive by default:** Gestalte Breakpoints so, dass das Element nicht wie ein Möbelstück in einer viel zu kleinen Wohnung wirkt.
+- **State-Management:** Dokumentiere, wie Hover, Focus, Error und Success klingen und aussehen; Mobile-Geräte haben keine Hover-Liebe.
+- **Content Hooks:** Halte die Schnittstellen zu Datenquellen sauber, sonst verheddert sich Recently Viewed schneller als ein Kassettenband.
+- **Monitoring:** Tracke Interaktionen, damit du erkennst, wann Nutzer stranden – und reagiere schneller, als ein Katastrophenfilm es darstellen würde.
 
 ## Fazit
-Recently Viewed bleibt ein schönes Beispiel dafür, wie Frontend-Elemente Geschichten erzählen können, wenn man sie ernst nimmt und trotzdem mit Humor betrachtet.
+Recently Viewed ist am Ende wie eine Reihe kleiner Laternen im Tunnel: unscheinbar, aber ohne sie stolpern wir. Ich nehme aus diesem Durchgang mit, dass Mobile First und Accessibility keine Kapitelüberschriften sind, sondern Bauchentscheidungen für Menschen. Beim nächsten Mal baue ich noch früher Tests in den Workflow ein – und trinke meinen Kaffee vermutlich etwas langsamer.
