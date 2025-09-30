@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Review Stars – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Review Stars.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Review Stars</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Darstellung von Bewertungen mit Sterne-Rating.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Visuelle Bewertung"><span aria-hidden="true">⚙️</span>Visuelle Bewertung</span><span class="meta-pill" role="listitem" aria-label="Accessible Text"><span aria-hidden="true">⚙️</span>Accessible Text</span><span class="meta-pill" role="listitem" aria-label="Kontrast"><span aria-hidden="true">⚙️</span>Kontrast</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <div class="review-stars" aria-label="Durchschnittliche Bewertung 4,6 von 5 Sternen">
+            <div class="review-stars__stars" aria-hidden="true">
+              <svg class="review-stars__star" viewBox="0 0 20 20" fill="currentColor"><polygon points="10 1 12.6 7.1 19.2 7.3 14 11.6 15.8 18 10 14.3 4.2 18 6 11.6 0.8 7.3 7.4 7.1"></polygon></svg>
+              <svg class="review-stars__star" viewBox="0 0 20 20" fill="currentColor"><polygon points="10 1 12.6 7.1 19.2 7.3 14 11.6 15.8 18 10 14.3 4.2 18 6 11.6 0.8 7.3 7.4 7.1"></polygon></svg>
+              <svg class="review-stars__star" viewBox="0 0 20 20" fill="currentColor"><polygon points="10 1 12.6 7.1 19.2 7.3 14 11.6 15.8 18 10 14.3 4.2 18 6 11.6 0.8 7.3 7.4 7.1"></polygon></svg>
+              <svg class="review-stars__star" viewBox="0 0 20 20" fill="currentColor"><polygon points="10 1 12.6 7.1 19.2 7.3 14 11.6 15.8 18 10 14.3 4.2 18 6 11.6 0.8 7.3 7.4 7.1"></polygon></svg>
+              <svg class="review-stars__star" viewBox="0 0 20 20" fill="currentColor" opacity="0.4"><polygon points="10 1 12.6 7.1 19.2 7.3 14 11.6 15.8 18 10 14.3 4.2 18 6 11.6 0.8 7.3 7.4 7.1"></polygon></svg>
+            </div>
+            <span>4,6/5 (267 Rezensionen)</span>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

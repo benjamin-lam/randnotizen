@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Notification Banner – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Notification Banner.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Notification Banner</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Seitenweite Hinweise oder Promotions am oberen Rand.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Role Status"><span aria-hidden="true">⚙️</span>Role Status</span><span class="meta-pill" role="listitem" aria-label="Close Button"><span aria-hidden="true">⚙️</span>Close Button</span><span class="meta-pill" role="listitem" aria-label="Keyboard Fokus"><span aria-hidden="true">⚙️</span>Keyboard Fokus</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="notification-banner" role="status" data-notification-banner>
+            <div class="flex-between">
+              <div>
+                <strong>Neue Version verfügbar!</strong>
+                <p class="text-muted" style="color: rgba(255,255,255,0.8);">Aktualisieren Sie jetzt, um von Performance-Optimierungen zu profitieren.</p>
+              </div>
+              <button class="icon-button" type="button" aria-label="Benachrichtigung schließen" data-dismiss-banner>✕</button>
+            </div>
+          </section>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

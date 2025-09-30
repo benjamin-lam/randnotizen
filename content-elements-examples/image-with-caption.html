@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image with Caption – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Image with Caption.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Image with Caption</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Bilddarstellung mit erläuternder Bildunterschrift.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Figure &amp; Figcaption"><span aria-hidden="true">⚙️</span>Figure &amp; Figcaption</span><span class="meta-pill" role="listitem" aria-label="Responsive Bilder"><span aria-hidden="true">⚙️</span>Responsive Bilder</span><span class="meta-pill" role="listitem" aria-label="Lazy loading"><span aria-hidden="true">⚙️</span>Lazy loading</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <figure class="figure">
+            <picture>
+              <source srcset="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=900&q=80" media="(min-width: 800px)">
+              <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=600&q=80" alt="Team, das gemeinsam an einem Tisch arbeitet" loading="lazy">
+            </picture>
+            <figcaption>Team Sync im Workspace Berlin – Foto: <a href="https://unsplash.com" rel="noopener">Unsplash</a></figcaption>
+          </figure>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

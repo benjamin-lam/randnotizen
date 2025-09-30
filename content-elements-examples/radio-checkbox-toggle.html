@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Radio / Checkbox / Toggle – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Radio / Checkbox / Toggle.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Radio / Checkbox / Toggle</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Steuerelemente für Einzel- oder Mehrfachauswahl inklusive Switches.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="ARIA Checked"><span aria-hidden="true">⚙️</span>ARIA Checked</span><span class="meta-pill" role="listitem" aria-label="Benutzerdefinierte Toggle"><span aria-hidden="true">⚙️</span>Benutzerdefinierte Toggle</span><span class="meta-pill" role="listitem" aria-label="Form Integration"><span aria-hidden="true">⚙️</span>Form Integration</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <fieldset class="toggle-group">
+            <legend>Benachrichtigungen</legend>
+            <div class="toggle">
+              <input type="checkbox" id="toggle-email" name="notifications" value="email" checked>
+              <label for="toggle-email">E-Mail</label>
+            </div>
+            <div class="toggle">
+              <input type="checkbox" id="toggle-push" name="notifications" value="push">
+              <label for="toggle-push">Push</label>
+            </div>
+            <div class="toggle">
+              <input type="radio" id="toggle-daily" name="digest" value="daily" checked>
+              <label for="toggle-daily">Täglich</label>
+            </div>
+            <div class="toggle">
+              <input type="radio" id="toggle-weekly" name="digest" value="weekly">
+              <label for="toggle-weekly">Wöchentlich</label>
+            </div>
+          </fieldset>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Contact Form – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Contact Form.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Contact Form</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Formular zur Kontaktaufnahme mit Validierung und Spam-Schutz.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Form Validation"><span aria-hidden="true">⚙️</span>Form Validation</span><span class="meta-pill" role="listitem" aria-label="Mobile optimiert"><span aria-hidden="true">⚙️</span>Mobile optimiert</span><span class="meta-pill" role="listitem" aria-label="Fokusführung"><span aria-hidden="true">⚙️</span>Fokusführung</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <form class="contact-form" data-contact-form novalidate>
+            <div class="contact-form__grid">
+              <div class="input-group">
+                <label for="cf-name">Name</label>
+                <input class="input" id="cf-name" name="name" type="text" autocomplete="name" required>
+                <p class="form-help">Pflichtfeld – mindestens 2 Zeichen.</p>
+              </div>
+              <div class="input-group">
+                <label for="cf-email">E-Mail</label>
+                <input class="input" id="cf-email" name="email" type="email" autocomplete="email" inputmode="email" required>
+              </div>
+            </div>
+            <div class="input-group">
+              <label for="cf-topic">Thema</label>
+              <select class="input" id="cf-topic" name="topic">
+                <option value="support">Technischer Support</option>
+                <option value="sales">Beratung &amp; Angebote</option>
+                <option value="feedback">Feedback</option>
+              </select>
+            </div>
+            <div class="input-group">
+              <label for="cf-message">Nachricht</label>
+              <textarea class="input" id="cf-message" name="message" rows="4" maxlength="500" required></textarea>
+              <p class="form-help">Maximal 500 Zeichen.</p>
+            </div>
+            <div class="flex-between">
+              <label class="input-group" style="flex-direction: row; gap: 0.5rem; align-items: center;">
+                <input type="checkbox" name="privacy" required>
+                <span>Ich akzeptiere die <a href="#">Datenschutzerklärung</a>.</span>
+              </label>
+              <button class="btn" type="submit">Absenden</button>
+            </div>
+            <p class="form-help" aria-live="polite" data-form-feedback></p>
+          </form>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

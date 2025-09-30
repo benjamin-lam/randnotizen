@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Share Buttons – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Share Buttons.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Share Buttons</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Buttons zum Teilen von Inhalten in sozialen Netzwerken oder per Link.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Web Share API"><span aria-hidden="true">⚙️</span>Web Share API</span><span class="meta-pill" role="listitem" aria-label="Fallback Copy"><span aria-hidden="true">⚙️</span>Fallback Copy</span><span class="meta-pill" role="listitem" aria-label="SR Feedback"><span aria-hidden="true">⚙️</span>SR Feedback</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <div class="share-buttons" data-share-buttons aria-label="Inhalte teilen">
+            <button class="btn" type="button" data-share-action="native">Teilen</button>
+            <button class="btn btn--ghost" type="button" data-share-action="copy">Link kopieren</button>
+            <output class="visually-hidden" aria-live="polite" data-share-feedback></output>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

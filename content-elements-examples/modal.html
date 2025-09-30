@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Modal – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Modal.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Modal</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Dialog-Overlay, das den restlichen Inhalt überlagert und fokussierte Interaktion verlangt.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Focus Trap"><span aria-hidden="true">⚙️</span>Focus Trap</span><span class="meta-pill" role="listitem" aria-label="Escape schließt"><span aria-hidden="true">⚙️</span>Escape schließt</span><span class="meta-pill" role="listitem" aria-label="Aria Beschriftung"><span aria-hidden="true">⚙️</span>Aria Beschriftung</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="modal-demo">
+            <button class="btn" type="button" data-open-modal="#newsletter-modal">Neuigkeiten abonnieren</button>
+            <dialog class="modal" id="newsletter-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+              <div class="modal__dialog">
+                <header class="modal__header">
+                  <h2 id="modal-title">Wöchentlicher Newsletter</h2>
+                  <button class="icon-button" type="button" data-close-modal aria-label="Modal schließen">✕</button>
+                </header>
+                <p>Erhalten Sie Updates zu Produkt-Releases und Best Practices direkt in Ihr Postfach.</p>
+                <form class="newsletter-form" data-newsletter-modal>
+                  <label class="visually-hidden" for="modal-email">E-Mail-Adresse</label>
+                  <input class="input" id="modal-email" type="email" name="email" placeholder="name@example.com" required>
+                  <button class="btn" type="submit">Abonnieren</button>
+                </form>
+              </div>
+            </dialog>
+          </section>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

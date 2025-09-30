@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Product Card – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Product Card.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Product Card</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Produktkachel mit Bild, Preis, Bewertung und CTA.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Bildverhältnis"><span aria-hidden="true">⚙️</span>Bildverhältnis</span><span class="meta-pill" role="listitem" aria-label="Preis Hervorhebung"><span aria-hidden="true">⚙️</span>Preis Hervorhebung</span><span class="meta-pill" role="listitem" aria-label="Bewertung"><span aria-hidden="true">⚙️</span>Bewertung</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <article class="product-card">
+            <div class="product-card__image">
+              <img src="https://images.unsplash.com/photo-1512499617640-c2f999098c01?auto=format&fit=crop&w=800&q=80" alt="Minimalistischer Bürostuhl in Grau" loading="lazy">
+            </div>
+            <div class="product-card__body">
+              <div class="review-stars">
+                <div class="review-stars__stars" aria-label="4,8 von 5 Sternen">
+                  <span aria-hidden="true">★ ★ ★ ★ ☆</span>
+                </div>
+                <span class="text-muted">(128)</span>
+              </div>
+              <h2>Ergonomischer Chair One</h2>
+              <p class="text-muted">Atmungsaktives Mesh, 4D Armlehnen, Sitzhöhenverstellung.</p>
+              <p class="product-card__price">349 €</p>
+              <div class="share-buttons" role="group" aria-label="Produktaktionen">
+                <button class="btn" type="button">In den Warenkorb</button>
+                <button class="btn btn--ghost" type="button">Merken</button>
+              </div>
+            </div>
+          </article>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

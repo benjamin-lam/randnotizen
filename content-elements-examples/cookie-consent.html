@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Cookie Consent – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Cookie Consent.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Cookie Consent</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Consent-Banner oder Layer zur Einholung der DSGVO-konformen Zustimmung für Cookies.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Consent Kategorien"><span aria-hidden="true">⚙️</span>Consent Kategorien</span><span class="meta-pill" role="listitem" aria-label="Persistenz Demo"><span aria-hidden="true">⚙️</span>Persistenz Demo</span><span class="meta-pill" role="listitem" aria-label="Barrierefrei"><span aria-hidden="true">⚙️</span>Barrierefrei</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="cookie-banner" role="dialog" aria-modal="true" aria-live="assertive" data-cookie-banner>
+            <div class="stack-md">
+              <h2>Wir respektieren Ihre Privatsphäre</h2>
+              <p>Wir verwenden Cookies, um Ihr Erlebnis zu verbessern. Passen Sie Ihre Auswahl jederzeit an.</p>
+              <details>
+                <summary>Details anzeigen</summary>
+                <ul class="stack-sm" style="margin: 0; padding-left: 1rem;">
+                  <li><strong>Essentiell:</strong> notwendig für die Seitennutzung.</li>
+                  <li><strong>Statistik:</strong> hilft uns, Inhalte zu optimieren.</li>
+                  <li><strong>Marketing:</strong> personalisierte Angebote.</li>
+                </ul>
+              </details>
+            </div>
+            <div class="cookie-banner__actions">
+              <button class="btn" type="button" data-consent-action="accept">Alle akzeptieren</button>
+              <button class="btn btn--ghost" type="button" data-consent-action="essentials">Nur essentielle</button>
+              <button class="btn btn--ghost" type="button" data-consent-open-settings>Individuell</button>
+            </div>
+          </section>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

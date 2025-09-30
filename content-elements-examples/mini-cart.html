@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Mini Cart – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Mini Cart.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Mini Cart</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Warenkorb-Vorschau als Off-Canvas oder Dropdown.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Live Aktualisierung"><span aria-hidden="true">⚙️</span>Live Aktualisierung</span><span class="meta-pill" role="listitem" aria-label="Accessible Pricing"><span aria-hidden="true">⚙️</span>Accessible Pricing</span><span class="meta-pill" role="listitem" aria-label="Keyboard ready"><span aria-hidden="true">⚙️</span>Keyboard ready</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="mini-cart" data-mini-cart aria-label="Mini Warenkorb">
+            <div class="cart-item" data-cart-item>
+              <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=200&q=80" alt="Kabellose Kopfhörer" loading="lazy">
+              <div>
+                <p>Kabellose Kopfhörer</p>
+                <p class="text-muted">Lieferung in 2-3 Tagen</p>
+                <label class="visually-hidden" for="item-1">Anzahl</label>
+                <input class="input" id="item-1" type="number" min="1" value="1" data-item-qty>
+              </div>
+              <strong data-item-price="129.90">129,90 €</strong>
+            </div>
+            <div class="cart-item" data-cart-item>
+              <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?auto=format&fit=crop&w=200&q=80" alt="Leder Schreibtischunterlage" loading="lazy">
+              <div>
+                <p>Leder Desk Pad</p>
+                <p class="text-muted">Nachhaltiges Leder</p>
+                <label class="visually-hidden" for="item-2">Anzahl</label>
+                <input class="input" id="item-2" type="number" min="1" value="2" data-item-qty>
+              </div>
+              <strong data-item-price="59.90">59,90 €</strong>
+            </div>
+            <div class="cart-summary">
+              <span>Zwischensumme</span>
+              <span data-cart-total>249,70 €</span>
+            </div>
+            <button class="btn" type="button">Zur Kasse</button>
+          </section>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

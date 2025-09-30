@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Price Comparison – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Price Comparison.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Price Comparison</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Kompakte Vergleichstabelle für Tarife oder Pakete.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Responsive Karten"><span aria-hidden="true">⚙️</span>Responsive Karten</span><span class="meta-pill" role="listitem" aria-label="Highlight Tarif"><span aria-hidden="true">⚙️</span>Highlight Tarif</span><span class="meta-pill" role="listitem" aria-label="Semantische Listen"><span aria-hidden="true">⚙️</span>Semantische Listen</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="price-comparison">
+            <article class="plan-card" aria-label="Starter Tarif">
+              <span class="badge">Starter</span>
+              <p class="plan-card__price">19 €<span class="text-muted" style="font-size:0.9rem;">/Monat</span></p>
+              <ul class="stack-sm" style="padding-left: 1rem; margin: 0;">
+                <li>Bis zu 5 Projekte</li>
+                <li>E-Mail Support</li>
+                <li>Community Zugang</li>
+              </ul>
+              <button class="btn btn--ghost" type="button">Jetzt starten</button>
+            </article>
+            <article class="plan-card plan-card--highlight" aria-label="Professional Tarif">
+              <span class="badge badge--success">Beliebt</span>
+              <p class="plan-card__price">39 €<span class="text-muted" style="font-size:0.9rem;">/Monat</span></p>
+              <ul class="stack-sm" style="padding-left: 1rem; margin: 0;">
+                <li>Unbegrenzte Projekte</li>
+                <li>Fortgeschrittene Automatisierung</li>
+                <li>Priorisierter Support</li>
+              </ul>
+              <button class="btn" type="button">Kostenlos testen</button>
+            </article>
+            <article class="plan-card" aria-label="Enterprise Tarif">
+              <span class="badge badge--warning">Enterprise</span>
+              <p class="plan-card__price">Auf Anfrage</p>
+              <ul class="stack-sm" style="padding-left: 1rem; margin: 0;">
+                <li>Dedizierte Betreuung</li>
+                <li>Single Sign-On</li>
+                <li>Custom SLAs</li>
+              </ul>
+              <button class="btn btn--ghost" type="button">Kontakt aufnehmen</button>
+            </article>
+          </section>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

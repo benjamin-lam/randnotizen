@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Loading Spinner – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Loading Spinner.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Loading Spinner</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Animierter Indikator für laufende Prozesse.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Reduced Motion"><span aria-hidden="true">⚙️</span>Reduced Motion</span><span class="meta-pill" role="listitem" aria-label="Role Status"><span aria-hidden="true">⚙️</span>Role Status</span><span class="meta-pill" role="listitem" aria-label="Contrast optimiert"><span aria-hidden="true">⚙️</span>Contrast optimiert</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <div class="card" role="status" aria-live="polite">
+            <div class="spinner" aria-hidden="true"></div>
+            <p>Daten werden geladen …</p>
+            <p class="form-help">Sollte der Vorgang länger dauern als 30 Sekunden, aktualisieren Sie die Seite.</p>
+          </div>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Video Embed – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Video Embed.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Video Embed</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Einbettung von Videos mit Poster, Controls und optionaler Lazyload-Lösung.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="Responsive Wrapper"><span aria-hidden="true">⚙️</span>Responsive Wrapper</span><span class="meta-pill" role="listitem" aria-label="Titel &amp; Transcript"><span aria-hidden="true">⚙️</span>Titel &amp; Transcript</span><span class="meta-pill" role="listitem" aria-label="Lazy Loading"><span aria-hidden="true">⚙️</span>Lazy Loading</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <section class="card">
+            <h2>Produktdemo</h2>
+            <div class="video-frame">
+              <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" title="Produktdemo Video" loading="lazy" allowfullscreen></iframe>
+            </div>
+            <details>
+              <summary>Transkript anzeigen</summary>
+              <p class="text-muted">In diesem Video erfahren Sie, wie das Onboarding in weniger als fünf Minuten funktioniert.</p>
+            </details>
+          </section>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>

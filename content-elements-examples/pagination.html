@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pagination – Content Element Beispiel</title>
+    <meta name="description" content="Beispielimplementierung für das Content-Element Pagination.">
+    <link rel="stylesheet" href="assets/styles.css">
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Zum Inhalt springen</a>
+    <header class="site-header">
+      <p class="badge">Content Element Beispiel</p>
+      <h1 class="site-header__title">Pagination</h1>
+    </header>
+    <main id="main" class="component-page" tabindex="-1">
+      <article class="component-preview">
+        <header class="component-preview__header">
+          <h2 class="component-preview__title">Live-Demo</h2>
+          <p class="component-preview__description">Seitenweise Navigation für Listen und Suchergebnisse.</p>
+          <div class="component-meta" role="list">
+            <span class="meta-pill" role="listitem" aria-label="ARIA Labels"><span aria-hidden="true">⚙️</span>ARIA Labels</span><span class="meta-pill" role="listitem" aria-label="Erweiterte Klickflächen"><span aria-hidden="true">⚙️</span>Erweiterte Klickflächen</span><span class="meta-pill" role="listitem" aria-label="Responsives Layout"><span aria-hidden="true">⚙️</span>Responsives Layout</span>
+          </div>
+        </header>
+        <section class="component-preview__example" aria-label="Beispiel">
+          <nav aria-label="Seiten Navigation">
+            <ul class="pagination">
+              <li class="pagination__item"><a class="pagination__link" href="#" aria-label="Vorherige Seite">‹</a></li>
+              <li class="pagination__item"><a class="pagination__link" href="#">1</a></li>
+              <li class="pagination__item"><a class="pagination__link" href="#" aria-current="page">2</a></li>
+              <li class="pagination__item"><a class="pagination__link" href="#">3</a></li>
+              <li class="pagination__item"><a class="pagination__link" href="#" aria-label="Nächste Seite">›</a></li>
+            </ul>
+          </nav>
+        </section>
+        
+      </article>
+    </main>
+    <script src="assets/scripts.js" defer></script>
+  </body>
+</html>
