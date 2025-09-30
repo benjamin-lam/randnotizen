@@ -11,7 +11,7 @@ COMPONENTS: dict[str, dict[str, object]] = {
 <div class="audio-player" data-audio-player>
   <section class="card" aria-label="Aktuelle Episode">
     <div class="audio-player__meta">
-      <img class="audio-player__cover" src="/assets/agents-and-robots.txt" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
+      <img class="audio-player__cover" src="/assets/agents-and-robots.png" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
       <div>
         <p class="text-muted">Remote Culture • Episode 12</p>
         <h3 class="callout__title">Async Workflows, die funktionieren</h3>
@@ -300,15 +300,15 @@ COMPONENTS: dict[str, dict[str, object]] = {
 <section class="carousel" data-carousel aria-roledescription="Karussell" aria-label="Produktbilder">
   <div class="carousel__slides" data-carousel-track>
     <figure class="carousel__slide" data-carousel-slide>
-      <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in futuristischer Stadt bei Nacht" loading="lazy">
+      <img src="/assets/agents-and-robots.png" alt="Agentin und Roboter in futuristischer Stadt bei Nacht" loading="lazy">
       <figcaption class="visually-hidden">Futuristische Stadt mit Agentin und Roboter</figcaption>
     </figure>
     <figure class="carousel__slide" data-carousel-slide>
-      <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in futuristischer Stadt bei Nacht" loading="lazy">
+      <img src="/assets/agents-and-robots.png" alt="Agentin und Roboter in futuristischer Stadt bei Nacht" loading="lazy">
       <figcaption class="visually-hidden">Futuristische Stadt mit Agentin und Roboter</figcaption>
     </figure>
     <figure class="carousel__slide" data-carousel-slide>
-      <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter in futuristischer Stadt bei Nacht" loading="lazy">
+      <img src="/assets/agents-and-robots.png" alt="Agentin und Roboter in futuristischer Stadt bei Nacht" loading="lazy">
       <figcaption class="visually-hidden">Futuristische Stadt mit Agentin und Roboter</figcaption>
     </figure>
   </div>
@@ -333,8 +333,8 @@ COMPONENTS: dict[str, dict[str, object]] = {
         "example": """
 <figure class="figure">
   <picture>
-    <source srcset="/assets/agents-and-robots.txt" media="(min-width: 800px)">
-    <img src="/assets/agents-and-robots.txt" alt="Agentin und Roboter zwischen Neonreklamen in einer futuristischen Stadt" loading="lazy">
+    <source srcset="/assets/agents-and-robots.png" media="(min-width: 800px)">
+    <img src="/assets/agents-and-robots.png" alt="Agentin und Roboter zwischen Neonreklamen in einer futuristischen Stadt" loading="lazy">
   </picture>
   <figcaption>Team Sync im Workspace Berlin – Foto: <a href="https://unsplash.com" rel="noopener">Unsplash</a></figcaption>
 </figure>
@@ -402,7 +402,7 @@ COMPONENTS: dict[str, dict[str, object]] = {
         "example": """
 <section class="mini-cart" data-mini-cart aria-label="Mini Warenkorb">
   <div class="cart-item" data-cart-item>
-    <img src="/assets/agents-and-robots.txt" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
+    <img src="/assets/agents-and-robots.png" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
     <div>
       <p>Kabellose Kopfhörer</p>
       <p class="text-muted">Lieferung in 2-3 Tagen</p>
@@ -412,7 +412,7 @@ COMPONENTS: dict[str, dict[str, object]] = {
     <strong data-item-price="129.90">129,90 €</strong>
   </div>
   <div class="cart-item" data-cart-item>
-    <img src="/assets/agents-and-robots.txt" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
+    <img src="/assets/agents-and-robots.png" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
     <div>
       <p>Leder Desk Pad</p>
       <p class="text-muted">Nachhaltiges Leder</p>
@@ -633,7 +633,7 @@ COMPONENTS: dict[str, dict[str, object]] = {
         "example": """
 <article class="product-card">
   <div class="product-card__image">
-    <img src="/assets/agents-and-robots.txt" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
+    <img src="/assets/agents-and-robots.png" alt="Illustration einer Agentin und eines Roboters in einer futuristischen Stadt" loading="lazy">
   </div>
   <div class="product-card__body">
     <div class="review-stars">
