@@ -10,12 +10,13 @@ original_path: layouts/relevant/cover-page.md
 ---
 
 ## Einleitung
-Es fühlt sich an wie ein Fund in einer verstaubten Prototyp-Schublade: **Cover Page** passte heute perfekt in unsere Layouts-Gedanken, und plötzlich roch der Raum nach Whiteboard-Markern und frisch gebrühtem Kaffee.
+Noch bevor Slack das erste Ping losließ, balancierte ich zwischen Straßenbahn und improvisiertem Stehtisch und schrieb die ersten Stichworte ins Smartphone. Auf dem Screen wartete Cover Page; kein Thriller, sondern das nächste Kapitel für Layouts (Relevant).
 
 ## Technischer Kern
-Technisch betrachtet verlangt Cover Page nach klaren Leitplanken. Ich habe die ursprüngliche Beschreibung unten angeheftet und mit Kommentaren versehen, damit der Transfer in das neue Blog sichtbar bleibt.
+Technisch gesehen sitzt Cover Page genau an der Schnittstelle zwischen Ordnung und Emotion. Ich erinnere mich noch, wie wir im letzten Quartal eine Variante shippten, die auf dem Testgerät butterweich wirkte, auf einem alten Android aber ruckelte wie ein VHS-Band. Seitdem ist Mobile First mein Morgenritual; ich starte immer mit dem kleinsten Screen. Accessibility hält mich ehrlich: Ohne klare Fokuszustände oder Transkripte wird aus Eleganz sofort Chaos, und genau dann ruft jemand aus dem Support an. Die Originalnotizen unten dienen mir als Checkliste, doch meine heimliche Regel lautet: Wir alle tüfteln in unseren Kellern an der Zukunft. In diesem Keller sorge ich dafür, dass Cover Page stabil bleibt, selbst wenn ein Sturm aus Edge Cases tobt.
 
 ### Originalnotizen
+Unterhalb dieser Zeile wohnt das Rohmaterial – nach wie vor mein Truthahnthermometer für saubere Implementierung:
 # Layout: Cover Page
 
 ## Beschreibung
@@ -66,12 +67,17 @@ Bewertung der Relevanz 2025
 ⭐⭐⭐⭐☆ Ideal für Reports, Whitepaper und thematische Einstiege.
 
 ## Anekdoten & Nerd-Zitate
-Michael Crichton hätte wahrscheinlich eine komplette Katastrophensimulation um Cover Page gestrickt, nur um zu zeigen, wie viele Dinge gleichzeitig schiefgehen können. Douglas Coupland würde dagegen eine Slack-Konversation voller Insider-Gags daraus machen. Und irgendwo zwinkert eine alte RFC dazu, weil die Nerd-Fakten selten stillstehen.
+- In meinen Notizen steht noch der Satz: „Cover Page riecht nach Filterkaffee und Ticket-Alarm.“ Das war der Abend vor dem Launch.
+- Wir haben uns selbst beobachtet, wie wir mit Taschenlampen (a.k.a. Gerätepark) durch die QA-Nacht stapfen.
+- Niemand von außen textet für uns, aber unsere Slack-Emojis halten uns wach, wenn wir wieder Mobile-Bugs jagen.
+- Eine Kollegin sagte: „Accessibility fühlt sich an wie barfuß laufen – du merkst jeden Stein.“ Seitdem prüfe ich Cover Page ohne Maus.
 
 ## Best Practices
-- A11y: Cover Page tastatur- und screenreader-freundlich gestalten.
-- Performance: Cover Page nur laden, wenn der Kontext es wirklich braucht.
-- Wartbarkeit: Entscheidungen zu Cover Page direkt neben dem Code dokumentieren.
+- **Accessibility lebt von Ritualen:** Prüfe Cover Page mit Tastatur und Screenreader, bevor du überhaupt an Pixel-Politur denkst. Deine künftige Selbstachtung wird es dir danken.
+- **Mobile First aus Überzeugung:** Beginne mit dem kleinsten Viewport und frage dich ernsthaft, ob du das Element auch im U-Bahn-Gedränge bedienen könntest.
+- **Performance mit Hausverstand:** Lade nur, was wirklich gebraucht wird, sonst fühlt sich Cover Page an wie ein Buffering-Screen aus der Modem-Ära.
+- **Dokumentation neben dem Code:** Schreib dir dazu, warum Entscheidungen gefallen sind; sonst fragst du dich in drei Monaten selbst, was du damit meintest.
+- **Team-Sync:** Stell sicher, dass Design, Content und Dev dieselben Erwartungen haben – sonst erzählt jeder eine andere Story über Cover Page.
 
 ## Fazit
-Cover Page bleibt ein schönes Beispiel dafür, wie Layouts-Elemente Geschichten erzählen können, wenn man sie ernst nimmt und trotzdem mit Humor betrachtet.
+Cover Page ist am Ende wie eine Reihe kleiner Laternen im Tunnel: unscheinbar, aber ohne sie stolpern wir. Ich nehme aus diesem Durchgang mit, dass Mobile First und Accessibility keine Kapitelüberschriften sind, sondern Bauchentscheidungen für Menschen. Beim nächsten Mal baue ich noch früher Tests in den Workflow ein – und trinke meinen Kaffee vermutlich etwas langsamer.

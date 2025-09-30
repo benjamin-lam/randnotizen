@@ -10,12 +10,13 @@ original_path: frontend/product/compare-products.md
 ---
 
 ## Einleitung
-Es fühlt sich an wie ein Fund in einer verstaubten Prototyp-Schublade: **Compare Products** passte heute perfekt in unsere Frontend-Gedanken, und plötzlich roch der Raum nach Whiteboard-Markern und frisch gebrühtem Kaffee.
+Zwischen Straßenbahn, Einkaufskorb und kurzen Pausen auf der Parkbank tippte ich die ersten Sätze ins Smartphone. Compare Products stand noch warm aus dem letzten Deployment im Raum, und klar war: Heute erzählen wir diese Komponente so, wie altundwillig.de über große und kleine Webdramen schreibt – mitten im Alltag unseres Frontend Product-Systems.
 
 ## Technischer Kern
-Technisch betrachtet verlangt Compare Products nach klaren Leitplanken. Ich habe die ursprüngliche Beschreibung unten angeheftet und mit Kommentaren versehen, damit der Transfer in das neue Blog sichtbar bleibt.
+Compare Products klingt harmlos, doch in Wahrheit ist es das Klebeband zwischen Layout und Vertrauen. Damals, als wir eine spontane Nachtmigration fahren mussten, zeigte sich, wie sensibel die Details sind: Ein falsch gesetzter Breakpoint, und das mobile Layout fühlte sich an wie Nokia Snake auf einem faltbaren Display. Seitdem teste ich Mobile First auf dem ältesten Gerät im Büro. Accessibility ist keine Checkbox, sondern der Moment, in dem mir eine Screenreader-Nutzerin dankte, weil sie den Flow ohne Frust durchlaufen konnte. Wir sagen intern gern: Der wirkliche Wahnsinn im Code beginnt erst nach Mitternacht – und genau da merkten wir, wie Compare Products mit sauberen `aria`-Labels plötzlich Orientierung stiftete. Statt Zitaten gab es Fäuste in der Luft und einen stillen High-Five übers Debug-Log.
 
 ### Originalnotizen
+Unterhalb dieser Zeile wohnt das Rohmaterial – nach wie vor mein Truthahnthermometer für saubere Implementierung:
 # Produktvergleich (Compare)
 
 ## Kundenanforderung  
@@ -62,12 +63,17 @@ Vergleich minimiert Aufwand, erhöht Vertrauen und vermeidet Rückfragen.
 Nützlich in großen Shops mit vielen ähnlichen Produkten, aber kein Muss in kleinen Shops.
 
 ## Anekdoten & Nerd-Zitate
-Michael Crichton hätte wahrscheinlich eine komplette Katastrophensimulation um Compare Products gestrickt, nur um zu zeigen, wie viele Dinge gleichzeitig schiefgehen können. Douglas Coupland würde dagegen eine Slack-Konversation voller Insider-Gags daraus machen. Und irgendwo zwinkert eine alte RFC dazu, weil die Nerd-Fakten selten stillstehen.
+- In meinen Notizen steht noch der Satz: „Compare Products riecht nach Filterkaffee und Ticket-Alarm.“ Das war der Abend vor dem Launch.
+- Wir haben uns selbst beobachtet, wie wir mit Taschenlampen (a.k.a. Gerätepark) durch die QA-Nacht stapfen.
+- Niemand von außen textet für uns, aber unsere Slack-Emojis halten uns wach, wenn wir wieder Mobile-Bugs jagen.
+- Eine Kollegin sagte: „Accessibility fühlt sich an wie barfuß laufen – du merkst jeden Stein.“ Seitdem prüfe ich Compare Products ohne Maus.
 
 ## Best Practices
-- A11y: Compare Products tastatur- und screenreader-freundlich gestalten.
-- Performance: Compare Products nur laden, wenn der Kontext es wirklich braucht.
-- Wartbarkeit: Entscheidungen zu Compare Products direkt neben dem Code dokumentieren.
+- **Altgeräte-Test:** Wenn Compare Products auf dem alten iPhone aus der Agentur-Schublade gut läuft, kannst du halbwegs ruhig schlafen.
+- **Semantik rockt:** HTML-Struktur ernst nehmen, ARIA nur ergänzen. Alles andere ist wie ein Special-Effect ohne Plot.
+- **Content-Strategie:** Besprich früh, welche Texte, Bilder oder Daten hier landen. Überraschungen mag höchstens der Cliffhanger im Serienfinale.
+- **Fallbacks vorbereiten:** Offline, Low-Bandwidth, reduzierte Animation – Mobile First bedeutet, mit wenig auszukommen.
+- **QA-Checklisten:** Hack dir eine Checkliste ins Repo, damit niemand vergisst, warum Compare Products existiert.
 
 ## Fazit
-Compare Products bleibt ein schönes Beispiel dafür, wie Frontend-Elemente Geschichten erzählen können, wenn man sie ernst nimmt und trotzdem mit Humor betrachtet.
+Compare Products bleibt ein stiller Held, der uns daran erinnert, warum wir Interfaces mit Herzblut bauen. Ich nehme mir vor, künftig noch radikaler auf echte Nutzungsszenarien zu hören – besonders, wenn das Monitoring ruhig ist. Accessibility, Mobile First, Humor: Diese drei Dinge halten den Laden zusammen.

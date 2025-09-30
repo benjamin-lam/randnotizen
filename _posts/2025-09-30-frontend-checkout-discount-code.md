@@ -10,12 +10,13 @@ original_path: frontend/checkout/discount-code.md
 ---
 
 ## Einleitung
-Es fühlt sich an wie ein Fund in einer verstaubten Prototyp-Schublade: **Discount Code** passte heute perfekt in unsere Frontend-Gedanken, und plötzlich roch der Raum nach Whiteboard-Markern und frisch gebrühtem Kaffee.
+Zwischen Straßenbahn, Einkaufskorb und kurzen Pausen auf der Parkbank tippte ich die ersten Sätze ins Smartphone. Discount Code stand noch warm aus dem letzten Deployment im Raum, und klar war: Heute erzählen wir diese Komponente so, wie altundwillig.de über große und kleine Webdramen schreibt – mitten im Alltag unseres Frontend Checkout-Systems.
 
 ## Technischer Kern
-Technisch betrachtet verlangt Discount Code nach klaren Leitplanken. Ich habe die ursprüngliche Beschreibung unten angeheftet und mit Kommentaren versehen, damit der Transfer in das neue Blog sichtbar bleibt.
+Discount Code klingt harmlos, doch in Wahrheit ist es das Klebeband zwischen Layout und Vertrauen. Damals, als wir eine spontane Nachtmigration fahren mussten, zeigte sich, wie sensibel die Details sind: Ein falsch gesetzter Breakpoint, und das mobile Layout fühlte sich an wie Nokia Snake auf einem faltbaren Display. Seitdem teste ich Mobile First auf dem ältesten Gerät im Büro. Accessibility ist keine Checkbox, sondern der Moment, in dem mir eine Screenreader-Nutzerin dankte, weil sie den Flow ohne Frust durchlaufen konnte. Wir sagen intern gern: Der wirkliche Wahnsinn im Code beginnt erst nach Mitternacht – und genau da merkten wir, wie Discount Code mit sauberen `aria`-Labels plötzlich Orientierung stiftete. Statt Zitaten gab es Fäuste in der Luft und einen stillen High-Five übers Debug-Log.
 
 ### Originalnotizen
+Und weil Fakten auch bei aller Nostalgie zählen, folgt hier das unveränderte Archiv, das unsere Entscheidungen stützt:
 # Gutscheincode / Rabattcode
 
 ## Kundenanforderung  
@@ -62,12 +63,17 @@ Rabatte und Aktionen sind Marketinginstrumente, die häufig Käufe auslösen ode
 Sehr relevant – fast Standard in Online-Shops, besonders für Aktionen.
 
 ## Anekdoten & Nerd-Zitate
-Michael Crichton hätte wahrscheinlich eine komplette Katastrophensimulation um Discount Code gestrickt, nur um zu zeigen, wie viele Dinge gleichzeitig schiefgehen können. Douglas Coupland würde dagegen eine Slack-Konversation voller Insider-Gags daraus machen. Und irgendwo zwinkert eine alte RFC dazu, weil die Nerd-Fakten selten stillstehen.
+- Ein Chatverlauf von letzter Woche: „Kannst du Discount Code mal schnell deaktivieren?“ – „Nur wenn du mir einen neuen Kaffee bringst.“ Ergebnis: Kaffee kam, Discount Code blieb.
+- Merksatz: Technologie wird genau dann knifflig, wenn sie unsichtbar wirkt. Genau deshalb lassen wir Discount Code nicht aus der Doku verschwinden.
+- Während der Build lief, las ich alte Projekt-Notizen und sah uns alle als Varianten derselben Crew, die versucht, Discount Code pixelweise in den Griff zu bekommen.
+- In einer altundwillig.de-Sprachnachricht erzählte ich, wie ein Screenreader-User fragte: „Wo bin ich eigentlich?“ – dieser Satz hallt nach wie ein Drum-Solo.
 
 ## Best Practices
-- A11y: Discount Code tastatur- und screenreader-freundlich gestalten.
-- Performance: Discount Code nur laden, wenn der Kontext es wirklich braucht.
-- Wartbarkeit: Entscheidungen zu Discount Code direkt neben dem Code dokumentieren.
+- **Altgeräte-Test:** Wenn Discount Code auf dem alten iPhone aus der Agentur-Schublade gut läuft, kannst du halbwegs ruhig schlafen.
+- **Semantik rockt:** HTML-Struktur ernst nehmen, ARIA nur ergänzen. Alles andere ist wie ein Special-Effect ohne Plot.
+- **Content-Strategie:** Besprich früh, welche Texte, Bilder oder Daten hier landen. Überraschungen mag höchstens der Cliffhanger im Serienfinale.
+- **Fallbacks vorbereiten:** Offline, Low-Bandwidth, reduzierte Animation – Mobile First bedeutet, mit wenig auszukommen.
+- **QA-Checklisten:** Hack dir eine Checkliste ins Repo, damit niemand vergisst, warum Discount Code existiert.
 
 ## Fazit
-Discount Code bleibt ein schönes Beispiel dafür, wie Frontend-Elemente Geschichten erzählen können, wenn man sie ernst nimmt und trotzdem mit Humor betrachtet.
+Wenn ich den Tag Revue passieren lasse, sehe ich Discount Code wie eine verlässliche Nebenfigur, die dem Plot erst Sinn gibt. Wir haben gelernt, dass Resilienz aus Routine entsteht: frühe Tests, offene Kommunikation, echte Devices. Beim nächsten Sprint will ich die Kopplung zu Datenquellen sauberer aufsetzen und weiter beweisen, dass Barrierefreiheit kein Extra ist, sondern Haltung.

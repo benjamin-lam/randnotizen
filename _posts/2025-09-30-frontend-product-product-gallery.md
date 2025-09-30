@@ -10,12 +10,13 @@ original_path: frontend/product/product-gallery.md
 ---
 
 ## Einleitung
-Es fühlt sich an wie ein Fund in einer verstaubten Prototyp-Schublade: **Product Gallery** passte heute perfekt in unsere Frontend-Gedanken, und plötzlich roch der Raum nach Whiteboard-Markern und frisch gebrühtem Kaffee.
+Als ich heute Morgen die Kaffeemaschine anwarf, vibrierte das Handy wie ein Pager aus den Neunzigern. Im Editor blinkte Product Gallery und ich hörte innerlich die Titelmusik von ‚Akte X‘. Irgendwo zwischen dem Duft von frisch gemahlenen Bohnen und dem leisen Summen des Lüfters entschied ich: Diese Notiz wird eine Liebeserklärung an Product Gallery im Rahmen unserer Frontend Product-Expedition.
 
 ## Technischer Kern
-Technisch betrachtet verlangt Product Gallery nach klaren Leitplanken. Ich habe die ursprüngliche Beschreibung unten angeheftet und mit Kommentaren versehen, damit der Transfer in das neue Blog sichtbar bleibt.
+Product Gallery ist einer dieser Bausteine, die niemand beachtet, bis sie fehlen. Wir haben das schmerzhaft gelernt, als ein Kunde das Feature ohne ARIA ausgeliefert hat und ein Feedback-Call zur Selbsthilfegruppe wurde. Seitdem legen wir das Mobile-Layout zuerst fest, tasten uns mit echten Fingern durch Buttons und Links und feiern jeden Moment, in dem der Screenreader flüssig vorliest. Ich halte mich an die Spezifikationen, aber ich erzähle sie wie Lagerfeuergeschichten: mit klaren HTML-Strukturen, sauberen States und einer Prise Humor. Und während ich daran denke, dass wir alle an halb fertigen Interfaces arbeiten, mahnt mich eine innere Stimme, jede Abhängigkeit dreimal zu prüfen.
 
 ### Originalnotizen
+Und weil Fakten auch bei aller Nostalgie zählen, folgt hier das unveränderte Archiv, das unsere Entscheidungen stützt:
 # Produktgalerie & Bilderansicht
 
 ## Kundenanforderung  
@@ -63,12 +64,17 @@ Visuelle Darstellung ist entscheidend – gute Bilder vermitteln Vertrauen, Deta
 Sehr hoch – gute visuelle Präsentation ist zentral für Kaufvertrauen.
 
 ## Anekdoten & Nerd-Zitate
-Michael Crichton hätte wahrscheinlich eine komplette Katastrophensimulation um Product Gallery gestrickt, nur um zu zeigen, wie viele Dinge gleichzeitig schiefgehen können. Douglas Coupland würde dagegen eine Slack-Konversation voller Insider-Gags daraus machen. Und irgendwo zwinkert eine alte RFC dazu, weil die Nerd-Fakten selten stillstehen.
+- Wir haben einmal eine interne Nostalgie-Matrix gebaut, um Product Gallery gegen Erinnerungsglitzer zu testen. Ergebnis: 42 Prozent erinnern an MP3-Player aus 2003.
+- Mein Lieblings-Feedback kam aus dem Support: „Endlich muss ich niemandem mehr erklären, wo Product Gallery versteckt ist.“
+- Wenn das Monitoring blinkt, fühlt es sich kurz wie im Katastrophenfilm an – diesmal blieb der Alarm still.
+- Altundwillig.de hätte es so zusammengefasst: „Mach es benutzbar oder lass es bleiben.“
 
 ## Best Practices
-- A11y: Product Gallery tastatur- und screenreader-freundlich gestalten.
-- Performance: Product Gallery nur laden, wenn der Kontext es wirklich braucht.
-- Wartbarkeit: Entscheidungen zu Product Gallery direkt neben dem Code dokumentieren.
+- **Altgeräte-Test:** Wenn Product Gallery auf dem alten iPhone aus der Agentur-Schublade gut läuft, kannst du halbwegs ruhig schlafen.
+- **Semantik rockt:** HTML-Struktur ernst nehmen, ARIA nur ergänzen. Alles andere ist wie ein Special-Effect ohne Plot.
+- **Content-Strategie:** Besprich früh, welche Texte, Bilder oder Daten hier landen. Überraschungen mag höchstens der Cliffhanger im Serienfinale.
+- **Fallbacks vorbereiten:** Offline, Low-Bandwidth, reduzierte Animation – Mobile First bedeutet, mit wenig auszukommen.
+- **QA-Checklisten:** Hack dir eine Checkliste ins Repo, damit niemand vergisst, warum Product Gallery existiert.
 
 ## Fazit
-Product Gallery bleibt ein schönes Beispiel dafür, wie Frontend-Elemente Geschichten erzählen können, wenn man sie ernst nimmt und trotzdem mit Humor betrachtet.
+Product Gallery ist am Ende wie eine Reihe kleiner Laternen im Tunnel: unscheinbar, aber ohne sie stolpern wir. Ich nehme aus diesem Durchgang mit, dass Mobile First und Accessibility keine Kapitelüberschriften sind, sondern Bauchentscheidungen für Menschen. Beim nächsten Mal baue ich noch früher Tests in den Workflow ein – und trinke meinen Kaffee vermutlich etwas langsamer.

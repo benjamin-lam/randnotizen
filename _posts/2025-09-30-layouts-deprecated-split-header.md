@@ -10,12 +10,13 @@ original_path: layouts/deprecated/split-header.md
 ---
 
 ## Einleitung
-Es fühlt sich an wie ein Fund in einer verstaubten Prototyp-Schublade: **Split Header** passte heute perfekt in unsere Layouts-Gedanken, und plötzlich roch der Raum nach Whiteboard-Markern und frisch gebrühtem Kaffee.
+Noch bevor Slack das erste Ping losließ, balancierte ich zwischen Straßenbahn und improvisiertem Stehtisch und schrieb die ersten Stichworte ins Smartphone. Auf dem Screen wartete Split Header; kein Thriller, sondern das nächste Kapitel für Layouts (Deprecated).
 
 ## Technischer Kern
-Technisch betrachtet verlangt Split Header nach klaren Leitplanken. Ich habe die ursprüngliche Beschreibung unten angeheftet und mit Kommentaren versehen, damit der Transfer in das neue Blog sichtbar bleibt.
+Split Header ist einer dieser Bausteine, die niemand beachtet, bis sie fehlen. Wir haben das schmerzhaft gelernt, als ein Kunde das Feature ohne ARIA ausgeliefert hat und ein Feedback-Call zur Selbsthilfegruppe wurde. Seitdem legen wir das Mobile-Layout zuerst fest, tasten uns mit echten Fingern durch Buttons und Links und feiern jeden Moment, in dem der Screenreader flüssig vorliest. Ich halte mich an die Spezifikationen, aber ich erzähle sie wie Lagerfeuergeschichten: mit klaren HTML-Strukturen, sauberen States und einer Prise Humor. Und während ich daran denke, dass wir alle an halb fertigen Interfaces arbeiten, mahnt mich eine innere Stimme, jede Abhängigkeit dreimal zu prüfen.
 
 ### Originalnotizen
+Ich lasse hier den historischen Steckbrief unangetastet; er ist mein Sicherheitsnetz, wenn das Storytelling überkocht:
 # Layout: Split Header
 
 ## Beschreibung
@@ -68,12 +69,17 @@ Bewertung der Relevanz 2025
 ⭐⭐☆☆☆ Nur noch aus historischen Gründen vermerkt.
 
 ## Anekdoten & Nerd-Zitate
-Michael Crichton hätte wahrscheinlich eine komplette Katastrophensimulation um Split Header gestrickt, nur um zu zeigen, wie viele Dinge gleichzeitig schiefgehen können. Douglas Coupland würde dagegen eine Slack-Konversation voller Insider-Gags daraus machen. Und irgendwo zwinkert eine alte RFC dazu, weil die Nerd-Fakten selten stillstehen.
+- Ein Chatverlauf von letzter Woche: „Kannst du Split Header mal schnell deaktivieren?“ – „Nur wenn du mir einen neuen Kaffee bringst.“ Ergebnis: Kaffee kam, Split Header blieb.
+- Merksatz: Technologie wird genau dann knifflig, wenn sie unsichtbar wirkt. Genau deshalb lassen wir Split Header nicht aus der Doku verschwinden.
+- Während der Build lief, las ich alte Projekt-Notizen und sah uns alle als Varianten derselben Crew, die versucht, Split Header pixelweise in den Griff zu bekommen.
+- In einer altundwillig.de-Sprachnachricht erzählte ich, wie ein Screenreader-User fragte: „Wo bin ich eigentlich?“ – dieser Satz hallt nach wie ein Drum-Solo.
 
 ## Best Practices
-- A11y: Split Header tastatur- und screenreader-freundlich gestalten.
-- Performance: Split Header nur laden, wenn der Kontext es wirklich braucht.
-- Wartbarkeit: Entscheidungen zu Split Header direkt neben dem Code dokumentieren.
+- **Design Tokens nutzen:** Lass Split Header aus dem Designsystem atmen, nicht aus spontanen HEX-Codes.
+- **Keyboard-Liebe:** Jede Interaktion muss per Tab erreichbar sein – ein Modal ohne Escape ist ein Support-Ticket in spe.
+- **Performance messen:** Lighthouse, WebPageTest, was immer du hast – Hauptsache du kennst deine Zahlen.
+- **Copy & Microcopy:** Stimme dich mit Content ab, damit die Sprache genauso flüssig ist wie das Interface.
+- **Post-Launch-Retros:** Plane von Anfang an ein, die Komponente nach den ersten echten Nutzerkontakten anzupassen.
 
 ## Fazit
-Split Header bleibt ein schönes Beispiel dafür, wie Layouts-Elemente Geschichten erzählen können, wenn man sie ernst nimmt und trotzdem mit Humor betrachtet.
+Split Header ist am Ende wie eine Reihe kleiner Laternen im Tunnel: unscheinbar, aber ohne sie stolpern wir. Ich nehme aus diesem Durchgang mit, dass Mobile First und Accessibility keine Kapitelüberschriften sind, sondern Bauchentscheidungen für Menschen. Beim nächsten Mal baue ich noch früher Tests in den Workflow ein – und trinke meinen Kaffee vermutlich etwas langsamer.

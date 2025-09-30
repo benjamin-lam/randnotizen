@@ -10,12 +10,13 @@ original_path: layouts/deprecated/horizontal-scrolling.md
 ---
 
 ## Einleitung
-Es fühlt sich an wie ein Fund in einer verstaubten Prototyp-Schublade: **Horizontal Scrolling** passte heute perfekt in unsere Layouts-Gedanken, und plötzlich roch der Raum nach Whiteboard-Markern und frisch gebrühtem Kaffee.
+Zwischen Straßenbahn, Supermarktkasse und Handy-Display schrieb ich die ersten Zeilen auf dem Smartphone, während in Bremen der Duft von frisch gemahlenem Kaffee durch die Luft zog. Horizontal Scrolling blinkte mir entgegen wie ein Mixtape aus einer vergessenen Schublade, und klar war: Heute bekommt Horizontal Scrolling die große Bühne in unserem Layouts (Deprecated)-Tagebuch.
 
 ## Technischer Kern
-Technisch betrachtet verlangt Horizontal Scrolling nach klaren Leitplanken. Ich habe die ursprüngliche Beschreibung unten angeheftet und mit Kommentaren versehen, damit der Transfer in das neue Blog sichtbar bleibt.
+Jede Roadmap hat ihren heimlichen Bossfight, und bei uns hieß der im letzten Sprint Horizontal Scrolling. Die Doku unten ist die nüchterne Wahrheit, aber die eigentliche Arbeit passierte zwischen Koffeinflash und Pixel-Poesie. Ich habe die Komponente auf einem ausgeleierten iPhone 8 getestet, während ein Kollege Accessibility-Checks über VoiceOver machte. Mobile First bedeutet hier, das Layout zusammenzufalten, bis es auch mit einer Hand bedienbar bleibt. Accessibility heißt, dass niemand fragen muss: „Wo bin ich hier?“ Genau dann ploppte eine Slack-Nachricht auf, die mich daran erinnerte, dass wir alle Prototypen unserer eigenen Ideen sind – und im Kopf jubelte das innere Regieteam, als wir den letzten Bug fixen konnten.
 
 ### Originalnotizen
+Ich lasse hier den historischen Steckbrief unangetastet; er ist mein Sicherheitsnetz, wenn das Storytelling überkocht:
 # Layout: Horizontal Scrolling Layout
 
 ## Beschreibung
@@ -67,12 +68,17 @@ Bewertung der Relevanz 2025
 ⭐⭐☆☆☆ Nur für spezielle Storytelling-Experimente erhalten.
 
 ## Anekdoten & Nerd-Zitate
-Michael Crichton hätte wahrscheinlich eine komplette Katastrophensimulation um Horizontal Scrolling gestrickt, nur um zu zeigen, wie viele Dinge gleichzeitig schiefgehen können. Douglas Coupland würde dagegen eine Slack-Konversation voller Insider-Gags daraus machen. Und irgendwo zwinkert eine alte RFC dazu, weil die Nerd-Fakten selten stillstehen.
+- Wir haben einmal eine interne Nostalgie-Matrix gebaut, um Horizontal Scrolling gegen Erinnerungsglitzer zu testen. Ergebnis: 42 Prozent erinnern an MP3-Player aus 2003.
+- Mein Lieblings-Feedback kam aus dem Support: „Endlich muss ich niemandem mehr erklären, wo Horizontal Scrolling versteckt ist.“
+- Wenn das Monitoring blinkt, fühlt es sich kurz wie im Katastrophenfilm an – diesmal blieb der Alarm still.
+- Altundwillig.de hätte es so zusammengefasst: „Mach es benutzbar oder lass es bleiben.“
 
 ## Best Practices
-- A11y: Horizontal Scrolling tastatur- und screenreader-freundlich gestalten.
-- Performance: Horizontal Scrolling nur laden, wenn der Kontext es wirklich braucht.
-- Wartbarkeit: Entscheidungen zu Horizontal Scrolling direkt neben dem Code dokumentieren.
+- **Design Tokens nutzen:** Lass Horizontal Scrolling aus dem Designsystem atmen, nicht aus spontanen HEX-Codes.
+- **Keyboard-Liebe:** Jede Interaktion muss per Tab erreichbar sein – ein Modal ohne Escape ist ein Support-Ticket in spe.
+- **Performance messen:** Lighthouse, WebPageTest, was immer du hast – Hauptsache du kennst deine Zahlen.
+- **Copy & Microcopy:** Stimme dich mit Content ab, damit die Sprache genauso flüssig ist wie das Interface.
+- **Post-Launch-Retros:** Plane von Anfang an ein, die Komponente nach den ersten echten Nutzerkontakten anzupassen.
 
 ## Fazit
-Horizontal Scrolling bleibt ein schönes Beispiel dafür, wie Layouts-Elemente Geschichten erzählen können, wenn man sie ernst nimmt und trotzdem mit Humor betrachtet.
+Wenn ich den Tag Revue passieren lasse, sehe ich Horizontal Scrolling wie eine verlässliche Nebenfigur, die dem Plot erst Sinn gibt. Wir haben gelernt, dass Resilienz aus Routine entsteht: frühe Tests, offene Kommunikation, echte Devices. Beim nächsten Sprint will ich die Kopplung zu Datenquellen sauberer aufsetzen und weiter beweisen, dass Barrierefreiheit kein Extra ist, sondern Haltung.
