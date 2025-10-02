@@ -1,0 +1,30 @@
+{% if section.settings.image != blank %}
+<figure class="image">
+  <img src="{{ section.settings.image | image_url }}" alt="{{ section.settings.alt | escape }}" loading="lazy">
+  {% if section.settings.caption != blank %}
+  <figcaption>{{ section.settings.caption }}</figcaption>
+  {% endif %}
+</figure>
+{% endif %}
+{% schema %}
+{
+  "name": "Image with Caption",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Bild"
+    },
+    {
+      "type": "text",
+      "id": "alt",
+      "label": "Alt-Text"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Beschriftung"
+    }
+  ]
+}
+{% endschema %}
