@@ -1,0 +1,46 @@
+{% assign callout_style = section.settings.style | default: 'info' %}
+<aside class="callout callout--{{ callout_style }}">
+  {% if section.settings.title != blank %}
+  <h3 class="callout__title">{{ section.settings.title }}</h3>
+  {% endif %}
+  {% if section.settings.text != blank %}
+  <div class="callout__content">{{ section.settings.text }}</div>
+  {% endif %}
+</aside>
+{% schema %}
+{
+  "name": "Callout Box",
+  "settings": [
+    {
+      "type": "select",
+      "id": "style",
+      "label": "Stil",
+      "default": "info",
+      "options": [
+        {
+          "value": "info",
+          "label": "Info"
+        },
+        {
+          "value": "warning",
+          "label": "Warnung"
+        },
+        {
+          "value": "success",
+          "label": "Erfolg"
+        }
+      ]
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titel"
+    },
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Text"
+    }
+  ]
+}
+{% endschema %}

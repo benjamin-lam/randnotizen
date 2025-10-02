@@ -1,0 +1,35 @@
+{% if section.settings.video != blank %}
+<figure class="video">
+  <video controls preload="none"{% if section.settings.poster != blank %} poster="{{ section.settings.poster | image_url }}"{% endif %}>
+    {% for source in section.settings.video.sources %}
+    <source src="{{ source.url }}" type="{{ source.mime_type }}">
+    {% endfor %}
+    Ihr Browser unterstützt das Video-Element nicht.
+  </video>
+  {% if section.settings.caption != blank %}
+  <figcaption>{{ section.settings.caption }}</figcaption>
+  {% endif %}
+</figure>
+{% endif %}
+{% schema %}
+{
+  "name": "Video Embed",
+  "settings": [
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Video"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Posterbild"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Beschriftung"
+    }
+  ]
+}
+{% endschema %}
