@@ -129,3 +129,43 @@ Diese definieren das Grundgerüst jeder Seite.
 
 **Nice to have:**
 - `fr.default.json`, `es.default.json`, etc. – Weitere Sprachen
+
+## 🧩 Empfohlene Snippets für UI-Elemente (erweitert)
+
+| Snippet-Datei                  | Zweck / Inhalt                                  | Typisches HTML/Liquid-Element |
+|-------------------------------|--------------------------------------------------|-------------------------------|
+| `input-text.liquid`           | Einfaches Textfeld                              | `<input type="text">` |
+| `input-email.liquid`          | E-Mail-Feld mit Validierung                     | `<input type="email">` |
+| `input-password.liquid`       | Passwortfeld                                    | `<input type="password">` |
+| `input-number.liquid`         | Zahlenfeld (z. B. Menge, Alter)                 | `<input type="number">` |
+| `textarea.liquid`             | Mehrzeiliges Eingabefeld                        | `<textarea>` |
+| `select-dropdown.liquid`      | Dropdown-Auswahl                                | `<select>` |
+| `checkbox.liquid`             | Checkbox für Zustimmung etc.                   | `<input type="checkbox">` |
+| `radio-group.liquid`          | Gruppe von Radio-Buttons                        | `<input type="radio">` |
+| `submit-button.liquid`        | Absende-Button                                 | `<input type="submit">` oder `<button>` |
+| `button.liquid`               | Wiederverwendbarer Button                      | `<button class="btn">...</button>` |
+| `label.liquid`                | Beschriftung für Felder                        | `<label for="...">...</label>` |
+| `form-errors.liquid`          | Anzeige von Formularfehlern                    | `{% if form.errors %}...{% endif %}` |
+| `form-success.liquid`         | Erfolgsnachricht nach Absenden                 | `<p>Danke für Ihre Nachricht!</p>` |
+| `icon.liquid`                 | SVG oder Font-Icon                             | `<svg>...</svg>` oder `<i class="...">` |
+| `tooltip.liquid`              | Hilfetext bei Hover                            | `<span class="tooltip">...</span>` |
+| `rating-stars.liquid`         | Sternebewertung                                | ⭐⭐⭐⭐⭐ |
+| `accordion.liquid`            | Aufklappbare Inhalte                           | `<details><summary>...</summary></details>` |
+| `modal.liquid`                | Popup-Fenster                                  | `<div class="modal">...</div>` |
+| `spinner.liquid`              | Ladeanimation                                  | `<div class="spinner">...</div>` |
+| `progress-bar.liquid`         | Fortschrittsanzeige                            | `<progress value="..." max="100">` |
+| `badge.liquid`                | Label für Aktionen, z. B. „Sale“               | `<span class="badge">Sale</span>` |
+| `card.liquid`                 | Container für Inhalte (z. B. Produktkarte)      | `<div class="card">...</div>` |
+| `image.liquid`                | Responsive Bild mit Lazy Loading               | `<img src="{{ image | img_url: 'medium' }}" loading="lazy">` |
+| `video.liquid`                | Video-Embed (z. B. YouTube, MP4)               | `<video src="..." controls>` |
+| `breadcrumbs.liquid`          | Navigationspfad                                | `Home › Kategorie › Produkt` |
+| `social-icons.liquid`         | Social Media Icons                             | `<a href="..."><i class="icon-facebook"></i></a>` |
+| `wishlist-button.liquid`      | Wunschliste hinzufügen                         | `<button>Add to Wishlist</button>` |
+| `quick-add.liquid`            | Schnellkauf-Button                             | `<button>Add to Cart</button>` |
+| `compare-toggle.liquid`       | Produktvergleich aktivieren                    | `<input type="checkbox"> Vergleichen` |
+| `notification.liquid`         | Toast oder Hinweisbox                          | `<div class="notification">...</div>` |
+| `tabs.liquid`                 | Reiter-Navigation für Inhalte                  | `<ul class="tabs">...</ul>` |
+| `carousel.liquid`             | Bild- oder Produkt-Slider                      | `<div class="carousel">...</div>` |
+| `countdown.liquid`            | Countdown-Timer für Aktionen                   | `<span id="countdown">...</span>` |
+
+---
