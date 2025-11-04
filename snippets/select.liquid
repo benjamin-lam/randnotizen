@@ -1,0 +1,137 @@
+{%- comment -%}
+  Snippet: select
+  Verwendung: {% render 'select', name: 'size', label: 'Größe', options: size_options, placeholder: 'Bitte wählen' %}
+  Parameter:
+    - name: Feldname (text, 'select-field')
+    - label: Beschriftung (text, nil)
+    - options: Array mit { value, label, disabled } (array, nil)
+    - selected: Ausgewählter Wert (text, nil)
+    - placeholder: Placeholder-Option (text, nil)
+    - helper_text: Hilfetext (text, nil)
+    - error: Fehlermeldung (text, nil)
+    - required: Pflichtfeld (boolean, false)
+    - disabled: Deaktiviert (boolean, false)
+    - id: HTML-ID (text, nil)
+{%- endcomment -%}
+
+{%- liquid
+  assign name = name | default: 'select-field'
+  assign label = label | default: nil
+  assign options = options | default: nil
+  assign selected = selected | default: nil
+  assign placeholder = placeholder | default: nil
+  assign helper_text = helper_text | default: nil
+  assign error = error | default: nil
+  assign required = required | default: false
+  assign disabled = disabled | default: false
+  assign id = id | default: name | handle | prepend: 'select-'
+
+  assign wrapper_classes = 'select'
+  if error
+    assign wrapper_classes = wrapper_classes | append: ' select--error'
+  endif
+
+  assign describedby = ''
+  if helper_text
+    assign describedby = describedby | append: id | append: '-helper'
+  endif
+  if error
+    if describedby != ''
+      assign describedby = describedby | append: ' ' | append: id | append: '-error'
+    else
+      assign describedby = describedby | append: id | append: '-error'
+    endif
+  endif
+-%}
+
+<div class="{{ wrapper_classes }}">
+  {%- if label -%}
+    <label class="select__label" for="{{ id }}">
+      {{ label }}
+      {%- if required == true or required == 'true' -%}<span class="select__required" aria-hidden="true">*</span>{%- endif -%}
+    </label>
+  {%- endif -%}
+  <div class="select__wrapper">
+    <select
+      class="select__field"
+      name="{{ name }}"
+      id="{{ id }}"
+      {% if required == true or required == 'true' %}required aria-required="true"{% endif %}
+      {% if disabled == true or disabled == 'true' %}disabled aria-disabled="true"{% endif %}
+      {% if describedby != '' %}aria-describedby="{{ describedby }}"{% endif %}
+    >
+      {%- if placeholder -%}
+        <option value="" disabled {% if selected == blank or selected == '' %}selected{% endif %}>{{ placeholder }}</option>
+      {%- endif -%}
+      {%- if options -%}
+        {%- for option in options -%}
+          <option value="{{ option.value }}" {% if option.value == selected %}selected{% endif %} {% if option.disabled %}disabled{% endif %}>{{ option.label }}</option>
+        {%- endfor -%}
+      {%- endif -%}
+    </select>
+    <span class="select__icon" aria-hidden="true">▼</span>
+  </div>
+  {%- if helper_text -%}
+    <p class="select__helper" id="{{ id }}-helper">{{ helper_text }}</p>
+  {%- endif -%}
+  {%- if error -%}
+    <p class="select__error" role="alert" id="{{ id }}-error">{{ error }}</p>
+  {%- endif -%}
+</div>
+
+<style>
+.select {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.select__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.select__wrapper {
+  position: relative;
+}
+
+.select__field {
+  appearance: none;
+  width: 100%;
+  font: inherit;
+  padding: 0.75rem 2.5rem 0.75rem 0.9rem;
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  border-radius: 0.375rem;
+  background-color: #ffffff;
+}
+
+.select__field:focus {
+  outline: none;
+  border-color: rgba(37, 99, 235, 0.6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.select__icon {
+  position: absolute;
+  inset-inline-end: 0.75rem;
+  inset-block-start: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  font-size: 0.75rem;
+  color: rgba(17, 24, 39, 0.5);
+}
+
+.select__helper {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(17, 24, 39, 0.6);
+}
+
+.select__error {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #dc2626;
+}
+
+.select--error .select__field { border-color: #dc2626; }
+</style>

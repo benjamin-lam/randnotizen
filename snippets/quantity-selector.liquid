@@ -1,0 +1,134 @@
+{%- comment -%}
+  Snippet: quantity-selector
+  Verwendung: {% render 'quantity-selector', id: 'Quantity-{{ section.id }}', value: 1, min: 1, max: 10 %}
+  Parameter:
+    - id: Feld-ID (text, 'quantity-input')
+    - name: Feldname (text, 'quantity')
+    - value: Ausgangswert (number, 1)
+    - min: Mindestwert (number, 1)
+    - max: Maximalwert (number, nil)
+    - step: Schrittweite (number, 1)
+    - form_id: Verknüpftes Formular (text, nil)
+    - label: Beschriftung (text, 'Menge')
+{%- endcomment -%}
+
+{%- liquid
+  assign id = id | default: 'quantity-input'
+  assign name = name | default: 'quantity'
+  assign value = value | default: 1 | plus: 0
+  assign min = min | default: 1 | plus: 0
+  assign max = max | default: nil
+  assign step = step | default: 1 | plus: 0
+  assign form_id = form_id | default: nil
+  assign label = label | default: 'Menge'
+-%}
+
+<div class="quantity" data-quantity>
+  <label class="quantity__label" for="{{ id }}">{{ label }}</label>
+  <div class="quantity__controls">
+    <button class="quantity__button" type="button" data-quantity-decrease aria-label="{{ 'cart.general.reduce_quantity' | t | default: 'Menge verringern' }}">
+      {% render 'icon', name: 'arrow-left', decorative: true %}
+    </button>
+    <input
+      class="quantity__input"
+      type="number"
+      id="{{ id }}"
+      name="{{ name }}"
+      value="{{ value }}"
+      min="{{ min }}"
+      {% if max %}max="{{ max }}"{% endif %}
+      step="{{ step }}"
+      inputmode="numeric"
+      pattern="[0-9]*"
+      {% if form_id %}form="{{ form_id }}"{% endif %}
+    >
+    <button class="quantity__button" type="button" data-quantity-increase aria-label="{{ 'cart.general.increase_quantity' | t | default: 'Menge erhöhen' }}">
+      {% render 'icon', name: 'arrow-right', decorative: true %}
+    </button>
+  </div>
+</div>
+
+<style>
+.quantity {
+  display: inline-flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.quantity__controls {
+  display: inline-flex;
+  align-items: stretch;
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+.quantity__button {
+  background: transparent;
+  border: none;
+  width: 2.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.quantity__button:hover,
+.quantity__button:focus-visible {
+  background-color: rgba(17, 24, 39, 0.08);
+}
+
+.quantity__input {
+  width: 3rem;
+  text-align: center;
+  border: none;
+  font: inherit;
+  appearance: textfield;
+}
+
+.quantity__input:focus {
+  outline: none;
+}
+
+.quantity__input::-webkit-inner-spin-button,
+.quantity__input::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+</style>
+
+<script>
+(function () {
+  var script = document.currentScript;
+  if (!script) return;
+  var el = script.previousElementSibling;
+  while (el && el.tagName === 'STYLE') {
+    el = el.previousElementSibling;
+  }
+  if (!el || !el.hasAttribute('data-quantity')) return;
+  var input = el.querySelector('.quantity__input');
+  if (!input) return;
+  var decrease = el.querySelector('[data-quantity-decrease]');
+  var increase = el.querySelector('[data-quantity-increase]');
+  var step = parseFloat(input.getAttribute('step')) || 1;
+  var min = input.hasAttribute('min') ? parseFloat(input.getAttribute('min')) : null;
+  var max = input.hasAttribute('max') ? parseFloat(input.getAttribute('max')) : null;
+  var updateValue = function(delta) {
+    var current = parseFloat(input.value);    var next = current + delta;
+    if (min !== null && next < min) next = min;
+    if (max !== null && next > max) next = max;
+    if (next !== current) {
+      input.value = next;
+      input.dispatchEvent(new Event('change', { bubbles: true }));
+      input.dispatchEvent(new Event('input', { bubbles: true }));
+    }
+  };
+  if (decrease) {
+    decrease.addEventListener('click', function() { updateValue(-step); });
+  }
+  if (increase) {
+    increase.addEventListener('click', function() { updateValue(step); });
+  }
+})();
+</script>

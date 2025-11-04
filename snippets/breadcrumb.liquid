@@ -1,0 +1,88 @@
+{%- comment -%}
+  Snippet: breadcrumb
+  Verwendung: {% render 'breadcrumb', items: breadcrumbs_array, current: product.title %}
+  Parameter:
+    - items: Array aus { title, url } (array, nil)
+    - current: Aktueller Seitentitel (text, page_title)
+    - show_home: Home-Link anzeigen (boolean, true)
+    - home_label: Beschriftung Home (text, 'Startseite')
+    - separator: Trennzeichen (text, '/')
+{%- endcomment -%}
+
+{%- liquid
+  assign items = items | default: nil
+  assign current = current | default: page_title
+  assign show_home = show_home | default: true
+  assign home_label = home_label | default: 'Startseite'
+  assign separator = separator | default: '/'
+-%}
+
+<nav class="breadcrumb" aria-label="Breadcrumb">
+  <ol class="breadcrumb__list">
+    {%- if show_home == true or show_home == 'true' -%}
+      <li class="breadcrumb__item">
+        <a href="{{ routes.root_url }}" class="breadcrumb__link">{{ home_label }}</a>
+      </li>
+    {%- endif -%}
+    {%- if items and items.size > 0 -%}
+      {%- for item in items -%}
+        <li class="breadcrumb__item">
+          <span class="breadcrumb__separator" aria-hidden="true">{{ separator }}</span>
+          {%- if item.url -%}
+            <a href="{{ item.url }}" class="breadcrumb__link">{{ item.title }}</a>
+          {%- else -%}
+            <span class="breadcrumb__link breadcrumb__link--current" aria-current="page">{{ item.title }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+    {%- endif -%}
+    {%- if current -%}
+      <li class="breadcrumb__item">
+        <span class="breadcrumb__separator" aria-hidden="true">{{ separator }}</span>
+        <span class="breadcrumb__link breadcrumb__link--current" aria-current="page">{{ current }}</span>
+      </li>
+    {%- endif -%}
+  </ol>
+</nav>
+
+<style>
+.breadcrumb {
+  font-size: 0.8125rem;
+  color: rgba(17, 24, 39, 0.6);
+}
+
+.breadcrumb__list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.breadcrumb__item {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.breadcrumb__link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.breadcrumb__link:hover,
+.breadcrumb__link:focus-visible {
+  text-decoration: underline;
+}
+
+.breadcrumb__link--current {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.breadcrumb__separator {
+  opacity: 0.5;
+}
+</style>

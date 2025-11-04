@@ -1,0 +1,67 @@
+{%- comment -%}
+  Snippet: add-to-cart-button
+  Verwendung: {% render 'add-to-cart-button', product: product, form_id: 'product-form-' | append: section.id %}
+  Parameter:
+    - product: Produktobjekt (product, nil)
+    - variant: Variantenobjekt (variant, nil)
+    - form_id: Ziel-Formular (text, nil)
+    - label: Button-Label (text, nil)
+    - style: Button-Style (text, 'primary')
+    - size: Button-Größe sm | md | lg (text, 'lg')
+{%- endcomment -%}
+
+{%- liquid
+  assign product = product | default: nil
+  assign variant = variant | default: nil
+  assign form_id = form_id | default: nil
+  assign style = style | default: 'primary'
+  assign size = size | default: 'lg'
+
+  if variant == nil and product
+    assign variant = product.selected_or_first_available_variant
+  endif
+
+  assign available = true
+  assign price = nil
+  if variant
+    assign available = variant.available
+    assign price = variant.price
+  elsif product
+    assign available = product.available
+    assign price = product.price
+  endif
+
+  assign label = label | default: 'products.product.add_to_cart' | t
+  if available != true
+    assign label = 'products.product.sold_out' | t
+  endif
+-%}
+
+<div class="add-to-cart-button">
+  {% render 'button',
+    label: label,
+    style: style,
+    size: size,
+    type: 'submit',
+    form: form_id,
+    is_disabled: available != true,
+    aria_label: label
+  %}
+  {%- if price -%}
+    <span class="add-to-cart-button__price">{{ price | money_with_currency }}</span>
+  {%- endif -%}
+</div>
+
+<style>
+.add-to-cart-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.add-to-cart-button__price {
+  font-size: 0.875rem;
+  color: rgba(17, 24, 39, 0.7);
+}
+</style>

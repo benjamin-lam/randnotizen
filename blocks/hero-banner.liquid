@@ -1,0 +1,214 @@
+{% schema %}
+{
+  "name": "Hero Banner",
+  "settings": [
+    {
+      "type": "text",
+      "id": "eyebrow",
+      "label": "Eyebrow"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Starte stark in die Saison"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Beschreibe kurz dein Alleinstellungsmerkmal und inspiriere Besucher:innen zum Handeln."
+    },
+    {
+      "type": "image_picker",
+      "id": "background_image",
+      "label": "Background image"
+    },
+    {
+      "type": "image_picker",
+      "id": "supporting_image",
+      "label": "Supporting image"
+    },
+    {
+      "type": "select",
+      "id": "alignment",
+      "label": "Content alignment",
+      "default": "left",
+      "options": [
+        { "value": "left", "label": "Left" },
+        { "value": "center", "label": "Center" },
+        { "value": "right", "label": "Right" }
+      ]
+    },
+    {
+      "type": "select",
+      "id": "vertical_alignment",
+      "label": "Vertical alignment",
+      "default": "center",
+      "options": [
+        { "value": "top", "label": "Top" },
+        { "value": "center", "label": "Center" },
+        { "value": "bottom", "label": "Bottom" }
+      ]
+    },
+    {
+      "type": "color",
+      "id": "text_color",
+      "label": "Text color",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "overlay_opacity",
+      "label": "Overlay opacity",
+      "default": 40,
+      "min": 0,
+      "max": 90,
+      "step": 5
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Jetzt entdecken"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "label": "Button link"
+    },
+    {
+      "type": "select",
+      "id": "button_style",
+      "label": "Button style",
+      "default": "primary",
+      "options": [
+        { "value": "primary", "label": "Primary" },
+        { "value": "secondary", "label": "Secondary" },
+        { "value": "tertiary", "label": "Tertiary" }
+      ]
+    },
+    {
+      "type": "checkbox",
+      "id": "show_supporting_image",
+      "label": "Show supporting image",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Hero Banner"
+    }
+  ]
+}
+{% endschema %}
+
+{%- liquid
+  assign alignment = block.settings.alignment
+  assign v_align = block.settings.vertical_alignment
+  assign overlay_opacity = block.settings.overlay_opacity | default: 40
+  assign bg_image = block.settings.background_image
+  assign supporting_image = block.settings.supporting_image
+
+  assign classes = 'hero-banner hero-banner--align-' | append: alignment | append: ' hero-banner--valign-' | append: v_align
+
+  capture content_html
+    <div class="hero-banner__content">
+      {% if block.settings.eyebrow != blank %}
+        {% render 'badge', text: block.settings.eyebrow, style: 'info' %}
+      {% endif %}
+      {% if block.settings.heading != blank %}
+        {% render 'heading', text: block.settings.heading, size: 'display', align: alignment, color: block.settings.text_color %}
+      {% endif %}
+      {% if block.settings.subheading != blank %}
+        {% render 'paragraph', text: block.settings.subheading, align: alignment, color: block.settings.text_color, is_richtext: true %}
+      {% endif %}
+      {% if block.settings.button_label != blank %}
+        {% render 'button', label: block.settings.button_label, url: block.settings.button_link, style: block.settings.button_style, size: 'lg' %}
+      {% endif %}
+    </div>
+    {% if block.settings.show_supporting_image and supporting_image %}
+      <div class="hero-banner__media">
+        {% render 'image', image: supporting_image, sizes: '(min-width: 64rem) 40vw, 80vw', aspect_ratio: '4/5' %}
+      </div>
+    {% endif %}
+  endcapture
+
+  capture wrapper_html
+    render 'container', width: 'wide', padding: 'lg', align: alignment, content: content_html
+  endcapture
+-%}
+
+<section class="{{ classes }}" style="--hero-text-color: {{ block.settings.text_color }};">
+  <div class="hero-banner__background" aria-hidden="true">
+    {% if bg_image %}
+      {{ bg_image | image_url: width: 2400 | image_tag: class: 'hero-banner__background-image', loading: 'lazy', sizes: '100vw' }}
+    {% endif %}
+    <div class="hero-banner__overlay" style="opacity: {{ overlay_opacity | times: 0.01 }};"></div>
+  </div>
+  {{ wrapper_html }}
+</section>
+
+{% stylesheet %}
+.hero-banner {
+  position: relative;
+  color: var(--hero-text-color);
+  display: grid;
+  min-height: clamp(24rem, 70vh, 36rem);
+}
+
+.hero-banner__background {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.hero-banner__background-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(110%);
+}
+
+.hero-banner__overlay {
+  position: absolute;
+  inset: 0;
+  background: #111827;
+  pointer-events: none;
+}
+
+.hero-banner .container {
+  position: relative;
+  z-index: 1;
+  display: grid;
+  gap: 2rem;
+  align-items: center;
+}
+
+.hero-banner__content {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.hero-banner--align-center .hero-banner__content { text-align: center; }
+.hero-banner--align-right .hero-banner__content { text-align: right; justify-items: end; }
+.hero-banner--align-left .hero-banner__content { text-align: left; justify-items: start; }
+
+.hero-banner__media {
+  max-width: min(24rem, 90vw);
+  justify-self: center;
+}
+
+.hero-banner--valign-top .container { align-items: flex-start; }
+.hero-banner--valign-bottom .container { align-items: flex-end; }
+
+@media (min-width: 64rem) {
+  .hero-banner .container {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .hero-banner__media { justify-self: end; }
+  .hero-banner--align-left .hero-banner__media { order: 2; }
+  .hero-banner--align-right .hero-banner__media { order: 0; justify-self: start; }
+}
+{% endstylesheet %}

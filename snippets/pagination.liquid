@@ -1,0 +1,98 @@
+{%- comment -%}
+  Snippet: pagination
+  Verwendung: {% render 'pagination', paginate: paginate %}
+  Parameter:
+    - paginate: Shopify Paginate Objekt (paginate, nil)
+    - show_summary: Seitensummary anzeigen (boolean, true)
+    - show_prev_next: Vor/Zurück anzeigen (boolean, true)
+{%- endcomment -%}
+
+{%- liquid
+  assign paginate = paginate | default: nil
+  assign show_summary = show_summary | default: true
+  assign show_prev_next = show_prev_next | default: true
+
+  if paginate == nil or paginate.pages <= 1
+    assign render_pagination = false
+  else
+    assign render_pagination = true
+  endif
+-%}
+
+{%- if render_pagination -%}
+  <nav class="pagination" role="navigation" aria-label="Pagination">
+    {%- if show_summary == true or show_summary == 'true' -%}
+      <div class="pagination__summary">{{ 'general.pagination.summary' | t: current_page: paginate.current_page, pages: paginate.pages }}</div>
+    {%- endif -%}
+    <ol class="pagination__list">
+      {%- if (show_prev_next == true or show_prev_next == 'true') and paginate.previous -%}
+        <li class="pagination__item pagination__item--prev">
+          <a href="{{ paginate.previous.url }}" class="pagination__link" rel="prev">&larr;</a>
+        </li>
+      {%- endif -%}
+      {%- for part in paginate.parts -%}
+        <li class="pagination__item{% if part.is_link != true %} is-active{% endif %}">
+          {%- if part.is_link -%}
+            <a href="{{ part.url }}" class="pagination__link">{{ part.title }}</a>
+          {%- else -%}
+            <span class="pagination__link" aria-current="page">{{ part.title }}</span>
+          {%- endif -%}
+        </li>
+      {%- endfor -%}
+      {%- if (show_prev_next == true or show_prev_next == 'true') and paginate.next -%}
+        <li class="pagination__item pagination__item--next">
+          <a href="{{ paginate.next.url }}" class="pagination__link" rel="next">&rarr;</a>
+        </li>
+      {%- endif -%}
+    </ol>
+  </nav>
+{%- endif -%}
+
+<style>
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  align-items: center;
+}
+
+.pagination__summary {
+  font-size: 0.8125rem;
+  color: rgba(17, 24, 39, 0.6);
+}
+
+.pagination__list {
+  display: inline-flex;
+  gap: 0.5rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  align-items: center;
+}
+
+.pagination__link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0 0.75rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  text-decoration: none;
+  color: inherit;
+  font-size: 0.875rem;
+}
+
+.pagination__link:hover,
+.pagination__link:focus-visible {
+  border-color: #2563eb;
+}
+
+.pagination__item.is-active .pagination__link,
+.pagination__item.is-active span.pagination__link {
+  background: #2563eb;
+  color: #ffffff;
+  border-color: #2563eb;
+}
+</style>

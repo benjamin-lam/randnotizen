@@ -1,0 +1,48 @@
+{%- comment -%}
+  Snippet: container
+  Verwendung: {% render 'container', content: section_content, width: 'wide', padding: 'lg' %}
+  Parameter:
+    - content: HTML-Inhalt (text, nil)
+    - width: max-width Variante narrow | default | wide | full (text, 'default')
+    - padding: Innenabstand none | sm | md | lg (text, 'md')
+    - align: Textausrichtung left | center | right (text, 'left')
+    - tag: Wrapper-Tag (text, 'div')
+    - id: HTML-ID (text, nil)
+{%- endcomment -%}
+
+{%- liquid
+  assign content = content | default: ''
+  assign width = width | default: 'default'
+  assign padding = padding | default: 'md'
+  assign align = align | default: 'left'
+  assign tag = tag | default: 'div'
+  assign id = id | default: nil
+
+  assign classes = 'container container--width-' | append: width | append: ' container--pad-' | append: padding | append: ' container--align-' | append: align
+-%}
+
+<{{ tag }} class="{{ classes }}" {% if id %}id="{{ id }}"{% endif %}>
+  {{ content }}
+</{{ tag }}>
+
+<style>
+.container {
+  margin-inline: auto;
+  width: 100%;
+  display: block;
+}
+
+.container--width-narrow { max-width: min(48rem, 92vw); }
+.container--width-default { max-width: min(64rem, 92vw); }
+.container--width-wide { max-width: min(80rem, 96vw); }
+.container--width-full { max-width: none; width: 100%; }
+
+.container--pad-none { padding: 0; }
+.container--pad-sm { padding: clamp(1rem, 3vw, 1.5rem) clamp(1rem, 4vw, 1.5rem); }
+.container--pad-md { padding: clamp(1.5rem, 4vw, 2.5rem) clamp(1.5rem, 5vw, 3rem); }
+.container--pad-lg { padding: clamp(2rem, 5vw, 3.5rem) clamp(2rem, 6vw, 4rem); }
+
+.container--align-left { text-align: left; }
+.container--align-center { text-align: center; }
+.container--align-right { text-align: right; }
+</style>
