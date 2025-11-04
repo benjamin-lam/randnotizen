@@ -1,0 +1,138 @@
+{% schema %}
+{
+  "name": "Produktkarte",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produkt"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_badges",
+      "label": "Badges anzeigen",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_add_to_cart",
+      "label": "Add-to-Cart anzeigen",
+      "default": true
+    },
+    {
+      "type": "checkbox",
+      "id": "show_price",
+      "label": "Preis anzeigen",
+      "default": true
+    }
+  ],
+  "presets": [
+    {
+      "name": "Produktkarte"
+    }
+  ]
+}
+{% endschema %}
+
+{%- liquid
+  assign product = block.settings.product
+  if product == blank
+    assign product_title = 'Produktname'
+    assign product_url = '#'
+    assign product_image = blank
+  else
+    assign product_title = product.title
+    assign product_url = product.url
+    assign product_image = product.featured_media
+  endif
+  assign variant = nil
+  if product and product.selected_or_first_available_variant
+    assign variant = product.selected_or_first_available_variant
+  endif
+-%}
+
+<article class="product-card" aria-labelledby="product-card-{{ block.id }}-title">
+  <a class="product-card__media" href="{{ product_url }}">
+    {% if product_image %}
+      {% render 'image', image: product_image, aspect_ratio: '4/5', sizes: '(min-width: 64rem) 25vw, 50vw' %}
+    {% else %}
+      <div class="product-card__placeholder" aria-hidden="true">{% render 'icon', name: 'image', decorative: true %}</div>
+    {% endif %}
+    {% if block.settings.show_badges and product %}
+      <div class="product-card__badges">
+        {% render 'product-badge', product: product %}
+      </div>
+    {% endif %}
+  </a>
+  <div class="product-card__info">
+    <h3 id="product-card-{{ block.id }}-title" class="product-card__title">
+      <a href="{{ product_url }}">{{ product_title }}</a>
+    </h3>
+    {% if block.settings.show_price %}
+      <div class="product-card__price">
+        {% render 'price', product: product, variant: variant, show_discount: true %}
+      </div>
+    {% endif %}
+    {% if block.settings.show_add_to_cart %}
+      <div class="product-card__actions">
+        {% if product %}
+          {% form 'product', product, id: 'product-card-form-' | append: block.id %}
+            <input type="hidden" name="id" value="{{ variant.id }}">
+            {% render 'add-to-cart-button', product: product, variant: variant, form_id: 'product-card-form-' | append: block.id, size: 'md' %}
+          {% endform %}
+        {% else %}
+          {% render 'button', label: 'Zum Produkt', url: '#', style: 'secondary' %}
+        {% endif %}
+      </div>
+    {% endif %}
+  </div>
+</article>
+
+{% stylesheet %}
+.product-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.product-card__media {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 0.75rem;
+}
+
+.product-card__media img { transition: transform 0.3s ease; }
+.product-card__media:hover img { transform: scale(1.05); }
+
+.product-card__placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  background: rgba(17, 24, 39, 0.08);
+}
+
+.product-card__badges {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.product-card__title {
+  font-size: 1rem;
+  margin: 0;
+}
+
+.product-card__title a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.product-card__title a:hover,
+.product-card__title a:focus-visible { text-decoration: underline; }
+
+.product-card__actions { margin-top: 0.75rem; }
+{% endstylesheet %}

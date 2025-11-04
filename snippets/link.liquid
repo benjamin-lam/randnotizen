@@ -1,0 +1,87 @@
+{%- comment -%}
+  Snippet: link
+  Verwendung: {% render 'link', text: 'Mehr erfahren', url: section.settings.link, icon: 'arrow-right' %}
+  Parameter:
+    - text: Linktext (text, 'Link')
+    - url: Ziel-URL (url, '#')
+    - style: Variante default | subtle | button (text, 'default')
+    - icon: Icon-Name für {% render 'icon' %} (text, nil)
+    - icon_position: Position des Icons left | right (text, 'right')
+    - target_blank: Öffnet Link in neuem Tab (boolean, false)
+    - underline: Erzwingt Unterstreichung (boolean, false)
+    - aria_label: Überschreibt aria-label (text, nil)
+    - id: HTML-ID (text, nil)
+{%- endcomment -%}
+
+{%- liquid
+  assign text = text | default: 'Link'
+  assign url = url | default: '#'
+  assign style = style | default: 'default'
+  assign icon_position = icon_position | default: 'right'
+  assign target_blank = target_blank | default: false
+  assign underline = underline | default: false
+  assign aria_label = aria_label | default: text
+  assign id = id | default: null
+
+  assign has_icon = icon | default: false
+  assign link_classes = 'link link--' | append: style
+  if underline == true or underline == 'true'
+    assign link_classes = link_classes | append: ' link--underline'
+  endif
+  if has_icon
+    assign link_classes = link_classes | append: ' link--with-icon link--icon-' | append: icon_position
+  endif
+-%}
+
+<a
+  class="{{ link_classes }}"
+  href="{{ url }}"
+  aria-label="{{ aria_label | escape }}"
+  {% if id %}id="{{ id }}"{% endif %}
+  {% if target_blank %}target="_blank" rel="noopener noreferrer"{% endif %}
+>
+  {%- if has_icon and icon_position == 'left' -%}
+    <span class="link__icon" aria-hidden="true">{% render 'icon', name: icon %}</span>
+  {%- endif -%}
+  <span class="link__text">{{ text }}</span>
+  {%- if has_icon and icon_position == 'right' -%}
+    <span class="link__icon" aria-hidden="true">{% render 'icon', name: icon %}</span>
+  {%- endif -%}
+</a>
+
+<style>
+.link {
+  --link-color: var(--color-link, currentColor);
+  --link-color-hover: var(--color-link-hover, currentColor);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  color: var(--link-color);
+  text-decoration: none;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.link--underline { text-decoration: underline; }
+.link--underline:hover,
+.link--underline:focus-visible { text-decoration: none; }
+
+.link--subtle { opacity: 0.8; font-weight: 400; }
+.link--subtle:hover,
+.link--subtle:focus-visible { opacity: 1; }
+
+.link--button { padding: 0.25rem 0.75rem; border-radius: 999px; background-color: rgba(17, 24, 39, 0.08); }
+.link--button:hover,
+.link--button:focus-visible { background-color: rgba(17, 24, 39, 0.15); }
+
+.link--with-icon .link__icon {
+  display: inline-flex;
+  width: 1em;
+  height: 1em;
+}
+
+.link:hover,
+.link:focus-visible {
+  color: var(--link-color-hover);
+}
+</style>

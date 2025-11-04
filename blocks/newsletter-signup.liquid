@@ -1,0 +1,127 @@
+{% schema %}
+{
+  "name": "Newsletter Signup",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Bleib auf dem Laufenden"
+    },
+    {
+      "type": "textarea",
+      "id": "subheading",
+      "label": "Subheading",
+      "default": "Erhalte exklusive Angebote und Neuigkeiten direkt in dein Postfach."
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "label": "Button label",
+      "default": "Jetzt anmelden"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_gdpr",
+      "label": "DSGVO-Hinweis anzeigen",
+      "default": true
+    },
+    {
+      "type": "richtext",
+      "id": "gdpr_text",
+      "label": "DSGVO-Text",
+      "default": "<p>Ich stimme zu, den Newsletter per E-Mail zu erhalten und kann mich jederzeit wieder abmelden.</p>"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Newsletter Signup"
+    }
+  ]
+}
+{% endschema %}
+
+<section class="newsletter" aria-labelledby="newsletter-{{ block.id }}-title">
+  {% capture newsletter_content %}
+  <div class="newsletter__inner">
+    {% if block.settings.heading != blank %}
+      {% render 'heading', text: block.settings.heading, size: 'lg', id: 'newsletter-' | append: block.id | append: '-title' %}
+    {% endif %}
+    {% if block.settings.subheading != blank %}
+      {% render 'paragraph', text: block.settings.subheading, max_width: '60ch' %}
+    {% endif %}
+
+    {% form 'customer', id: 'NewsletterForm-' | append: block.id %}
+      {% if form.posted_successfully? %}
+        {% render 'success-message', message: 'Vielen Dank für deine Anmeldung!' %}
+      {% else %}
+        {% if form.errors %}
+          {% render 'error-message', message: form.errors.translated_fields.email | default: form.errors.messages.email %}
+        {% endif %}
+        <div class="newsletter__fields">
+          {% render 'input',
+            name: 'contact[email]',
+            type: 'email',
+            label: 'E-Mail-Adresse',
+            placeholder: 'deinname@example.com',
+            required: true,
+            autocomplete: 'email',
+            id: 'NewsletterEmail-' | append: block.id,
+            helper_text: 'Wir respektieren deine Privatsphäre.'
+          %}
+          {% render 'button', label: block.settings.button_label, type: 'submit', size: 'md' %}
+        </div>
+        {% if block.settings.show_gdpr and block.settings.gdpr_text != blank %}
+          <div class="newsletter__gdpr">
+            {{ block.settings.gdpr_text }}
+          </div>
+        {% endif %}
+      {% endif %}
+      <input type="hidden" name="contact[tags]" value="newsletter">
+    {% endform %}
+  </div>
+  {% endcapture %}
+  {% render 'container', width: 'narrow', padding: 'lg', content: newsletter_content %}
+</section>
+
+{% stylesheet %}
+.newsletter {
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.08), rgba(129, 140, 248, 0.08));
+}
+
+.newsletter__inner {
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+  max-width: min(40rem, 100%);
+  margin: 0 auto;
+}
+
+.newsletter__fields {
+  display: grid;
+  gap: 0.75rem;
+  justify-items: center;
+}
+
+.newsletter__fields .input,
+.newsletter__fields .button {
+  width: 100%;
+}
+
+.newsletter__gdpr {
+  font-size: 0.75rem;
+  color: rgba(17, 24, 39, 0.7);
+}
+
+@media (min-width: 640px) {
+  .newsletter__fields {
+    grid-template-columns: 1fr auto;
+    align-items: end;
+    text-align: left;
+  }
+  .newsletter__fields .input,
+  .newsletter__fields .button {
+    width: auto;
+  }
+}
+{% endstylesheet %}
