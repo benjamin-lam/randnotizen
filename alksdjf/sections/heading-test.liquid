@@ -1,0 +1,66 @@
+{% schema %}
+{
+  "name": "Heading (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "\u00dcberschriftentext"
+    },
+    {
+      "type": "number",
+      "id": "level",
+      "label": "Heading-Level 1-6"
+    },
+    {
+      "type": "text",
+      "id": "size",
+      "label": "Gr\u00f6\u00dfenvariante xs | sm | md | lg | xl | display"
+    },
+    {
+      "type": "text",
+      "id": "align",
+      "label": "Textausrichtung left | center | right"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Textfarbe"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Optionaler Untertitel"
+    },
+    {
+      "type": "checkbox",
+      "id": "visually_hidden",
+      "label": "Macht den Text nur f\u00fcr Screenreader sichtbar"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Heading (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="heading-test">
+  {% render 'alksdjf/snippets/heading',
+  text: section.settings.text,
+  level: section.settings.level,
+  size: section.settings.size,
+  align: section.settings.align,
+  color: section.settings.color,
+  id: section.settings.id,
+  subtitle: section.settings.subtitle,
+  visually_hidden: section.settings.visually_hidden
+%}
+</div>

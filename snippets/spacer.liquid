@@ -7,23 +7,8 @@
     - aria_hidden: Visuell unsichtbar für Screenreader (boolean, true)
 {%- endcomment -%}
 
-{%- liquid
-  assign size = size | default: '1rem'
-  assign show_line = show_line | default: false
-  assign aria_hidden = aria_hidden | default: true
--%}
-
-<div class="spacer{% if show_line == true or show_line == 'true' %} spacer--line{% endif %}" style="--spacer-size: {{ size }};" {% if aria_hidden == true or aria_hidden == 'true' %}aria-hidden="true"{% endif %}></div>
-
-<style>
-.spacer {
-  width: 100%;
-  height: var(--spacer-size);
-}
-
-.spacer--line {
-  height: auto;
-  border-bottom: 1px solid rgba(17, 24, 39, 0.1);
-  padding-bottom: var(--spacer-size);
-}
-</style>
+{% render 'alksdjf/snippets/spacer',
+  size: size,
+  show_line: show_line,
+  aria_hidden: aria_hidden
+%}

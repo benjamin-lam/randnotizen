@@ -1,0 +1,54 @@
+{% schema %}
+{
+  "name": "Product Badge (Test)",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produktobjekt"
+    },
+    {
+      "type": "text",
+      "id": "badges",
+      "label": "Array eigener Badges [{ text, style, icon }]"
+    },
+    {
+      "type": "number",
+      "id": "new_days",
+      "label": "Tage f\u00fcr \"Neu\""
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sale",
+      "label": "Sale-Badge anzeigen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_new",
+      "label": "Neu-Badge anzeigen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_sold_out",
+      "label": "Ausverkauft-Badge anzeigen"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Product Badge (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="product-badge-test">
+  {% render 'alksdjf/snippets/product-badge',
+  product: section.settings.product,
+  badges: section.settings.badges,
+  new_days: section.settings.new_days,
+  show_sale: section.settings.show_sale,
+  show_new: section.settings.show_new,
+  show_sold_out: section.settings.show_sold_out
+%}
+</div>

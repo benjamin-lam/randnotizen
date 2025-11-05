@@ -1,0 +1,36 @@
+{% schema %}
+{
+  "name": "Spacer (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "size",
+      "label": "Abstandsh\u00f6he"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_line",
+      "label": "Optional Linie anzeigen"
+    },
+    {
+      "type": "checkbox",
+      "id": "aria_hidden",
+      "label": "Visuell unsichtbar f\u00fcr Screenreader"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Spacer (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="spacer-test">
+  {% render 'alksdjf/snippets/spacer',
+  size: section.settings.size,
+  show_line: section.settings.show_line,
+  aria_hidden: section.settings.aria_hidden
+%}
+</div>

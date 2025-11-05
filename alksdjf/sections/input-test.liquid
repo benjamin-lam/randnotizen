@@ -1,0 +1,114 @@
+{% schema %}
+{
+  "name": "Input (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Input-Name"
+    },
+    {
+      "type": "text",
+      "id": "type",
+      "label": "Input-Typ"
+    },
+    {
+      "type": "text",
+      "id": "value",
+      "label": "Vorbef\u00fcllter Wert"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Beschriftung"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Platzhalter"
+    },
+    {
+      "type": "text",
+      "id": "helper_text",
+      "label": "Hilfetext unter dem Feld"
+    },
+    {
+      "type": "text",
+      "id": "error",
+      "label": "Fehlermeldung"
+    },
+    {
+      "type": "checkbox",
+      "id": "required",
+      "label": "Pflichtfeld"
+    },
+    {
+      "type": "checkbox",
+      "id": "disabled",
+      "label": "Deaktiviert"
+    },
+    {
+      "type": "text",
+      "id": "autocomplete",
+      "label": "Autocomplete-Attribut"
+    },
+    {
+      "type": "text",
+      "id": "inputmode",
+      "label": "Inputmode-Attribut"
+    },
+    {
+      "type": "text",
+      "id": "form",
+      "label": "Formular-ID"
+    },
+    {
+      "type": "text",
+      "id": "pattern",
+      "label": "Regex-Pattern"
+    },
+    {
+      "type": "number",
+      "id": "maxlength",
+      "label": "Maximale L\u00e4nge"
+    },
+    {
+      "type": "number",
+      "id": "minlength",
+      "label": "Minimale L\u00e4nge"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Input (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="input-test">
+  {% render 'alksdjf/snippets/input',
+  name: section.settings.name,
+  type: section.settings.type,
+  value: section.settings.value,
+  label: section.settings.label,
+  placeholder: section.settings.placeholder,
+  helper_text: section.settings.helper_text,
+  error: section.settings.error,
+  required: section.settings.required,
+  disabled: section.settings.disabled,
+  autocomplete: section.settings.autocomplete,
+  inputmode: section.settings.inputmode,
+  form: section.settings.form,
+  pattern: section.settings.pattern,
+  maxlength: section.settings.maxlength,
+  minlength: section.settings.minlength,
+  id: section.settings.id
+%}
+</div>

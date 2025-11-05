@@ -1,0 +1,48 @@
+{% schema %}
+{
+  "name": "Badge (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Badge-Text"
+    },
+    {
+      "type": "text",
+      "id": "style",
+      "label": "Variante default | success | warning | danger | info"
+    },
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon-Name f\u00fcr {% render 'icon' %}"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_pill",
+      "label": "Pillenform aktivieren"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Badge (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="badge-test">
+  {% render 'alksdjf/snippets/badge',
+  text: section.settings.text,
+  style: section.settings.style,
+  icon: section.settings.icon,
+  is_pill: section.settings.is_pill,
+  id: section.settings.id
+%}
+</div>

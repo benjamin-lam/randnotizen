@@ -1,0 +1,60 @@
+{% schema %}
+{
+  "name": "Paragraph (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Absatztext"
+    },
+    {
+      "type": "text",
+      "id": "size",
+      "label": "Gr\u00f6\u00dfenvariante xs | sm | md | lg"
+    },
+    {
+      "type": "text",
+      "id": "align",
+      "label": "Textausrichtung left | center | right"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Textfarbe"
+    },
+    {
+      "type": "text",
+      "id": "max_width",
+      "label": "Maximale Breite"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_richtext",
+      "label": "Rendert den Text als HTML"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Paragraph (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="paragraph-test">
+  {% render 'alksdjf/snippets/paragraph',
+  text: section.settings.text,
+  size: section.settings.size,
+  align: section.settings.align,
+  color: section.settings.color,
+  max_width: section.settings.max_width,
+  is_richtext: section.settings.is_richtext,
+  id: section.settings.id
+%}
+</div>

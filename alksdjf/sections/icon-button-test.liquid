@@ -1,0 +1,45 @@
+{% schema %}
+{
+  "name": "Icon Button (Test)",
+  "settings": [
+    { "type": "select", "id": "style", "label": "Style", "default": "solid", "options": [
+      { "value": "solid", "label": "Solid" },
+      { "value": "ghost", "label": "Ghost" },
+      { "value": "subtle", "label": "Subtle" }
+    ] },
+    { "type": "select", "id": "size", "label": "Größe", "default": "md", "options": [
+      { "value": "sm", "label": "Klein" },
+      { "value": "md", "label": "Mittel" },
+      { "value": "lg", "label": "Groß" }
+    ] },
+    { "type": "checkbox", "id": "open_in_new_tab", "label": "In neuem Tab öffnen", "default": false }
+  ],
+  "blocks": [
+    {
+      "type": "button",
+      "name": "Button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Label", "default": "Mehr erfahren" },
+        { "type": "url", "id": "url", "label": "Link" },
+        { "type": "text", "id": "icon", "label": "Icon", "default": "arrow-right" }
+      ]
+    }
+  ],
+  "max_blocks": 3,
+  "presets": [ { "name": "Icon Button (Test)" } ]
+}
+{% endschema %}
+
+<div class="icon-button-test">
+  {% for block in section.blocks %}
+    {% render 'alksdjf/snippets/icon-button',
+      icon: block.settings.icon,
+      label: block.settings.label,
+      url: block.settings.url,
+      style: section.settings.style,
+      size: section.settings.size,
+      target_blank: section.settings.open_in_new_tab,
+      icon_position: 'after'
+    %}
+  {% endfor %}
+</div>

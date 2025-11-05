@@ -1,0 +1,54 @@
+{% schema %}
+{
+  "name": "Variant Picker (Test)",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produktobjekt"
+    },
+    {
+      "type": "number",
+      "id": "option_position",
+      "label": "Option 1-3"
+    },
+    {
+      "type": "text",
+      "id": "picker_type",
+      "label": "button | dropdown | swatch"
+    },
+    {
+      "type": "text",
+      "id": "selected_value",
+      "label": "Vorbelegung"
+    },
+    {
+      "type": "text",
+      "id": "form_id",
+      "label": "Verkn\u00fcpftes Formular"
+    },
+    {
+      "type": "text",
+      "id": "option_name",
+      "label": "\u00dcberschreibt den Optionsnamen"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Variant Picker (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="variant-picker-test">
+  {% render 'alksdjf/snippets/variant-picker',
+  product: section.settings.product,
+  option_position: section.settings.option_position,
+  picker_type: section.settings.picker_type,
+  selected_value: section.settings.selected_value,
+  form_id: section.settings.form_id,
+  option_name: section.settings.option_name
+%}
+</div>

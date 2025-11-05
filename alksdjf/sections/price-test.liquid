@@ -1,0 +1,66 @@
+{% schema %}
+{
+  "name": "Price (Test)",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produktobjekt"
+    },
+    {
+      "type": "text",
+      "id": "variant",
+      "label": "Variantenobjekt"
+    },
+    {
+      "type": "number",
+      "id": "price",
+      "label": "Preis in Cent"
+    },
+    {
+      "type": "number",
+      "id": "compare_at_price",
+      "label": "Vergleichspreis in Cent"
+    },
+    {
+      "type": "number",
+      "id": "unit_price",
+      "label": "Grundpreis in Cent"
+    },
+    {
+      "type": "text",
+      "id": "unit_price_measurement",
+      "label": "Einheit"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_discount",
+      "label": "Rabatt-Badge anzeigen"
+    },
+    {
+      "type": "text",
+      "id": "alignment",
+      "label": "Textausrichtung left | center | right"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Price (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="price-test">
+  {% render 'alksdjf/snippets/price',
+  product: section.settings.product,
+  variant: section.settings.variant,
+  price: section.settings.price,
+  compare_at_price: section.settings.compare_at_price,
+  unit_price: section.settings.unit_price,
+  unit_price_measurement: section.settings.unit_price_measurement,
+  show_discount: section.settings.show_discount,
+  alignment: section.settings.alignment
+%}
+</div>

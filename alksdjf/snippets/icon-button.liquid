@@ -1,0 +1,73 @@
+{%- comment -%}
+  icon-button – Wrapper für zentrales Button-Snippet.
+{%- endcomment -%}
+
+{%- liquid
+  assign icon = icon | default: 'search'
+  assign label = label | default: 'Button'
+  assign url = url | default: nil
+  assign style = style | default: 'solid'
+  assign size = size | default: 'md'
+  assign is_disabled = is_disabled | default: false
+  assign aria_label = aria_label | default: label
+  assign id = id | default: nil
+  assign target_blank = target_blank | default: false
+  assign icon_position = icon_position | default: 'before'
+  assign escaped_aria = aria_label | escape
+  assign escaped_size = size | escape
+  assign escaped_style = style | escape
+  assign escaped_id = id | escape
+
+  assign context_id = 'icon-button'
+  if block and block.id
+    assign context_id = block.id
+  elsif section and section.id
+    assign context_id = section.id
+  endif
+
+  assign tag = 'button'
+  assign resolved_link = nil
+  if url and url != blank and is_disabled != true and is_disabled != 'true'
+    assign tag = 'a'
+    assign resolved_link = url
+  endif
+
+  assign variant_mapping = {
+    'solid': 'icon-button-solid',
+    'ghost': 'icon-button-ghost',
+    'subtle': 'icon-button-subtle'
+  }
+  assign button_variant = variant_mapping[style]
+  if button_variant == blank
+    assign button_variant = 'icon-button-solid'
+  endif
+
+  assign attribute_parts = ''
+  if tag == 'button'
+    assign attribute_parts = attribute_parts | append: 'type="button"'
+  endif
+  if id != blank
+    assign attribute_parts = attribute_parts | append: ' id="' | append: escaped_id | append: '"'
+  endif
+  if is_disabled == true or is_disabled == 'true'
+    assign attribute_parts = attribute_parts | append: ' aria-disabled="true"'
+    if tag == 'button'
+      assign attribute_parts = attribute_parts | append: ' disabled'
+    endif
+  endif
+  assign attribute_parts = attribute_parts | append: ' aria-label="' | append: escaped_aria | append: '"'
+  assign attribute_parts = attribute_parts | append: ' data-button-size="' | append: escaped_size | append: '"'
+  assign attribute_parts = attribute_parts | append: ' data-button-style="' | append: escaped_style | append: '"'
+-%}
+
+{% render 'alksdjf/snippets/button',
+  tag: tag,
+  id: context_id,
+  label: label,
+  link: resolved_link,
+  variant: button_variant,
+  shopify_attributes: attribute_parts,
+  open_in_new_tab: target_blank,
+  icon: icon,
+  icon_position: icon_position
+%}

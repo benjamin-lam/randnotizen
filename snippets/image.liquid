@@ -13,91 +13,14 @@
     - class: Zusätzliche Klasse (text, nil)
 {%- endcomment -%}
 
-{%- liquid
-  assign image = image | default: nil
-  assign alt = alt | default: ''
-  if image and image.alt and alt == ''
-    assign alt = image.alt
-  endif
-  assign sizes = sizes | default: '100vw'
-  assign widths = widths | default: '320,480,768,1024,1440,2048'
-  assign aspect_ratio = aspect_ratio | default: null
-  assign object_fit = object_fit | default: 'cover'
-  assign loading = loading | default: 'lazy'
-  assign id = id | default: null
-  assign class = class | default: null
-
-  assign wrapper_classes = 'image'
-  if class
-    assign wrapper_classes = wrapper_classes | append: ' ' | append: class
-  endif
-  if aspect_ratio
-    assign wrapper_classes = wrapper_classes | append: ' image--ratio'
-  endif
-
-  assign style_attributes = ''
-  assign style_attributes = style_attributes | append: '--image-object-fit: ' | append: object_fit | append: ';'
-  if aspect_ratio
-    assign style_attributes = style_attributes | append: ' --image-aspect-ratio: ' | append: aspect_ratio | append: ';'
-  endif
--%}
-
-<div class="{{ wrapper_classes }}" {% if id %}id="{{ id }}"{% endif %} style="{{ style_attributes | strip }}">
-  {%- if image -%}
-    {%- assign image_class = 'image__media' -%}
-    {{ image | image_url: width: image.width | image_tag:
-      loading: loading,
-      class: image_class,
-      sizes: sizes,
-      widths: widths,
-      alt: alt | escape
-    }}
-  {%- else -%}
-    <div class="image__placeholder" role="img" aria-label="{{ alt | default: 'Platzhalterbild' | escape }}">
-      <span class="image__placeholder-icon" aria-hidden="true">☐</span>
-    </div>
-  {%- endif -%}
-</div>
-
-<style>
-.image {
-  position: relative;
-  display: block;
-  width: 100%;
-  overflow: hidden;
-}
-
-.image--ratio::before {
-  content: '';
-  display: block;
-  padding-bottom: calc(100% / (var(--image-aspect-ratio)));
-}
-
-.image--ratio > * {
-  position: absolute;
-  inset: 0;
-}
-
-.image__media {
-  width: 100%;
-  height: 100%;
-  object-fit: var(--image-object-fit, cover);
-  display: block;
-}
-
-.image[style*='--image-aspect-ratio'] {
-  --image-object-fit: {{ object_fit }};
-}
-
-.image__placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: repeating-linear-gradient(45deg, rgba(17, 24, 39, 0.08), rgba(17, 24, 39, 0.08) 10px, transparent 10px, transparent 20px);
-  color: rgba(17, 24, 39, 0.4);
-  font-size: 2rem;
-  width: 100%;
-  height: 100%;
-  min-height: 150px;
-}
-</style>
+{% render 'alksdjf/snippets/image',
+  image: image,
+  alt: alt,
+  sizes: sizes,
+  widths: widths,
+  aspect_ratio: aspect_ratio,
+  object_fit: object_fit,
+  loading: loading,
+  id: id,
+  class: class
+%}

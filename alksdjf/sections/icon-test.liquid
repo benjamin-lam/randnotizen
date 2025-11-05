@@ -1,0 +1,54 @@
+{% schema %}
+{
+  "name": "Icon (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Icon-Name"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Accessible Titel"
+    },
+    {
+      "type": "text",
+      "id": "size",
+      "label": "Kantenl\u00e4nge in rem/em/px"
+    },
+    {
+      "type": "number",
+      "id": "stroke_width",
+      "label": "Strichst\u00e4rke f\u00fcr Outline-Icons"
+    },
+    {
+      "type": "checkbox",
+      "id": "decorative",
+      "label": "Wenn true, aria-hidden"
+    },
+    {
+      "type": "text",
+      "id": "class",
+      "label": "Zus\u00e4tzliche Klasse"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Icon (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="icon-test">
+  {% render 'alksdjf/snippets/icon',
+  name: section.settings.name,
+  title: section.settings.title,
+  size: section.settings.size,
+  stroke_width: section.settings.stroke_width,
+  decorative: section.settings.decorative,
+  class: section.settings.class
+%}
+</div>

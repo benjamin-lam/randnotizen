@@ -1,0 +1,54 @@
+{% schema %}
+{
+  "name": "Button Group (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "buttons",
+      "label": "Array von Button-Objekten"
+    },
+    {
+      "type": "text",
+      "id": "align",
+      "label": "Ausrichtung left | center | right | stretch"
+    },
+    {
+      "type": "text",
+      "id": "orientation",
+      "label": "Layout row | column"
+    },
+    {
+      "type": "text",
+      "id": "gap",
+      "label": "Abstand zwischen Buttons"
+    },
+    {
+      "type": "checkbox",
+      "id": "stack_mobile",
+      "label": "Stapeln auf kleineren Viewports"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Button Group (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="button-group-test">
+  {% render 'alksdjf/snippets/button-group',
+  buttons: section.settings.buttons,
+  align: section.settings.align,
+  orientation: section.settings.orientation,
+  gap: section.settings.gap,
+  stack_mobile: section.settings.stack_mobile,
+  id: section.settings.id
+%}
+</div>

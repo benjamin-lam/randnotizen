@@ -1,0 +1,60 @@
+{% schema %}
+{
+  "name": "Grid (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "content",
+      "label": "HTML-Inhalt"
+    },
+    {
+      "type": "number",
+      "id": "columns",
+      "label": "Anzahl Spalten Desktop"
+    },
+    {
+      "type": "number",
+      "id": "columns_tablet",
+      "label": "Spalten Tablet"
+    },
+    {
+      "type": "number",
+      "id": "columns_mobile",
+      "label": "Spalten Mobile"
+    },
+    {
+      "type": "text",
+      "id": "gap",
+      "label": "Abstand zwischen Zellen"
+    },
+    {
+      "type": "text",
+      "id": "align",
+      "label": "Justierung stretch | start | center | end"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Grid (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="grid-test">
+  {% render 'alksdjf/snippets/grid',
+  content: section.settings.content,
+  columns: section.settings.columns,
+  columns_tablet: section.settings.columns_tablet,
+  columns_mobile: section.settings.columns_mobile,
+  gap: section.settings.gap,
+  align: section.settings.align,
+  id: section.settings.id
+%}
+</div>

@@ -1,0 +1,81 @@
+{%- doc -%}
+  Zentrales Button-Snippet für das gesamte Theme.
+  @param {string} id
+  @param {string} tag
+  @param {string} label
+  @param {string} link
+  @param {string} variant
+  @param {boolean} open_in_new_tab
+  @param {string} shopify_attributes
+  @param {string} size_styles
+  @param {string} icon
+  @param {string} icon_position
+  @param {string} border_width
+  @param {string} border_radius
+  @param {string} border_style
+{%- enddoc -%}
+
+{%- liquid
+  assign resolved_tag = tag | default: 'a'
+  assign resolved_variant = variant | default: 'button'
+  assign resolved_id = id | default: ''
+  assign icon_position_value = icon_position | default: 'before'
+
+  assign custom_styles = ''
+  if border_width != blank
+    assign custom_styles = custom_styles | append: '--button-border-width: ' | append: border_width | append: 'px; '
+  endif
+  if border_radius != blank
+    assign custom_styles = custom_styles | append: '--button-border-radius: ' | append: border_radius | append: 'px; '
+  endif
+  if border_style != blank
+    assign custom_styles = custom_styles | append: '--button-border-style: ' | append: border_style | append: '; '
+  endif
+
+  assign combined_styles = ''
+  if size_styles != blank
+    assign combined_styles = size_styles
+  endif
+  if custom_styles != blank
+    if combined_styles != ''
+      assign combined_styles = combined_styles | append: ' '
+    endif
+    assign combined_styles = combined_styles | append: custom_styles
+  endif
+
+  assign variant_id_class = ''
+  if resolved_id != ''
+    assign variant_id_class = resolved_variant | append: '--' | append: resolved_id
+  endif
+-%}
+
+<{{ resolved_tag }}
+  {% if resolved_tag == 'a' %}
+    {% if link == blank %}
+      role="link"
+      aria-disabled="true"
+    {% else %}
+      href="{{ link }}"
+    {% endif %}
+  {% endif %}
+  class="
+    c-btn
+    {{ resolved_variant }}
+    {{ variant_id_class }}
+    {% if icon != blank %}c-btn--with-icon{% endif %}
+  "
+  {% if combined_styles != blank %}style="{{ combined_styles }}"{% endif %}
+  {%- if open_in_new_tab -%}
+    target="_blank"
+    rel="noopener noreferrer"
+  {%- endif -%}
+  {{ shopify_attributes }}
+>
+  {%- if icon != blank and icon_position_value == 'before' -%}
+    <span class="c-btn__icon c-btn__icon--before">{%- render 'icon', icon: icon -%}</span>
+  {%- endif -%}
+  <span class="c-btn__label">{{ label }}</span>
+  {%- if icon != blank and icon_position_value == 'after' -%}
+    <span class="c-btn__icon c-btn__icon--after">{%- render 'icon', icon: icon -%}</span>
+  {%- endif -%}
+</{{ resolved_tag }}>

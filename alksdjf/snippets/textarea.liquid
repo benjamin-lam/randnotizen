@@ -1,0 +1,115 @@
+{%- comment -%}
+  Snippet: textarea
+  Verwendung: {% render 'textarea', name: 'message', label: 'Nachricht', rows: 5 %}
+  Parameter:
+    - name: Feldname (text, 'textarea-field')
+    - label: Beschriftung (text, nil)
+    - value: Vorbefüllter Text (text, nil)
+    - placeholder: Platzhalter (text, nil)
+    - rows: Anzahl Zeilen (number, 4)
+    - helper_text: Hilfetext (text, nil)
+    - error: Fehlermeldung (text, nil)
+    - required: Pflichtfeld (boolean, false)
+    - disabled: Deaktiviert (boolean, false)
+    - maxlength: Maximale Länge (number, nil)
+    - id: HTML-ID (text, nil)
+{%- endcomment -%}
+
+{%- liquid
+  assign name = name | default: 'textarea-field'
+  assign label = label | default: nil
+  assign value = value | default: nil
+  assign placeholder = placeholder | default: nil
+  assign rows = rows | default: 4
+  assign helper_text = helper_text | default: nil
+  assign error = error | default: nil
+  assign required = required | default: false
+  assign disabled = disabled | default: false
+  assign maxlength = maxlength | default: nil
+  assign id = id | default: name | handle | prepend: 'textarea-'
+
+  assign wrapper_classes = 'textarea'
+  if error
+    assign wrapper_classes = wrapper_classes | append: ' textarea--error'
+  endif
+
+  assign describedby = ''
+  if helper_text
+    assign describedby = describedby | append: id | append: '-helper'
+  endif
+  if error
+    if describedby != ''
+      assign describedby = describedby | append: ' ' | append: id | append: '-error'
+    else
+      assign describedby = describedby | append: id | append: '-error'
+    endif
+  endif
+-%}
+
+<div class="{{ wrapper_classes }}">
+  {%- if label -%}
+    <label class="textarea__label" for="{{ id }}">
+      {{ label }}
+      {%- if required == true or required == 'true' -%}<span class="textarea__required" aria-hidden="true">*</span>{%- endif -%}
+    </label>
+  {%- endif -%}
+  <textarea
+    class="textarea__field"
+    name="{{ name }}"
+    id="{{ id }}"
+    rows="{{ rows }}"
+    {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+    {% if required == true or required == 'true' %}required aria-required="true"{% endif %}
+    {% if disabled == true or disabled == 'true' %}disabled aria-disabled="true"{% endif %}
+    {% if maxlength %}maxlength="{{ maxlength }}"{% endif %}
+    {% if describedby != '' %}aria-describedby="{{ describedby }}"{% endif %}
+  >{{ value }}</textarea>
+  {%- if helper_text -%}
+    <p class="textarea__helper" id="{{ id }}-helper">{{ helper_text }}</p>
+  {%- endif -%}
+  {%- if error -%}
+    <p class="textarea__error" role="alert" id="{{ id }}-error">{{ error }}</p>
+  {%- endif -%}
+</div>
+
+<style>
+.textarea {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.textarea__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.textarea__field {
+  font: inherit;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  border-radius: 0.375rem;
+  min-height: 3rem;
+  resize: vertical;
+}
+
+.textarea__field:focus {
+  outline: none;
+  border-color: rgba(37, 99, 235, 0.6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.textarea__helper {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(17, 24, 39, 0.6);
+}
+
+.textarea__error {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #dc2626;
+}
+
+.textarea--error .textarea__field { border-color: #dc2626; }
+</style>

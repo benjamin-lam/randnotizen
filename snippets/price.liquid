@@ -12,98 +12,13 @@
     - alignment: Textausrichtung left | center | right (text, 'left')
 {%- endcomment -%}
 
-{%- liquid
-  assign product = product | default: nil
-  assign variant = variant | default: nil
-  assign price = price | default: nil
-  assign compare_at_price = compare_at_price | default: nil
-  assign unit_price = unit_price | default: nil
-  assign unit_price_measurement = unit_price_measurement | default: nil
-  assign show_discount = show_discount | default: false
-  assign alignment = alignment | default: 'left'
-
-  if variant
-    assign price = variant.price
-    assign compare_at_price = variant.compare_at_price
-    assign unit_price = variant.unit_price
-    assign unit_price_measurement = variant.unit_price_measurement
-  elsif product
-    if price == nil
-      assign price = product.price | default: product.price_min
-    endif
-    if compare_at_price == nil
-      assign compare_at_price = product.compare_at_price
-      if compare_at_price == blank and product.compare_at_price_max > product.compare_at_price_min
-        assign compare_at_price = product.compare_at_price_max
-      endif
-    endif
-    if unit_price == nil and product.variants.size > 0
-      assign first_variant = product.variants | first
-      assign unit_price = first_variant.unit_price
-      assign unit_price_measurement = first_variant.unit_price_measurement
-    endif
-  endif
-
-  assign has_compare = compare_at_price and compare_at_price > price
-  assign discount_percentage = 0
-  if has_compare
-    assign discount_percentage = 100 | times: price | divided_by: compare_at_price
-    assign discount_percentage = 100 | minus: discount_percentage
-  endif
--%}
-
-<div class="price price--align-{{ alignment }}">
-  <div class="price__main">
-    {%- if price -%}
-      <span class="price__current">{{ price | money_with_currency }}</span>
-    {%- else -%}
-      <span class="price__current">—</span>
-    {%- endif -%}
-    {%- if has_compare -%}
-      <span class="price__compare">{{ compare_at_price | money_with_currency }}</span>
-    {%- endif -%}
-    {%- if show_discount and has_compare -%}
-      {% render 'badge', text: discount_percentage | round | append: '%', style: 'danger' %}
-    {%- endif -%}
-  </div>
-  {%- if unit_price and unit_price_measurement and unit_price_measurement.reference_value -%}
-    <div class="price__unit">
-      {{ 'products.product.price.unit_price_html' | t: total_quantity: unit_price_measurement.reference_value, unit_price: unit_price | money_with_currency, unit_measure: unit_price_measurement.reference_unit }}
-    </div>
-  {%- endif -%}
-</div>
-
-<style>
-.price {
-  display: inline-flex;
-  flex-direction: column;
-  gap: 0.25rem;
-  align-items: flex-start;
-}
-
-.price--align-center { align-items: center; text-align: center; }
-.price--align-right { align-items: flex-end; text-align: right; }
-
-.price__main {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.75rem;
-  flex-wrap: wrap;
-}
-
-.price__current {
-  font-size: 1.25rem;
-  font-weight: 600;
-}
-
-.price__compare {
-  font-size: 1rem;
-  color: rgba(17, 24, 39, 0.5);
-  text-decoration: line-through;
-}
-
-.price__unit {
-  font-size: 0.75rem;
-  color: rgba(17, 24, 39, 0.6);
-}
-</style>
+{% render 'alksdjf/snippets/price',
+  product: product,
+  variant: variant,
+  price: price,
+  compare_at_price: compare_at_price,
+  unit_price: unit_price,
+  unit_price_measurement: unit_price_measurement,
+  show_discount: show_discount,
+  alignment: alignment
+%}

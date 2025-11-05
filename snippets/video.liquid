@@ -13,85 +13,14 @@
     - id: HTML-ID (text, nil)
 {%- endcomment -%}
 
-{%- liquid
-  assign autoplay = autoplay | default: false
-  assign loop = loop | default: false
-  assign muted = muted | default: true
-  assign controls = controls | default: true
-  assign aspect_ratio = aspect_ratio | default: '16/9'
-  assign id = id | default: null
-  assign poster = poster | default: nil
-
-  assign wrapper_classes = 'video'
-  assign style_attr = '--video-aspect-ratio: ' | append: aspect_ratio | append: ';'
-
-  assign show_controls = controls
-  if autoplay == true or autoplay == 'true'
-    assign show_controls = false
-  endif
--%}
-
-<div class="{{ wrapper_classes }}" style="{{ style_attr }}" {% if id %}id="{{ id }}"{% endif %}>
-  <div class="video__inner">
-    {%- if video -%}
-      {{ video | video_tag:
-        image_size: '1920x',
-        autoplay: autoplay,
-        loop: loop,
-        muted: muted,
-        controls: show_controls,
-        class: 'video__media',
-        poster: poster
-      }}
-    {%- elsif video_url -%}
-      <video
-        class="video__media"
-        {% if autoplay %}autoplay playsinline{% endif %}
-        {% if loop %}loop{% endif %}
-        {% if muted %}muted{% endif %}
-        {% if show_controls %}controls{% endif %}
-        preload="metadata"
-        {% if poster %}poster="{{ poster | image_url: width: 1920 }}"{% endif %}
-      >
-        <source src="{{ video_url }}" type="video/mp4">
-        {{ 'Video kann nicht geladen werden.' | escape }}
-      </video>
-    {%- else -%}
-      <div class="video__placeholder" role="img" aria-label="Video-Platzhalter">
-        <span class="video__placeholder-icon" aria-hidden="true">▶</span>
-      </div>
-    {%- endif -%}
-  </div>
-</div>
-
-<style>
-.video {
-  position: relative;
-  width: 100%;
-}
-
-.video__inner {
-  position: relative;
-  padding-bottom: calc(100% / (var(--video-aspect-ratio)));
-  height: 0;
-}
-
-.video__media,
-.video__placeholder {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border: 0;
-}
-
-.video__placeholder {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(17, 24, 39, 0.08);
-  color: rgba(17, 24, 39, 0.5);
-  font-size: clamp(2rem, 10vw, 3rem);
-}
-</style>
+{% render 'alksdjf/snippets/video',
+  video: video,
+  video_url: video_url,
+  poster: poster,
+  autoplay: autoplay,
+  loop: loop,
+  muted: muted,
+  controls: controls,
+  aspect_ratio: aspect_ratio,
+  id: id
+%}

@@ -7,63 +7,8 @@
     - dismissible: Schließen-Button anzeigen (boolean, false)
 {%- endcomment -%}
 
-{%- liquid
-  assign message = message | default: 'Es ist ein Fehler aufgetreten.'
-  assign icon = icon | default: 'close'
-  assign dismissible = dismissible | default: false
--%}
-
-<div class="alert alert--error" role="alert">
-  <span class="alert__icon">{% render 'icon', name: icon, decorative: true %}</span>
-  <div class="alert__content">{{ message }}</div>
-  {%- if dismissible == true or dismissible == 'true' -%}
-    <button type="button" class="alert__close" aria-label="{{ 'general.close' | t | default: 'Schließen' }}">{% render 'icon', name: 'close', decorative: true %}</button>
-  {%- endif -%}
-</div>
-
-<style>
-.alert {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  gap: 0.75rem;
-  align-items: center;
-  padding: 0.75rem 1rem;
-  border-radius: 0.5rem;
-  background: rgba(17, 24, 39, 0.05);
-  color: #111827;
-}
-
-.alert--error {
-  background: rgba(220, 38, 38, 0.1);
-  color: #b91c1c;
-}
-
-.alert__icon { display: inline-flex; }
-.alert__content { font-size: 0.875rem; }
-.alert__close {
-  background: none;
-  border: none;
-  color: inherit;
-  cursor: pointer;
-  padding: 0.25rem;
-}
-</style>
-
-{%- if dismissible == true or dismissible == 'true' -%}
-<script>
-(function () {
-  var script = document.currentScript;
-  if (!script) return;
-  var alertEl = script.previousElementSibling.previousElementSibling;
-  while (alertEl && alertEl.tagName === 'STYLE') {
-    alertEl = alertEl.previousElementSibling;
-  }
-  if (!alertEl || !alertEl.classList.contains('alert')) return;
-  var closeBtn = alertEl.querySelector('.alert__close');
-  if (!closeBtn) return;
-  closeBtn.addEventListener('click', function () {
-    alertEl.remove();
-  });
-})();
-</script>
-{%- endif -%}
+{% render 'alksdjf/snippets/error-message',
+  message: message,
+  icon: icon,
+  dismissible: dismissible
+%}

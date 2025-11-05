@@ -1,0 +1,172 @@
+{%- comment -%}
+  Snippet: variant-picker
+  Verwendung: {% render 'variant-picker', product: product, option_position: 1, picker_type: 'button', selected_value: current_option %}
+  Parameter:
+    - product: Produktobjekt (product, nil)
+    - option_position: Option 1-3 (number, 1)
+    - picker_type: button | dropdown | swatch (text, 'button')
+    - selected_value: Vorbelegung (text, nil)
+    - form_id: Verknüpftes Formular (text, nil)
+    - option_name: Überschreibt den Optionsnamen (text, nil)
+{%- endcomment -%}
+
+{%- liquid
+  assign product = product | default: nil
+  assign option_position = option_position | default: 1 | plus: 0
+  assign picker_type = picker_type | default: 'button'
+  assign selected_value = selected_value | default: nil
+  assign form_id = form_id | default: nil
+  assign option_name = option_name | default: nil
+
+  assign render_picker = true
+  if product == nil or product.options_with_values.size == 0
+    assign render_picker = false
+  endif
+
+  assign option_index = option_position | minus: 1
+  assign option = nil
+  if render_picker
+    assign option = product.options_with_values[option_index]
+    if option == blank
+      assign render_picker = false
+    endif
+  endif
+
+  assign option_label = option_name
+  if option_label == nil and option
+    assign option_label = option.name
+  endif
+  assign option_id = 'Option-' | append: option_position | append: '-' | append: product.id
+-%}
+
+{%- if render_picker != true -%}
+  <!-- variant-picker: keine gültigen Daten -->
+{%- elsif picker_type == 'dropdown' -%}
+  <label class="variant-picker variant-picker--dropdown" for="{{ option_id }}">
+    <span class="variant-picker__label">{{ option_label }}</span>
+    <select
+      class="variant-picker__select"
+      id="{{ option_id }}"
+      name="options[{{ option_position }}]"
+      {% if form_id %}form="{{ form_id }}"{% endif %}
+    >
+      {%- for value in option.values -%}
+        {%- assign is_selected = false -%}
+        {%- if selected_value and selected_value == value -%}
+          {%- assign is_selected = true -%}
+        {%- endif -%}
+        <option value="{{ value }}" {% if is_selected %}selected{% endif %}>{{ value }}</option>
+      {%- endfor -%}
+    </select>
+  </label>
+{%- else -%}
+  <fieldset class="variant-picker variant-picker--{{ picker_type }}">
+    <legend class="variant-picker__legend">{{ option_label }}</legend>
+    <div class="variant-picker__options">
+      {%- for value in option.values -%}
+        {%- assign is_selected = false -%}
+        {%- assign is_available = false -%}
+        {%- for variant in product.variants -%}
+          {%- if variant.options[option_index] == value and variant.available -%}
+            {%- assign is_available = true -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+        {%- if selected_value and selected_value == value -%}
+          {%- assign is_selected = true -%}
+        {%- endif -%}
+        {%- assign value_id = option_id | append: '-' | append: forloop.index -%}
+        <label class="variant-picker__option{% if is_selected %} is-selected{% endif %}{% unless is_available %} is-unavailable{% endunless %}" for="{{ value_id }}">
+          <input
+            class="variant-picker__input"
+            type="radio"
+            name="options[{{ option_position }}]"
+            id="{{ value_id }}"
+            value="{{ value }}"
+            {% if form_id %}form="{{ form_id }}"{% endif %}
+            {% if is_selected %}checked{% endif %}
+            {% unless is_available %}disabled aria-disabled="true"{% endunless %}
+          >
+          <span class="variant-picker__value" data-value="{{ value | escape }}">{{ value }}</span>
+        </label>
+      {%- endfor -%}
+    </div>
+  </fieldset>
+{%- endif -%}
+
+<style>
+.variant-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.variant-picker__legend,
+.variant-picker__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.variant-picker__select {
+  width: 100%;
+  font: inherit;
+  padding: 0.65rem 0.9rem;
+  border-radius: 0.375rem;
+  border: 1px solid rgba(17, 24, 39, 0.15);
+}
+
+.variant-picker__options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.variant-picker__option {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem 1rem;
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  border-radius: 0.375rem;
+  cursor: pointer;
+  min-width: 3rem;
+  position: relative;
+  background: #fff;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.variant-picker__option.is-selected {
+  border-color: #2563eb;
+  background-color: rgba(37, 99, 235, 0.08);
+}
+
+.variant-picker__option.is-unavailable {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+.variant-picker__input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.variant-picker__value {
+  font-size: 0.875rem;
+}
+
+.variant-picker--swatch .variant-picker__option {
+  padding: 0;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 999px;
+}
+
+.variant-picker--swatch .variant-picker__value {
+  width: 100%;
+  height: 100%;
+  border-radius: inherit;
+  background: currentColor;
+  color: transparent;
+}
+</style>

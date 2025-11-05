@@ -1,0 +1,48 @@
+{% schema %}
+{
+  "name": "Breadcrumb (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "items",
+      "label": "Array aus { title, url }"
+    },
+    {
+      "type": "text",
+      "id": "current",
+      "label": "Aktueller Seitentitel"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_home",
+      "label": "Home-Link anzeigen"
+    },
+    {
+      "type": "text",
+      "id": "home_label",
+      "label": "Beschriftung Home"
+    },
+    {
+      "type": "text",
+      "id": "separator",
+      "label": "Trennzeichen"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Breadcrumb (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="breadcrumb-test">
+  {% render 'alksdjf/snippets/breadcrumb',
+  items: section.settings.items,
+  current: section.settings.current,
+  show_home: section.settings.show_home,
+  home_label: section.settings.home_label,
+  separator: section.settings.separator
+%}
+</div>

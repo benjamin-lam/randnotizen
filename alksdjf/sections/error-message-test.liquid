@@ -1,0 +1,36 @@
+{% schema %}
+{
+  "name": "Error Message (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Fehlermeldung"
+    },
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon-Name"
+    },
+    {
+      "type": "checkbox",
+      "id": "dismissible",
+      "label": "Schlie\u00dfen-Button anzeigen"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Error Message (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="error-message-test">
+  {% render 'alksdjf/snippets/error-message',
+  message: section.settings.message,
+  icon: section.settings.icon,
+  dismissible: section.settings.dismissible
+%}
+</div>

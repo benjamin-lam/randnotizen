@@ -1,0 +1,440 @@
+{% schema %}
+{
+  "name": "Snippet Playground",
+  "settings": [
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Produkt für produktbezogene Snippets"
+    },
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Beispielbild"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Beispielvideo"
+    },
+    {
+      "type": "text",
+      "id": "general_heading",
+      "label": "Beispiel-Überschrift",
+      "default": "Shopify Snippet Playground"
+    },
+    {
+      "type": "textarea",
+      "id": "general_text",
+      "label": "Beispieltext",
+      "default": "Dies ist ein Beispieltext, der in mehreren Snippets wiederverwendet werden kann."
+    },
+    {
+      "type": "url",
+      "id": "general_url",
+      "label": "Beispiel-URL"
+    },
+    {
+      "type": "text",
+      "id": "form_id",
+      "label": "Formular-ID",
+      "default": "demo-form"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Snippet Playground"
+    }
+  ]
+}
+{% endschema %}
+
+{%- liquid
+  assign sample_heading = block.settings.general_heading | default: 'Shopify Snippet Playground'
+  assign sample_text = block.settings.general_text | default: 'Dies ist ein Beispieltext, der in mehreren Snippets wiederverwendet werden kann.'
+  assign sample_url = block.settings.general_url
+  if sample_url == blank
+    assign sample_url = routes.root_url
+  endif
+  assign sample_form_id = block.settings.form_id | default: 'demo-form'
+
+  assign sample_product = nil
+  if block.settings.product != blank
+    assign sample_product = all_products[block.settings.product]
+  endif
+
+  if sample_product == nil
+    capture fallback_product_json
+      {
+        "id": 1111111111,
+        "title": "Demo Produkt",
+        "handle": "demo-produkt",
+        "available": true,
+        "price": 3499,
+        "price_min": 3499,
+        "price_max": 3999,
+        "compare_at_price": 4499,
+        "compare_at_price_min": 0,
+        "compare_at_price_max": 4999,
+        "published_at": "2024-01-10T10:00:00Z",
+        "selected_or_first_available_variant": {
+          "id": 2222222222,
+          "title": "Standard",
+          "available": true,
+          "price": 3499,
+          "compare_at_price": 4499,
+          "unit_price": 699,
+          "unit_price_measurement": {
+            "reference_value": 100,
+            "reference_unit": "ml"
+          },
+          "options": ["Rot"]
+        },
+        "variants": [
+          {
+            "id": 2222222222,
+            "title": "Rot",
+            "available": true,
+            "price": 3499,
+            "compare_at_price": 4499,
+            "options": ["Rot"],
+            "unit_price": 699,
+            "unit_price_measurement": {
+              "reference_value": 100,
+              "reference_unit": "ml"
+            }
+          },
+          {
+            "id": 3333333333,
+            "title": "Blau",
+            "available": false,
+            "price": 3999,
+            "compare_at_price": 0,
+            "options": ["Blau"]
+          }
+        ],
+        "options_with_values": [
+          {
+            "name": "Farbe",
+            "values": ["Rot", "Blau"]
+          }
+        ]
+      }
+    endcapture
+    assign sample_product = fallback_product_json | parse_json
+  endif
+
+  assign sample_variant = nil
+  if sample_product.selected_or_first_available_variant
+    assign sample_variant = sample_product.selected_or_first_available_variant
+  endif
+
+  assign sample_image = block.settings.image
+  assign sample_video = block.settings.video
+
+  capture button_group_json
+    [
+      {"label": "Jetzt kaufen", "url": "#", "style": "primary"},
+      {"label": "Mehr erfahren", "url": "#", "style": "secondary"}
+    ]
+  endcapture
+  assign sample_button_group = button_group_json | parse_json
+
+  capture select_options_json
+    [
+      {"value": "s", "label": "Small"},
+      {"value": "m", "label": "Medium"},
+      {"value": "l", "label": "Large", "disabled": false}
+    ]
+  endcapture
+  assign sample_select_options = select_options_json | parse_json
+
+  capture radio_options_json
+    [
+      {"value": "standard", "label": "Standard", "helper": "3-5 Werktage"},
+      {"value": "express", "label": "Express", "helper": "1-2 Werktage"}
+    ]
+  endcapture
+  assign sample_radio_options = radio_options_json | parse_json
+
+  capture menu_item_json
+    {
+      "title": "Shop",
+      "url": "#",
+      "current": false,
+      "active": false,
+      "links": [
+        {"title": "Neuheiten", "url": "#"},
+        {"title": "Sale", "url": "#"}
+      ]
+    }
+  endcapture
+  assign sample_menu_item = menu_item_json | parse_json
+
+  capture paginate_json
+    {
+      "pages": 5,
+      "current_page": 2,
+      "previous": {"url": "#seite-1"},
+      "next": {"url": "#seite-3"},
+      "parts": [
+        {"title": "1", "is_link": true, "url": "#seite-1"},
+        {"title": "2", "is_link": false},
+        {"title": "3", "is_link": true, "url": "#seite-3"},
+        {"title": "…", "is_link": true, "url": "#seite-4"},
+        {"title": "5", "is_link": true, "url": "#seite-5"}
+      ]
+    }
+  endcapture
+  assign sample_paginate = paginate_json | parse_json
+
+  capture badges_json
+    [
+      {"text": "Limited", "style": "warning", "icon": "star"}
+    ]
+  endcapture
+  assign sample_custom_badges = badges_json | parse_json
+
+  capture grid_content
+    <div class="snippet-playground__grid-card">Kachel 1</div>
+    <div class="snippet-playground__grid-card">Kachel 2</div>
+    <div class="snippet-playground__grid-card">Kachel 3</div>
+  endcapture
+
+  capture container_content
+    <p class="snippet-playground__text">{{ sample_text }}</p>
+  endcapture
+
+  assign sample_tooltip_content = sample_text | truncate: 90
+  assign sample_price = 3499
+  assign sample_compare = 4499
+  assign sample_unit_price = 699
+
+  capture breadcrumb_items_json
+    [
+      {"title": "Start", "url": "/"},
+      {"title": "Kollektion", "url": "/collections/all"}
+    ]
+  endcapture
+  assign sample_breadcrumb_items = breadcrumb_items_json | parse_json
+
+  capture variant_selected
+    {% if sample_product.options_with_values and sample_product.options_with_values.size > 0 %}
+      {% assign first_option = sample_product.options_with_values | first %}
+      {% if first_option.values and first_option.values.size > 0 %}
+        {% assign first_value = first_option.values | first %}
+        {{ first_value }}
+      {% endif %}
+    {% endif %}
+  endcapture
+  assign sample_selected_value = variant_selected | strip
+-%}
+
+<div class="snippet-playground">
+  <header class="snippet-playground__intro">
+    {% render 'heading', text: sample_heading, level: 2, size: 'lg' %}
+    {% render 'paragraph', text: sample_text, align: 'center' %}
+  </header>
+  <div class="snippet-playground__items">
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Button</h3>
+      {% render 'button', label: 'Jetzt kaufen', url: sample_url, style: 'primary', icon: 'arrow-right', icon_position: 'right' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Button Gruppe</h3>
+      {% render 'button-group', buttons: sample_button_group, align: 'center', gap: '0.75rem' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Add to Cart Button</h3>
+      {% render 'add-to-cart-button', product: sample_product, form_id: sample_form_id, label: 'In den Warenkorb' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Icon Button</h3>
+      {% render 'icon-button', icon: 'search', label: 'Suche öffnen', url: sample_url, style: 'ghost' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Badge</h3>
+      {% render 'badge', text: 'Neu', style: 'info', icon: 'star' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Breadcrumb</h3>
+      {% render 'breadcrumb', items: sample_breadcrumb_items, current: 'Produkt' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Container</h3>
+      {% render 'container', content: container_content, width: 'default', padding: 'md', align: 'center' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Divider</h3>
+      {% render 'divider', label: 'Abschnitt', align: 'center' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Grid</h3>
+      {% render 'grid', content: grid_content, columns: 3, columns_tablet: 2, columns_mobile: 1 %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Heading</h3>
+      {% render 'heading', text: 'Überschrift Größe XL', level: 3, size: 'xl', subtitle: 'Untertitel Beispiel' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Paragraph</h3>
+      {% render 'paragraph', text: sample_text, size: 'md', max_width: '60ch' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Link</h3>
+      {% render 'link', text: 'Mehr erfahren', url: sample_url, style: 'subtle', icon: 'arrow-right' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Icon</h3>
+      {% render 'icon', name: 'check', title: 'Erfolgreich', decorative: false %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Image</h3>
+      {% render 'image', image: sample_image, alt: 'Demo Bild', aspect_ratio: '4/3' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Video</h3>
+      {% render 'video', video: sample_video, video_url: 'https://cdn.shopify.com/s/files/1/0000/0001/files/demo.mp4?v=1', poster: sample_image, autoplay: false, controls: true %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Loading Spinner</h3>
+      {% render 'loading-spinner', label: 'Wird geladen …', size: 'sm' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Tooltip</h3>
+      {% render 'tooltip', trigger_text: 'Info', content: sample_tooltip_content, position: 'right', icon: 'star' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Error Message</h3>
+      {% render 'error-message', message: 'Etwas ist schiefgelaufen.', dismissible: true %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Success Message</h3>
+      {% render 'success-message', message: 'Alles hat geklappt!', dismissible: true %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Spacer</h3>
+      {% render 'spacer', size: '2rem', show_line: true %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Menu Item</h3>
+      <ul class="snippet-playground__menu">
+        {% render 'menu-item', link: sample_menu_item, depth: 1 %}
+      </ul>
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Pagination</h3>
+      {% render 'pagination', paginate: sample_paginate %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Price</h3>
+      {% render 'price', product: sample_product, variant: sample_variant, price: sample_price, compare_at_price: sample_compare, unit_price: sample_unit_price, show_discount: true %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Product Badge</h3>
+      {% render 'product-badge', product: sample_product, badges: sample_custom_badges %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Quantity Selector</h3>
+      {% render 'quantity-selector', id: 'quantity-demo', name: 'quantity', value: 1, min: 1, max: 10, form_id: sample_form_id %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Input</h3>
+      {% render 'input', name: 'email', type: 'email', label: 'E-Mail Adresse', placeholder: 'mail@example.com', required: true, form: sample_form_id %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Textarea</h3>
+      {% render 'textarea', name: 'message', label: 'Nachricht', rows: 4, placeholder: 'Deine Nachricht …' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Checkbox</h3>
+      {% render 'checkbox', name: 'terms', label: 'Ich akzeptiere die AGB', required: true, helper_text: 'Dies ist ein Pflichtfeld.' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Radio</h3>
+      {% render 'radio', name: 'shipping', label: 'Versandart', options: sample_radio_options, selected: 'express' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Select</h3>
+      {% render 'select', name: 'size', label: 'Größe', options: sample_select_options, placeholder: 'Bitte wählen' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Link Button</h3>
+      {% render 'link', text: 'Als Button anzeigen', url: sample_url, style: 'button', icon: 'arrow-right' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Tooltip Button</h3>
+      {% render 'tooltip', trigger_text: 'Hover mich', content: 'Mehr Details zu diesem Element.', position: 'bottom' %}
+    </div>
+    <div class="snippet-playground__item">
+      <h3 class="snippet-playground__title">Variant Picker</h3>
+      {% render 'variant-picker', product: sample_product, option_position: 1, picker_type: 'button', selected_value: sample_selected_value, form_id: sample_form_id %}
+    </div>
+  </div>
+</div>
+
+<style>
+.snippet-playground {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.snippet-playground__intro {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  text-align: center;
+}
+
+.snippet-playground__items {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+}
+
+.snippet-playground__item {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 1.5rem;
+  border-radius: 0.75rem;
+  border: 1px solid rgba(17, 24, 39, 0.12);
+  background-color: #ffffff;
+  box-shadow: 0 10px 25px rgba(15, 23, 42, 0.05);
+}
+
+.snippet-playground__title {
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.snippet-playground__grid-card {
+  padding: 1rem;
+  background: rgba(59, 130, 246, 0.08);
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+.snippet-playground__menu {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.snippet-playground__text {
+  margin: 0;
+}
+
+@media (prefers-color-scheme: dark) {
+  .snippet-playground__item {
+    background-color: rgba(15, 23, 42, 0.6);
+    color: #f8fafc;
+    border-color: rgba(148, 163, 184, 0.3);
+  }
+  .snippet-playground__grid-card {
+    background: rgba(96, 165, 250, 0.2);
+  }
+}
+</style>

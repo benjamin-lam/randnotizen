@@ -1,0 +1,51 @@
+{% schema %}
+{
+  "name": "Button (Test)",
+  "settings": [
+    { "type": "text", "id": "label", "label": "Label", "default": "Jetzt kaufen" },
+    { "type": "url", "id": "link", "label": "Link", "default": "/" },
+    { "type": "select", "id": "variant", "label": "Variante", "default": "button", "options": [
+      { "value": "button", "label": "Primary" },
+      { "value": "button-secondary", "label": "Secondary" },
+      { "value": "button-tertiary", "label": "Tertiary" }
+    ] },
+    { "type": "checkbox", "id": "open_in_new_tab", "label": "In neuem Tab öffnen", "default": false },
+    { "type": "text", "id": "id", "label": "ID", "default": "demo-button" }
+  ],
+  "blocks": [
+    {
+      "type": "icon_settings",
+      "name": "Icon",
+      "settings": [
+        { "type": "text", "id": "icon", "label": "Icon", "default": "arrow-right" },
+        { "type": "select", "id": "icon_position", "label": "Icon Position", "default": "after", "options": [
+          { "value": "before", "label": "Vor dem Text" },
+          { "value": "after", "label": "Nach dem Text" }
+        ] }
+      ]
+    }
+  ],
+  "max_blocks": 1,
+  "presets": [ { "name": "Button (Test)" } ]
+}
+{% endschema %}
+
+<div class="button-test">
+  {% assign icon_value = nil %}
+  {% assign icon_position_value = 'after' %}
+  {% for block in section.blocks %}
+    {% assign icon_value = block.settings.icon %}
+    {% assign icon_position_value = block.settings.icon_position %}
+  {% endfor %}
+
+  {% render 'alksdjf/snippets/button',
+    tag: 'a',
+    id: section.settings.id,
+    label: section.settings.label,
+    link: section.settings.link,
+    variant: section.settings.variant,
+    open_in_new_tab: section.settings.open_in_new_tab,
+    icon: icon_value,
+    icon_position: icon_position_value
+  %}
+</div>

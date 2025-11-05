@@ -1,0 +1,72 @@
+{% schema %}
+{
+  "name": "Link (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "text",
+      "label": "Linktext"
+    },
+    {
+      "type": "url",
+      "id": "url",
+      "label": "Ziel-URL"
+    },
+    {
+      "type": "text",
+      "id": "style",
+      "label": "Variante default | subtle | button"
+    },
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon-Name f\u00fcr {% render 'icon' %}"
+    },
+    {
+      "type": "text",
+      "id": "icon_position",
+      "label": "Position des Icons left | right"
+    },
+    {
+      "type": "checkbox",
+      "id": "target_blank",
+      "label": "\u00d6ffnet Link in neuem Tab"
+    },
+    {
+      "type": "checkbox",
+      "id": "underline",
+      "label": "Erzwingt Unterstreichung"
+    },
+    {
+      "type": "text",
+      "id": "aria_label",
+      "label": "\u00dcberschreibt aria-label"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Link (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="link-test">
+  {% render 'alksdjf/snippets/link',
+  text: section.settings.text,
+  url: section.settings.url,
+  style: section.settings.style,
+  icon: section.settings.icon,
+  icon_position: section.settings.icon_position,
+  target_blank: section.settings.target_blank,
+  underline: section.settings.underline,
+  aria_label: section.settings.aria_label,
+  id: section.settings.id
+%}
+</div>

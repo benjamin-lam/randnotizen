@@ -1,0 +1,112 @@
+{%- comment -%}
+  Snippet: icon
+  Verwendung: {% render 'icon', name: 'arrow-right', title: 'Weiter' %}
+  Parameter:
+    - name: Icon-Name (text, 'arrow-right')
+    - title: Accessible Titel (text, nil)
+    - size: Kantenlänge in rem/em/px (text, '1em')
+    - stroke_width: Strichstärke für Outline-Icons (number, 1.5)
+    - decorative: Wenn true, aria-hidden (boolean, true)
+    - class: Zusätzliche Klasse (text, nil)
+{%- endcomment -%}
+
+{%- liquid
+  assign incoming_icon = icon | default: nil
+  assign name = name | default: 'arrow-right'
+  if incoming_icon != nil and incoming_icon != ''
+    assign name = incoming_icon
+  endif
+  assign title = title | default: null
+  assign size = size | default: '1em'
+  assign stroke_width = stroke_width | default: 1.5
+  assign decorative = decorative | default: true
+  assign class = class | default: null
+
+  assign aria_hidden = 'false'
+  assign role_attr = 'img'
+  if decorative == true or decorative == 'true'
+    assign aria_hidden = 'true'
+    assign role_attr = 'presentation'
+    assign title = null
+  endif
+
+  assign classes = 'icon icon--' | append: name
+  if class
+    assign classes = classes | append: ' ' | append: class
+  endif
+-%}
+
+{% capture icon_markup %}
+  {% case name %}
+    {% when 'arrow-right' %}
+      <svg class="{{ classes }}" role="{{ role_attr }}" aria-hidden="{{ aria_hidden }}" {% if title %}aria-label="{{ title | escape }}"{% endif %} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ stroke_width }}" stroke-linecap="round" stroke-linejoin="round">
+        {% if title %}<title>{{ title }}</title>{% endif %}
+        <path d="M5 12h14"></path>
+        <path d="m13 6 6 6-6 6"></path>
+      </svg>
+    {% when 'arrow-left' %}
+      <svg class="{{ classes }}" role="{{ role_attr }}" aria-hidden="{{ aria_hidden }}" {% if title %}aria-label="{{ title | escape }}"{% endif %} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ stroke_width }}" stroke-linecap="round" stroke-linejoin="round">
+        {% if title %}<title>{{ title }}</title>{% endif %}
+        <path d="M19 12H5"></path>
+        <path d="m11 18-6-6 6-6"></path>
+      </svg>
+    {% when 'check' %}
+      <svg class="{{ classes }}" role="{{ role_attr }}" aria-hidden="{{ aria_hidden }}" {% if title %}aria-label="{{ title | escape }}"{% endif %} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ stroke_width }}" stroke-linecap="round" stroke-linejoin="round">
+        {% if title %}<title>{{ title }}</title>{% endif %}
+        <path d="m5 13 4 4L19 7"></path>
+      </svg>
+    {% when 'close' %}
+      <svg class="{{ classes }}" role="{{ role_attr }}" aria-hidden="{{ aria_hidden }}" {% if title %}aria-label="{{ title | escape }}"{% endif %} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ stroke_width }}" stroke-linecap="round" stroke-linejoin="round">
+        {% if title %}<title>{{ title }}</title>{% endif %}
+        <path d="M18 6 6 18"></path>
+        <path d="m6 6 12 12"></path>
+      </svg>
+    {% when 'search' %}
+      <svg class="{{ classes }}" role="{{ role_attr }}" aria-hidden="{{ aria_hidden }}" {% if title %}aria-label="{{ title | escape }}"{% endif %} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ stroke_width }}" stroke-linecap="round" stroke-linejoin="round">
+        {% if title %}<title>{{ title }}</title>{% endif %}
+        <circle cx="11" cy="11" r="7"></circle>
+        <path d="m20 20-3.5-3.5"></path>
+      </svg>
+    {% when 'image' %}
+      <svg class="{{ classes }}" role="{{ role_attr }}" aria-hidden="{{ aria_hidden }}" {% if title %}aria-label="{{ title | escape }}"{% endif %} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ stroke_width }}" stroke-linecap="round" stroke-linejoin="round">
+        {% if title %}<title>{{ title }}</title>{% endif %}
+        <rect x="3" y="5" width="18" height="14" rx="2" ry="2"></rect>
+        <circle cx="8" cy="10" r="1.5"></circle>
+        <path d="M21 15.5 16 11l-5 5"></path>
+      </svg>
+    {% when 'star' %}
+      <svg class="{{ classes }}" role="{{ role_attr }}" aria-hidden="{{ aria_hidden }}" {% if title %}aria-label="{{ title | escape }}"{% endif %} viewBox="0 0 24 24" fill="currentColor" stroke="none">
+        {% if title %}<title>{{ title }}</title>{% endif %}
+        <path d="M12 2.5 14.9 9l6.6.5-5 4.3 1.6 6.5-6.1-3.7-6.1 3.7 1.6-6.5-5-4.3 6.6-.5L12 2.5Z"></path>
+      </svg>
+    {% when 'cart' %}
+      <svg class="{{ classes }}" role="{{ role_attr }}" aria-hidden="{{ aria_hidden }}" {% if title %}aria-label="{{ title | escape }}"{% endif %} viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="{{ stroke_width }}" stroke-linecap="round" stroke-linejoin="round">
+        {% if title %}<title>{{ title }}</title>{% endif %}
+        <circle cx="9" cy="20" r="1"></circle>
+        <circle cx="17" cy="20" r="1"></circle>
+        <path d="M3 4h2l2.4 12.2a1 1 0 0 0 1 .8H19"></path>
+        <path d="m7 8 13-.5-1 6H8"></path>
+      </svg>
+    {% else %}
+      <span class="{{ classes }}" aria-hidden="true">&#9632;</span>
+    {% endcase %}
+{% endcapture %}
+
+<div class="icon-wrapper" style="--icon-size: {{ size }};">
+  {{ icon_markup | strip }}
+</div>
+
+<style>
+.icon-wrapper {
+  display: inline-flex;
+  width: var(--icon-size);
+  height: var(--icon-size);
+  align-items: center;
+  justify-content: center;
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+}
+</style>

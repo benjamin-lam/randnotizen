@@ -1,0 +1,34 @@
+{%- comment -%}
+  Snippet: divider
+  Verwendung: {% render 'divider', style: 'dashed', margin: '2rem auto' %}
+  Parameter:
+    - style: Linie solid | dashed | dotted (text, 'solid')
+    - thickness: Linienbreite (text, '1px')
+    - width: Breite (text, '100%')
+    - color: Linienfarbe (color, rgba(17,24,39,0.12))
+    - margin: Außenabstand (text, '2rem auto')
+    - aria_hidden: Linie für Screenreader ausblenden (boolean, true)
+{%- endcomment -%}
+
+{%- liquid
+  assign style = style | default: 'solid'
+  assign thickness = thickness | default: '1px'
+  assign width = width | default: '100%'
+  assign color = color | default: 'rgba(17,24,39,0.12)'
+  assign margin = margin | default: '2rem auto'
+  assign aria_hidden = aria_hidden | default: true
+-%}
+
+<hr class="divider divider--{{ style }}" style="--divider-width: {{ width }}; --divider-thickness: {{ thickness }}; --divider-color: {{ color }}; --divider-margin: {{ margin }};" {% if aria_hidden == true or aria_hidden == 'true' %}aria-hidden="true"{% endif %}>
+
+<style>
+.divider {
+  width: var(--divider-width);
+  margin: var(--divider-margin);
+  border: none;
+  border-bottom: var(--divider-thickness) solid var(--divider-color);
+}
+
+.divider--dashed { border-bottom-style: dashed; }
+.divider--dotted { border-bottom-style: dotted; }
+</style>
