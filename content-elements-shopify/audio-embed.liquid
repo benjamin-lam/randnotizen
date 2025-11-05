@@ -1,0 +1,34 @@
+<figure class="audio">
+  {% if section.settings.caption != blank %}
+  <figcaption>{{ section.settings.caption }}</figcaption>
+  {% endif %}
+  <audio controls preload="none">
+    {% if section.settings.audio != blank %}
+    <source src="{{ section.settings.audio }}" type="audio/mpeg">
+    {% endif %}
+    {{ section.settings.fallback_text }}
+  </audio>
+</figure>
+{% schema %}
+{
+  "name": "Audio Embed",
+  "settings": [
+    {
+      "type": "url",
+      "id": "audio",
+      "label": "Audio-URL"
+    },
+    {
+      "type": "text",
+      "id": "caption",
+      "label": "Beschriftung"
+    },
+    {
+      "type": "text",
+      "id": "fallback_text",
+      "label": "Fallback-Text",
+      "default": "Ihr Browser unterstützt das Audio-Element nicht."
+    }
+  ]
+}
+{% endschema %}

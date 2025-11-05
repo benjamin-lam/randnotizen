@@ -1,0 +1,36 @@
+{% if section.blocks.size > 0 %}
+<ul class="trust-badges">
+  {% for block in section.blocks %}
+  <li {{ block.shopify_attributes }}>
+    {% if block.settings.image != blank %}
+    <img src="{{ block.settings.image | image_url }}" alt="{{ block.settings.alt | escape }}">
+    {% endif %}
+  </li>
+  {% endfor %}
+</ul>
+{% endif %}
+{% schema %}
+{
+  "name": "Trust Badges",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Abzeichen",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Bild"
+        },
+        {
+          "type": "text",
+          "id": "alt",
+          "label": "Alt-Text"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 5
+}
+{% endschema %}
