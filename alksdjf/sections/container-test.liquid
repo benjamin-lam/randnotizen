@@ -1,0 +1,54 @@
+{% schema %}
+{
+  "name": "Container (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "content",
+      "label": "HTML-Inhalt"
+    },
+    {
+      "type": "text",
+      "id": "width",
+      "label": "max-width Variante narrow | default | wide | full"
+    },
+    {
+      "type": "text",
+      "id": "padding",
+      "label": "Innenabstand none | sm | md | lg"
+    },
+    {
+      "type": "text",
+      "id": "align",
+      "label": "Textausrichtung left | center | right"
+    },
+    {
+      "type": "text",
+      "id": "tag",
+      "label": "Wrapper-Tag"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Container (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="container-test">
+  {% render 'alksdjf/snippets/container',
+  content: section.settings.content,
+  width: section.settings.width,
+  padding: section.settings.padding,
+  align: section.settings.align,
+  tag: section.settings.tag,
+  id: section.settings.id
+%}
+</div>

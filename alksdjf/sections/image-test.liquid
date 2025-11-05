@@ -1,0 +1,72 @@
+{% schema %}
+{
+  "name": "Image (Test)",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Shopify Image-Objekt"
+    },
+    {
+      "type": "text",
+      "id": "alt",
+      "label": "Alternativtext"
+    },
+    {
+      "type": "text",
+      "id": "sizes",
+      "label": "sizes-Attribut"
+    },
+    {
+      "type": "text",
+      "id": "widths",
+      "label": "Responsive Widths CSV"
+    },
+    {
+      "type": "text",
+      "id": "aspect_ratio",
+      "label": "Erzwingt Ratio"
+    },
+    {
+      "type": "text",
+      "id": "object_fit",
+      "label": "object-fit Wert"
+    },
+    {
+      "type": "text",
+      "id": "loading",
+      "label": "Ladeverhalten auto | lazy | eager"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    },
+    {
+      "type": "text",
+      "id": "class",
+      "label": "Zus\u00e4tzliche Klasse"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Image (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="image-test">
+  {% render 'alksdjf/snippets/image',
+  image: section.settings.image,
+  alt: section.settings.alt,
+  sizes: section.settings.sizes,
+  widths: section.settings.widths,
+  aspect_ratio: section.settings.aspect_ratio,
+  object_fit: section.settings.object_fit,
+  loading: section.settings.loading,
+  id: section.settings.id,
+  class: section.settings.class
+%}
+</div>

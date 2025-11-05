@@ -1,0 +1,54 @@
+{% schema %}
+{
+  "name": "Divider (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "style",
+      "label": "Linie solid | dashed | dotted"
+    },
+    {
+      "type": "text",
+      "id": "thickness",
+      "label": "Linienbreite"
+    },
+    {
+      "type": "text",
+      "id": "width",
+      "label": "Breite"
+    },
+    {
+      "type": "color",
+      "id": "color",
+      "label": "Linienfarbe"
+    },
+    {
+      "type": "text",
+      "id": "margin",
+      "label": "Au\u00dfenabstand"
+    },
+    {
+      "type": "checkbox",
+      "id": "aria_hidden",
+      "label": "Linie f\u00fcr Screenreader ausblenden"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Divider (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="divider-test">
+  {% render 'alksdjf/snippets/divider',
+  style: section.settings.style,
+  thickness: section.settings.thickness,
+  width: section.settings.width,
+  color: section.settings.color,
+  margin: section.settings.margin,
+  aria_hidden: section.settings.aria_hidden
+%}
+</div>

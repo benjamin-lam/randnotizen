@@ -11,50 +11,12 @@
     - id: HTML-ID (text, nil)
 {%- endcomment -%}
 
-{%- liquid
-  assign text = text | default: 'Lorem ipsum dolor sit amet'
-  assign size = size | default: 'md'
-  assign align = align | default: 'left'
-  assign color = color | default: 'inherit'
-  assign max_width = max_width | default: '60ch'
-  assign is_richtext = is_richtext | default: false
-  assign id = id | default: null
-
-  assign paragraph_classes = 'paragraph paragraph--' | append: size | append: ' paragraph--align-' | append: align
--%}
-
-<p
-  class="{{ paragraph_classes }}"
-  style="--paragraph-color: {{ color }}; --paragraph-max-width: {{ max_width }};"
-  {% if id %}id="{{ id }}"{% endif %}
->
-  {%- if is_richtext == true or is_richtext == 'true' -%}
-    {{ text }}
-  {%- else -%}
-    {{ text | escape }}
-  {%- endif -%}
-</p>
-
-<style>
-.paragraph {
-  --paragraph-color: inherit;
-  --paragraph-max-width: none;
-  color: var(--paragraph-color);
-  margin: 0;
-  max-width: var(--paragraph-max-width);
-}
-
-.paragraph--align-left { text-align: left; }
-.paragraph--align-center { text-align: center; margin-left: auto; margin-right: auto; }
-.paragraph--align-right { text-align: right; margin-left: auto; }
-
-.paragraph--xs { font-size: clamp(0.75rem, 1.5vw, 0.875rem); }
-.paragraph--sm { font-size: clamp(0.875rem, 1.75vw, 0.95rem); }
-.paragraph--md { font-size: clamp(1rem, 2vw, 1.0625rem); }
-.paragraph--lg { font-size: clamp(1.0625rem, 2.5vw, 1.125rem); line-height: 1.8; }
-
-.paragraph--lg,
-.paragraph--md,
-.paragraph--sm,
-.paragraph--xs { line-height: 1.6; }
-</style>
+{% render 'alksdjf/snippets/paragraph',
+  text: text,
+  size: size,
+  align: align,
+  color: color,
+  max_width: max_width,
+  is_richtext: is_richtext,
+  id: id
+%}

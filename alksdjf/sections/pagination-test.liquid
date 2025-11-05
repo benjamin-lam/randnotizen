@@ -1,0 +1,36 @@
+{% schema %}
+{
+  "name": "Pagination (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "paginate",
+      "label": "Shopify Paginate Objekt"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_summary",
+      "label": "Seitensummary anzeigen"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_prev_next",
+      "label": "Vor/Zur\u00fcck anzeigen"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Pagination (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="pagination-test">
+  {% render 'alksdjf/snippets/pagination',
+  paginate: section.settings.paginate,
+  show_summary: section.settings.show_summary,
+  show_prev_next: section.settings.show_prev_next
+%}
+</div>

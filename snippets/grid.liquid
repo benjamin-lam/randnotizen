@@ -11,37 +11,12 @@
     - id: HTML-ID (text, nil)
 {%- endcomment -%}
 
-{%- liquid
-  assign content = content | default: ''
-  assign columns = columns | default: 3 | plus: 0
-  assign columns_tablet = columns_tablet | default: 2 | plus: 0
-  assign columns_mobile = columns_mobile | default: 1 | plus: 0
-  assign gap = gap | default: '1.5rem'
-  assign align = align | default: 'stretch'
-  assign id = id | default: nil
--%}
-
-<div class="grid" style="--grid-gap: {{ gap }}; --grid-columns: {{ columns }}; --grid-columns-tablet: {{ columns_tablet }}; --grid-columns-mobile: {{ columns_mobile }}; --grid-align: {{ align }};" {% if id %}id="{{ id }}"{% endif %}>
-  {{ content }}
-</div>
-
-<style>
-.grid {
-  display: grid;
-  gap: var(--grid-gap);
-  grid-template-columns: repeat(var(--grid-columns-mobile), minmax(0, 1fr));
-  align-items: var(--grid-align);
-}
-
-@media (min-width: 600px) {
-  .grid {
-    grid-template-columns: repeat(var(--grid-columns-tablet), minmax(0, 1fr));
-  }
-}
-
-@media (min-width: 960px) {
-  .grid {
-    grid-template-columns: repeat(var(--grid-columns), minmax(0, 1fr));
-  }
-}
-</style>
+{% render 'alksdjf/snippets/grid',
+  content: content,
+  columns: columns,
+  columns_tablet: columns_tablet,
+  columns_mobile: columns_mobile,
+  gap: gap,
+  align: align,
+  id: id
+%}

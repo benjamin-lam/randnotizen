@@ -1,0 +1,136 @@
+{%- comment -%}
+  Snippet: input
+  Verwendung: {% render 'input', name: 'email', type: 'email', label: 'E-Mail', required: true %}
+  Parameter:
+    - name: Input-Name (text, 'input-field')
+    - type: Input-Typ (text, 'text')
+    - value: Vorbefüllter Wert (text, nil)
+    - label: Beschriftung (text, nil)
+    - placeholder: Platzhalter (text, nil)
+    - helper_text: Hilfetext unter dem Feld (text, nil)
+    - error: Fehlermeldung (text, nil)
+    - required: Pflichtfeld (boolean, false)
+    - disabled: Deaktiviert (boolean, false)
+    - autocomplete: Autocomplete-Attribut (text, nil)
+    - inputmode: Inputmode-Attribut (text, nil)
+    - form: Formular-ID (text, nil)
+    - pattern: Regex-Pattern (text, nil)
+    - maxlength: Maximale Länge (number, nil)
+    - minlength: Minimale Länge (number, nil)
+    - id: HTML-ID (text, nil)
+{%- endcomment -%}
+
+{%- liquid
+  assign name = name | default: 'input-field'
+  assign type = type | default: 'text'
+  assign value = value | default: nil
+  assign label = label | default: nil
+  assign placeholder = placeholder | default: nil
+  assign helper_text = helper_text | default: nil
+  assign error = error | default: nil
+  assign required = required | default: false
+  assign disabled = disabled | default: false
+  assign autocomplete = autocomplete | default: nil
+  assign inputmode = inputmode | default: nil
+  assign form = form | default: nil
+  assign pattern = pattern | default: nil
+  assign maxlength = maxlength | default: nil
+  assign minlength = minlength | default: nil
+  assign id = id | default: name | handle | prepend: 'input-'
+
+  assign wrapper_classes = 'input'
+  if error
+    assign wrapper_classes = wrapper_classes | append: ' input--error'
+  endif
+
+  assign describedby = ''
+  if helper_text
+    assign describedby = describedby | append: id | append: '-helper'
+  endif
+  if error
+    if describedby != ''
+      assign describedby = describedby | append: ' ' | append: id | append: '-error'
+    else
+      assign describedby = describedby | append: id | append: '-error'
+    endif
+  endif
+-%}
+
+<div class="{{ wrapper_classes }}">
+  {%- if label -%}
+    <label class="input__label" for="{{ id }}">
+      {{ label }}
+      {%- if required == true or required == 'true' -%}
+        <span class="input__required" aria-hidden="true">*</span>
+      {%- endif -%}
+    </label>
+  {%- endif -%}
+  <input
+    class="input__field"
+    type="{{ type }}"
+    name="{{ name }}"
+    id="{{ id }}"
+    {% if value != nil %}value="{{ value }}"{% endif %}
+    {% if placeholder %}placeholder="{{ placeholder }}"{% endif %}
+    {% if required == true or required == 'true' %}required aria-required="true"{% endif %}
+    {% if disabled == true or disabled == 'true' %}disabled aria-disabled="true"{% endif %}
+    {% if autocomplete %}autocomplete="{{ autocomplete }}"{% endif %}
+    {% if inputmode %}inputmode="{{ inputmode }}"{% endif %}
+    {% if form %}form="{{ form }}"{% endif %}
+    {% if pattern %}pattern="{{ pattern }}"{% endif %}
+    {% if maxlength %}maxlength="{{ maxlength }}"{% endif %}
+    {% if minlength %}minlength="{{ minlength }}"{% endif %}
+    {% if describedby != '' %}aria-describedby="{{ describedby }}"{% endif %}
+  >
+  {%- if helper_text -%}
+    <p class="input__helper" id="{{ id }}-helper">{{ helper_text }}</p>
+  {%- endif -%}
+  {%- if error -%}
+    <p class="input__error" role="alert" id="{{ id }}-error">{{ error }}</p>
+  {%- endif -%}
+</div>
+
+<style>
+.input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.input__label {
+  font-size: 0.875rem;
+  font-weight: 500;
+}
+
+.input__required { color: var(--color-required, #dc2626); }
+
+.input__field {
+  font: inherit;
+  padding: 0.75rem 0.9rem;
+  border: 1px solid rgba(17, 24, 39, 0.15);
+  border-radius: 0.375rem;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.input__field:focus {
+  outline: none;
+  border-color: rgba(37, 99, 235, 0.6);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.input__helper {
+  margin: 0;
+  font-size: 0.75rem;
+  color: rgba(17, 24, 39, 0.6);
+}
+
+.input__error {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #dc2626;
+}
+
+.input--error .input__field {
+  border-color: #dc2626;
+}
+</style>

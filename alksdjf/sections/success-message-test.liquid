@@ -1,0 +1,36 @@
+{% schema %}
+{
+  "name": "Success Message (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "message",
+      "label": "Erfolgstext"
+    },
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Icon-Name"
+    },
+    {
+      "type": "checkbox",
+      "id": "dismissible",
+      "label": "Schlie\u00dfen-Button"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Success Message (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="success-message-test">
+  {% render 'alksdjf/snippets/success-message',
+  message: section.settings.message,
+  icon: section.settings.icon,
+  dismissible: section.settings.dismissible
+%}
+</div>

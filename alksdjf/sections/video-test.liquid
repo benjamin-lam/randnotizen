@@ -1,0 +1,72 @@
+{% schema %}
+{
+  "name": "Video (Test)",
+  "settings": [
+    {
+      "type": "video_url",
+      "id": "video",
+      "label": "Shopify Video/Media-Objekt"
+    },
+    {
+      "type": "url",
+      "id": "video_url",
+      "label": "MP4-URL als Fallback"
+    },
+    {
+      "type": "image_picker",
+      "id": "poster",
+      "label": "Poster-Bild"
+    },
+    {
+      "type": "checkbox",
+      "id": "autoplay",
+      "label": "Autoplay aktivieren"
+    },
+    {
+      "type": "checkbox",
+      "id": "loop",
+      "label": "Loop aktivieren"
+    },
+    {
+      "type": "checkbox",
+      "id": "muted",
+      "label": "Ton stummschalten"
+    },
+    {
+      "type": "checkbox",
+      "id": "controls",
+      "label": "Steuerelemente anzeigen"
+    },
+    {
+      "type": "text",
+      "id": "aspect_ratio",
+      "label": "Seitenverh\u00e4ltnis"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Video (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="video-test">
+  {% render 'alksdjf/snippets/video',
+  video: section.settings.video,
+  video_url: section.settings.video_url,
+  poster: section.settings.poster,
+  autoplay: section.settings.autoplay,
+  loop: section.settings.loop,
+  muted: section.settings.muted,
+  controls: section.settings.controls,
+  aspect_ratio: section.settings.aspect_ratio,
+  id: section.settings.id
+%}
+</div>

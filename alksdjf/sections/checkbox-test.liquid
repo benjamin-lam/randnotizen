@@ -1,0 +1,72 @@
+{% schema %}
+{
+  "name": "Checkbox (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Feldname"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Beschriftung"
+    },
+    {
+      "type": "text",
+      "id": "value",
+      "label": "Wert bei Auswahl"
+    },
+    {
+      "type": "checkbox",
+      "id": "checked",
+      "label": "Vorbelegung"
+    },
+    {
+      "type": "text",
+      "id": "helper_text",
+      "label": "Hilfetext"
+    },
+    {
+      "type": "text",
+      "id": "error",
+      "label": "Fehlermeldung"
+    },
+    {
+      "type": "checkbox",
+      "id": "required",
+      "label": "Pflichtfeld"
+    },
+    {
+      "type": "checkbox",
+      "id": "disabled",
+      "label": "Deaktiviert"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Checkbox (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="checkbox-test">
+  {% render 'alksdjf/snippets/checkbox',
+  name: section.settings.name,
+  label: section.settings.label,
+  value: section.settings.value,
+  checked: section.settings.checked,
+  helper_text: section.settings.helper_text,
+  error: section.settings.error,
+  required: section.settings.required,
+  disabled: section.settings.disabled,
+  id: section.settings.id
+%}
+</div>

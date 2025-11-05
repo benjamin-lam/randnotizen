@@ -7,43 +7,8 @@
     - inline: Inline-Darstellung (boolean, false)
 {%- endcomment -%}
 
-{%- liquid
-  assign label = label | default: 'Lädt...'
-  assign size = size | default: 'md'
-  assign inline = inline | default: false
--%}
-
-<div class="spinner spinner--{{ size }}{% if inline == true or inline == 'true' %} spinner--inline{% endif %}" role="status" aria-live="polite" aria-label="{{ label }}">
-  <span class="spinner__circle" aria-hidden="true"></span>
-</div>
-
-<style>
-.spinner {
-  --spinner-size-sm: 1.5rem;
-  --spinner-size-md: 2rem;
-  --spinner-size-lg: 3rem;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  width: var(--spinner-size-md);
-  height: var(--spinner-size-md);
-}
-
-.spinner--sm { width: var(--spinner-size-sm); height: var(--spinner-size-sm); }
-.spinner--lg { width: var(--spinner-size-lg); height: var(--spinner-size-lg); }
-
-.spinner__circle {
-  width: 100%;
-  height: 100%;
-  border-radius: 50%;
-  border: 2px solid rgba(17, 24, 39, 0.1);
-  border-top-color: #2563eb;
-  animation: spinner-rotate 0.8s linear infinite;
-}
-
-.spinner--inline { display: inline-flex; }
-
-@keyframes spinner-rotate {
-  to { transform: rotate(360deg); }
-}
-</style>
+{% render 'alksdjf/snippets/loading-spinner',
+  label: label,
+  size: size,
+  inline: inline
+%}

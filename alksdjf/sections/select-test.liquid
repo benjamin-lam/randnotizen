@@ -1,0 +1,78 @@
+{% schema %}
+{
+  "name": "Select (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Feldname"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Beschriftung"
+    },
+    {
+      "type": "text",
+      "id": "options",
+      "label": "Array mit { value, label, disabled }"
+    },
+    {
+      "type": "text",
+      "id": "selected",
+      "label": "Ausgew\u00e4hlter Wert"
+    },
+    {
+      "type": "text",
+      "id": "placeholder",
+      "label": "Placeholder-Option"
+    },
+    {
+      "type": "text",
+      "id": "helper_text",
+      "label": "Hilfetext"
+    },
+    {
+      "type": "text",
+      "id": "error",
+      "label": "Fehlermeldung"
+    },
+    {
+      "type": "checkbox",
+      "id": "required",
+      "label": "Pflichtfeld"
+    },
+    {
+      "type": "checkbox",
+      "id": "disabled",
+      "label": "Deaktiviert"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "HTML-ID"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Select (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="select-test">
+  {% render 'alksdjf/snippets/select',
+  name: section.settings.name,
+  label: section.settings.label,
+  options: section.settings.options,
+  selected: section.settings.selected,
+  placeholder: section.settings.placeholder,
+  helper_text: section.settings.helper_text,
+  error: section.settings.error,
+  required: section.settings.required,
+  disabled: section.settings.disabled,
+  id: section.settings.id
+%}
+</div>

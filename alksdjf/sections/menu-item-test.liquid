@@ -1,0 +1,42 @@
+{% schema %}
+{
+  "name": "Menu Item (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "link",
+      "label": "Linklist-Objekt"
+    },
+    {
+      "type": "number",
+      "id": "depth",
+      "label": "Verschachtelungstiefe"
+    },
+    {
+      "type": "checkbox",
+      "id": "show_indicator",
+      "label": "Pfeil f\u00fcr Untermen\u00fcs anzeigen"
+    },
+    {
+      "type": "checkbox",
+      "id": "is_active",
+      "label": "Erzwingt Active-State"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Menu Item (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="menu-item-test">
+  {% render 'alksdjf/snippets/menu-item',
+  link: section.settings.link,
+  depth: section.settings.depth,
+  show_indicator: section.settings.show_indicator,
+  is_active: section.settings.is_active
+%}
+</div>

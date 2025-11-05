@@ -1,0 +1,102 @@
+{%- comment -%}
+  Snippet: menu-item
+  Verwendung: {% render 'menu-item', link: link, depth: 1 %}
+  Parameter:
+    - link: Linklist-Objekt (link, nil)
+    - depth: Verschachtelungstiefe (number, 1)
+    - show_indicator: Pfeil für Untermenüs anzeigen (boolean, true)
+    - is_active: Erzwingt Active-State (boolean, false)
+{%- endcomment -%}
+
+{%- liquid
+  assign link = link | default: nil
+  assign depth = depth | default: 1 | plus: 0
+  assign show_indicator = show_indicator | default: true
+  assign is_active = is_active | default: false
+
+  if link == nil
+    echo '<!-- menu-item: Link fehlt -->'
+  endif
+-%}
+
+{%- if link -%}
+  <li class="menu-item menu-item--depth-{{ depth }}{% if link.active or is_active == true or is_active == 'true' %} is-active{% endif %}">
+    <a href="{{ link.url }}" class="menu-item__link" {% if link.current %}aria-current="page"{% endif %}>{{ link.title }}</a>
+    {%- if link.links and link.links.size > 0 -%}
+      <button class="menu-item__toggle" type="button" aria-expanded="false" aria-controls="submenu-{{ link.handle | default: link.title | handle }}" {% if show_indicator != true and show_indicator != 'true' %}hidden{% endif %}>
+        {% render 'icon', name: 'arrow-right', decorative: true %}
+      </button>
+      <ul class="menu-item__submenu" id="submenu-{{ link.handle | default: link.title | handle }}" hidden>
+        {%- for child in link.links -%}
+          {% render 'menu-item', link: child, depth: depth | plus: 1, show_indicator: show_indicator %}
+        {%- endfor -%}
+      </ul>
+    {%- endif -%}
+  </li>
+{%- endif -%}
+
+<style>
+.menu-item {
+  position: relative;
+  list-style: none;
+}
+
+.menu-item__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.5rem 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.menu-item.is-active > .menu-item__link {
+  font-weight: 600;
+}
+
+.menu-item__toggle {
+  background: none;
+  border: none;
+  padding: 0.25rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+}
+
+.menu-item__submenu {
+  margin: 0;
+  padding-left: 1rem;
+  list-style: none;
+}
+
+.menu-item__toggle svg {
+  transition: transform 0.2s ease;
+}
+
+.menu-item__toggle[aria-expanded="true"] svg {
+  transform: rotate(90deg);
+}
+</style>
+
+<script>
+(function () {
+  var script = document.currentScript;
+  if (!script) return;
+  var node = script.previousElementSibling;
+  while (node && node.tagName === 'STYLE') {
+    node = node.previousElementSibling;
+  }
+  if (!node) return;
+  var toggle = node.querySelector('.menu-item__toggle');
+  var submenu = node.querySelector('.menu-item__submenu');
+  if (!toggle || !submenu) return;
+  toggle.addEventListener('click', function () {
+    var expanded = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', (!expanded).toString());
+    if (expanded) {
+      submenu.setAttribute('hidden', '');
+    } else {
+      submenu.removeAttribute('hidden');
+    }
+  });
+})();
+</script>

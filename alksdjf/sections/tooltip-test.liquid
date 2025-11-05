@@ -1,0 +1,48 @@
+{% schema %}
+{
+  "name": "Tooltip (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "trigger_text",
+      "label": "Trigger-Beschriftung"
+    },
+    {
+      "type": "text",
+      "id": "content",
+      "label": "Tooltip-Inhalt"
+    },
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Tooltip-ID"
+    },
+    {
+      "type": "text",
+      "id": "position",
+      "label": "top | right | bottom | left"
+    },
+    {
+      "type": "text",
+      "id": "icon",
+      "label": "Optionales Icon"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Tooltip (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="tooltip-test">
+  {% render 'alksdjf/snippets/tooltip',
+  trigger_text: section.settings.trigger_text,
+  content: section.settings.content,
+  id: section.settings.id,
+  position: section.settings.position,
+  icon: section.settings.icon
+%}
+</div>

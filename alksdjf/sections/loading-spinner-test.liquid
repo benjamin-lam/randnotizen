@@ -1,0 +1,36 @@
+{% schema %}
+{
+  "name": "Loading Spinner (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "label",
+      "label": "ARIA-Label"
+    },
+    {
+      "type": "text",
+      "id": "size",
+      "label": "sm | md | lg"
+    },
+    {
+      "type": "checkbox",
+      "id": "inline",
+      "label": "Inline-Darstellung"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Loading Spinner (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="loading-spinner-test">
+  {% render 'alksdjf/snippets/loading-spinner',
+  label: section.settings.label,
+  size: section.settings.size,
+  inline: section.settings.inline
+%}
+</div>

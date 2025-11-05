@@ -1,0 +1,60 @@
+{% schema %}
+{
+  "name": "Radio (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Gruppenname"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Feldlabel"
+    },
+    {
+      "type": "text",
+      "id": "options",
+      "label": "Array { value, label, helper, disabled }"
+    },
+    {
+      "type": "text",
+      "id": "selected",
+      "label": "Vorauswahl"
+    },
+    {
+      "type": "checkbox",
+      "id": "required",
+      "label": "Pflichtfeld"
+    },
+    {
+      "type": "text",
+      "id": "orientation",
+      "label": "Layout vertical | horizontal"
+    },
+    {
+      "type": "text",
+      "id": "id_prefix",
+      "label": "ID-Pr\u00e4fix"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Radio (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="radio-test">
+  {% render 'alksdjf/snippets/radio',
+  name: section.settings.name,
+  label: section.settings.label,
+  options: section.settings.options,
+  selected: section.settings.selected,
+  required: section.settings.required,
+  orientation: section.settings.orientation,
+  id_prefix: section.settings.id_prefix
+%}
+</div>

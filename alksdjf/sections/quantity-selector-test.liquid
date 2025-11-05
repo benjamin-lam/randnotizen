@@ -1,0 +1,66 @@
+{% schema %}
+{
+  "name": "Quantity Selector (Test)",
+  "settings": [
+    {
+      "type": "text",
+      "id": "id",
+      "label": "Feld-ID"
+    },
+    {
+      "type": "text",
+      "id": "name",
+      "label": "Feldname"
+    },
+    {
+      "type": "number",
+      "id": "value",
+      "label": "Ausgangswert"
+    },
+    {
+      "type": "number",
+      "id": "min",
+      "label": "Mindestwert"
+    },
+    {
+      "type": "number",
+      "id": "max",
+      "label": "Maximalwert"
+    },
+    {
+      "type": "number",
+      "id": "step",
+      "label": "Schrittweite"
+    },
+    {
+      "type": "text",
+      "id": "form_id",
+      "label": "Verkn\u00fcpftes Formular"
+    },
+    {
+      "type": "text",
+      "id": "label",
+      "label": "Beschriftung"
+    }
+  ],
+  "blocks": [],
+  "presets": [
+    {
+      "name": "Quantity Selector (Test)"
+    }
+  ]
+}
+{% endschema %}
+
+<div class="quantity-selector-test">
+  {% render 'alksdjf/snippets/quantity-selector',
+  id: section.settings.id,
+  name: section.settings.name,
+  value: section.settings.value,
+  min: section.settings.min,
+  max: section.settings.max,
+  step: section.settings.step,
+  form_id: section.settings.form_id,
+  label: section.settings.label
+%}
+</div>

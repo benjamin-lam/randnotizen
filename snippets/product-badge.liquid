@@ -10,82 +10,11 @@
     - show_sold_out: Ausverkauft-Badge anzeigen (boolean, true)
 {%- endcomment -%}
 
-{%- liquid
-  assign product = product | default: nil
-  assign badges = badges | default: nil
-  assign new_days = new_days | default: 14 | plus: 0
-  assign show_sale = show_sale | default: true
-  assign show_new = show_new | default: true
-  assign show_sold_out = show_sold_out | default: true
-
-  assign auto_badges = ''
-
-  if product
-    assign on_sale = false
-    if show_sale == true or show_sale == 'true'
-      if product.compare_at_price_max > product.price
-        assign on_sale = true
-      endif
-    endif
-
-    assign is_new = false
-    if show_new == true or show_new == 'true'
-      if product.published_at
-        assign now_time = 'now' | date: '%s'
-        assign publish_time = product.published_at | date: '%s'
-        assign diff = now_time | minus: publish_time
-        assign days = diff | divided_by: 86400
-        if days <= new_days
-          assign is_new = true
-        endif
-      endif
-    endif
-
-    assign sold_out = false
-    if show_sold_out == true or show_sold_out == 'true'
-      if product.available != true
-        assign sold_out = true
-      endif
-    endif
-  endif
--%}
-
-{%- capture auto_badge_markup -%}
-  {%- if product -%}
-    {%- if on_sale -%}
-      {% render 'badge', text: 'Sale', style: 'danger' %}
-    {%- endif -%}
-    {%- if is_new -%}
-      {% render 'badge', text: 'Neu', style: 'info' %}
-    {%- endif -%}
-    {%- if sold_out -%}
-      {% render 'badge', text: 'Ausverkauft', style: 'warning' %}
-    {%- endif -%}
-  {%- endif -%}
-{%- endcapture -%}
-
-{%- assign custom_badge_markup = '' -%}
-{%- if badges and badges.size > 0 -%}
-  {%- capture custom -%}
-    {%- for badge_item in badges -%}
-      {% render 'badge', text: badge_item.text, style: badge_item.style, icon: badge_item.icon %}
-    {%- endfor -%}
-  {%- endcapture -%}
-  {%- assign custom_badge_markup = custom -%}
-{%- endif -%}
-
-{%- assign combined = auto_badge_markup | append: custom_badge_markup -%}
-
-{%- if combined != '' -%}
-  <div class="product-badge">
-    {{ combined | strip }}
-  </div>
-{%- endif -%}
-
-<style>
-.product-badge {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5rem;
-}
-</style>
+{% render 'alksdjf/snippets/product-badge',
+  product: product,
+  badges: badges,
+  new_days: new_days,
+  show_sale: show_sale,
+  show_new: show_new,
+  show_sold_out: show_sold_out
+%}
