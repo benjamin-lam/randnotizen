@@ -1,0 +1,78 @@
+{%- comment -%}
+  add-to-cart-button – Wrapper für zentrales Button-Snippet.
+{%- endcomment -%}
+
+{%- liquid
+  assign product = product | default: nil
+  assign variant = variant | default: nil
+  assign form_id = form_id | default: nil
+  assign style = style | default: 'primary'
+  assign size = size | default: 'lg'
+
+  if variant == nil and product
+    assign variant = product.selected_or_first_available_variant
+  endif
+
+  assign available = true
+  assign price = nil
+  if variant
+    assign available = variant.available
+    assign price = variant.price
+  elsif product
+    assign available = product.available
+    assign price = product.price
+  endif
+
+  assign label = label | default: 'products.product.add_to_cart' | t
+  if available != true
+    assign label = 'products.product.sold_out' | t
+  endif
+  assign escaped_label = label | escape
+
+  assign size_attribute = size | escape
+  assign style_attribute = style | escape
+  assign escaped_form = form_id | escape
+
+  assign context_id = 'add-to-cart-button'
+  if block and block.id
+    assign context_id = block.id
+  elsif section and section.id
+    assign context_id = section.id
+  endif
+
+  assign variant_mapping = {
+    'primary': 'button',
+    'secondary': 'button-secondary',
+    'tertiary': 'button-tertiary'
+  }
+  assign button_variant = variant_mapping[style]
+  if button_variant == blank
+    assign button_variant = 'button'
+  endif
+
+  assign attribute_parts = ''
+  assign attribute_parts = attribute_parts | append: 'type="submit"'
+  if form_id != blank
+    assign attribute_parts = attribute_parts | append: ' form="' | append: escaped_form | append: '"'
+  endif
+  if available != true
+    assign attribute_parts = attribute_parts | append: ' disabled aria-disabled="true"'
+  endif
+  assign attribute_parts = attribute_parts | append: ' aria-label="' | append: escaped_label | append: '"'
+  assign attribute_parts = attribute_parts | append: ' data-button-size="' | append: size_attribute | append: '"'
+  assign attribute_parts = attribute_parts | append: ' data-button-style="' | append: style_attribute | append: '"'
+-%}
+
+<div class="add-to-cart-button" data-button-size="{{ size }}">
+  {% render 'alksdjf/snippets/button',
+    tag: 'button',
+    id: context_id,
+    label: label,
+    variant: button_variant,
+    shopify_attributes: attribute_parts,
+    open_in_new_tab: false
+  %}
+  {%- if price -%}
+    <span class="add-to-cart-button__price">{{ price | money_with_currency }}</span>
+  {%- endif -%}
+</div>

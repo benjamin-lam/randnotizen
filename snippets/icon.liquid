@@ -11,7 +11,11 @@
 {%- endcomment -%}
 
 {%- liquid
+  assign incoming_icon = icon | default: nil
   assign name = name | default: 'arrow-right'
+  if incoming_icon != nil and incoming_icon != ''
+    assign name = incoming_icon
+  endif
   assign title = title | default: null
   assign size = size | default: '1em'
   assign stroke_width = stroke_width | default: 1.5

@@ -10,93 +10,19 @@
     - is_disabled: Deaktiviert den Button (boolean, false)
     - aria_label: Überschreibt aria-label (text, nil)
     - id: HTML-ID (text, nil)
+    - target_blank: Öffnet Link in neuem Tab (boolean, false)
+    - icon_position: Position des Icons before | after (text, 'before')
 {%- endcomment -%}
 
-{%- liquid
-  assign icon = icon | default: 'search'
-  assign label = label | default: 'Button'
-  assign url = url | default: nil
-  assign style = style | default: 'solid'
-  assign size = size | default: 'md'
-  assign is_disabled = is_disabled | default: false
-  assign aria_label = aria_label | default: label
-  assign id = id | default: null
-
-  assign tag = 'button'
-  if url and is_disabled != true and is_disabled != 'true'
-    assign tag = 'a'
-  endif
-
-  assign classes = 'icon-button icon-button--' | append: style | append: ' icon-button--' | append: size
-  if is_disabled == true or is_disabled == 'true'
-    assign classes = classes | append: ' is-disabled'
-  endif
-
-  assign disabled_attributes = ''
-  if is_disabled == true or is_disabled == 'true'
-    if tag == 'a'
-      assign disabled_attributes = ' aria-disabled="true" tabindex="-1"'
-    else
-      assign disabled_attributes = ' disabled aria-disabled="true"'
-    endif
-  endif
--%}
-
-<{% if tag == 'a' %}a{% else %}button{% endif %}
-  class="{{ classes }}"
-  {% if tag == 'a' %}href="{{ url }}"{% else %}type="button"{% endif %}
-  aria-label="{{ aria_label | escape }}"{{ disabled_attributes }}
-  {% if id %}id="{{ id }}"{% endif %}
->
-  <span class="icon-button__icon" aria-hidden="true">{% render 'icon', name: icon %}</span>
-  <span class="icon-button__label">{{ label }}</span>
-</{% if tag == 'a' %}a{% else %}button{% endif %}>
-
-<style>
-.icon-button {
-  --icon-button-size-sm: 2rem;
-  --icon-button-size-md: 2.5rem;
-  --icon-button-size-lg: 3rem;
-  --icon-button-bg: rgba(17, 24, 39, 0.08);
-  --icon-button-color: #111827;
-  --icon-button-bg-solid: #111827;
-  --icon-button-color-solid: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  border-radius: 999px;
-  border: 1px solid transparent;
-  text-decoration: none;
-  font-size: 0.875rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
-}
-
-.icon-button__label { display: none; }
-.icon-button--lg .icon-button__label,
-.icon-button--md .icon-button__label { display: inline; }
-
-.icon-button--sm { width: var(--icon-button-size-sm); height: var(--icon-button-size-sm); }
-.icon-button--md { padding: 0 1rem; height: var(--icon-button-size-md); }
-.icon-button--lg { padding: 0 1.25rem; height: var(--icon-button-size-lg); }
-
-.icon-button--solid { background-color: var(--icon-button-bg-solid); color: var(--icon-button-color-solid); }
-.icon-button--solid:hover,
-.icon-button--solid:focus-visible { box-shadow: 0 6px 14px rgb(17 24 39 / 0.2); }
-
-.icon-button--ghost { background-color: transparent; color: var(--icon-button-color); border-color: currentColor; }
-.icon-button--ghost:hover,
-.icon-button--ghost:focus-visible { background-color: rgba(17, 24, 39, 0.08); }
-
-.icon-button--subtle { background-color: var(--icon-button-bg); color: var(--icon-button-color); }
-.icon-button--subtle:hover,
-.icon-button--subtle:focus-visible { background-color: rgba(17, 24, 39, 0.12); }
-
-.icon-button.is-disabled,
-.icon-button[aria-disabled="true"],
-.icon-button:disabled { opacity: 0.5; cursor: not-allowed; pointer-events: none; }
-
-.icon-button__icon { display: inline-flex; width: 1.25em; height: 1.25em; }
-</style>
+{% render 'alksdjf/snippets/icon-button',
+  icon: icon,
+  label: label,
+  url: url,
+  style: style,
+  size: size,
+  is_disabled: is_disabled,
+  aria_label: aria_label,
+  id: id,
+  target_blank: target_blank,
+  icon_position: icon_position
+%}

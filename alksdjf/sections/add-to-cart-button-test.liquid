@@ -1,0 +1,47 @@
+{% schema %}
+{
+  "name": "Add to Cart Button (Test)",
+  "settings": [
+    { "type": "product", "id": "product", "label": "Produkt auswählen" },
+    { "type": "text", "id": "form_id", "label": "Form ID", "default": "product-form" },
+    { "type": "select", "id": "style", "label": "Style", "default": "primary", "options": [
+      { "value": "primary", "label": "Primary" },
+      { "value": "secondary", "label": "Secondary" },
+      { "value": "tertiary", "label": "Tertiary" }
+    ] },
+    { "type": "select", "id": "size", "label": "Größe", "default": "lg", "options": [
+      { "value": "sm", "label": "Klein" },
+      { "value": "md", "label": "Mittel" },
+      { "value": "lg", "label": "Groß" }
+    ] }
+  ],
+  "blocks": [
+    {
+      "type": "button_block",
+      "name": "Button",
+      "settings": [
+        { "type": "text", "id": "label", "label": "Button Label", "default": "In den Warenkorb" }
+      ]
+    }
+  ],
+  "max_blocks": 1,
+  "presets": [ { "name": "Add to Cart Button (Test)" } ]
+}
+{% endschema %}
+
+<div class="add-to-cart-button-test">
+  {% assign product_object = nil %}
+  {% assign selected_product = section.settings.product | default: nil %}
+  {% if selected_product %}
+    {% assign product_object = all_products[selected_product] %}
+  {% endif %}
+  {% for block in section.blocks %}
+    {% render 'alksdjf/snippets/add-to-cart-button',
+      product: product_object,
+      form_id: section.settings.form_id,
+      label: block.settings.label,
+      style: section.settings.style,
+      size: section.settings.size
+    %}
+  {% endfor %}
+</div>

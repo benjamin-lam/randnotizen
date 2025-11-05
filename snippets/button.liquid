@@ -13,6 +13,11 @@
     - aria_label: Überschreibt das aria-label (text, nil)
     - id: HTML-ID (text, nil)
     - form: Formular-ID für Button-Submit (text, nil)
+    - target_blank: Öffnet Link in neuem Tab (boolean, false)
+    - size_styles: Zusätzliche Inline-Styles für Größen (text, nil)
+    - border_width: Rahmenbreite in px (text, nil)
+    - border_radius: Rahmenradius in px (text, nil)
+    - border_style: Rahmenstil (text, nil)
 {%- endcomment -%}
 
 {%- liquid
@@ -24,144 +29,80 @@
   assign type = type | default: 'button'
   assign is_disabled = is_disabled | default: false
   assign aria_label = aria_label | default: label
-  assign id = id | default: null
-  assign form = form | default: null
+  assign id = id | default: nil
+  assign form = form | default: nil
+  assign target_blank = target_blank | default: false
+  assign size_styles = size_styles | default: nil
+  assign border_width = border_width | default: nil
+  assign border_radius = border_radius | default: nil
+  assign border_style = border_style | default: nil
+  assign escaped_aria = aria_label | escape
+  assign escaped_id = id | escape
+  assign escaped_form = form | escape
+  assign escaped_type = type | escape
+  assign escaped_size = size | escape
+  assign escaped_style = style | escape
 
-  assign has_icon = icon | default: false
-  assign is_link = url and is_disabled != true and is_disabled != 'true'
+  assign disabled_flag = is_disabled == true or is_disabled == 'true'
+  assign is_link = url and disabled_flag != true
 
-  assign button_classes = 'button button--' | append: style | append: ' button--' | append: size
-  if has_icon
-    assign button_classes = button_classes | append: ' button--with-icon'
-    assign button_classes = button_classes | append: ' button--icon-' | append: icon_position
+  assign tag = 'a'
+  assign resolved_link = url
+  if is_link != true and is_link != 'true'
+    assign tag = 'button'
+    assign resolved_link = nil
   endif
-  if is_disabled == true or is_disabled == 'true'
-    assign button_classes = button_classes | append: ' is-disabled'
+
+  assign variant_mapping = {
+    'primary': 'button',
+    'secondary': 'button-secondary',
+    'tertiary': 'button-tertiary'
+  }
+  assign button_variant = variant_mapping[style]
+  if button_variant == blank
+    assign button_variant = 'button'
   endif
+
+  assign context_id = id
+  if context_id == blank
+    assign context_id = 'button'
+  endif
+
+  assign attribute_parts = ''
+  if id != blank
+    assign attribute_parts = attribute_parts | append: ' id="' | append: escaped_id | append: '"'
+  endif
+  if tag == 'button'
+    assign attribute_parts = attribute_parts | append: ' type="' | append: escaped_type | append: '"'
+    if form != blank
+      assign attribute_parts = attribute_parts | append: ' form="' | append: escaped_form | append: '"'
+    endif
+  endif
+  if disabled_flag
+    assign attribute_parts = attribute_parts | append: ' aria-disabled="true"'
+    if tag == 'button'
+      assign attribute_parts = attribute_parts | append: ' disabled'
+    else
+      assign resolved_link = nil
+    endif
+  endif
+  assign attribute_parts = attribute_parts | append: ' aria-label="' | append: escaped_aria | append: '"'
+  assign attribute_parts = attribute_parts | append: ' data-button-size="' | append: escaped_size | append: '"'
+  assign attribute_parts = attribute_parts | append: ' data-button-style="' | append: escaped_style | append: '"'
 -%}
 
-{%- if is_link -%}
-  <a
-    {% if id %}id="{{ id }}"{% endif %}
-    href="{{ url }}"
-    class="{{ button_classes }}"
-    aria-label="{{ aria_label | escape }}"
-    {% if is_disabled %}aria-disabled="true" tabindex="-1"{% endif %}
-  >
-{%- else -%}
-  <button
-    {% if id %}id="{{ id }}"{% endif %}
-    type="{{ type }}"
-    class="{{ button_classes }}"
-    aria-label="{{ aria_label | escape }}"
-    {% if is_disabled %}disabled aria-disabled="true"{% endif %}
-    {% if form %}form="{{ form }}"{% endif %}
-  >
-{%- endif -%}
-    {%- if has_icon and icon_position == 'left' -%}
-      <span class="button__icon" aria-hidden="true">
-        {% render 'icon', name: icon %}
-      </span>
-    {%- endif -%}
-    <span class="button__label">{{ label }}</span>
-    {%- if has_icon and icon_position == 'right' -%}
-      <span class="button__icon" aria-hidden="true">
-        {% render 'icon', name: icon %}
-      </span>
-    {%- endif -%}
-{%- if is_link -%}
-  </a>
-{%- else -%}
-  </button>
-{%- endif -%}
-
-<style>
-.button {
-  --button-bg-primary: var(--color-button-primary, #111827);
-  --button-bg-secondary: var(--color-button-secondary, transparent);
-  --button-bg-tertiary: var(--color-button-tertiary, transparent);
-  --button-color-primary: var(--color-button-primary-text, #ffffff);
-  --button-color-secondary: var(--color-button-secondary-text, #111827);
-  --button-color-tertiary: var(--color-button-tertiary-text, #111827);
-  --button-border-radius: var(--radius-button, 0.375rem);
-  --button-padding-sm: 0.5rem 1rem;
-  --button-padding-md: 0.75rem 1.5rem;
-  --button-padding-lg: 1rem 2rem;
-  --button-font-size-sm: 0.875rem;
-  --button-font-size-md: 1rem;
-  --button-font-size-lg: 1.125rem;
-  font-family: inherit;
-  font-weight: 600;
-  border: 1px solid transparent;
-  border-radius: var(--button-border-radius);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  cursor: pointer;
-  text-decoration: none;
-  transition: transform 0.15s ease, box-shadow 0.15s ease, background-color 0.15s ease, color 0.15s ease;
-}
-
-.button--sm {
-  padding: var(--button-padding-sm);
-  font-size: var(--button-font-size-sm);
-}
-
-.button--md {
-  padding: var(--button-padding-md);
-  font-size: var(--button-font-size-md);
-}
-
-.button--lg {
-  padding: var(--button-padding-lg);
-  font-size: var(--button-font-size-lg);
-}
-
-.button--primary {
-  background-color: var(--button-bg-primary);
-  color: var(--button-color-primary);
-}
-
-.button--primary:hover,
-.button--primary:focus-visible {
-  transform: translateY(-1px);
-  box-shadow: 0 8px 16px rgb(17 24 39 / 0.15);
-}
-
-.button--secondary {
-  background-color: var(--button-bg-secondary);
-  color: var(--button-color-secondary);
-  border-color: currentColor;
-}
-
-.button--secondary:hover,
-.button--secondary:focus-visible {
-  background-color: rgba(17, 24, 39, 0.08);
-}
-
-.button--tertiary {
-  background-color: var(--button-bg-tertiary);
-  color: var(--button-color-tertiary);
-  text-decoration: underline;
-}
-
-.button--tertiary:hover,
-.button--tertiary:focus-visible {
-  text-decoration: none;
-}
-
-.button.is-disabled,
-.button[aria-disabled="true"],
-.button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-  pointer-events: none;
-}
-
-.button__icon {
-  display: inline-flex;
-  width: 1em;
-  height: 1em;
-}
-</style>
+{% render 'alksdjf/snippets/button',
+  tag: tag,
+  id: context_id,
+  label: label,
+  link: resolved_link,
+  variant: button_variant,
+  open_in_new_tab: target_blank,
+  shopify_attributes: attribute_parts,
+  size_styles: size_styles,
+  icon: icon,
+  icon_position: icon_position,
+  border_width: border_width,
+  border_radius: border_radius,
+  border_style: border_style
+%}
